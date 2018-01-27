@@ -29,7 +29,7 @@ public class PowerScript : MonoBehaviour
 
         List<GameObject> powered = transform.parent.GetComponent<TowerScript>().powered;
 
-        if (!powered.Contains(other.gameObject))
+        if (!powered.Contains(other.transform.parent.gameObject))
         {
             powered.Add(other.transform.parent.gameObject);
 
@@ -43,8 +43,8 @@ public class PowerScript : MonoBehaviour
         if (other.transform.parent.gameObject.tag != "House") return;
 
         List<GameObject> powered = transform.parent.GetComponent<TowerScript>().powered;
-
-        if (powered.Contains(other.gameObject))
+        
+        if (powered.Contains(other.transform.parent.gameObject))
         {
             powered.Remove(other.transform.parent.gameObject);
         }
