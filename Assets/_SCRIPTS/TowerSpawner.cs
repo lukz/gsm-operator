@@ -49,7 +49,9 @@ public class TowerSpawner : MonoBehaviour {
 				{
 					PolygonCollider2D col = house.GetComponentInChildren<PolygonCollider2D>();
 					if (col.OverlapPoint(new Vector2(pos.x, pos.y))) {
-						GameObject.Destroy(house);
+                        house.GetComponent<TowerScript>().onDestroyed();
+
+                        GameObject.Destroy(house);
 						break;
 					}
 				}
