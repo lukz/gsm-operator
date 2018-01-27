@@ -27,8 +27,6 @@ public class TowerScript : MonoBehaviour {
         
         for (var i = 0; i < powered.Count; i++)
         {
-            Debug.Log(powered[i]);
-            Debug.Log(powered[i].GetComponent<HouseScript>());
             powered[i].GetComponent<HouseScript>().powerUp();
         }
     }
