@@ -57,9 +57,10 @@ public static List<int> currentTowers = new List<int>();
 
 	 public static void UpdateNumbers()
 	{
-
-		instance.countTowerCircle.text = currentTowers[0].ToString();
-		instance.countTowerArc.text = currentTowers[1].ToString();
+		if (instance.countTowerCircle)
+			instance.countTowerCircle.text = currentTowers[0].ToString();
+		if (instance.countTowerArc)
+			instance.countTowerArc.text = currentTowers[1].ToString();
 		//instance.countTowerLine.text = currentTowers[2].ToString();
 	}
 
