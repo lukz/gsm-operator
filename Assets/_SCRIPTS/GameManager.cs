@@ -28,6 +28,8 @@ public static List<int> currentTowers = new List<int>();
     public int tower2Count = 0;
     public int tower3Count = 0;
 
+    private int currentTier = 0;
+
     public static GameManager instance = null;
 
 	public float powerUpTimeForSceneChange = 2;
@@ -55,7 +57,7 @@ public static List<int> currentTowers = new List<int>();
 		currentTowers.Add(tower3Count);
 		UpdateNumbers();
 
-        setTier(0);
+        setTier(currentTier);
 	}
 
     public void setTier(int tier)
@@ -136,13 +138,42 @@ public static List<int> currentTowers = new List<int>();
 			if (allPowered) {
 				timer += Time.deltaTime;
 				if (timer >= powerUpTimeForSceneChange) {
-					Debug.Log("Full power");
-					SceneManager.LoadScene("TEST");
-					timer = 0;
+                    Debug.Log("Full power");
+                    changeTierOrScene();
+                    timer = 0;
 				}
 			} else {
 				timer = 0;
 			}
 		}
 	}
+
+    public void changeTierOrScene()
+    {
+        int maxTier = 0;
+        
+        // Check if next tier aviable
+        GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
+        for (int i = 0; i < houses.Length; i++)
+        {
+            maxTier = Mathf.Max(maxTier, houses.Length - 1);
+        }
+
+
+        if(currentTier >= maxTier)
+        {
+            SceneManager.LoadScene("TEST");
+        }
+        else
+        {
+            currentTier++;
+            setTier(currentTier);
+        }
+
+
+
+
+    }
+
+
 }
