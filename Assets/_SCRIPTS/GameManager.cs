@@ -1,16 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< HEAD
 using UnityEngine.UI;
-=======
 using UnityEngine.SceneManagement;
->>>>>>> c0a0d39eccc0908b0610da33424f5a2c86407e2d
 
 public class GameManager : MonoBehaviour   {
-
-<<<<<<< HEAD
-	public static int currentTowerCircle = 3; 
+public static int currentTowerCircle = 3; 
 	public static int currentTowerArc = 3;
 	public static int currentTowerLine = 3;
 
@@ -24,21 +19,34 @@ public class GameManager : MonoBehaviour   {
 	[SerializeField]
 	private Text countTowerLine;
 
-	
 
-=======
+	public static GameManager instance = null;
+
+
 	public float powerUpTimeForSceneChange = 2;
->>>>>>> c0a0d39eccc0908b0610da33424f5a2c86407e2d
+
+	void Awake()
+	{
+
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else if (instance != this)
+		{
+			Destroy(gameObject);
+		}
+
+	}
+
+
+
 	// Use this for initialization
 	void Start () {
 		
 	}
-	
-<<<<<<< HEAD
-
-=======
 	float timer;
->>>>>>> c0a0d39eccc0908b0610da33424f5a2c86407e2d
 	// Update is called once per frame
 	void Update () {
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
