@@ -21,7 +21,7 @@ public class HouseScript : MonoBehaviour {
 	}
 
 	public void powerDown() {
-		Powered = true;
+		Powered = false;
 	}
 	
 	// Update is called once per frame
