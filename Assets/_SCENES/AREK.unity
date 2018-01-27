@@ -226,11 +226,6 @@ Prefab:
       propertyPath: towerspawner
       value: 
       objectReference: {fileID: 1976229017}
-    - target: {fileID: 114417226739613734, guid: 54e063a31db61814dad13fb7da0ae68f,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1976229017}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54e063a31db61814dad13fb7da0ae68f, type: 2}
   m_IsPrefabParent: 0

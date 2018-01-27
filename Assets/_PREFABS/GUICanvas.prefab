@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberTower: 1
-  tower: {fileID: 1241436494150840, guid: 4b4fb01d0fb2ec246a8565de6db1244c, type: 2}
+  tower: {fileID: 1902324608369842, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
   towerspawner: {fileID: 0}
 --- !u!114 &114389115128728214
 MonoBehaviour:
@@ -383,13 +383,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: spawn
-        m_Mode: 2
+      - m_Target: {fileID: 114340296388403554}
+        m_MethodName: SetTower
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1902324608369842, guid: 605b4bf4cf548a144bf6113061ab3101,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

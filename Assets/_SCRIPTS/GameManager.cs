@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour   {
+
+
 public static List<int> currentTowers = new List<int>(); 
 	
 
@@ -54,7 +56,7 @@ public static List<int> currentTowers = new List<int>();
 
 		instance.countTowerCircle.text = currentTowers[0].ToString();
 		instance.countTowerArc.text = currentTowers[1].ToString();
-		instance.countTowerLine.text = currentTowers[2].ToString();
+		//instance.countTowerLine.text = currentTowers[2].ToString();
 	}
 
 
