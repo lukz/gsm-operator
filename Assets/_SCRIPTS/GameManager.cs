@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour   {
-public static int currentTowerCircle = 3; 
-	public static int currentTowerArc = 3;
-	public static int currentTowerLine = 3;
 
+
+public static List<int> currentTowers = new List<int>(); 
+	
 
 	[SerializeField]
 	private Text countTowerCircle;
@@ -44,8 +44,24 @@ public static int currentTowerCircle = 3;
 
 	// Use this for initialization
 	void Start () {
-		
+		currentTowers.Add(3);
+		currentTowers.Add(3);
+		currentTowers.Add(3);
+		UpdateNumbers();
 	}
+
+
+	 public static void UpdateNumbers()
+	{
+
+		instance.countTowerCircle.text = currentTowers[0].ToString();
+		instance.countTowerArc.text = currentTowers[1].ToString();
+		//instance.countTowerLine.text = currentTowers[2].ToString();
+	}
+
+
+
+
 	float timer;
 	// Update is called once per frame
 	void Update () {
