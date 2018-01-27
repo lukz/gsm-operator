@@ -46,3 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BG
+    uniqueID: 841740989
+    locked: 0
+  - name: ForbiddenZones
+    uniqueID: 2792809701
+    locked: 0
+  - name: RangeZones
+    uniqueID: 2787470157
+    locked: 0
+  - name: Buildings
+    uniqueID: 823275467
+    locked: 0
