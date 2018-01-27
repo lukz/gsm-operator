@@ -51,3 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf9dc73afc074f529b59a3add428db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyIconPrefab: {fileID: 1896053390616568, guid: 5c3fe23e10488479da7db7ff4a81e51a,
+    type: 2}

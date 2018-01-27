@@ -76,11 +76,11 @@ public static List<int> currentTowers = new List<int>();
 			shakePower *= 0.6f;
 
 			if (Random.Range(0, 1) > 0.5f) { 
-				Camera.main.transform.position = new Vector3(Random.Range(shakePower / 2, shakePower), Random.Range(shakePower / 2, shakePower), 0);
+				Camera.main.transform.position = new Vector3(Random.Range(shakePower / 2, shakePower), Random.Range(shakePower / 2, shakePower), Camera.main.transform.position.z);
 			}
 			else
 			{
-				Camera.main.transform.position = new Vector3(Random.Range(-shakePower / 2, -shakePower), Random.Range(-shakePower / 2, -shakePower), 0);
+				Camera.main.transform.position = new Vector3(Random.Range(-shakePower / 2, -shakePower), Random.Range(-shakePower / 2, -shakePower), Camera.main.transform.position.z);
 			}
 
 
@@ -88,7 +88,7 @@ public static List<int> currentTowers = new List<int>();
 		else
 		{
 			shakePower = 0;
-			Camera.main.transform.position = Vector3.zero;
+			Camera.main.transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
 		}
 
 
