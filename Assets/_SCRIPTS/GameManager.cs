@@ -153,10 +153,10 @@ public static List<int> currentTowers = new List<int>();
         int maxTier = 0;
         
         // Check if next tier aviable
-        GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
-        for (int i = 0; i < houses.Length; i++)
+        GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
+        for (int i = 0; i < houseSpots.Length; i++)
         {
-            maxTier = Mathf.Max(maxTier, houses.Length - 1);
+            maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
         }
 
 
@@ -168,6 +168,8 @@ public static List<int> currentTowers = new List<int>();
         {
             currentTier++;
             setTier(currentTier);
+
+            Debug.Log("NEX TIER! " + currentTier + " / " + maxTier);
         }
 
 
