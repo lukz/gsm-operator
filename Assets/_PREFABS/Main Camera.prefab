@@ -131,6 +131,7 @@ MonoBehaviour:
   countTowerCircle: {fileID: 0}
   countTowerArc: {fileID: 0}
   countTowerLine: {fileID: 0}
+  powerSlider: {fileID: 0}
   powerUpTimeForSceneChange: 2
 --- !u!114 &114146595768815226
 MonoBehaviour:
