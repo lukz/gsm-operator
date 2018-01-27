@@ -57,9 +57,12 @@ public static List<int> currentTowers = new List<int>();
 
 	 public static void UpdateNumbers()
 	{
-
-		instance.countTowerCircle.text = currentTowers[0].ToString();
-		instance.countTowerArc.text = currentTowers[1].ToString();
+		if (instance.countTowerCircle)
+			instance.countTowerCircle.text = currentTowers[0].ToString();
+		if (instance.countTowerArc)
+			instance.countTowerArc.text = currentTowers[1].ToString();
+		if (instance.countTowerLine)
+			instance.countTowerLine.text = currentTowers[2].ToString();
 		//instance.countTowerLine.text = currentTowers[2].ToString();
 	}
 
@@ -95,7 +98,7 @@ public static List<int> currentTowers = new List<int>();
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
 		if (houses.Length > 0) {
 			bool allPowered = true;
-			int countPowered = 0;
+			float countPowered = 0;
 			foreach (GameObject house in houses)
 			{
 				HouseScript hs = house.GetComponent<HouseScript>();
@@ -105,8 +108,6 @@ public static List<int> currentTowers = new List<int>();
 
 
 			powerSlider.value = countPowered / houses.Length;
-
-
 			if (allPowered) {
 				timer += Time.deltaTime;
 				if (timer >= powerUpTimeForSceneChange) {
