@@ -6,6 +6,7 @@ public class TowerScript : MonoBehaviour {
 
     public GameObject powerZone;
     public List<GameObject> powered;
+    public int id;
 
     public bool isBuildable;
 
