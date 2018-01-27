@@ -95,7 +95,7 @@ public static List<int> currentTowers = new List<int>();
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
 		if (houses.Length > 0) {
 			bool allPowered = true;
-			int countPowered = 0;
+			float countPowered = 0;
 			foreach (GameObject house in houses)
 			{
 				HouseScript hs = house.GetComponent<HouseScript>();
@@ -105,8 +105,6 @@ public static List<int> currentTowers = new List<int>();
 
 
 			powerSlider.value = countPowered / houses.Length;
-
-
 			if (allPowered) {
 				timer += Time.deltaTime;
 				if (timer >= powerUpTimeForSceneChange) {
