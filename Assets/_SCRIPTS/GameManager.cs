@@ -61,6 +61,8 @@ public static List<int> currentTowers = new List<int>();
 			instance.countTowerCircle.text = currentTowers[0].ToString();
 		if (instance.countTowerArc)
 			instance.countTowerArc.text = currentTowers[1].ToString();
+		if (instance.countTowerLine)
+			instance.countTowerLine.text = currentTowers[2].ToString();
 		//instance.countTowerLine.text = currentTowers[2].ToString();
 	}
 
