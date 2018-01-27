@@ -24,11 +24,8 @@ public class TowerScript : MonoBehaviour {
     public void onBuilded()
     {
         isBuilded = true;
-        
-        for (var i = 0; i < powered.Count; i++)
-        {
-            powered[i].GetComponent<HouseScript>().powerUp();
-        }
+
+        setPowerUps();
     }
 
     public void onDestroyed()
@@ -38,6 +35,14 @@ public class TowerScript : MonoBehaviour {
         for (var i = 0; i < powered.Count; i++)
         {
             powered[i].GetComponent<HouseScript>().powerDown();
+        }
+    }
+
+    public void setPowerUps()
+    {
+        for (var i = 0; i < powered.Count; i++)
+        {
+            powered[i].GetComponent<HouseScript>().powerUp();
         }
     }
 
