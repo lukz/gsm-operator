@@ -44,14 +44,16 @@ public class TowerSpawner : MonoBehaviour {
 					}	
 					return;
 				}
-				GameObject[] houses = GameObject.FindGameObjectsWithTag("Tower");
-				foreach (GameObject house in houses)
+				GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+				foreach (GameObject tower in towers)
 				{
-					PolygonCollider2D col = house.GetComponentInChildren<PolygonCollider2D>();
+					PolygonCollider2D col = tower.GetComponentInChildren<PolygonCollider2D>();
 					if (col.OverlapPoint(new Vector2(pos.x, pos.y))) {
-                        house.GetComponent<TowerScript>().onDestroyed();
-
-                        GameObject.Destroy(house);
+						TowerScript ts = tower.GetComponent<TowerScript>();
+                        ts.onDestroyed();
+						GameManager.currentTowers[ts.id]++;
+						GameManager.UpdateNumbers();
+                        GameObject.Destroy(tower);
 						break;
 					}
 				}
@@ -90,7 +92,8 @@ public class TowerSpawner : MonoBehaviour {
 
             
             ts.onBuilded();
-GameManager.currentTowers[currentChosenTower]--;
+			ts.id = currentChosenTower;
+			GameManager.currentTowers[currentChosenTower]--;
 			GameManager.UpdateNumbers();
 
 
