@@ -24,9 +24,11 @@ public static List<int> currentTowers = new List<int>();
 	[SerializeField]
 	private Slider powerSlider;
 
+    public int tower1Count = 0;
+    public int tower2Count = 0;
+    public int tower3Count = 0;
 
-	public static GameManager instance = null;
-
+    public static GameManager instance = null;
 
 	public float powerUpTimeForSceneChange = 2;
 
@@ -48,11 +50,25 @@ public static List<int> currentTowers = new List<int>();
 
 	// Use this for initialization
 	void Start () {
-		currentTowers.Add(3);
-		currentTowers.Add(3);
-		currentTowers.Add(3);
+		currentTowers.Add(tower1Count);
+		currentTowers.Add(tower2Count);
+		currentTowers.Add(tower3Count);
 		UpdateNumbers();
+
+        setTier(0);
 	}
+
+    public void setTier(int tier)
+    {
+        GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
+
+        for (int i = 0; i < houseSpots.Length; i++)
+        {
+            HouseSpot houseSpot = houseSpots[i].GetComponent<HouseSpot>();
+
+            houseSpot.SpawnTier(tier);
+        }
+    }
 
 
 	 public static void UpdateNumbers()
