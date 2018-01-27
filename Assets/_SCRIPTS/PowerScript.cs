@@ -5,12 +5,14 @@ using UnityEngine;
 public class PowerScript : MonoBehaviour
 {
 
-    private List<GameObject> powered;
+    
 
     // Use this for initialization
     void Start()
     {
-        powered = new List<GameObject>();
+        // Zmienić on trigger enter żeby jak już się zbuduje to ustawiało odpowiednio
+        // Dodać listę 
+        
 
     }
 
@@ -22,28 +24,29 @@ public class PowerScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!transform.parent.GetComponent<TowerScript>().isBuilded) return;
+        //if (!transform.parent.GetComponent<TowerScript>().isBuilded) return;
         if (other.transform.parent.gameObject.tag != "House") return;
+
+        List<GameObject> powered = transform.parent.GetComponent<TowerScript>().powered;
 
         if (!powered.Contains(other.gameObject))
         {
-            powered.Add(other.gameObject);
+            powered.Add(other.transform.parent.gameObject);
 
-            other.transform.parent.GetComponent<HouseScript>().powerUp();
+            //other.transform.parent.GetComponent<HouseScript>().powerUp();
         }
     }
 
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (!transform.parent.GetComponent<TowerScript>().isBuilded) return;
         if (other.transform.parent.gameObject.tag != "House") return;
+
+        List<GameObject> powered = transform.parent.GetComponent<TowerScript>().powered;
 
         if (powered.Contains(other.gameObject))
         {
-            powered.Remove(other.gameObject);
-
-            other.transform.parent.GetComponent<HouseScript>().powerDown();
+            powered.Remove(other.transform.parent.gameObject);
         }
     }
 
