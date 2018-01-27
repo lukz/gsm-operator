@@ -96,7 +96,6 @@ public class TowerSpawner : MonoBehaviour {
 			GameManager.currentTowers[currentChosenTower]--;
 			GameManager.UpdateNumbers();
 
-
 			// make it opaque
 			SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
 			sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);

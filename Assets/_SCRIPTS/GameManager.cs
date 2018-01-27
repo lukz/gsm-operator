@@ -57,12 +57,21 @@ public static List<int> currentTowers = new List<int>();
 
 	 public static void UpdateNumbers()
 	{
-		if (instance.countTowerCircle)
-			instance.countTowerCircle.text = currentTowers[0].ToString();
-		if (instance.countTowerArc)
-			instance.countTowerArc.text = currentTowers[1].ToString();
-		if (instance.countTowerLine)
-			instance.countTowerLine.text = currentTowers[2].ToString();
+		if (instance.countTowerCircle) {
+			int count = currentTowers[0];
+			instance.countTowerCircle.text = count.ToString();
+			instance.countTowerCircle.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
+		}
+		if (instance.countTowerArc) {
+			int count = currentTowers[1];
+			instance.countTowerArc.text = count.ToString();
+			instance.countTowerArc.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
+		}
+		if (instance.countTowerLine) {
+			int count = currentTowers[2];
+			instance.countTowerLine.text = count.ToString();
+			instance.countTowerLine.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
+		}
 		//instance.countTowerLine.text = currentTowers[2].ToString();
 	}
 
