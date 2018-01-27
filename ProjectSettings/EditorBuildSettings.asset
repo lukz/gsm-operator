@@ -9,14 +9,17 @@ EditorBuildSettings:
     path: Assets/_SCENES/AREK.unity
     guid: d7e8f600315dac34f978acf3e9c4cf49
   - enabled: 1
-    path: Assets/_SCENES/lukasz.unity
-    guid: 1b49b8c2dc3de09448b7c734d47b10e8
-  - enabled: 1
-    path: Assets/_SCENES/main.unity
-    guid: d5e44f79ba7686f4ba4518076dd0c38f
-  - enabled: 1
     path: Assets/_SCENES/PiotrJ.unity
     guid: f858cc26a443140e3a8c005821acd290
   - enabled: 1
     path: Assets/_SCENES/TEST.unity
     guid: edf69a3f0b6414327b689311726a34d0
+  - enabled: 1
+    path: Assets/_SCENES/main.unity
+    guid: fccc6237f4c6b7f40a8a489eb1eb1349
+  - enabled: 1
+    path: Assets/_SCENES/WIN.unity
+    guid: 711c0a44487e34b0ca3024f569b00e91
+  - enabled: 1
+    path: Assets/_SCENES/LOSE.unity
+    guid: 834ddbdb755a040ffbda7a483fcc6d97
