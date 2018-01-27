@@ -19,9 +19,7 @@ public class CheckAvailable : MonoBehaviour {
 	{
 		if (GameManager.currentTowers[numberTower] > 0)
 		{
-			//TODO dopiero na budowe zmieniaj liczbe/.....
-			GameManager.currentTowers[numberTower]--;
-			GameManager.UpdateNumbers();
+			TowerSpawner.currentChosenTower = numberTower;
 			towerspawner.spawn(tower);
 
 		}

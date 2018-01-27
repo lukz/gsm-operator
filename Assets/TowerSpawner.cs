@@ -8,6 +8,7 @@ public class TowerSpawner : MonoBehaviour {
 
 	GameObject spawned;
 	GameObject towerToSpawn;
+	public static int currentChosenTower;
 
 	GraphicRaycaster raycaster;
     PointerEventData pointerEventData;
@@ -34,6 +35,9 @@ public class TowerSpawner : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Mouse0)) { // left
 			// if we click on gui, ignore it
 			if (getOverCount() > 0) return;
+			GameManager.currentTowers[currentChosenTower]--;
+			GameManager.UpdateNumbers();
+
 
 			// make it opaque
 			SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
