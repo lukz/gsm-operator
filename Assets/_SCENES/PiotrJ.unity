@@ -151,7 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &291268046
 GameObject:
@@ -234,7 +234,7 @@ MonoBehaviour:
         m_MethodName: spawn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1090893432475724, guid: 9582b4780ba7846e59c3228df1fe4da8,
+          m_ObjectArgument: {fileID: 1241436494150840, guid: 4b4fb01d0fb2ec246a8565de6db1244c,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -344,10 +344,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tower B
-
-
-'
+  m_Text: House
 --- !u!222 &517843340
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -529,48 +526,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &1172228220
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4168537733245208, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168537733245208, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168537733245208, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168537733245208, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168537733245208, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168537733245208, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168537733245208, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4168537733245208, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1187770584
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +737,7 @@ MonoBehaviour:
         m_MethodName: spawn
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1781152071269584, guid: c888088b6003a4c37a822284d99bd34d,
+          m_ObjectArgument: {fileID: 1902324608369842, guid: 605b4bf4cf548a144bf6113061ab3101,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -892,7 +847,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tower A
+  m_Text: 'Tower
 
 '
 --- !u!222 &1648232932
@@ -984,8 +939,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towers:
-  - {fileID: 1090893432475724, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-  - {fileID: 1781152071269584, guid: c888088b6003a4c37a822284d99bd34d, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2070571876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,45 +1009,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2070571876}
---- !u!1001 &2082040411
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4831514854237458, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4831514854237458, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4831514854237458, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4831514854237458, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4831514854237458, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4831514854237458, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4831514854237458, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4831514854237458, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9582b4780ba7846e59c3228df1fe4da8, type: 2}
-  m_IsPrefabParent: 0
