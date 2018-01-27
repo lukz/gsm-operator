@@ -494,7 +494,7 @@ MonoBehaviour:
   powerZone: {fileID: 1362011158537648}
   powered: []
   isBuildable: 0
-  isBuilded: 0
+  isBuilded: 1
 --- !u!114 &114462597200334924
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -33,6 +33,11 @@ public class PowerScript : MonoBehaviour
         {
             powered.Add(other.transform.parent.gameObject);
 
+            // Update for already builded
+            if(transform.parent.GetComponent<TowerScript>().isBuilded)
+            {
+                transform.parent.GetComponent<TowerScript>().setPowerUps();
+            }
             //other.transform.parent.GetComponent<HouseScript>().powerUp();
         }
     }
