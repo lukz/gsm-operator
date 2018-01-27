@@ -58,3 +58,6 @@ TagManager:
   - name: Buildings
     uniqueID: 823275467
     locked: 0
+  - name: Efects
+    uniqueID: 5428501
+    locked: 0
