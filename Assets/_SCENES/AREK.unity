@@ -288,21 +288,11 @@ Prefab:
       propertyPath: countTowerArc
       value: 
       objectReference: {fileID: 1466816413}
-    - target: {fileID: 20084935653349574, guid: fddd666f3935b154f8236537ebde77f3,
+    - target: {fileID: 114143525149227166, guid: fddd666f3935b154f8236537ebde77f3,
         type: 2}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20084935653349574, guid: fddd666f3935b154f8236537ebde77f3,
-        type: 2}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20084935653349574, guid: fddd666f3935b154f8236537ebde77f3,
-        type: 2}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: powerSlider
+      value: 
+      objectReference: {fileID: 1466816415}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fddd666f3935b154f8236537ebde77f3, type: 2}
   m_IsPrefabParent: 0
@@ -403,16 +393,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114340296388403554, guid: 54e063a31db61814dad13fb7da0ae68f,
-        type: 2}
-      propertyPath: towerspawner
-      value: 
-      objectReference: {fileID: 1891991593}
     - target: {fileID: 114751367668305454, guid: 54e063a31db61814dad13fb7da0ae68f,
         type: 2}
       propertyPath: towerspawner
       value: 
       objectReference: {fileID: 1891991593}
+    - target: {fileID: 114340296388403554, guid: 54e063a31db61814dad13fb7da0ae68f,
+        type: 2}
+      propertyPath: towerspawner
+      value: 
+      objectReference: {fileID: 1891991593}
+    - target: {fileID: 224394739400181766, guid: 54e063a31db61814dad13fb7da0ae68f,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54e063a31db61814dad13fb7da0ae68f, type: 2}
   m_IsPrefabParent: 0
@@ -428,6 +423,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1466816412}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1466816415 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114706359701795780, guid: 54e063a31db61814dad13fb7da0ae68f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1466816412}
+  m_Script: {fileID: -113659843, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1891991592
 Prefab:
   m_ObjectHideFlags: 0

@@ -21,6 +21,9 @@ public static List<int> currentTowers = new List<int>();
 
 	public static float shakePower = 0;
 
+	[SerializeField]
+	private Slider powerSlider;
+
 
 	public static GameManager instance = null;
 
@@ -91,12 +94,18 @@ public static List<int> currentTowers = new List<int>();
 
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
 		if (houses.Length > 0) {
-			bool allPowered = true;		
+			bool allPowered = true;
+			int countPowered = 0;
 			foreach (GameObject house in houses)
 			{
 				HouseScript hs = house.GetComponent<HouseScript>();
+				if (hs.Powered) countPowered++;
 				allPowered &= hs.Powered;
 			}
+
+
+			powerSlider.value = countPowered / houses.Length;
+
 
 			if (allPowered) {
 				timer += Time.deltaTime;
