@@ -10,7 +10,7 @@ public class TowerScript : MonoBehaviour {
 
     public bool isBuildable;
 
-    public bool isBuilded = false;
+    public bool isBuilded;
 
     // Use this for initialization
     void Start () {

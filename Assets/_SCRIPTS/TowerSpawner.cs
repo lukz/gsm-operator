@@ -95,6 +95,7 @@ public class TowerSpawner : MonoBehaviour {
 			ts.id = currentChosenTower;
 			GameManager.currentTowers[currentChosenTower]--;
 			GameManager.UpdateNumbers();
+	
 
 			// make it opaque
 			SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
@@ -151,6 +152,8 @@ public class TowerSpawner : MonoBehaviour {
 		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 		Transform parent = GetComponent<Transform>();
 		spawned = GameObject.Instantiate(tower, pos, Quaternion.identity, parent);
+		TowerScript ts = spawned.GetComponent<TowerScript>();
+		ts.isBuilded = false;
 		// make it semi transparent 
 		SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
 		sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .5f);

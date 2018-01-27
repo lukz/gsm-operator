@@ -504,6 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerZone: {fileID: 1207131489209460}
   powered: []
+  id: 0
   isBuildable: 0
   isBuilded: 1
 --- !u!114 &114609840638600798
