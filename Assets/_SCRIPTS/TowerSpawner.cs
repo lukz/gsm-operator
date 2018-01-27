@@ -41,10 +41,12 @@ public class TowerSpawner : MonoBehaviour {
 			if (!ts.isBuildable) {
 				return;
 			}
-			ts.isBuilded = true;
 
 			GameManager.shakePower += 0.15f;
-			GameManager.currentTowers[currentChosenTower]--;
+
+            
+            ts.onBuilded();
+GameManager.currentTowers[currentChosenTower]--;
 			GameManager.UpdateNumbers();
 
 
