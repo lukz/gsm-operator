@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 212658106478850330}
   - component: {fileID: 60823943077262800}
   - component: {fileID: 50019527122971576}
+  - component: {fileID: 114249825639564536}
   m_Layer: 9
   m_Name: PowerZone
   m_TagString: Power
@@ -449,6 +450,17 @@ PolygonCollider2D:
       - {x: 0.073363945, y: 0.49458843}
       - {x: 0.0490072, y: 0.4975925}
       - {x: 0.02453239, y: 0.49939778}
+--- !u!114 &114249825639564536
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736836245231100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ae2a41e3ccc49840a78222c305e6b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114566988929277296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -461,6 +473,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerZone: {fileID: 1736836245231100}
+  isBuildable: 0
+  isBuilded: 0
 --- !u!114 &114728309225201872
 MonoBehaviour:
   m_ObjectHideFlags: 1
