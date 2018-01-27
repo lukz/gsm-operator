@@ -19,6 +19,8 @@ public static List<int> currentTowers = new List<int>();
 	[SerializeField]
 	private Text countTowerLine;
 
+	public static float shakePower = 0;
+
 
 	public static GameManager instance = null;
 
@@ -39,7 +41,6 @@ public static List<int> currentTowers = new List<int>();
 		}
 
 	}
-
 
 
 	// Use this for initialization
@@ -65,6 +66,29 @@ public static List<int> currentTowers = new List<int>();
 	float timer;
 	// Update is called once per frame
 	void Update () {
+
+
+		if (shakePower > 0.01f)
+		{
+			shakePower *= 0.6f;
+
+			if (Random.Range(0, 1) > 0.5f) { 
+				Camera.main.transform.position = new Vector3(Random.Range(shakePower / 2, shakePower), Random.Range(shakePower / 2, shakePower), 0);
+			}
+			else
+			{
+				Camera.main.transform.position = new Vector3(Random.Range(-shakePower / 2, -shakePower), Random.Range(-shakePower / 2, -shakePower), 0);
+			}
+
+
+		}
+		else
+		{
+			shakePower = 0;
+			Camera.main.transform.position = Vector3.zero;
+		}
+
+
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
 		if (houses.Length > 0) {
 			bool allPowered = true;		
