@@ -5,22 +5,27 @@ using UnityEngine;
 public class HouseScript : MonoBehaviour {
 
     public GameObject restrictedZone;
+	public bool Powered { get { return powered; } private set { powered = value;} }
 
+ 	[SerializeField]
+	private bool powered;
+	
+	Animator animator;
 	// Use this for initialization
 	void Start () {
-		
+		animator = GetComponent<Animator>();
 	}
 
 	public void powerUp() {
-		GetComponent<Animator>().SetBool("powered", true);
+		Powered = true;
 	}
 
 	public void powerDown() {
-		GetComponent<Animator>().SetBool("powered", false);
+		Powered = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		animator.SetBool("powered", powered);
 	}
 }
