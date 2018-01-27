@@ -35,6 +35,15 @@ public class TowerSpawner : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Mouse0)) { // left
 			// if we click on gui, ignore it
 			if (getOverCount() > 0) return;
+
+			TowerScript ts = spawned.GetComponent<TowerScript>();
+
+			if (!ts.isBuildable) {
+				return;
+			}
+			ts.isBuilded = true;
+
+
 			GameManager.currentTowers[currentChosenTower]--;
 			GameManager.UpdateNumbers();
 
