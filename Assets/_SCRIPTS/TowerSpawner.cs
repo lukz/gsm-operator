@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class TowerSpawner : MonoBehaviour {
 
+	public GameObject destroyIconPrefab;
+	GameObject destroyIcon;
+
 	GameObject spawned;
 	GameObject towerToSpawn;
 	public static int currentChosenTower;
@@ -13,6 +16,8 @@ public class TowerSpawner : MonoBehaviour {
 	GraphicRaycaster raycaster;
     PointerEventData pointerEventData;
     EventSystem eventSystem;
+
+	bool destroy;
 
 	// Use this for initialization
 	void Start () {
@@ -27,14 +32,51 @@ public class TowerSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+		if (destroy) {
+			Transform dt = destroyIcon.GetComponent<Transform>();
+			dt.position = pos;
+			if (Input.GetKeyDown(KeyCode.Mouse0)) { // left
+				if (getOverCount() > 0) {
+					destroy = false;
+					if (destroyIcon) {
+						GameObject.Destroy(destroyIcon);
+					}	
+					return;
+				}
+				GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
+				foreach (GameObject house in houses)
+				{
+					PolygonCollider2D col = house.GetComponentInChildren<PolygonCollider2D>();
+					if (col.OverlapPoint(new Vector2(pos.x, pos.y))) {
+						GameObject.Destroy(house);
+						break;
+					}
+				}
+			} else if (Input.GetKeyDown(KeyCode.Mouse1)) { // right	
+				// cancel spawning
+				if (destroyIcon) {
+					GameObject.Destroy(destroyIcon);
+				}
+				destroy = false;
+			}
+			return;
+		}
+
 		if (!spawned) return;
 		Transform transform = spawned.GetComponent<Transform>();
-		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 		transform.position = pos;
 		
 		if (Input.GetKeyDown(KeyCode.Mouse0)) { // left
 			// if we click on gui, ignore it
-			if (getOverCount() > 0) return;
+			if (getOverCount() > 0) {
+				if (spawned) {
+					GameObject.Destroy(spawned);
+				}
+				spawned = null;
+				towerToSpawn = null;
+				return;
+			}
 
 			TowerScript ts = spawned.GetComponent<TowerScript>();
 
@@ -86,6 +128,10 @@ public class TowerSpawner : MonoBehaviour {
 
 	public void spawn(GameObject tower) {
 		Debug.Log("Spawn stuff maybe?");
+		if (destroyIcon) {
+			GameObject.Destroy(destroyIcon);
+		}
+		destroy = false;
 
 		if (spawned) {
 			GameObject.Destroy(spawned);
@@ -102,5 +148,19 @@ public class TowerSpawner : MonoBehaviour {
 		// make it semi transparent 
 		SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
 		sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .5f);
+	}
+
+	public void despawn() {
+		Debug.Log("destroy stuff?");
+		destroy = !destroy;
+		if (destroy) {
+			Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+			Transform parent = GetComponent<Transform>();
+			destroyIcon = GameObject.Instantiate(destroyIconPrefab, pos, Quaternion.identity, parent);
+		} else {
+			// if (destroyIcon) {
+			// 	GameObject.Destroy(destroyIcon);
+			// }	
+		}
 	}
 }
