@@ -44,7 +44,7 @@ public class TowerSpawner : MonoBehaviour {
 					}	
 					return;
 				}
-				GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
+				GameObject[] houses = GameObject.FindGameObjectsWithTag("Tower");
 				foreach (GameObject house in houses)
 				{
 					PolygonCollider2D col = house.GetComponentInChildren<PolygonCollider2D>();
