@@ -9,6 +9,7 @@ TagManager:
   - Forbidden
   - Power
   - Receiver
+  - HouseSpot
   layers:
   - Default
   - TransparentFX

@@ -20,11 +20,11 @@ public class HouseSpot : MonoBehaviour {
 
     public void SpawnTier(int tier)
     {
-        Clear();
-
         if (tier >= houseTiers.Count) return;
 
         if (houseTiers[tier] == null) return;
+
+        Clear();
 
         Instantiate(houseTiers[tier], new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity, transform); 
     }
