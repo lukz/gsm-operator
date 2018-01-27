@@ -34,6 +34,11 @@ public class ForbiddenScript : MonoBehaviour
         {
             colidees.Add(other.gameObject);
         }
+
+        if (transform.parent.GetComponent<TowerScript>().isBuilded)
+        {
+            GameObject.Destroy(transform.parent.gameObject);
+        }
     }
 
 
