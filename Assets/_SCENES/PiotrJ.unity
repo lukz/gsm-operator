@@ -194,6 +194,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114613579776306766, guid: 32ee4b948a83daf4891b1905a7889d3e,
+        type: 2}
+      propertyPath: towerExplosion
+      value: 
+      objectReference: {fileID: 1663869448402244, guid: 89c5ffd86f6314ee1940ca6e42cb7f9a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32ee4b948a83daf4891b1905a7889d3e, type: 2}
   m_IsPrefabParent: 0
