@@ -5,6 +5,8 @@ using UnityEngine;
 public class GroundSpawner : MonoBehaviour {
 
 	public GameObject[] tiles;
+	public GameObject[] decals;
+	public int decalCount = 50;
 	public GameObject particle;
 	[Range(0, 1)]
 	public float particleSpawnChance = .04f;
@@ -29,6 +31,15 @@ public class GroundSpawner : MonoBehaviour {
 
 					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1.3f);
 				
+			}
+		}
+		if (decals.Length > 0) {
+			for (int i = 0; i < decalCount; i++)
+			{
+				GameObject go = decals[Random.Range(0, decals.Length)];
+				if (go) {
+					GameObject.Instantiate(go, new Vector3(Random.Range(-4.5f, 4f), Random.Range(-3f, 3f), 0), Quaternion.identity, parent);
+				}
 			}
 		}
 	}

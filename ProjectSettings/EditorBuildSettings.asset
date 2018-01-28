@@ -12,11 +12,11 @@ EditorBuildSettings:
     path: Assets/_SCENES/PiotrJ.unity
     guid: f858cc26a443140e3a8c005821acd290
   - enabled: 1
+    path: Assets/_SCENES/main.unity
+    guid: cfce37247246635459e6bea881f081cc
+  - enabled: 1
     path: Assets/_SCENES/TEST.unity
     guid: edf69a3f0b6414327b689311726a34d0
-  - enabled: 1
-    path: Assets/_SCENES/main.unity
-    guid: fccc6237f4c6b7f40a8a489eb1eb1349
   - enabled: 1
     path: Assets/_SCENES/WIN.unity
     guid: 711c0a44487e34b0ca3024f569b00e91
