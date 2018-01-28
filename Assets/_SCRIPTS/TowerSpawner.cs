@@ -11,6 +11,7 @@ public class TowerSpawner : MonoBehaviour {
 
 	GameObject spawned;
 	GameObject towerToSpawn;
+	public GameObject towerExplosion;
 	public static int currentChosenTower;
 
 	GraphicRaycaster raycaster;
@@ -53,6 +54,12 @@ public class TowerSpawner : MonoBehaviour {
                         ts.onDestroyed();   
 						GameManager.currentTowers[ts.id]++;
 						GameManager.UpdateNumbers();
+						if (towerExplosion) {
+							pos.x = tower.transform.position.x;
+							pos.x = tower.transform.position.y - 1;
+							GameObject.Instantiate(towerExplosion, pos, Quaternion.identity, gameObject.transform);
+						}
+
                         GameObject.Destroy(tower);
 						break;
 					}
