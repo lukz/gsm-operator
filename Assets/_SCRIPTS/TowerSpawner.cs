@@ -96,12 +96,15 @@ public class TowerSpawner : MonoBehaviour {
 			ts.id = currentChosenTower;
 			GameManager.currentTowers[currentChosenTower]--;
 			GameManager.UpdateNumbers();
-	
 
-			// make it opaque
-			SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
-			sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
-			spawned = null;
+
+            // make it opaque
+            //SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
+            //sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
+
+            showForbiddenZones(false);
+
+            spawned = null;
 			towerToSpawn = null;
 			// TODO perhaps we need to enable the thing or something
 		} else if (Input.GetKeyDown(KeyCode.Mouse1)) { // right	
@@ -155,10 +158,11 @@ public class TowerSpawner : MonoBehaviour {
 		spawned = GameObject.Instantiate(tower, pos, Quaternion.identity, parent);
 		TowerScript ts = spawned.GetComponent<TowerScript>();
 		ts.isBuilded = false;
-		// make it semi transparent 
-		SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
-		sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, .5f);
-	}
+        // make it semi transparent 
+        //SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
+        //sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+        showForbiddenZones(true);
+    }
 
 	public void despawn() {
 		Debug.Log("destroy stuff?");
@@ -174,4 +178,24 @@ public class TowerSpawner : MonoBehaviour {
 			// }	
 		}
 	}
+
+    public void showForbiddenZones(bool show)
+    {
+        GameObject[] forbiddenZones = GameObject.FindGameObjectsWithTag("Forbidden");
+        for (int i = 0; i < forbiddenZones.Length; i++)
+        {
+            SpriteRenderer sr = forbiddenZones[i].GetComponentInChildren<SpriteRenderer>();
+
+            if(show)
+            {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+            }
+            else
+            {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
+            }
+            
+        }
+
+    }
 }
