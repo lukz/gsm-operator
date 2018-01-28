@@ -10,7 +10,7 @@ public class HouseSpot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        //SpawnTier(0);
+        SpawnTier(0);
 	}
 	
 	// Update is called once per frame
