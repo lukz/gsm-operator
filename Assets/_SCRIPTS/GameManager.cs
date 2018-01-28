@@ -252,10 +252,12 @@ public class GameManager : MonoBehaviour   {
 			}
 			setTier(currentTier);
         }
+		UpdateNumbers();
 
-    }
 
-    public bool IsNextTierAviable()
+	}
+
+	public bool IsNextTierAviable()
     {
         int maxTier = 0;
 
