@@ -29,7 +29,7 @@ public class HouseScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		animator.SetBool("powered", IsPowered());
+		animator.SetInteger("power", powered);
 	}
 
     public bool IsPowered()

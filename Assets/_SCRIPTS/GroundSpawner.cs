@@ -5,7 +5,9 @@ using UnityEngine;
 public class GroundSpawner : MonoBehaviour {
 
 	public GameObject[] tiles;
-	
+	public GameObject particle;
+	[Range(0, 1)]
+	public float particleSpawnChance = .04f;
 	void Start () {
 		if (tiles.Length==0) {
 			Debug.LogError("Ground Tile is missing");
@@ -28,6 +30,17 @@ public class GroundSpawner : MonoBehaviour {
 					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1.3f);
 				
 			}
+		}
+	}
+
+	void Update() {
+		if (!particle) {
+			Debug.LogError("Missing particle game object!");
+			return;
+		}
+		if (Random.Range(0.0f, 1f) <= particleSpawnChance) {
+			Vector3 pos = new Vector3(Random.Range(-6f, 6f), Random.Range(-6f, 6f), 0);
+			GameObject.Instantiate(particle, pos, Quaternion.identity, gameObject.transform);
 		}
 	}
 }

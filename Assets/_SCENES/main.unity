@@ -253,6 +253,12 @@ Prefab:
       propertyPath: powerSlider
       value: 
       objectReference: {fileID: 1695291223}
+    - target: {fileID: 114143525149227166, guid: fddd666f3935b154f8236537ebde77f3,
+        type: 2}
+      propertyPath: splash
+      value: 
+      objectReference: {fileID: 1658308925535994, guid: 8b35335955d10874991b55f933daff66,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fddd666f3935b154f8236537ebde77f3, type: 2}
   m_IsPrefabParent: 0
@@ -583,12 +589,12 @@ Prefab:
     - target: {fileID: 224877975479461080, guid: 54e063a31db61814dad13fb7da0ae68f,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224877975479461080, guid: 54e063a31db61814dad13fb7da0ae68f,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54e063a31db61814dad13fb7da0ae68f, type: 2}
