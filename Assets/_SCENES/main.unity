@@ -233,12 +233,12 @@ MonoBehaviour:
   tower1aCount: 1
   tower2aCount: 0
   tower3aCount: 0
-  tower1bCount: 1
-  tower2bCount: 0
+  tower1bCount: 0
+  tower2bCount: 1
   tower3bCount: 0
-  tower1cCount: 1
+  tower1cCount: 0
   tower2cCount: 0
-  tower3cCount: 0
+  tower3cCount: 1
   nextScene: l2
 --- !u!4 &839803187
 Transform:
@@ -377,11 +377,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4452875696553008, guid: 22435998c38c0a145b3bd784ce2ec640, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.09
+      value: 0.119
       objectReference: {fileID: 0}
     - target: {fileID: 4452875696553008, guid: 22435998c38c0a145b3bd784ce2ec640, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.18
+      value: 1.683
       objectReference: {fileID: 0}
     - target: {fileID: 4452875696553008, guid: 22435998c38c0a145b3bd784ce2ec640, type: 2}
       propertyPath: m_LocalPosition.z
@@ -473,6 +473,12 @@ Prefab:
       propertyPath: m_Name
       value: HouseSpot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114540027103600832, guid: 22435998c38c0a145b3bd784ce2ec640,
+        type: 2}
+      propertyPath: houseTiers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1718925264414520, guid: 749accdd70205479f97844e6ca1b45b3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22435998c38c0a145b3bd784ce2ec640, type: 2}
   m_IsPrefabParent: 0
