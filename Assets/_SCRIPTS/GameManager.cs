@@ -34,11 +34,19 @@ public class GameManager : MonoBehaviour   {
 	[SerializeField]
 	private Slider powerSlider;
 
-    public int tower1Count = 0;
-    public int tower2Count = 0;
-    public int tower3Count = 0;
+    public int tower1aCount = 0;
+    public int tower2aCount = 0;
+    public int tower3aCount = 0;
+	public int tower1bCount = 0;
+	public int tower2bCount = 0;
+	public int tower3bCount = 0;
+	public int tower1cCount = 0;
+	public int tower2cCount = 0;
+	public int tower3cCount = 0;
 
-    private int currentTier = 0;
+
+
+	private int currentTier = 0;
 
     public static GameManager instance = null;
 
@@ -66,9 +74,9 @@ public class GameManager : MonoBehaviour   {
 
 	// Use this for initialization
 	void Start () {
-		currentTowers.Add(tower1Count);
-		currentTowers.Add(tower2Count);
-		currentTowers.Add(tower3Count);
+		currentTowers.Add(tower1aCount);
+		currentTowers.Add(tower2aCount);
+		currentTowers.Add(tower3aCount);
 		UpdateNumbers();
 
         setTier(currentTier);
@@ -230,7 +238,19 @@ public class GameManager : MonoBehaviour   {
         else
         {
             currentTier++;
-            setTier(currentTier);
+			if (currentTier == 1)
+			{
+				currentTowers[0] = (tower1bCount);
+				currentTowers[1] = (tower2bCount);
+				currentTowers[2] = (tower3bCount);
+			}
+			else
+			{
+				currentTowers[0] = (tower1cCount);
+				currentTowers[1] = (tower2cCount);
+				currentTowers[2] = (tower3cCount);
+			}
+			setTier(currentTier);
         }
 
     }
