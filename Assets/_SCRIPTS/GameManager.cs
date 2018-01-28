@@ -129,8 +129,8 @@ public static List<int> currentTowers = new List<int>();
 			foreach (GameObject house in houses)
 			{
 				HouseScript hs = house.GetComponent<HouseScript>();
-				if (hs.Powered) countPowered++;
-				allPowered &= hs.Powered;
+				if (hs.IsPowered()) countPowered++;
+				allPowered &= hs.IsPowered();
 			}
 
 

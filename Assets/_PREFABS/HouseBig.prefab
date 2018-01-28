@@ -657,6 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restrictedZone: {fileID: 1953176687302846}
   powered: 0
+  requiredPower: 2
 --- !u!212 &212014431751266116
 SpriteRenderer:
   m_ObjectHideFlags: 1
