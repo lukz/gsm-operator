@@ -402,7 +402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1702456136159864
 GameObject:
   m_ObjectHideFlags: 1
@@ -506,7 +506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1875424432013876
 GameObject:
   m_ObjectHideFlags: 1
@@ -1323,6 +1323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1008833956489440}
+  angle: 0
 --- !u!114 &114063421011351088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1403,6 +1404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1600543278282388}
+  angle: 0
 --- !u!114 &114143525149227166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1427,7 +1429,6 @@ MonoBehaviour:
   countTowerLine: {fileID: 114983497951644692}
   powerSlider: {fileID: 114378830729941610}
   powerUpTimeForSceneChange: 3
-  nextScene: l2
 --- !u!114 &114146595768815226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1561,6 +1562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberTower: 0
   tower: {fileID: 1241436494150840, guid: 4b4fb01d0fb2ec246a8565de6db1244c, type: 2}
+  rotator: {fileID: 0}
   towerspawner: {fileID: 0}
 --- !u!114 &114378830729941610
 MonoBehaviour:
@@ -1917,6 +1919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberTower: 1
   tower: {fileID: 1623847998014446, guid: 78de799895db74274ad59f37bede022f, type: 2}
+  rotator: {fileID: 0}
   towerspawner: {fileID: 0}
 --- !u!114 &114830810537424652
 MonoBehaviour:
@@ -1931,6 +1934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberTower: 1
   tower: {fileID: 1356770297676894, guid: 6411ad6ac071646f6b9f6af7775b0233, type: 2}
+  rotator: {fileID: 0}
   towerspawner: {fileID: 0}
 --- !u!114 &114852038135771216
 MonoBehaviour:
@@ -2281,6 +2285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberTower: 1
   tower: {fileID: 1356770297676894, guid: 6411ad6ac071646f6b9f6af7775b0233, type: 2}
+  rotator: {fileID: 0}
   towerspawner: {fileID: 0}
 --- !u!114 &114996925823249430
 MonoBehaviour:
