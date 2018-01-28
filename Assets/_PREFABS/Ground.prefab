@@ -55,3 +55,5 @@ MonoBehaviour:
   - {fileID: 1900541399985152, guid: 72a6ab6502a9f4141897338e8f4a777a, type: 2}
   - {fileID: 1493596520669428, guid: 2001842aac7894cf68e410ca648116a6, type: 2}
   - {fileID: 1753936711173758, guid: 5ce38ef31571b414e822b6028c068ef5, type: 2}
+  particle: {fileID: 1557700520079940, guid: 1b278b69525d0446686180ddd57982d0, type: 2}
+  particleSpawnChance: 0.06
