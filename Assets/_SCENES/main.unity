@@ -305,7 +305,7 @@ MonoBehaviour:
   tower3bCount: 0
   tower1cCount: 0
   tower2cCount: 0
-  tower3cCount: 1
+  tower3cCount: 2
   nextScene: l2
 --- !u!4 &839803187
 Transform:
