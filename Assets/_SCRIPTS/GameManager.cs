@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour   {
 	public AudioSource towerBuilt;
 	public AudioSource deny;
 
-
+    public GameObject splash;
 
 	public static List<int> currentTowers = new List<int>(); 
 	
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour   {
     public static GameManager instance = null;
 
 	public float powerUpTimeForSceneChange = 2;
+
+    private bool splashShown = false;
 
 	void Awake()
 	{
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour   {
 
             houseSpot.SpawnTier(tier);
         }
+        
     }
 
 
@@ -150,7 +153,23 @@ public class GameManager : MonoBehaviour   {
             powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
 
 			if (allPowered) {
-				if (timer == 0)
+                if (!splashShown)
+                {
+                    Debug.Log("test! " + currentTier);
+                    splashShown = true;
+                    GameObject newSplash = Instantiate(splash);
+                    if (IsNextTierAviable())
+                    {
+                        newSplash.GetComponent<SplashScript>().setSplash(currentTier);
+                    }
+                    else
+                    {
+                        newSplash.GetComponent<SplashScript>().setEndSplash();
+                    }
+                }
+
+
+                if (timer == 0)
 				{
 					int maxTier = 0;
 
@@ -170,12 +189,14 @@ public class GameManager : MonoBehaviour   {
 						winPhase.Play();
 					}
 				}
-				timer += Time.deltaTime;
+
+                timer += Time.deltaTime;
 				if (timer >= powerUpTimeForSceneChange) {
                     Debug.Log("Full power");
                     changeTierOrScene();
                     timer = 0;
 				}
+                
 			} else {
 				timer = 0;
 			}
@@ -184,17 +205,9 @@ public class GameManager : MonoBehaviour   {
 
     public void changeTierOrScene()
     {
-        int maxTier = 0;
-        
-        // Check if next tier aviable
-        GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
-        for (int i = 0; i < houseSpots.Length; i++)
-        {
-            maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
-        }
+        splashShown = false;
 
-
-        if(currentTier >= maxTier)
+        if(!IsNextTierAviable())
         {
             SceneManager.LoadScene("TEST");
         }
@@ -202,13 +215,22 @@ public class GameManager : MonoBehaviour   {
         {
             currentTier++;
             setTier(currentTier);
-
-            Debug.Log("NEX TIER! " + currentTier + " / " + maxTier);
         }
 
+    }
 
+    public bool IsNextTierAviable()
+    {
+        int maxTier = 0;
 
+        // Check if next tier aviable
+        GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
+        for (int i = 0; i < houseSpots.Length; i++)
+        {
+            maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
+        }
 
+        return currentTier < maxTier;
     }
 
 

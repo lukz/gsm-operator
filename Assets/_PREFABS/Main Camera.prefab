@@ -202,7 +202,7 @@ MonoBehaviour:
   tower1Count: 3
   tower2Count: 3
   tower3Count: 3
-  powerUpTimeForSceneChange: 2
+  powerUpTimeForSceneChange: 5
 --- !u!114 &114146595768815226
 MonoBehaviour:
   m_ObjectHideFlags: 1
