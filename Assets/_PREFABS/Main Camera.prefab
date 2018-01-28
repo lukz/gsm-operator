@@ -200,11 +200,17 @@ MonoBehaviour:
   countTowerArc: {fileID: 0}
   countTowerLine: {fileID: 0}
   powerSlider: {fileID: 0}
-  tower1Count: 3
-  tower2Count: 3
-  tower3Count: 3
+  tower1aCount: 1
+  tower2aCount: 0
+  tower3aCount: 0
+  tower1bCount: 1
+  tower2bCount: 0
+  tower3bCount: 0
+  tower1cCount: 1
+  tower2cCount: 0
+  tower3cCount: 0
   powerUpTimeForSceneChange: 3
-  nextScene: TEST
+  nextScene: l2
 --- !u!114 &114146595768815226
 MonoBehaviour:
   m_ObjectHideFlags: 1
