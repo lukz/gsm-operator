@@ -34,17 +34,17 @@ public class GameManager : MonoBehaviour   {
 	[SerializeField]
 	private Slider powerSlider;
 
-    public int tower1aCount = 0;
-    public int tower2aCount = 0;
-    public int tower3aCount = 0;
-	public int tower1bCount = 0;
-	public int tower2bCount = 0;
-	public int tower3bCount = 0;
-	public int tower1cCount = 0;
-	public int tower2cCount = 0;
-	public int tower3cCount = 0;
+    private int tower1aCount = 0;
+	private int tower2aCount = 0;
+	private int tower3aCount = 0;
+	private int tower1bCount = 0;
+	private int tower2bCount = 0;
+	private int tower3bCount = 0;
+	private int tower1cCount = 0;
+	private int tower2cCount = 0;
+	private int tower3cCount = 0;
 
-
+	LVLsettings lvlmanager;
 
 	private int currentTier = 0;
 
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour   {
 
     private bool splashShown = false;
 
-	public string nextScene = "TEST";
+	private string nextScene = "TEST";
 
 	void Awake()
 	{
@@ -74,9 +74,13 @@ public class GameManager : MonoBehaviour   {
 
 	// Use this for initialization
 	void Start () {
-		currentTowers.Add(tower1aCount);
-		currentTowers.Add(tower2aCount);
-		currentTowers.Add(tower3aCount);
+		lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
+
+		nextScene = lvlmanager.nextScene;
+
+		currentTowers.Add(lvlmanager.tower1aCount);
+		currentTowers.Add(lvlmanager.tower2aCount);
+		currentTowers.Add(lvlmanager.tower3aCount);
 		UpdateNumbers();
 
         setTier(currentTier);
@@ -241,18 +245,24 @@ public class GameManager : MonoBehaviour   {
             currentTier++;
 			if (currentTier == 1)
 			{
-				currentTowers[0] = (tower1bCount);
-				currentTowers[1] = (tower2bCount);
-				currentTowers[2] = (tower3bCount);
+				currentTowers[0] = (lvlmanager.tower1bCount);
+				currentTowers[1] = (lvlmanager.tower2bCount);
+				currentTowers[2] = (lvlmanager.tower3bCount);
 			}
 			else
 			{
-				currentTowers[0] = (tower1cCount);
-				currentTowers[1] = (tower2cCount);
-				currentTowers[2] = (tower3cCount);
+				currentTowers[0] = (lvlmanager.tower1cCount);
+				currentTowers[1] = (lvlmanager.tower2cCount);
+				currentTowers[2] = (lvlmanager.tower3cCount);
 			}
 			setTier(currentTier);
         }
+
+		lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
+
+
+		nextScene = lvlmanager.nextScene;
+
 		UpdateNumbers();
 
 

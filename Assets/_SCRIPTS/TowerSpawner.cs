@@ -146,7 +146,7 @@ public class TowerSpawner : MonoBehaviour {
 		return results.Count;
 	}
 
-	public void spawn(GameObject tower) {
+	public void spawn(GameObject tower, float angle) {
 		Debug.Log("Spawn stuff maybe?");
 		if (destroyIcon) {
 			GameObject.Destroy(destroyIcon);
@@ -166,7 +166,9 @@ public class TowerSpawner : MonoBehaviour {
 		Transform parent = GetComponent<Transform>();
 		spawned = GameObject.Instantiate(tower, pos, Quaternion.identity, parent);
 		TowerScript ts = spawned.GetComponent<TowerScript>();
-		ts.isBuilded = false;
+        ts.setPowerRotation(angle + 90);
+
+        ts.isBuilded = false;
         // make it semi transparent 
         //SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
         //sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);

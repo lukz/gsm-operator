@@ -10,6 +10,7 @@ TagManager:
   - Power
   - Receiver
   - HouseSpot
+  - LVLmanager
   layers:
   - Default
   - TransparentFX

@@ -15,8 +15,6 @@ public class TowerScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         powered = new List<GameObject>();
-
-        setPowerRotation(270);
     }
 	
 	// Update is called once per frame
@@ -56,7 +54,7 @@ public class TowerScript : MonoBehaviour {
         }
     }
 
-    void setPowerRotation(float angle)
+    public void setPowerRotation(float angle)
     {
         powerZone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }

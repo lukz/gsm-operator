@@ -10,7 +10,7 @@ public class CheckAvailable : MonoBehaviour {
 	[SerializeField]
 	private GameObject tower;
 
-
+    public GameObject rotator;
 
 	[SerializeField]
 	private TowerSpawner towerspawner;
@@ -19,10 +19,15 @@ public class CheckAvailable : MonoBehaviour {
 	{
 		if (GameManager.currentTowers[numberTower] > 0)
 		{
-			TowerSpawner.currentChosenTower = numberTower;
-			towerspawner.spawn(tower);
+            float angle = rotator.GetComponent<RotateIcon>().angle;
 
-		}
+            TowerSpawner.currentChosenTower = numberTower;
+
+			towerspawner.spawn(tower, angle);
+
+            
+
+        }
 	}
 
 
