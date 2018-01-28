@@ -92,7 +92,8 @@ public class GameManager : MonoBehaviour   {
 
             houseSpot.SpawnTier(tier);
         }
-        
+
+        showForbiddenZones(false);
     }
 
 
@@ -269,6 +270,26 @@ public class GameManager : MonoBehaviour   {
         }
 
         return currentTier < maxTier;
+    }
+
+    public void showForbiddenZones(bool show)
+    {
+        GameObject[] forbiddenZones = GameObject.FindGameObjectsWithTag("Forbidden");
+        for (int i = 0; i < forbiddenZones.Length; i++)
+        {
+            SpriteRenderer sr = forbiddenZones[i].GetComponentInChildren<SpriteRenderer>();
+
+            if (show)
+            {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+            }
+            else
+            {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
+            }
+
+        }
+
     }
 
 
