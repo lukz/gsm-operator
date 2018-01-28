@@ -85,7 +85,7 @@ MonoBehaviour:
   splashes:
   - {fileID: 21300000, guid: aaaf553e214ba644bac8c36fabd01180, type: 3}
   - {fileID: 21300000, guid: d5df75eb45a5eae4386aabb331bc8f76, type: 3}
-  - {fileID: 21300000, guid: d5df75eb45a5eae4386aabb331bc8f76, type: 3}
+  - {fileID: 21300000, guid: d11db24883faf714c8cda7972e370f13, type: 3}
   endGameSplash: {fileID: 21300000, guid: d8a2d211c1978f9438f0600b63df4e17, type: 3}
   lifeTime: 3
   tint: {fileID: 1859484795393384}
