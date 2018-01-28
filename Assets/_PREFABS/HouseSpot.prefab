@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831447803717556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.4, y: -1.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,5 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   houseTiers:
+  - {fileID: 0}
   - {fileID: 1902324608369842, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
   asdas: 0

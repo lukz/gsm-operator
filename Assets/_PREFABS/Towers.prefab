@@ -33,8 +33,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1729491789373776}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,4 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyIconPrefab: {fileID: 1896053390616568, guid: 5c3fe23e10488479da7db7ff4a81e51a,
     type: 2}
-  towerExplosion: {fileID: 0}
+  towerExplosion: {fileID: 1663869448402244, guid: 89c5ffd86f6314ee1940ca6e42cb7f9a,
+    type: 2}

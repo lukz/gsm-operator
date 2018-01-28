@@ -259,9 +259,11 @@ public class GameManager : MonoBehaviour   {
         }
 
 		lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
+        currentTowers[0] = (lvlmanager.tower1aCount);
+        currentTowers[1] = (lvlmanager.tower2aCount);
+        currentTowers[2] = (lvlmanager.tower3aCount);
 
-
-		nextScene = lvlmanager.nextScene;
+        nextScene = lvlmanager.nextScene;
 
 		UpdateNumbers();
 

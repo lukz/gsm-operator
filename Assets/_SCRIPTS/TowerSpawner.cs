@@ -55,8 +55,8 @@ public class TowerSpawner : MonoBehaviour {
 						GameManager.currentTowers[ts.id]++;
 						GameManager.UpdateNumbers();
 						if (towerExplosion) {
-							pos.x = tower.transform.position.x;
-							pos.x = tower.transform.position.y - 1;
+                            pos.x = tower.transform.position.x;
+							pos.y = tower.transform.position.y;
 							GameObject.Instantiate(towerExplosion, pos, Quaternion.identity, gameObject.transform);
 						}
 
@@ -163,7 +163,7 @@ public class TowerSpawner : MonoBehaviour {
 		towerToSpawn = tower;
 		GameManager.instance.btnClick.Play();
 		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-		Transform parent = GetComponent<Transform>();
+		Transform parent = GetComponent<Transform>().parent.parent;
 		spawned = GameObject.Instantiate(tower, pos, Quaternion.identity, parent);
 		TowerScript ts = spawned.GetComponent<TowerScript>();
         ts.setPowerRotation(angle + 90);
