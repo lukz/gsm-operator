@@ -133,8 +133,12 @@ public static List<int> currentTowers = new List<int>();
 				allPowered &= hs.IsPowered();
 			}
 
+            float realProgress = (countPowered / houses.Length);
+            float swim = Mathf.Sin(Time.timeSinceLevelLoad * 3f);
+            if (realProgress == 0 || realProgress == 1) swim = 0;
+            float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
+            powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
 
-			powerSlider.value = countPowered / houses.Length;
 			if (allPowered) {
 				timer += Time.deltaTime;
 				if (timer >= powerUpTimeForSceneChange) {
