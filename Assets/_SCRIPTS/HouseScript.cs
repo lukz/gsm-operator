@@ -5,10 +5,13 @@ using UnityEngine;
 public class HouseScript : MonoBehaviour {
 
     public GameObject restrictedZone;
-	public bool Powered { get { return powered; } private set { powered = value;} }
+	//public int Powered { get { return powered; } private set { powered = value;} }
+
 
  	[SerializeField]
-	private bool powered;
+	private int powered = 0;
+
+    public int requiredPower = 1;
 	
 	Animator animator;
 	// Use this for initialization
@@ -17,15 +20,20 @@ public class HouseScript : MonoBehaviour {
 	}
 
 	public void powerUp() {
-		Powered = true;
+        powered++;
 	}
 
 	public void powerDown() {
-		Powered = false;
+        powered--;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		animator.SetBool("powered", powered);
+		animator.SetBool("powered", IsPowered());
 	}
+
+    public bool IsPowered()
+    {
+        return powered >= requiredPower;
+    }
 }

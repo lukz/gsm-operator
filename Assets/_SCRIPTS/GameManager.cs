@@ -139,12 +139,16 @@ public class GameManager : MonoBehaviour   {
 			foreach (GameObject house in houses)
 			{
 				HouseScript hs = house.GetComponent<HouseScript>();
-				if (hs.Powered) countPowered++;
-				allPowered &= hs.Powered;
+				if (hs.IsPowered()) countPowered++;
+				allPowered &= hs.IsPowered();
 			}
 
+            float realProgress = (countPowered / houses.Length);
+            float swim = Mathf.Sin(Time.timeSinceLevelLoad * 3f);
+            if (realProgress == 0 || realProgress == 1) swim = 0;
+            float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
+            powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
 
-			powerSlider.value = countPowered / houses.Length;
 			if (allPowered) {
 				if (timer == 0)
 				{
