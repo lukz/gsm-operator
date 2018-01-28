@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour   {
 					}
 				}
 				timer += Time.deltaTime;
+				music.volume = Mathf.Max(0.5f,(powerUpTimeForSceneChange - timer)*0.8f);
 				if (timer >= powerUpTimeForSceneChange) {
                     Debug.Log("Full power");
                     changeTierOrScene();
@@ -184,6 +185,7 @@ public class GameManager : MonoBehaviour   {
 
     public void changeTierOrScene()
     {
+		music.volume = 0.8f;
         int maxTier = 0;
         
         // Check if next tier aviable
