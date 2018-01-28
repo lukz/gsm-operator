@@ -85,7 +85,7 @@ public class TowerSpawner : MonoBehaviour {
 			TowerScript ts = spawned.GetComponent<TowerScript>();
 
 			if (!ts.isBuildable) {
-				GameManager.instance.btnClick.Play();
+				GameManager.instance.deny.Play();
 				return;
 			}
 
