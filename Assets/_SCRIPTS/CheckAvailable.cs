@@ -19,8 +19,11 @@ public class CheckAvailable : MonoBehaviour {
 	{
 		if (GameManager.currentTowers[numberTower] > 0)
 		{
-            float angle = rotator.GetComponent<RotateIcon>().angle;
-
+            float angle = 0;
+            if(rotator != null)
+            {
+                angle = rotator.GetComponent<RotateIcon>().angle;
+            }
             TowerSpawner.currentChosenTower = numberTower;
 
 			towerspawner.spawn(tower, angle);
