@@ -330,7 +330,7 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 797577563}
     - target: {fileID: 114536658075212934, guid: f8a006ddd799248f182fef99f6da57af,
         type: 2}
       propertyPath: towerspawner

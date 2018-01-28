@@ -55,5 +55,12 @@ MonoBehaviour:
   - {fileID: 1900541399985152, guid: 72a6ab6502a9f4141897338e8f4a777a, type: 2}
   - {fileID: 1493596520669428, guid: 2001842aac7894cf68e410ca648116a6, type: 2}
   - {fileID: 1753936711173758, guid: 5ce38ef31571b414e822b6028c068ef5, type: 2}
+  decals:
+  - {fileID: 1606258625176658, guid: 959ebf54837924da09de9c272d0d8958, type: 2}
+  - {fileID: 1710504362824364, guid: 50ec57748464f4a9c9d817f607312bc0, type: 2}
+  - {fileID: 1939434465295510, guid: 0b7d66614671047d4ac8bb251744ebac, type: 2}
+  - {fileID: 1154149103496412, guid: d6bc2d849f50049a6b5ff770e7c48634, type: 2}
+  - {fileID: 1335815226934994, guid: 1877633304f834192aaeb53fe2fd50fd, type: 2}
+  decalCount: 50
   particle: {fileID: 1557700520079940, guid: 1b278b69525d0446686180ddd57982d0, type: 2}
   particleSpawnChance: 0.12
