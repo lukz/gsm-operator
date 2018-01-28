@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour   {
 
     private bool splashShown = false;
 
+	public string nextScene = "TEST";
+
 	void Awake()
 	{
 
@@ -223,7 +225,7 @@ public class GameManager : MonoBehaviour   {
 
         if(!IsNextTierAviable())
         {
-            SceneManager.LoadScene("TEST");
+            SceneManager.LoadScene(nextScene);
         }
         else
         {
