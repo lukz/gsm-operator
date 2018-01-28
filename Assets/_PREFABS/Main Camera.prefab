@@ -195,6 +195,7 @@ MonoBehaviour:
   destroy: {fileID: 0}
   towerBuilt: {fileID: 0}
   deny: {fileID: 0}
+  splash: {fileID: 1658308925535994, guid: 8b35335955d10874991b55f933daff66, type: 2}
   countTowerCircle: {fileID: 0}
   countTowerArc: {fileID: 0}
   countTowerLine: {fileID: 0}
@@ -202,7 +203,8 @@ MonoBehaviour:
   tower1Count: 3
   tower2Count: 3
   tower3Count: 3
-  powerUpTimeForSceneChange: 5
+  powerUpTimeForSceneChange: 3
+  nextScene: TEST
 --- !u!114 &114146595768815226
 MonoBehaviour:
   m_ObjectHideFlags: 1
