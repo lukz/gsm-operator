@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4277277764547022}
   - component: {fileID: 212584896810775250}
-  - component: {fileID: 60474417174728616}
   - component: {fileID: 50322127683819808}
+  - component: {fileID: 58126945470439024}
   m_Layer: 8
   m_Name: ForbiddenZone
   m_TagString: Forbidden
@@ -260,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718925264414520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1633568, y: -1.4313179, z: 0}
+  m_LocalPosition: {x: -0.827572, y: -0.40905905, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4138513090797992}
@@ -323,6 +323,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!58 &58126945470439024
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953176687302846}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.81
 --- !u!60 &60060995076049166
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -475,46 +490,6 @@ PolygonCollider2D:
       - {x: 0.073363945, y: 0.49458843}
       - {x: 0.0490072, y: 0.4975925}
       - {x: 0.02453239, y: 0.49939778}
---- !u!60 &60474417174728616
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1953176687302846}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.14, y: 1.14}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.57, y: 0.19999999}
-      - {x: 0.52, y: 0.34}
-      - {x: 0.28, y: 0.57}
-      - {x: -0.21, y: 0.57}
-      - {x: -0.34, y: 0.51}
-      - {x: -0.48999998, y: 0.38}
-      - {x: -0.57, y: 0.19999999}
-      - {x: -0.57, y: -0.19}
-      - {x: -0.51, y: -0.32999998}
-      - {x: -0.37, y: -0.47}
-      - {x: -0.22, y: -0.56}
-      - {x: -0.19999999, y: -0.57}
-      - {x: 0.22, y: -0.57}
-      - {x: 0.32999998, y: -0.51}
-      - {x: 0.52, y: -0.34}
-      - {x: 0.57, y: -0.19999999}
 --- !u!95 &95275702586276476
 Animator:
   serializedVersion: 3
@@ -712,7 +687,7 @@ SpriteRenderer:
   m_SortingLayerID: -1502157595
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a3fc873dc648e06478845996174708e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c476b63fe63f29c4791c2ed081f6c7c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -47,10 +47,10 @@ public class TowerSpawner : MonoBehaviour {
 				GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
 				foreach (GameObject tower in towers)
 				{
-					PolygonCollider2D col = tower.GetComponentInChildren<PolygonCollider2D>();
+					Collider2D col = tower.GetComponentInChildren<Collider2D>();
 					if (col.OverlapPoint(new Vector2(pos.x, pos.y))) {
 						TowerScript ts = tower.GetComponent<TowerScript>();
-                        ts.onDestroyed();
+                        ts.onDestroyed();   
 						GameManager.currentTowers[ts.id]++;
 						GameManager.UpdateNumbers();
                         GameObject.Destroy(tower);

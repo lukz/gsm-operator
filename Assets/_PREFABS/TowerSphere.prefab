@@ -71,9 +71,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4506259969517870}
   - component: {fileID: 212514262837132648}
-  - component: {fileID: 60504657581739194}
   - component: {fileID: 50348194381025922}
   - component: {fileID: 114728309225201872}
+  - component: {fileID: 58532766591222500}
   m_Layer: 8
   m_Name: ForbiddenZone
   m_TagString: Forbidden
@@ -191,8 +191,8 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.52
---- !u!60 &60504657581739194
-PolygonCollider2D:
+--- !u!58 &58532766591222500
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -204,33 +204,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.14, y: 1.14}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.57, y: 0.19999999}
-      - {x: 0.52, y: 0.34}
-      - {x: 0.28, y: 0.57}
-      - {x: -0.21, y: 0.57}
-      - {x: -0.34, y: 0.51}
-      - {x: -0.48999998, y: 0.38}
-      - {x: -0.57, y: 0.19999999}
-      - {x: -0.57, y: -0.19}
-      - {x: -0.51, y: -0.32999998}
-      - {x: -0.37, y: -0.47}
-      - {x: -0.22, y: -0.56}
-      - {x: -0.19999999, y: -0.57}
-      - {x: 0.22, y: -0.57}
-      - {x: 0.32999998, y: -0.51}
-      - {x: 0.52, y: -0.34}
-      - {x: 0.57, y: -0.19999999}
+  serializedVersion: 2
+  m_Radius: 0.56999993
 --- !u!114 &114249825639564536
 MonoBehaviour:
   m_ObjectHideFlags: 1

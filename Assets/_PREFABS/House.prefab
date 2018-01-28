@@ -131,8 +131,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4174920697865150}
   - component: {fileID: 212997486340183954}
-  - component: {fileID: 60527500220046340}
   - component: {fileID: 50277123692851692}
+  - component: {fileID: 58759293538035176}
   m_Layer: 8
   m_Name: ForbiddenZone
   m_TagString: Forbidden
@@ -191,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1902324608369842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4586544, y: -1.9934487, z: 0}
+  m_LocalPosition: {x: -0.85861474, y: -0.73282593, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4462550511366358}
@@ -323,6 +323,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!58 &58759293538035176
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907620344969938}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.000000059604645}
+  serializedVersion: 2
+  m_Radius: 0.57
 --- !u!60 &60446607483512222
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -475,46 +490,6 @@ PolygonCollider2D:
       - {x: 0.073363945, y: 0.49458843}
       - {x: 0.0490072, y: 0.4975925}
       - {x: 0.02453239, y: 0.49939778}
---- !u!60 &60527500220046340
-PolygonCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1907620344969938}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.14, y: 1.14}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.57, y: 0.19999999}
-      - {x: 0.52, y: 0.34}
-      - {x: 0.28, y: 0.57}
-      - {x: -0.21, y: 0.57}
-      - {x: -0.34, y: 0.51}
-      - {x: -0.48999998, y: 0.38}
-      - {x: -0.57, y: 0.19999999}
-      - {x: -0.57, y: -0.19}
-      - {x: -0.51, y: -0.32999998}
-      - {x: -0.37, y: -0.47}
-      - {x: -0.22, y: -0.56}
-      - {x: -0.19999999, y: -0.57}
-      - {x: 0.22, y: -0.57}
-      - {x: 0.32999998, y: -0.51}
-      - {x: 0.52, y: -0.34}
-      - {x: 0.57, y: -0.19999999}
 --- !u!95 &95255759745309086
 Animator:
   serializedVersion: 3
