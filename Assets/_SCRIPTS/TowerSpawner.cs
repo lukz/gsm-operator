@@ -11,6 +11,7 @@ public class TowerSpawner : MonoBehaviour {
 
 	GameObject spawned;
 	GameObject towerToSpawn;
+	public GameObject towerExplosion;
 	public static int currentChosenTower;
 
 	GraphicRaycaster raycaster;
@@ -47,12 +48,18 @@ public class TowerSpawner : MonoBehaviour {
 				GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
 				foreach (GameObject tower in towers)
 				{
-					PolygonCollider2D col = tower.GetComponentInChildren<PolygonCollider2D>();
+					Collider2D col = tower.GetComponentInChildren<Collider2D>();
 					if (col.OverlapPoint(new Vector2(pos.x, pos.y))) {
 						TowerScript ts = tower.GetComponent<TowerScript>();
-                        ts.onDestroyed();
+                        ts.onDestroyed();   
 						GameManager.currentTowers[ts.id]++;
 						GameManager.UpdateNumbers();
+						if (towerExplosion) {
+							pos.x = tower.transform.position.x;
+							pos.x = tower.transform.position.y - 1;
+							GameObject.Instantiate(towerExplosion, pos, Quaternion.identity, gameObject.transform);
+						}
+
                         GameObject.Destroy(tower);
 						break;
 					}
@@ -86,7 +93,9 @@ public class TowerSpawner : MonoBehaviour {
 
 			if (!ts.isBuildable) {
 				GameManager.instance.deny.Play();
-				return;
+                ts.cantBuildFlash();
+
+                return;
 			}
 
 			GameManager.shakePower += 0.15f;
@@ -137,7 +146,7 @@ public class TowerSpawner : MonoBehaviour {
 		return results.Count;
 	}
 
-	public void spawn(GameObject tower) {
+	public void spawn(GameObject tower, float angle) {
 		Debug.Log("Spawn stuff maybe?");
 		if (destroyIcon) {
 			GameObject.Destroy(destroyIcon);
@@ -157,7 +166,9 @@ public class TowerSpawner : MonoBehaviour {
 		Transform parent = GetComponent<Transform>();
 		spawned = GameObject.Instantiate(tower, pos, Quaternion.identity, parent);
 		TowerScript ts = spawned.GetComponent<TowerScript>();
-		ts.isBuilded = false;
+        ts.setPowerRotation(angle + 90);
+
+        ts.isBuilded = false;
         // make it semi transparent 
         //SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
         //sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);

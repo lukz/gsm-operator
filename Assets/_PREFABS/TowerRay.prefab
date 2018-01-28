@@ -71,9 +71,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4787885147971494}
   - component: {fileID: 212366819619148436}
-  - component: {fileID: 60210046652550578}
   - component: {fileID: 50256607237884596}
   - component: {fileID: 114142943658362288}
+  - component: {fileID: 58732956881845812}
   m_Layer: 8
   m_Name: ForbiddenZone
   m_TagString: Forbidden
@@ -127,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623847998014446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.47808, y: -0.76487255, z: 0}
+  m_LocalPosition: {x: -1.2073462, y: -0.8416728, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4787885147971494}
@@ -176,8 +176,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!60 &60210046652550578
-PolygonCollider2D:
+--- !u!58 &58732956881845812
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -189,33 +189,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.14, y: 1.14}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.57, y: 0.19999999}
-      - {x: 0.52, y: 0.34}
-      - {x: 0.28, y: 0.57}
-      - {x: -0.21, y: 0.57}
-      - {x: -0.34, y: 0.51}
-      - {x: -0.48999998, y: 0.38}
-      - {x: -0.57, y: 0.19999999}
-      - {x: -0.57, y: -0.19}
-      - {x: -0.51, y: -0.32999998}
-      - {x: -0.37, y: -0.47}
-      - {x: -0.22, y: -0.56}
-      - {x: -0.19999999, y: -0.57}
-      - {x: 0.22, y: -0.57}
-      - {x: 0.32999998, y: -0.51}
-      - {x: 0.52, y: -0.34}
-      - {x: 0.57, y: -0.19999999}
+  serializedVersion: 2
+  m_Radius: 0.56999993
 --- !u!60 &60993777498029730
 PolygonCollider2D:
   m_ObjectHideFlags: 1

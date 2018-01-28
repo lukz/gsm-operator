@@ -15,8 +15,6 @@ public class TowerScript : MonoBehaviour {
     // Use this for initialization
     void Start () {
         powered = new List<GameObject>();
-
-        setPowerRotation(270);
     }
 	
 	// Update is called once per frame
@@ -30,6 +28,12 @@ public class TowerScript : MonoBehaviour {
 		GameManager.instance.towerBuilt.Play();
 
         setPowerUps();
+    }
+
+    public void cantBuildFlash()
+    {
+        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
+        StartCoroutine(FlashSprites(sprites, 3, 0.075f));
     }
 
     public void onDestroyed()
@@ -50,10 +54,52 @@ public class TowerScript : MonoBehaviour {
         }
     }
 
-    void setPowerRotation(float angle)
+    public void setPowerRotation(float angle)
     {
         powerZone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 
+    IEnumerator FlashSprites(SpriteRenderer[] sprites, int numTimes, float delay, bool disable = false)
+    {
+        // number of times to loop
+        for (int loop = 0; loop < numTimes; loop++)
+        {
+            // cycle through all sprites
+            for (int i = 0; i < sprites.Length; i++)
+            {
+                if (disable)
+                {
+                    // for disabling
+                    sprites[i].enabled = false;
+                }
+                else
+                {
+                    // for changing the alpha
+                    
+                    sprites[i].color = new Color(1, 0, 0, 1);
+                }
+            }
 
+            // delay specified amount
+            yield return new WaitForSeconds(delay);
+
+            // cycle through all sprites
+            for (int i = 0; i < sprites.Length; i++)
+            {
+                if (disable)
+                {
+                    // for disabling
+                    sprites[i].enabled = true;
+                }
+                else
+                {
+                    // for changing the alpha
+                    sprites[i].color = new Color(1, 1, 1, 1);
+                }
+            }
+
+            // delay specified amount
+            yield return new WaitForSeconds(delay);
+        }
+    }
 }
