@@ -906,12 +906,12 @@ Prefab:
     - target: {fileID: 114143525149227166, guid: fddd666f3935b154f8236537ebde77f3,
         type: 2}
       propertyPath: nextScene
-      value: l3
+      value: l5
       objectReference: {fileID: 0}
     - target: {fileID: 114143525149227166, guid: fddd666f3935b154f8236537ebde77f3,
         type: 2}
-      propertyPath: tower1cCount
-      value: 0
+      propertyPath: tower2aCount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fddd666f3935b154f8236537ebde77f3, type: 2}
