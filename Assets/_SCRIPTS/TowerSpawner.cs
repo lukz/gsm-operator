@@ -85,6 +85,7 @@ public class TowerSpawner : MonoBehaviour {
 			TowerScript ts = spawned.GetComponent<TowerScript>();
 
 			if (!ts.isBuildable) {
+				GameManager.instance.btnClick.Play();
 				return;
 			}
 
@@ -148,7 +149,7 @@ public class TowerSpawner : MonoBehaviour {
 			return;
 		}
 		towerToSpawn = tower;
-
+		GameManager.instance.btnClick.Play();
 		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 		Transform parent = GetComponent<Transform>();
 		spawned = GameObject.Instantiate(tower, pos, Quaternion.identity, parent);
@@ -163,6 +164,7 @@ public class TowerSpawner : MonoBehaviour {
 		Debug.Log("destroy stuff?");
 		destroy = !destroy;
 		if (destroy) {
+			GameManager.instance.btnClick.Play();
 			Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 			Transform parent = GetComponent<Transform>();
 			destroyIcon = GameObject.Instantiate(destroyIconPrefab, pos, Quaternion.identity, parent);

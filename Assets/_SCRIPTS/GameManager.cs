@@ -7,7 +7,17 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour   {
 
 
-public static List<int> currentTowers = new List<int>(); 
+	public AudioSource music;
+	public AudioSource winPhase;
+	public AudioSource winLvl;
+	public AudioSource btnClick;
+	public AudioSource destroy;
+	public AudioSource towerBuilt;
+	public AudioSource deny;
+
+
+
+	public static List<int> currentTowers = new List<int>(); 
 	
 
 	[SerializeField]
@@ -136,6 +146,26 @@ public static List<int> currentTowers = new List<int>();
 
 			powerSlider.value = countPowered / houses.Length;
 			if (allPowered) {
+				if (timer == 0)
+				{
+					int maxTier = 0;
+
+					// Check if next tier aviable
+					GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
+					for (int i = 0; i < houseSpots.Length; i++)
+					{
+						maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
+					}
+
+					if (currentTier >= maxTier)
+					{
+						winLvl.Play();
+					}
+					else
+					{
+						winPhase.Play();
+					}
+				}
 				timer += Time.deltaTime;
 				if (timer >= powerUpTimeForSceneChange) {
                     Debug.Log("Full power");

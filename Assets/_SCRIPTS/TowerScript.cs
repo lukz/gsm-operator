@@ -25,6 +25,7 @@ public class TowerScript : MonoBehaviour {
     public void onBuilded()
     {
         isBuilded = true;
+		GameManager.instance.towerBuilt.Play();
 
         setPowerUps();
     }
@@ -32,8 +33,8 @@ public class TowerScript : MonoBehaviour {
     public void onDestroyed()
     {
         isBuilded = false;
-
-        for (var i = 0; i < powered.Count; i++)
+		GameManager.instance.destroy.Play();
+		for (var i = 0; i < powered.Count; i++)
         {
             powered[i].GetComponent<HouseScript>().powerDown();
         }
