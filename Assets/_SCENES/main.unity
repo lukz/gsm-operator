@@ -155,11 +155,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 32ee4b948a83daf4891b1905a7889d3e, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &302854852 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1758227431714628, guid: fddd666f3935b154f8236537ebde77f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1826670447}
 --- !u!1001 &549637890
 Prefab:
   m_ObjectHideFlags: 0
@@ -316,11 +311,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1067873685 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1471792129806060, guid: fddd666f3935b154f8236537ebde77f3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1826670447}
 --- !u!1001 &1104919111
 Prefab:
   m_ObjectHideFlags: 0
@@ -662,7 +652,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114795650899152248, guid: fddd666f3935b154f8236537ebde77f3,
+    - target: {fileID: 114995906443361270, guid: fddd666f3935b154f8236537ebde77f3,
         type: 2}
       propertyPath: towerspawner
       value: 
@@ -672,7 +662,7 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 797577563}
-    - target: {fileID: 114995906443361270, guid: fddd666f3935b154f8236537ebde77f3,
+    - target: {fileID: 114795650899152248, guid: fddd666f3935b154f8236537ebde77f3,
         type: 2}
       propertyPath: towerspawner
       value: 
@@ -685,23 +675,13 @@ Prefab:
     - target: {fileID: 224092650968735956, guid: fddd666f3935b154f8236537ebde77f3,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224092650968735956, guid: fddd666f3935b154f8236537ebde77f3,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114995906443361270, guid: fddd666f3935b154f8236537ebde77f3,
-        type: 2}
-      propertyPath: rotator
-      value: 
-      objectReference: {fileID: 302854852}
-    - target: {fileID: 114795650899152248, guid: fddd666f3935b154f8236537ebde77f3,
-        type: 2}
-      propertyPath: rotator
-      value: 
-      objectReference: {fileID: 1067873685}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fddd666f3935b154f8236537ebde77f3, type: 2}
   m_IsPrefabParent: 0
