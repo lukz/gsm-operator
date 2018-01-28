@@ -86,7 +86,9 @@ public class TowerSpawner : MonoBehaviour {
 
 			if (!ts.isBuildable) {
 				GameManager.instance.deny.Play();
-				return;
+                ts.cantBuildFlash();
+
+                return;
 			}
 
 			GameManager.shakePower += 0.15f;
