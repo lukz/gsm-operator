@@ -39,7 +39,7 @@ public class GroundSpawner : MonoBehaviour {
 			return;
 		}
 		if (Random.Range(0.0f, 1f) <= particleSpawnChance) {
-			Vector3 pos = new Vector3(Random.Range(-6f, 6f), Random.Range(-6f, 6f), 0);
+			Vector3 pos = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-3f, 3f), 0);
 			GameObject inst = GameObject.Instantiate(particle, pos, Quaternion.identity, gameObject.transform);
 			Animator animator = inst.GetComponent<Animator>();
 			animator.SetInteger("idleid", Random.Range(0, 2));
