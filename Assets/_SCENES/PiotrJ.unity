@@ -449,11 +449,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 114044637051659616, guid: a2486f44bb174416fb4002e6899ed830,
-        type: 2}
-      propertyPath: decalCount
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2486f44bb174416fb4002e6899ed830, type: 2}
   m_IsPrefabParent: 0
