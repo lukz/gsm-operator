@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour   {
 
 	// Use this for initialization
 	void Start () {
-		lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
+        lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
 
 		nextScene = lvlmanager.nextScene;
 
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour   {
 		UpdateNumbers();
 
         setTier(currentTier);
-	}
+    }
 
     public void setTier(int tier)
     {
@@ -238,7 +238,9 @@ public class GameManager : MonoBehaviour   {
 
         if(!IsNextTierAviable())
         {
+            currentTier = 0;
             SceneManager.LoadScene(nextScene);
+            
         }
         else
         {
@@ -276,10 +278,13 @@ public class GameManager : MonoBehaviour   {
 
         // Check if next tier aviable
         GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
+        Debug.Log("Spots found: " + houseSpots);
         for (int i = 0; i < houseSpots.Length; i++)
         {
             maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
         }
+
+        Debug.Log("Max tier: " + currentTier + " / " + maxTier);
 
         return currentTier < maxTier;
     }
