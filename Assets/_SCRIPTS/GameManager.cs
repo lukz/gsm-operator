@@ -240,32 +240,37 @@ public class GameManager : MonoBehaviour   {
         {
             currentTier = 0;
             SceneManager.LoadScene(nextScene);
-            
-        }
+
+			lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
+
+			nextScene = lvlmanager.nextScene;
+
+			currentTowers[0] = (lvlmanager.tower1aCount);
+			currentTowers[1] = (lvlmanager.tower2aCount);
+			currentTowers[2] = (lvlmanager.tower3aCount);
+		}
         else
         {
             currentTier++;
 			if (currentTier == 1)
 			{
-				currentTowers[0] = (lvlmanager.tower1bCount);
-				currentTowers[1] = (lvlmanager.tower2bCount);
-				currentTowers[2] = (lvlmanager.tower3bCount);
+				currentTowers[0] += (lvlmanager.tower1bCount);
+				currentTowers[1] += (lvlmanager.tower2bCount);
+				currentTowers[2] += (lvlmanager.tower3bCount);
 			}
 			else
 			{
-				currentTowers[0] = (lvlmanager.tower1cCount);
-				currentTowers[1] = (lvlmanager.tower2cCount);
-				currentTowers[2] = (lvlmanager.tower3cCount);
+				currentTowers[0] += (lvlmanager.tower1cCount);
+				currentTowers[1] += (lvlmanager.tower2cCount);
+				currentTowers[2] += (lvlmanager.tower3cCount);
 			}
 			setTier(currentTier);
         }
 
-		lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
-        currentTowers[0] = (lvlmanager.tower1aCount);
-        currentTowers[1] = (lvlmanager.tower2aCount);
-        currentTowers[2] = (lvlmanager.tower3aCount);
 
-        nextScene = lvlmanager.nextScene;
+
+
+
 
 		UpdateNumbers();
 
