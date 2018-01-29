@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_SCENES/AREK.unity
-    guid: d7e8f600315dac34f978acf3e9c4cf49
-  - enabled: 1
-    path: Assets/_SCENES/PiotrJ.unity
-    guid: f858cc26a443140e3a8c005821acd290
-  - enabled: 1
     path: Assets/_SCENES/main.unity
     guid: cfce37247246635459e6bea881f081cc
-  - enabled: 1
+  - enabled: 0
+    path: Assets/_SCENES/AREK.unity
+    guid: d7e8f600315dac34f978acf3e9c4cf49
+  - enabled: 0
+    path: Assets/_SCENES/PiotrJ.unity
+    guid: f858cc26a443140e3a8c005821acd290
+  - enabled: 0
     path: Assets/_SCENES/TEST.unity
     guid: edf69a3f0b6414327b689311726a34d0
   - enabled: 1
@@ -27,11 +27,11 @@ EditorBuildSettings:
     path: Assets/_SCENES/l2.unity
     guid: b1a59bff6611f0f4c8bf01a5cd3de2ea
   - enabled: 0
-    path: Assets/_SCENES/l3.unity
-    guid: e3f9b87006dda754aaecf3e30f1273ea
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/_SCENES/l4.unity
-    guid: cf0837d2bb9d37949893f08060a62a7c
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/_SCENES/l5.unity
-    guid: 3a9ee97b6bddf8e4db889e6856b9505c
+    path: 
+    guid: 00000000000000000000000000000000
