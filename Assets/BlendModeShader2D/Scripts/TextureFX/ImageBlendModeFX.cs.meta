@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 30394e41b8edd8e47a9b0b827e8e9fd0
+timeCreated: 1497361201
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - _blendModeShader: {fileID: 4800000, guid: bb3efed4d78434747a579f7692a976fa, type: 3}
+  - _effectTexture: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

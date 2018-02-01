@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 410f836311cce9646bd98e6b85edaea7
+timeCreated: 1496596973
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - _spriteRenderer: {instanceID: 0}
+  - _blendModeShader: {fileID: 4800000, guid: 83b4ec0962fb7354397c4bcedd8c2467, type: 3}
+  - _blendModeMaterial: {instanceID: 0}
+  - _effectTexture: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

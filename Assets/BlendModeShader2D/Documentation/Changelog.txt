@@ -1,0 +1,8 @@
+Change List:
+
+1.22:
+	- Added new classes: BlendModeLayerFX, SpriteBlendModeLayerFX, ImageBlendModeLayerFX. Added new shaders: SpriteBlendModeSharedGrab, SpriteBlendModeSimpleGrab, UIBlendModeSharedGrab, UIBlendModeSimpleGrab. They are all for the new features: grab and blend layers together like PS do.
+	- Moved enum BlendMode, ColorSoloMode from class BlendModeFX to new script BlendModeShader2DEnum.
+	- Adjusted structure of shaders.
+1.22.1
+	- Added namespace to Property Backing Field Drawer plugins.
