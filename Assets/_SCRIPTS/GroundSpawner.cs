@@ -9,51 +9,97 @@ public class GroundSpawner : MonoBehaviour {
 	public int decalCount = 50;
 	public GameObject particle;
 	[Range(0, 1)]
-	public float particleSpawnChance = .04f;
+	public float particleSpawnChance = .4f;
+
+	[FloatRange(.1f, 3)]
+	public FloatRange spawnFrequency;
 	void Start () {
-		if (tiles.Length==0) {
-			Debug.LogError("Ground Tile is missing");
-			return;
+		SpawnGround();
+		SpawnParticleMaybe();
+	}
+
+	public void SpawnGround() {
+		// clear existing children if any
+		while (transform.childCount > 0)
+		{
+			// we use DestroyImmediate so this works in the editor
+			GameObject.DestroyImmediate(transform.GetChild(0).gameObject);
 		}
-		Transform parent = GetComponent<Transform>();
-		for (float x = -6; x < 6; x++)
-		{	
-			for (float y = -6; y < 6; y++)
-			{
-				int which = Random.Range(0, tiles.Length);
-				GameObject ob =  GameObject.Instantiate(tiles[which], new Vector3(-0.8f+x*0.56f, y*0.56f, 0), Quaternion.identity, parent);
-				float val = 1 - ((Mathf.Abs(x) + Mathf.Abs(y))/12f * 0.35f) - Random.Range(0.02f,0.05f);
-				if (Mathf.Abs(x) + Mathf.Abs(y) < 2)
+
+		float cx = Camera.main.transform.position.x;
+		float cy = Camera.main.transform.position.y;
+		float height = Camera.main.orthographicSize * 2;
+		float width = height * Camera.main.aspect;
+
+		if (tiles.Length > 0) {
+			// size of the single tile, ie pixel width/cam pixels per unit
+			const float size = 0.56f;
+			float hw = (width + size)/2;
+			float hh = (height + size)/2;
+			for (float x = -hw; x <= hw; x += size)
+			{	
+				for (float y = -hh; y <= hh; y += size)
 				{
-					val = 0.96f;
-				}
-			//	val *= 0.9f;
+					int which = Random.Range(0, tiles.Length);
+					GameObject go = tiles[which];
+					if (!go) {
+						Debug.LogError("Ground: Tile at " + which + " missing");
+						continue;
+					}
+					Vector3 pos = new Vector3(cx + x, cy + y, 0);
+					GameObject ob =  GameObject.Instantiate(tiles[which], pos, Quaternion.identity, transform);
+					float val = 1 - ((Mathf.Abs(x) + Mathf.Abs(y))/12f * 0.3f) - Random.Range(0.02f,0.05f);
+					if (Mathf.Abs(x) + Mathf.Abs(y) < 2)
+					{
+						val = 0.96f;
+					}
 
 					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1.3f);
-				
-			}
-		}
-		if (decals.Length > 0) {
-			for (int i = 0; i < decalCount; i++)
-			{
-				GameObject go = decals[Random.Range(0, decals.Length)];
-				if (go) {
-					GameObject.Instantiate(go, new Vector3(Random.Range(-4.5f, 4f), Random.Range(-3f, 3f), 0), Quaternion.identity, parent);
 				}
 			}
+		} else {
+			Debug.LogError("Ground: Ground tiles are missing");
+		}
+
+		if (decals.Length > 0) {
+			float hw = width/2;
+			float hh = height/2;
+			for (int i = 0; i < decalCount; i++)
+			{
+				int which = Random.Range(0, decals.Length);
+				GameObject go = decals[which];
+				if (!go) {
+					Debug.LogError("Ground: Decal at " + which + " missing");
+					continue;
+				} 
+				Vector3 pos = new Vector3(cx + Random.Range(-hw, hw), cx + Random.Range(-hh, hh), 0);
+				GameObject.Instantiate(go, pos, Quaternion.identity, transform);
+			}
+		} else {
+			Debug.LogError("Ground: Decals are missing");
 		}
 	}
 
-	void Update() {
+
+	public void SpawnParticleMaybe() {
+		if (Random.Range(0.0f, 1f) <= particleSpawnChance) {
+			SpawnParticle();
+		}
+		Invoke("SpawnParticleMaybe", Random.Range(spawnFrequency.min, spawnFrequency.max));
+	}
+	public void SpawnParticle() {
 		if (!particle) {
-			Debug.LogError("Missing particle game object!");
+			Debug.LogError("Ground: Missing particle game object!");
 			return;
 		}
-		if (Random.Range(0.0f, 1f) <= particleSpawnChance) {
-			Vector3 pos = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-3f, 3f), 0);
-			GameObject inst = GameObject.Instantiate(particle, pos, Quaternion.identity, gameObject.transform);
-			Animator animator = inst.GetComponent<Animator>();
-			animator.SetInteger("idleid", Random.Range(0, 2));
-		}
+		float cx = Camera.main.transform.position.x;
+		float cy = Camera.main.transform.position.y;
+		float hh = Camera.main.orthographicSize;
+		float hw = hh * Camera.main.aspect;
+
+		Vector3 pos = new Vector3(cx + Random.Range(-hw, hw), cy + Random.Range(-hh, hh), 0);
+		GameObject inst = GameObject.Instantiate(particle, pos, Quaternion.identity, gameObject.transform);
+		Animator animator = inst.GetComponent<Animator>();
+		animator.SetInteger("idleid", Random.Range(0, 2));
 	}
 }
