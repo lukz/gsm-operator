@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour   {
 
 	private string nextScene = "TEST";
 
+	private bool soundOn = true;
 	void Awake()
 	{
 
@@ -85,6 +86,34 @@ public class GameManager : MonoBehaviour   {
 
         setTier(currentTier);
     }
+
+	public void toggleSound()
+	{
+		if (soundOn)
+		{
+			soundOn = false;
+
+			music.mute = true;
+				 winPhase.mute = true; 
+	 winLvl.mute = true; 
+	btnClick.mute = true; 
+	destroy.mute = true; 
+	towerBuilt.mute = true; 
+	deny.mute = true; 
+}else
+		{
+
+			music.mute = false;
+			winPhase.mute = false;
+			winLvl.mute = false;
+			btnClick.mute = false;
+			destroy.mute = false;
+			towerBuilt.mute = false;
+			deny.mute = false;
+
+			soundOn = true;
+		}
+	}
 
     public void setTier(int tier)
     {
