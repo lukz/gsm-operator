@@ -28,7 +28,9 @@ public class GroundSpawner : MonoBehaviour {
 
 		float cx = Camera.main.transform.position.x;
 		float cy = Camera.main.transform.position.y;
-		float height = Camera.main.orthographicSize * 2;
+		// float height = Camera.main.orthographicSize * 2;
+		// target ortho size
+		float height = 6;
 		float width = height * Camera.main.aspect;
 
 		if (tiles.Length > 0) {
@@ -94,7 +96,8 @@ public class GroundSpawner : MonoBehaviour {
 		}
 		float cx = Camera.main.transform.position.x;
 		float cy = Camera.main.transform.position.y;
-		float hh = Camera.main.orthographicSize;
+		// target ortho size
+		float hh = 3; // Camera.main.orthographicSize;
 		float hw = hh * Camera.main.aspect;
 
 		Vector3 pos = new Vector3(cx + Random.Range(-hw, hw), cy + Random.Range(-hh, hh), 0);
