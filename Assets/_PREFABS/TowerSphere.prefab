@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4656267123251762}
   - component: {fileID: 114566988929277296}
+  - component: {fileID: 114666033911634126}
   m_Layer: 0
   m_Name: TowerSphere
   m_TagString: Tower
@@ -233,6 +234,17 @@ MonoBehaviour:
   id: 0
   isBuildable: 0
   isBuilded: 1
+--- !u!114 &114666033911634126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241436494150840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bfaadd2ae22c6409eaa4d5ec20d0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114728309225201872
 MonoBehaviour:
   m_ObjectHideFlags: 1

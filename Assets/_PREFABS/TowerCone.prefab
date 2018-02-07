@@ -39,6 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4847240124483752}
   - component: {fileID: 114013611911068650}
+  - component: {fileID: 114289802666914668}
   m_Layer: 0
   m_Name: TowerCone
   m_TagString: Tower
@@ -293,6 +294,17 @@ MonoBehaviour:
   id: 0
   isBuildable: 0
   isBuilded: 1
+--- !u!114 &114289802666914668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356770297676894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bfaadd2ae22c6409eaa4d5ec20d0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114462597200334924
 MonoBehaviour:
   m_ObjectHideFlags: 1

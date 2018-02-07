@@ -18,7 +18,7 @@ public class HouseSpot : MonoBehaviour {
 		
 	}
 
-    public void SpawnTier(int tier)
+	public void SpawnTier(int tier)
     {
         if (tier >= houseTiers.Count) return;
 

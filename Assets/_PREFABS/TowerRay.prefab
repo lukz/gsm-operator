@@ -55,6 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4883997362494594}
   - component: {fileID: 114453351294741266}
+  - component: {fileID: 114138111303345280}
   m_Layer: 0
   m_Name: TowerRay
   m_TagString: Tower
@@ -219,6 +220,17 @@ PolygonCollider2D:
       - {x: 2.215, y: -0.11}
       - {x: 2.215, y: 0.11}
       - {x: -2.215, y: 0.11}
+--- !u!114 &114138111303345280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1623847998014446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01bfaadd2ae22c6409eaa4d5ec20d0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114142943658362288
 MonoBehaviour:
   m_ObjectHideFlags: 1
