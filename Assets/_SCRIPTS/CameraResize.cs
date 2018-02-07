@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class CameraResize : MonoBehaviour {
-	public float orthoSize = 3;
-	public float width = 9;
-	public float height = 6;
+	float orthoSize = 3;
+	float width = 9;
+	float height = 6;
+	
 	void Update () {
 		float targetAspect = width/height;
 		float aspect = Screen.width/(float)Screen.height;
