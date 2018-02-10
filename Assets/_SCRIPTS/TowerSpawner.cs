@@ -12,13 +12,17 @@ public class TowerSpawner : MonoBehaviour {
 	GameObject spawned;
 	GameObject towerToSpawn;
 	public GameObject towerExplosion;
-	public static int currentChosenTower;
+
+	public List<GameObject> towerPrefabs;
 
 	GraphicRaycaster raycaster;
     PointerEventData pointerEventData;
     EventSystem eventSystem;
 
 	bool destroy;
+
+	[SerializeField]
+	bool rebuildOnClick;
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +33,22 @@ public class TowerSpawner : MonoBehaviour {
         //Fetch the Event System from the Scene
         eventSystem = FindObjectOfType<EventSystem>();
 		Debug.Log("events " + eventSystem);
+
+		// set ids for stuff
+		for (int i = 0; i < towerPrefabs.Count; i++)
+		{
+			GameObject go = towerPrefabs[i];
+			if (!go) {
+				Debug.LogError("Missing tower prefab at " + i);
+				continue;
+			}
+			TowerScript ts = go.GetComponent<TowerScript>();
+			if (!ts) {
+				Debug.LogError("Missing TowerScript on tower prefab at " + i);
+				continue;
+			}
+			ts.id = i;
+		}
 	}
 	
 	// Update is called once per frame
@@ -43,27 +63,14 @@ public class TowerSpawner : MonoBehaviour {
 					if (destroyIcon) {
 						GameObject.Destroy(destroyIcon);
 					}	
+					Debug.Log("Cancel destroy, tapped on gui");
 					return;
 				}
-				GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
-				foreach (GameObject tower in towers)
-				{
-					Collider2D col = tower.GetComponentInChildren<Collider2D>();
-					if (col.OverlapPoint(new Vector2(pos.x, pos.y))) {
-						TowerScript ts = tower.GetComponent<TowerScript>();
-                        ts.onDestroyed();   
-						GameManager.currentTowers[ts.id]++;
-						GameManager.UpdateNumbers();
-						if (towerExplosion) {
-                            pos.x = tower.transform.position.x;
-							pos.y = tower.transform.position.y;
-							GameObject.Instantiate(towerExplosion, pos, Quaternion.identity, gameObject.transform);
-						}
-
-                        GameObject.Destroy(tower);
-						break;
-					}
+				GameObject tower = getTowerAt(pos.x, pos.y);
+				if (tower) {
+					destroyTower(tower);
 				}
+				
 			} else if (Input.GetKeyDown(KeyCode.Mouse1)) { // right	
 				// cancel spawning
 				if (destroyIcon) {
@@ -74,56 +81,94 @@ public class TowerSpawner : MonoBehaviour {
 			return;
 		}
 
-		if (!spawned) return;
-		Transform transform = spawned.GetComponent<Transform>();
-		transform.position = pos;
-		
-		if (Input.GetKeyDown(KeyCode.Mouse0)) { // left
-			// if we click on gui, ignore it
-			if (getOverCount() > 0) {
+		if (spawned) {
+			Transform transform = spawned.GetComponent<Transform>();
+			transform.position = pos;
+			
+			if (Input.GetKeyDown(KeyCode.Mouse0)) { // left
+				// if we click on gui, ignore it
+				if (getOverCount() > 0) {
+					if (spawned) {
+						GameObject.Destroy(spawned);
+					}
+					spawned = null;
+					towerToSpawn = null;
+					return;
+				}
+
+				TowerScript ts = spawned.GetComponent<TowerScript>();
+
+				if (!ts.isBuildable) {
+					GameManager.instance.deny.Play();
+					return;
+				}
+
+				GameManager.shakePower += 0.15f;
+
+				
+				ts.onBuilded();
+				GameManager.currentTowers[ts.id]--;
+				GameManager.UpdateNumbers();
+
+
+				// make it opaque
+				//SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
+				//sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
+
+				showForbiddenZones(false);
+
+				spawned = null;
+				towerToSpawn = null;
+				// TODO perhaps we need to enable the thing or something
+			} else if (Input.GetKeyDown(KeyCode.Mouse1)) { // right	
+				// cancel spawning
 				if (spawned) {
 					GameObject.Destroy(spawned);
 				}
 				spawned = null;
 				towerToSpawn = null;
+			}
+			return;
+		}
+		
+		if (Input.GetKeyDown(KeyCode.Mouse0)) { // left
+			// if we click on gui, ignore it
+			if (getOverCount() > 0) {
 				return;
 			}
-
-			TowerScript ts = spawned.GetComponent<TowerScript>();
-
-			if (!ts.isBuildable) {
-				GameManager.instance.deny.Play();
-                ts.cantBuildFlash();
-
-                return;
+			GameObject tower = getTowerAt(pos.x, pos.y);
+			if (tower) {
+				if (rebuildOnClick) {
+					TowerScript ts = tower.GetComponent<TowerScript>();
+					spawn(towerPrefabs[ts.id], ts.PowerRotation);
+				}
+				destroyTower(tower);
 			}
-
-			GameManager.shakePower += 0.15f;
-
-            
-            ts.onBuilded();
-			ts.id = currentChosenTower;
-			GameManager.currentTowers[currentChosenTower]--;
-			GameManager.UpdateNumbers();
-
-
-            // make it opaque
-            //SpriteRenderer sr = spawned.GetComponentInChildren<SpriteRenderer>();
-            //sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
-
-            showForbiddenZones(false);
-
-            spawned = null;
-			towerToSpawn = null;
-			// TODO perhaps we need to enable the thing or something
-		} else if (Input.GetKeyDown(KeyCode.Mouse1)) { // right	
-			// cancel spawning
-			if (spawned) {
-				GameObject.Destroy(spawned);
-			}
-			spawned = null;
-			towerToSpawn = null;
 		}
+	}
+
+	GameObject getTowerAt(float x, float y) {
+		GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+		foreach (GameObject tower in towers)
+		{
+			Collider2D col = tower.GetComponentInChildren<Collider2D>();
+			if (col.OverlapPoint(new Vector2(x, y))) {
+				return tower;
+			}
+		}
+		return null;
+	}
+
+	void destroyTower(GameObject tower) {
+		TowerScript ts = tower.GetComponent<TowerScript>();
+			ts.onDestroyed();   
+			GameManager.currentTowers[ts.id]++;
+			GameManager.UpdateNumbers();
+			if (towerExplosion) {
+				Vector3 pos = new Vector3(tower.transform.position.x, tower.transform.position.y, 0);
+				GameObject.Instantiate(towerExplosion, pos, Quaternion.identity, gameObject.transform);
+			}
+			GameObject.Destroy(tower);
 	}
 
 	int getOverCount() {
@@ -147,19 +192,26 @@ public class TowerSpawner : MonoBehaviour {
 	}
 
 	public void spawn(GameObject tower, float angle) {
-		Debug.Log("Spawn stuff maybe?");
+		Debug.Log("Spawn stuff maybe? " + spawned + " " + towerToSpawn);
+		// ie in erase mode
 		if (destroyIcon) {
 			GameObject.Destroy(destroyIcon);
 		}
 		destroy = false;
 
+		// ie clicked on different tower
 		if (spawned) {
+			Debug.Log("Destroy already spawned tower");
 			GameObject.Destroy(spawned);
 		}
+		// ie clicked on same button again
 		if (tower == towerToSpawn) {
+			Debug.Log("Same tower, cancel spawning");
 			towerToSpawn = null;
+			showForbiddenZones(false);
 			return;
 		}
+		Debug.Log("Spawning tower!");
 		towerToSpawn = tower;
 		GameManager.instance.btnClick.Play();
 		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
@@ -204,9 +256,7 @@ public class TowerSpawner : MonoBehaviour {
             else
             {
                 sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
-            }
-            
+            }   
         }
-
     }
 }

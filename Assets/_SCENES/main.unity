@@ -656,7 +656,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4452875696553008, guid: 22435998c38c0a145b3bd784ce2ec640, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114540027103600832, guid: 22435998c38c0a145b3bd784ce2ec640,
         type: 2}
@@ -3418,12 +3418,17 @@ Prefab:
     - target: {fileID: 224951458933134384, guid: 92b2a9d6205ca6943806cee971223d3c,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224951458933134384, guid: 92b2a9d6205ca6943806cee971223d3c,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224171916497941350, guid: 92b2a9d6205ca6943806cee971223d3c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 334
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 92b2a9d6205ca6943806cee971223d3c, type: 2}
@@ -4264,6 +4269,11 @@ MonoBehaviour:
     type: 2}
   towerExplosion: {fileID: 1663869448402244, guid: 89c5ffd86f6314ee1940ca6e42cb7f9a,
     type: 2}
+  towerPrefabs:
+  - {fileID: 1241436494150840, guid: 4b4fb01d0fb2ec246a8565de6db1244c, type: 2}
+  - {fileID: 1356770297676894, guid: 6411ad6ac071646f6b9f6af7775b0233, type: 2}
+  - {fileID: 1623847998014446, guid: 78de799895db74274ad59f37bede022f, type: 2}
+  rebuildOnClick: 1
 --- !u!4 &466192689
 Transform:
   m_ObjectHideFlags: 0
@@ -17906,7 +17916,7 @@ Transform:
   - {fileID: 1412585875}
   - {fileID: 1124365091}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2066182579
 GameObject:
