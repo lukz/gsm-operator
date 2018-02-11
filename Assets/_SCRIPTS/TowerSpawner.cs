@@ -25,6 +25,7 @@ public class TowerSpawner : MonoBehaviour {
 	bool rebuildOnClick;
 
 	bool dragging;
+	Vector2 towerOffset = new Vector2();
 
 	// Use this for initialization
 	void Start () {
@@ -86,7 +87,7 @@ public class TowerSpawner : MonoBehaviour {
 
 		if (spawned) {
 			Transform transform = spawned.GetComponent<Transform>();
-			transform.position = pos;
+			transform.position = new Vector2(pos.x + towerOffset.x, pos.y + towerOffset.y);
 			
 			if (Input.GetKeyDown(KeyCode.Mouse0)) { // left
 				// if we click on gui, ignore it
@@ -149,8 +150,12 @@ public class TowerSpawner : MonoBehaviour {
 			if (tower) {
 				if (rebuildOnClick) {
 					TowerScript ts = tower.GetComponent<TowerScript>();
+					Vector2 tmp = new Vector2(towerOffset.x, towerOffset.y);
 					spawn(towerPrefabs[ts.id], ts.PowerRotation);
+					towerOffset = tmp;
 					dragging = true;
+					Transform transform = spawned.GetComponent<Transform>();
+					transform.position = new Vector2(pos.x + towerOffset.x, pos.y + towerOffset.y);
 				}
 				destroyTower(tower);
 			}
@@ -163,6 +168,8 @@ public class TowerSpawner : MonoBehaviour {
 		{
 			Collider2D col = tower.GetComponentInChildren<Collider2D>();
 			if (col.OverlapPoint(new Vector2(x, y))) {
+				towerOffset.x = tower.transform.position.x - x;
+				towerOffset.y = tower.transform.position.y - y;
 				return tower;
 			}
 		}
@@ -255,6 +262,7 @@ public class TowerSpawner : MonoBehaviour {
 			showForbiddenZones(false);
 			return;
 		}
+		towerOffset = new Vector2(0, 1.0f);
 		Debug.Log("Spawning tower!");
 		towerToSpawn = tower;
 		GameManager.instance.btnClick.Play();
