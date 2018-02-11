@@ -52,7 +52,7 @@ public class TowerScript : MonoBehaviour {
 
     public void setPowerRotation(float angle)
     {
-        PowerRotation = angle;
+        PowerRotation = angle - 90;
         powerZone.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 }
