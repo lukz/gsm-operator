@@ -11,6 +11,10 @@ public class GroundSpawner : MonoBehaviour {
 	[Range(0, 1)]
 	public float particleSpawnChance = .4f;
 
+	[Range(0, 1)]
+	public float multiplierDark;
+	
+
 	[FloatRange(.1f, 3)]
 	public FloatRange spawnFrequency;
 	void Start () {
@@ -55,7 +59,7 @@ public class GroundSpawner : MonoBehaviour {
 					{
 						val = 1f;
 					}
-					val *= 0.9f;
+					val *= multiplierDark;
 
 					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1.3f);
 				}
