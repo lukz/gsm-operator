@@ -57,6 +57,18 @@ public class GameManager : MonoBehaviour   {
 	private string nextScene = "TEST";
 
 	private bool soundOn = true;
+
+	public bool restarting = false;
+	[SerializeField]
+	private float delayBetweenTowerRestart = 0.15f;
+	private float timerTowerRestart = 0f;
+
+	GameObject[] towersToDestroy;
+	int currentlyDestroyedTower;
+
+	private TowerSpawner towerspawner;
+
+
 	void Awake()
 	{
 
@@ -75,7 +87,8 @@ public class GameManager : MonoBehaviour   {
 
 	// Use this for initialization
 	void Start () {
-        lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
+		towerspawner = GameObject.FindGameObjectWithTag("Towerspawner").GetComponent<TowerSpawner>();
+		lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
 
 		nextScene = lvlmanager.nextScene;
 
@@ -86,6 +99,23 @@ public class GameManager : MonoBehaviour   {
 
         setTier(currentTier);
     }
+
+	public void Restart()
+	{
+		if (!restarting)
+		{
+			towersToDestroy = GameObject.FindGameObjectsWithTag("Tower");
+			timerTowerRestart = delayBetweenTowerRestart;
+			GameManager.instance.btnClick.Play();
+			currentlyDestroyedTower = 0;
+			if (towersToDestroy.Length > 0)
+			{
+				restarting = true;
+			}
+
+		}
+	}
+
 
 	public void toggleSound()
 	{
@@ -176,6 +206,24 @@ public class GameManager : MonoBehaviour   {
 		{
 			shakePower = 0;
 			Camera.main.transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
+		}
+
+		if (restarting)
+		{
+			if (towersToDestroy.Length > 0)
+			{
+				timerTowerRestart -= Time.deltaTime;
+				if (timerTowerRestart <= 0)
+				{
+					timerTowerRestart = delayBetweenTowerRestart;
+					towerspawner.destroyTower(towersToDestroy[currentlyDestroyedTower]);
+					currentlyDestroyedTower++;
+					if (currentlyDestroyedTower >= towersToDestroy.Length)
+					{
+						restarting = false;
+					}
+				}
+			}
 		}
 
 

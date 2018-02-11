@@ -87,7 +87,7 @@ public class TowerSpawner : MonoBehaviour {
 			
 			if (Input.GetKeyDown(KeyCode.Mouse0)) { // left
 				// if we click on gui, ignore it
-				if (getOverCount() > 0) {
+				if (getOverCount() > 0 || GameManager.instance.restarting) {
 					if (spawned) {
 						GameObject.Destroy(spawned);
 					}
@@ -159,7 +159,7 @@ public class TowerSpawner : MonoBehaviour {
 		return null;
 	}
 
-	void destroyTower(GameObject tower) {
+	public void destroyTower(GameObject tower) {
 		TowerScript ts = tower.GetComponent<TowerScript>();
 			ts.onDestroyed();   
 			GameManager.currentTowers[ts.id]++;
