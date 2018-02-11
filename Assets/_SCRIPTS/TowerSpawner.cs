@@ -24,6 +24,8 @@ public class TowerSpawner : MonoBehaviour {
 	[SerializeField]
 	bool rebuildOnClick;
 
+	bool dragging;
+
 	// Use this for initialization
 	void Start () {
 		//Fetch the Raycaster from the GameObject (the Canvas)
@@ -128,6 +130,12 @@ public class TowerSpawner : MonoBehaviour {
 				}
 				spawned = null;
 				towerToSpawn = null;
+			} else {
+				// place tower on mobile if we release main button
+				if (!Input.GetKey(KeyCode.Mouse0) && dragging && GameManager.IS_MOBILE) {
+					PlaceTowerOrCancel();
+					dragging = false;
+				}
 			}
 			return;
 		}
@@ -142,6 +150,7 @@ public class TowerSpawner : MonoBehaviour {
 				if (rebuildOnClick) {
 					TowerScript ts = tower.GetComponent<TowerScript>();
 					spawn(towerPrefabs[ts.id], ts.PowerRotation);
+					dragging = true;
 				}
 				destroyTower(tower);
 			}
@@ -170,6 +179,39 @@ public class TowerSpawner : MonoBehaviour {
 				GameObject.Instantiate(towerExplosion, pos, Quaternion.identity, gameObject.transform);
 			}
 			GameObject.Destroy(tower);
+	}
+
+	public void PlaceTowerOrCancel() {
+		if (towerToSpawn == null) return;
+		if (getOverCount() > 0 || GameManager.instance.restarting) {
+			if (spawned) {
+				GameObject.Destroy(spawned);
+			}
+			showForbiddenZones(false);
+			spawned = null;
+			towerToSpawn = null;
+			return;
+		}
+
+		TowerScript ts = spawned.GetComponent<TowerScript>();
+
+		if (!ts.isBuildable) {
+			GameManager.instance.deny.Play();
+
+			if (spawned) {
+				GameObject.Destroy(spawned);
+			}
+		} else{
+			GameManager.shakePower += 0.15f;
+		
+			ts.onBuilded();
+			GameManager.currentTowers[ts.id]--;
+			GameManager.UpdateNumbers();
+		}
+
+		showForbiddenZones(false);
+		spawned = null;
+		towerToSpawn = null;
 	}
 
 	int getOverCount() {

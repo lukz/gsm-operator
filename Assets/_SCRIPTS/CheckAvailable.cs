@@ -26,8 +26,10 @@ public class CheckAvailable : MonoBehaviour {
 		}
     }
 
-	public void SetTower()
+	public void StartBuildingTowerClick()
 	{
+		if (GameManager.IS_MOBILE) return;
+		Debug.Log("StartBuildingTowerClick");
 		if (GameManager.currentTowers[towerId] > 0)
 		{
             float angle = 0;
@@ -37,5 +39,26 @@ public class CheckAvailable : MonoBehaviour {
             }
 			towerspawner.spawn(tower, angle);
         }
+	}
+
+	public void StartBuildingTowerDrag()
+	{
+		if (!GameManager.IS_MOBILE) return;
+		Debug.Log("StartBuildingTowerDrag");
+		if (GameManager.currentTowers[towerId] > 0)
+		{
+            float angle = 0;
+            if(rotator != null)
+            {
+                angle = rotator.GetComponent<RotateIcon>().angle;
+            }
+			towerspawner.spawn(tower, angle);
+        }
+	}
+
+	public void FinishBuildingTowerDrag() {
+		if (!GameManager.IS_MOBILE) return;
+		Debug.Log("FinishBuildingTowerDrag");
+		towerspawner.PlaceTowerOrCancel();
 	}
 }

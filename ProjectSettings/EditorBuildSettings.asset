@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_SCENES/PiotrJ.unity
+    guid: f858cc26a443140e3a8c005821acd290
+  - enabled: 1
     path: Assets/_SCENES/main.unity
     guid: cfce37247246635459e6bea881f081cc
   - enabled: 1
@@ -17,9 +20,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_SCENES/AREK.unity
     guid: d7e8f600315dac34f978acf3e9c4cf49
-  - enabled: 0
-    path: Assets/_SCENES/PiotrJ.unity
-    guid: f858cc26a443140e3a8c005821acd290
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
