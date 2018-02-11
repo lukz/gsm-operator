@@ -8,9 +8,9 @@ public class CloudMove : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-		speed = Random.Range(.05f, .3f);
-		pos.x = Random.Range(-4.5f, 4.5f);
-		pos.y = Random.Range(-3f, 3f);
+		speed = Random.Range(.04f, .16f);
+		pos.x = Random.Range(-5f, 5f);
+		pos.y = Random.Range(-2.8f, 2.8f);
 		pos.x += speed * Time.deltaTime;
 		transform.position = pos;
 	}
@@ -19,9 +19,9 @@ public class CloudMove : MonoBehaviour {
 	void Update () {
 		Vector3 pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		if (pos.x > 3.25f) {
-			speed = Random.Range(.05f, .3f);
-			pos.x = Random.Range(-10, -4.75f);
-			pos.y = Random.Range(-3f, 3f);
+			speed = Random.Range(.04f, .16f);
+			pos.x = Random.Range(-8, -4.75f);
+			pos.y = Random.Range(-2.8f, 2.8f);
 		}
 		pos.x += speed * Time.deltaTime;
 		transform.position = pos;

@@ -75,8 +75,16 @@ public class GroundSpawner : MonoBehaviour {
 					Debug.LogError("Ground: Decal at " + which + " missing");
 					continue;
 				} 
-				Vector3 pos = new Vector3(cx + Random.Range(-hw, hw), cx + Random.Range(-hh, hh), 0);
-				GameObject.Instantiate(go, pos, Quaternion.identity, transform);
+				Vector3 pos = new Vector3(cx + Random.Range(-hw, hw)-1, cx + Random.Range(-hh, hh), 0);
+				go = GameObject.Instantiate(go, pos, Quaternion.identity, transform);
+
+				float val = 1 - ((Mathf.Abs(go.transform.position.x) + Mathf.Abs(go.transform.position.y)) / 12f * 0.2f) - Random.Range(0.02f, 0.05f);
+				if (Mathf.Abs(go.transform.position.x) + Mathf.Abs(go.transform.position.y) < 2)
+				{
+					val = 1f;
+				}
+				go.GetComponent<SpriteRenderer>().color = new Color(val, val, val * 1.2f);
+
 			}
 		} else {
 			Debug.LogError("Ground: Decals are missing");
