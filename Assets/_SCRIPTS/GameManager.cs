@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour   {
+public class GameManager : MonoBehaviour
+{
 
+	public bool canDoActions = true;
 
 	public AudioSource music;
 	public AudioSource winPhase;
@@ -15,26 +17,19 @@ public class GameManager : MonoBehaviour   {
 	public AudioSource towerBuilt;
 	public AudioSource deny;
 
-    public GameObject splash;
+	public GameObject splash;
 
-	public static List<int> currentTowers = new List<int>(); 
-	
-
+	public static List<int> currentTowers = new List<int>();
 	[SerializeField]
 	private Text countTowerCircle;
-
 	[SerializeField]
 	private Text countTowerArc;
-
 	[SerializeField]
 	private Text countTowerLine;
-
 	public static float shakePower = 0;
-
 	[SerializeField]
 	private Slider powerSlider;
-
-    private int tower1aCount = 0;
+	private int tower1aCount = 0;
 	private int tower2aCount = 0;
 	private int tower3aCount = 0;
 	private int tower1bCount = 0;
@@ -43,35 +38,30 @@ public class GameManager : MonoBehaviour   {
 	private int tower1cCount = 0;
 	private int tower2cCount = 0;
 	private int tower3cCount = 0;
+	private int currentLvl;
+	private string currentLvlName;
 
 	LVLsettings lvlmanager;
-
 	private int currentTier = 0;
-
-    public static GameManager instance = null;
-
-	public float powerUpTimeForSceneChange = 2;
-
-    private bool splashShown = false;
-
-	private string nextScene = "TEST";
-
+	public static GameManager instance = null;
+	public float powerUpTimeForSceneChange;
+	private bool splashShown = false;
 	private bool soundOn = true;
-
 	public bool restarting = false;
 	[SerializeField]
 	private float delayBetweenTowerRestart = 0.15f;
 	private float timerTowerRestart = 0f;
-
 	GameObject[] towersToDestroy;
 	int currentlyDestroyedTower;
-
 	private TowerSpawner towerspawner;
+	public static GameObject towersContainer;
+	float timer;
+
+	public bool OPENlastLEVEL;
 
 
 	void Awake()
 	{
-
 		if (instance == null)
 		{
 			instance = this;
@@ -81,27 +71,55 @@ public class GameManager : MonoBehaviour   {
 		{
 			Destroy(gameObject);
 		}
+	}
+	void Start()
+	{
+		SceneManager.sceneLoaded += PrepareScene;
+		SaveControl.instance.Load();
+		Debug.Log(SaveControl.instance.towersUsedToWin.Count);
+		towerspawner = GetComponent<TowerSpawner>();
+		currentTowers.Add(0);
+		currentTowers.Add(0);
+		currentTowers.Add(0);
+		if (OPENlastLEVEL)
+		{
+			int lastUnlockedLevel = 0;
+			if (SaveControl.instance.towersUsedToWin.Count > 0) // wygral chociaz 1 poziom
+			{
+				lastUnlockedLevel = SaveControl.instance.towersUsedToWin.Count;
+				if (SaveControl.instance.towersUsedToWin.Count >= 24)
+				{
+					lastUnlockedLevel = 23;
+				}
+			}
+			string lvl = "LVL" + lastUnlockedLevel.ToString(); // zaladuj ostatni dostepny poziom
+			SceneManager.LoadScene(lvl);
+
+		}else
+		{
+			PrepareScene(SceneManager.GetSceneByName("main"),LoadSceneMode.Single);
+		}
+		canDoActions = true;
 
 	}
-
-
-	// Use this for initialization
-	void Start () {
-		towerspawner = GameObject.FindGameObjectWithTag("Towerspawner").GetComponent<TowerSpawner>();
+	void PrepareScene(Scene scene , LoadSceneMode mode)
+	{
+		currentTier = 0;
 		lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
+		currentLvl = lvlmanager.level;
+		currentLvlName = lvlmanager.levelName;
+		towersContainer = GameObject.FindGameObjectWithTag("TowersContainer");
+		currentTowers[0] = (lvlmanager.tower1aCount);
+		currentTowers[1] = (lvlmanager.tower2aCount);
+		currentTowers[2] = (lvlmanager.tower3aCount);
 
-		nextScene = lvlmanager.nextScene;
-
-		currentTowers.Add(lvlmanager.tower1aCount);
-		currentTowers.Add(lvlmanager.tower2aCount);
-		currentTowers.Add(lvlmanager.tower3aCount);
+		setTier(currentTier);
 		UpdateNumbers();
 
-        setTier(currentTier);
-    }
-
+	}
 	public void Restart()
 	{
+		if (!canDoActions) return;
 		if (!restarting)
 		{
 			towersToDestroy = GameObject.FindGameObjectsWithTag("Tower");
@@ -115,24 +133,22 @@ public class GameManager : MonoBehaviour   {
 
 		}
 	}
-
-
 	public void toggleSound()
 	{
 		if (soundOn)
 		{
 			soundOn = false;
-
 			music.mute = true;
-				 winPhase.mute = true; 
-	 winLvl.mute = true; 
-	btnClick.mute = true; 
-	destroy.mute = true; 
-	towerBuilt.mute = true; 
-	deny.mute = true; 
-}else
+			winPhase.mute = true;
+			winLvl.mute = true;
+			btnClick.mute = true;
+			destroy.mute = true;
+			towerBuilt.mute = true;
+			deny.mute = true;
+		}
+		else
 		{
-
+			soundOn = true;
 			music.mute = false;
 			winPhase.mute = false;
 			winLvl.mute = false;
@@ -140,59 +156,50 @@ public class GameManager : MonoBehaviour   {
 			destroy.mute = false;
 			towerBuilt.mute = false;
 			deny.mute = false;
-
-			soundOn = true;
 		}
 	}
-
-    public void setTier(int tier)
-    {
-        GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
-
-        for (int i = 0; i < houseSpots.Length; i++)
-        {
-            HouseSpot houseSpot = houseSpots[i].GetComponent<HouseSpot>();
-
-            houseSpot.SpawnTier(tier);
-        }
-
-        showForbiddenZones(false);
-    }
-
-
-	 public static void UpdateNumbers()
+	public void setTier(int tier)
 	{
-		if (instance.countTowerCircle) {
+		GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
+
+		for (int i = 0; i < houseSpots.Length; i++)
+		{
+			HouseSpot houseSpot = houseSpots[i].GetComponent<HouseSpot>();
+
+			houseSpot.SpawnTier(tier);
+		}
+		showForbiddenZones(false);
+	}
+	public static void UpdateNumbers()
+	{
+		if (instance.countTowerCircle)
+		{
 			int count = currentTowers[0];
 			instance.countTowerCircle.text = count.ToString();
 			instance.countTowerCircle.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
 		}
-		if (instance.countTowerArc) {
+		if (instance.countTowerArc)
+		{
 			int count = currentTowers[1];
 			instance.countTowerArc.text = count.ToString();
 			instance.countTowerArc.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
 		}
-		if (instance.countTowerLine) {
+		if (instance.countTowerLine)
+		{
 			int count = currentTowers[2];
 			instance.countTowerLine.text = count.ToString();
 			instance.countTowerLine.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
 		}
 		//instance.countTowerLine.text = currentTowers[2].ToString();
 	}
-
-
-
-
-	float timer;
-	// Update is called once per frame
-	void Update () {
-
-
+	void ShakeScreen()
+	{
 		if (shakePower > 0.01f)
 		{
 			shakePower *= 0.6f;
 
-			if (Random.Range(0, 1) > 0.5f) { 
+			if (Random.Range(0, 1) > 0.5f)
+			{
 				Camera.main.transform.position = new Vector3(Random.Range(shakePower / 2, shakePower), Random.Range(shakePower / 2, shakePower), Camera.main.transform.position.z);
 			}
 			else
@@ -207,7 +214,9 @@ public class GameManager : MonoBehaviour   {
 			shakePower = 0;
 			Camera.main.transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
 		}
-
+	}
+	void HandleRestart()
+	{
 		if (restarting)
 		{
 			if (towersToDestroy.Length > 0)
@@ -225,10 +234,17 @@ public class GameManager : MonoBehaviour   {
 				}
 			}
 		}
+	}
 
+	void Update()
+	{
+
+		ShakeScreen();
+		HandleRestart();
 
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
-		if (houses.Length > 0) {
+		if (houses.Length > 0)
+		{
 			bool allPowered = true;
 			float countPowered = 0;
 			foreach (GameObject house in houses)
@@ -238,30 +254,33 @@ public class GameManager : MonoBehaviour   {
 				allPowered &= hs.IsPowered();
 			}
 
-            float realProgress = (countPowered / houses.Length);
-            float swim = Mathf.Sin(Time.timeSinceLevelLoad * 3f);
-            if (realProgress == 0 || realProgress == 1) swim = 0;
-            float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
-            powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
+			float realProgress = (countPowered / houses.Length);
+			float swim = Mathf.Sin(Time.timeSinceLevelLoad * 3f);
+			if (realProgress == 0 || realProgress == 1) swim = 0;
+			float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
+			powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
 
-			if (allPowered) {
-                if (!splashShown)
-                {
-                    Debug.Log("test! " + currentTier);
-                    splashShown = true;
-                    GameObject newSplash = Instantiate(splash);
-                    if (IsNextTierAviable())
-                    {
-                        newSplash.GetComponent<SplashScript>().setSplash(currentTier);
-                    }
-                    else
-                    {
-                        newSplash.GetComponent<SplashScript>().setEndSplash();
-                    }
-                }
+			if (allPowered)
+			{
+				if (!splashShown)
+				{
+					Debug.Log("test! " + currentTier);
+					splashShown = true;
+					canDoActions = false;
+
+					GameObject newSplash = Instantiate(splash);
+					if (IsNextTierAviable())
+					{
+						newSplash.GetComponent<SplashScript>().setSplash(currentTier);
+					}
+					else
+					{
+						newSplash.GetComponent<SplashScript>().setEndSplash();
+					}
+				}
 
 
-                if (timer == 0)
+				if (timer == 0)
 				{
 					int maxTier = 0;
 
@@ -283,52 +302,56 @@ public class GameManager : MonoBehaviour   {
 				}
 
 				timer += Time.deltaTime;
-				music.volume = Mathf.Max(0.5f,(powerUpTimeForSceneChange - timer)*0.8f);
+				music.volume = Mathf.Max(0.5f, (powerUpTimeForSceneChange - timer) * 0.8f);
 
-				if (timer >= powerUpTimeForSceneChange) {
-                    Debug.Log("Full power");
-                    changeTierOrScene();
-                    timer = 0;
+				if (timer >= powerUpTimeForSceneChange)
+				{
+					Debug.Log("Full power");
+					changeTierOrScene();
+					timer = 0;
 				}
-                
-			} else {
+			}
+			else
+			{
 				timer = 0;
 			}
 		}
 	}
 
-    public void changeTierOrScene()
-    {
-
-        splashShown = false;
-
+	public void changeTierOrScene()
+	{
 		music.volume = 0.8f;
-        int maxTier = 0;
-        
-        // Check if next tier aviable
-        GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
-        for (int i = 0; i < houseSpots.Length; i++)
-        {
-            maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
-        }
+		canDoActions = true;
+		splashShown = false;
+		int maxTier = 0;
 
-
-        if(!IsNextTierAviable())
-        {
-            currentTier = 0;
-            SceneManager.LoadScene(nextScene);
-
-			lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
-
-			nextScene = lvlmanager.nextScene;
-
-			currentTowers[0] = (lvlmanager.tower1aCount);
-			currentTowers[1] = (lvlmanager.tower2aCount);
-			currentTowers[2] = (lvlmanager.tower3aCount);
+		// Check if next tier aviable
+		GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
+		for (int i = 0; i < houseSpots.Length; i++)
+		{
+			maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
 		}
-        else
-        {
-            currentTier++;
+
+
+		if (!IsNextTierAviable())
+		{
+			towersToDestroy = GameObject.FindGameObjectsWithTag("Tower");
+			if (currentLvl == SaveControl.instance.towersUsedToWin.Count)
+			{
+				SaveControl.instance.towersUsedToWin.Add(towersToDestroy.Length);
+			}
+			if (SaveControl.instance.towersUsedToWin[currentLvl] > towersToDestroy.Length)
+				SaveControl.instance.towersUsedToWin[currentLvl] = towersToDestroy.Length;
+
+			SaveControl.instance.Save();
+
+			string nextScene = (++currentLvl).ToString();
+			SceneManager.LoadScene("LVL" + nextScene);
+
+		}
+		else
+		{
+			currentTier++;
 			if (currentTier == 1)
 			{
 				currentTowers[0] += (lvlmanager.tower1bCount);
@@ -342,54 +365,44 @@ public class GameManager : MonoBehaviour   {
 				currentTowers[2] += (lvlmanager.tower3cCount);
 			}
 			setTier(currentTier);
-        }
-
-
-
-
-
-
+		}
 		UpdateNumbers();
+	}
+	public bool IsNextTierAviable()
+	{
+		int maxTier = 0;
 
+		// Check if next tier aviable
+		GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
+		Debug.Log("Spots found: " + houseSpots);
+		for (int i = 0; i < houseSpots.Length; i++)
+		{
+			maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
+		}
+
+		Debug.Log("Max tier: " + currentTier + " / " + maxTier);
+
+		return currentTier < maxTier;
+	}
+	public void showForbiddenZones(bool show)
+	{
+		GameObject[] forbiddenZones = GameObject.FindGameObjectsWithTag("Forbidden");
+		for (int i = 0; i < forbiddenZones.Length; i++)
+		{
+			SpriteRenderer sr = forbiddenZones[i].GetComponentInChildren<SpriteRenderer>();
+
+			if (show)
+			{
+				sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+			}
+			else
+			{
+				sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
+			}
+
+		}
 
 	}
-
-	public bool IsNextTierAviable()
-    {
-        int maxTier = 0;
-
-        // Check if next tier aviable
-        GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
-        Debug.Log("Spots found: " + houseSpots);
-        for (int i = 0; i < houseSpots.Length; i++)
-        {
-            maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
-        }
-
-        Debug.Log("Max tier: " + currentTier + " / " + maxTier);
-
-        return currentTier < maxTier;
-    }
-
-    public void showForbiddenZones(bool show)
-    {
-        GameObject[] forbiddenZones = GameObject.FindGameObjectsWithTag("Forbidden");
-        for (int i = 0; i < forbiddenZones.Length; i++)
-        {
-            SpriteRenderer sr = forbiddenZones[i].GetComponentInChildren<SpriteRenderer>();
-
-            if (show)
-            {
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
-            }
-            else
-            {
-                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
-            }
-
-        }
-
-    }
 
 
 }

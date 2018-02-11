@@ -14,18 +14,6 @@ public class LVLsettings : MonoBehaviour {
 	public int tower2cCount = 0;
 	public int tower3cCount = 0;
 
-
-
-	public string nextScene = "TEST";
-
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	public int level;
+	public string levelName;
 }

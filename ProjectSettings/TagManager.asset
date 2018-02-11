@@ -12,6 +12,8 @@ TagManager:
   - HouseSpot
   - LVLmanager
   - Towerspawner
+  - HousesContainer
+  - TowersContainer
   layers:
   - Default
   - TransparentFX

@@ -8,24 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_SCENES/main.unity
     guid: cfce37247246635459e6bea881f081cc
+  - enabled: 1
+    path: Assets/_SCENES/LVL1.unity
+    guid: 26533f1b32f0fc246add73e7e3971014
+  - enabled: 1
+    path: Assets/_SCENES/LVL0.unity
+    guid: fef3e840b486a324d8c100949afe26cb
   - enabled: 0
     path: Assets/_SCENES/AREK.unity
     guid: d7e8f600315dac34f978acf3e9c4cf49
   - enabled: 0
     path: Assets/_SCENES/PiotrJ.unity
     guid: f858cc26a443140e3a8c005821acd290
-  - enabled: 0
-    path: Assets/_SCENES/TEST.unity
-    guid: edf69a3f0b6414327b689311726a34d0
-  - enabled: 1
-    path: Assets/_SCENES/WIN.unity
-    guid: 711c0a44487e34b0ca3024f569b00e91
-  - enabled: 1
-    path: Assets/_SCENES/LOSE.unity
-    guid: 834ddbdb755a040ffbda7a483fcc6d97
-  - enabled: 1
-    path: Assets/_SCENES/l2.unity
-    guid: b1a59bff6611f0f4c8bf01a5cd3de2ea
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

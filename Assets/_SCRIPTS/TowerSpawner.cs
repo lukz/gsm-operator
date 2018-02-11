@@ -53,6 +53,7 @@ public class TowerSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (!GameManager.instance.canDoActions) return;
 		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 		if (destroy) {
 			Transform dt = destroyIcon.GetComponent<Transform>();
@@ -192,6 +193,7 @@ public class TowerSpawner : MonoBehaviour {
 	}
 
 	public void spawn(GameObject tower, float angle) {
+		if (!GameManager.instance.canDoActions) return;
 		Debug.Log("Spawn stuff maybe? " + spawned + " " + towerToSpawn);
 		// ie in erase mode
 		if (destroyIcon) {
@@ -215,7 +217,7 @@ public class TowerSpawner : MonoBehaviour {
 		towerToSpawn = tower;
 		GameManager.instance.btnClick.Play();
 		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-		Transform parent = GetComponent<Transform>().parent.parent;
+		Transform parent = GameManager.towersContainer.transform;
 		spawned = GameObject.Instantiate(tower, pos, Quaternion.identity, parent);
 		TowerScript ts = spawned.GetComponent<TowerScript>();
         ts.setPowerRotation(angle + 90);
@@ -228,6 +230,7 @@ public class TowerSpawner : MonoBehaviour {
     }
 
 	public void despawn() {
+		if (!GameManager.instance.canDoActions) return;
 		Debug.Log("destroy stuff?");
 		destroy = !destroy;
 		if (destroy) {
