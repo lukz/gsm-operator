@@ -1,4 +1,4 @@
-﻿#ifndef BLEND_MODES_INCLUDED
+﻿
 #define BLEND_MODES_INCLUDED
 
 
@@ -373,5 +373,3 @@ float4 Luminosity(float4 base, float4 top)
 	return float4(HslToRgb(float3(baseHsl.x, baseHsl.y, topHsl.z)), base.a);
 }
 
-
-#endif
