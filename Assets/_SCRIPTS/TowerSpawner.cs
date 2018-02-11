@@ -57,7 +57,7 @@ public class TowerSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!GameManager.instance.canDoActions) return;
+		if (!GameManager.canDoActions) return;
 		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 		if (destroy) {
 			Transform dt = destroyIcon.GetComponent<Transform>();
@@ -208,6 +208,7 @@ public class TowerSpawner : MonoBehaviour {
 			GameManager.instance.deny.Play();
 
 			if (GameManager.IS_MOBILE) {
+				GameManager.canDoActions = false;
 				Invoke("CancelSpawn", 1f);
 			} else {
 				CancelSpawn();
@@ -231,6 +232,7 @@ public class TowerSpawner : MonoBehaviour {
 		}
 		showForbiddenZones(false);
 		lastSpawned = null;
+		GameManager.canDoActions = true;
 	}
 
 	int getOverCount() {
@@ -254,7 +256,7 @@ public class TowerSpawner : MonoBehaviour {
 	}
 
 	public void spawn(GameObject tower, float angle) {
-		if (!GameManager.instance.canDoActions) return;
+		if (!GameManager.canDoActions) return;
 		Debug.Log("Spawn stuff maybe? " + spawned + " " + towerToSpawn);
 		// ie in erase mode
 		if (destroyIcon) {
@@ -292,7 +294,7 @@ public class TowerSpawner : MonoBehaviour {
     }
 
 	public void despawn() {
-		if (!GameManager.instance.canDoActions) return;
+		if (!GameManager.canDoActions) return;
 		Debug.Log("destroy stuff?");
 		destroy = !destroy;
 		if (destroy) {
