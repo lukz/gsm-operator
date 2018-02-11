@@ -10,6 +10,7 @@ public class TowerSpawner : MonoBehaviour {
 	GameObject destroyIcon;
 
 	GameObject spawned;
+	GameObject lastSpawned;
 	GameObject towerToSpawn;
 	public GameObject towerExplosion;
 
@@ -202,11 +203,14 @@ public class TowerSpawner : MonoBehaviour {
 
 		TowerScript ts = spawned.GetComponent<TowerScript>();
 
+		lastSpawned = spawned;
 		if (!ts.isBuildable) {
 			GameManager.instance.deny.Play();
 
-			if (spawned) {
-				GameObject.Destroy(spawned);
+			if (GameManager.IS_MOBILE) {
+				Invoke("CancelSpawn", 1f);
+			} else {
+				CancelSpawn();
 			}
 		} else{
 			GameManager.shakePower += 0.15f;
@@ -214,11 +218,19 @@ public class TowerSpawner : MonoBehaviour {
 			ts.onBuilded();
 			GameManager.currentTowers[ts.id]--;
 			GameManager.UpdateNumbers();
+			showForbiddenZones(false);
 		}
 
-		showForbiddenZones(false);
-		spawned = null;
 		towerToSpawn = null;
+		spawned = null;
+	}
+
+	void CancelSpawn() {
+		if (lastSpawned) {
+			GameObject.Destroy(lastSpawned);
+		}
+		showForbiddenZones(false);
+		lastSpawned = null;
 	}
 
 	int getOverCount() {
