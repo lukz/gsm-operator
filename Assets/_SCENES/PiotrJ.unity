@@ -4761,12 +4761,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!114 &562733228 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114904874165418800, guid: 61e223a93ed2376488b10eaad4c66938,
-    type: 2}
-  m_PrefabInternal: {fileID: 961238433}
-  m_Script: {fileID: 11500000, guid: 0a52a230730bd4d4fb9d04cd8e1ec4e7, type: 3}
 --- !u!1 &566136139
 GameObject:
   m_ObjectHideFlags: 0
@@ -8207,26 +8201,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114583003275445766, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114951964033519340, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4832412141361542, guid: 61e223a93ed2376488b10eaad4c66938, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8262,112 +8236,11 @@ Prefab:
     - target: {fileID: 224045512544735004, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224045512544735004, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114583003275445766, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1363660973}
-    - target: {fileID: 114583003275445766, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 114583003275445766, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114583003275445766, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 114583003275445766, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114951964033519340, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1541948019}
-    - target: {fileID: 114951964033519340, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 114951964033519340, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114951964033519340, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 114951964033519340, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[2].eventID
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 562733228}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FinishBuildingTowerDrag
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[2].callback.m_TypeName
-      value: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartBuildingTowerDrag
-      objectReference: {fileID: 0}
-    - target: {fileID: 114421982937372814, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartBuildingTowerClick
-      objectReference: {fileID: 0}
-    - target: {fileID: 224080836836255036, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11659,81 +11532,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &1363660971 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1393185670855238, guid: 61e223a93ed2376488b10eaad4c66938,
-    type: 2}
-  m_PrefabInternal: {fileID: 961238433}
---- !u!114 &1363660973 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114764281554586854, guid: 61e223a93ed2376488b10eaad4c66938,
-    type: 2}
-  m_PrefabInternal: {fileID: 961238433}
-  m_Script: {fileID: 11500000, guid: 0a52a230730bd4d4fb9d04cd8e1ec4e7, type: 3}
---- !u!114 &1363660977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1363660971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 13
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1363660973}
-          m_MethodName: StartBuildingTowerDrag
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1363660973}
-          m_MethodName: StartBuildingTowerClick
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 14
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1363660973}
-          m_MethodName: FinishBuildingTowerDrag
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &1374794622
 GameObject:
   m_ObjectHideFlags: 0
@@ -13303,81 +13101,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &1541948017 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1306721796019012, guid: 61e223a93ed2376488b10eaad4c66938,
-    type: 2}
-  m_PrefabInternal: {fileID: 961238433}
---- !u!114 &1541948019 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114503123205261612, guid: 61e223a93ed2376488b10eaad4c66938,
-    type: 2}
-  m_PrefabInternal: {fileID: 961238433}
-  m_Script: {fileID: 11500000, guid: 0a52a230730bd4d4fb9d04cd8e1ec4e7, type: 3}
---- !u!114 &1541948023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1541948017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 13
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1541948019}
-          m_MethodName: StartBuildingTowerDrag
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1541948019}
-          m_MethodName: StartBuildingTowerClick
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 14
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1541948019}
-          m_MethodName: FinishBuildingTowerDrag
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1 &1543966475
 GameObject:
   m_ObjectHideFlags: 0
