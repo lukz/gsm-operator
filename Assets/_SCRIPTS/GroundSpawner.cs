@@ -48,13 +48,14 @@ public class GroundSpawner : MonoBehaviour {
 						Debug.LogError("Ground: Tile at " + which + " missing");
 						continue;
 					}
-					Vector3 pos = new Vector3(cx + x, cy + y, 0);
+					Vector3 pos = new Vector3(cx + x -1, cy + y, 0);
 					GameObject ob =  GameObject.Instantiate(tiles[which], pos, Quaternion.identity, transform);
-					float val = 1 - ((Mathf.Abs(x) + Mathf.Abs(y))/12f * 0.3f) - Random.Range(0.02f,0.05f);
+					float val = 1 - ((Mathf.Abs(x) + Mathf.Abs(y))/12f * 0.4f) - Random.Range(0.02f,0.05f);
 					if (Mathf.Abs(x) + Mathf.Abs(y) < 2)
 					{
-						val = 0.96f;
+						val = 1f;
 					}
+					val *= 0.9f;
 
 					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1.3f);
 				}
