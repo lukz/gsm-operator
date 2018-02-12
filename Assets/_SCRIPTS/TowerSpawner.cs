@@ -103,7 +103,7 @@ public class TowerSpawner : MonoBehaviour {
 
 				TowerScript ts = spawned.GetComponent<TowerScript>();
 
-				if (!ts.isBuildable) {
+				if (!ts.IsBuildable) {
 					GameManager.instance.deny.Play();
 					return;
 				}
@@ -204,7 +204,7 @@ public class TowerSpawner : MonoBehaviour {
 		TowerScript ts = spawned.GetComponent<TowerScript>();
 
 		lastSpawned = spawned;
-		if (!ts.isBuildable) {
+		if (!ts.IsBuildable) {
 			GameManager.instance.deny.Play();
 
 			if (GameManager.IS_MOBILE) {
