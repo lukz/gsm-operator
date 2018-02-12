@@ -8,15 +8,29 @@ public class TowerScript : MonoBehaviour {
     public List<GameObject> powered;
     public int id;
 
-    public bool isBuildable;
+    private bool isBuildable;
+    public bool IsBuildable {
+        get {
+            return isBuildable;
+        }
+        set {
+            isBuildable = value;
+            if (animator) {
+                animator.SetBool("isBuildable", value);
+            }
+        }
+    }
 
     public bool isBuilded;
 
     public float PowerRotation {get; private set; }
 
+    private Animator animator;
+
     // Use this for initialization
     void Start () {
         powered = new List<GameObject>();
+        animator = GetComponentInParent<Animator>();
     }
 	
 	// Update is called once per frame

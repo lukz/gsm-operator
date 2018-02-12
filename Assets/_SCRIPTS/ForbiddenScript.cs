@@ -21,14 +21,14 @@ public class ForbiddenScript : MonoBehaviour
     {
         if (colidees.Count == 0)
         {
-            towerScript.isBuildable = true;
+            towerScript.IsBuildable = true;
             if (fss) {
                 fss.disable();
             }
         }
         else
         {
-            towerScript.isBuildable = false;
+            towerScript.IsBuildable = false;
             if (fss) {
                 fss.enable();
             }
