@@ -21,25 +21,17 @@ public class GameManager : MonoBehaviour
 
 	public GameObject splash;
 
-	public static List<int> currentTowers = new List<int>();
+	public static TowerSet currentTowers = new TowerSet();
+
 	[SerializeField]
-	private Text countTowerCircle;
+	private Text sphereTowerCount;
 	[SerializeField]
-	private Text countTowerArc;
+	private Text coneTowerCount;
 	[SerializeField]
-	private Text countTowerLine;
+	private Text rayTowerCount;
 	public static float shakePower = 0;
 	[SerializeField]
 	private Slider powerSlider;
-	private int tower1aCount = 0;
-	private int tower2aCount = 0;
-	private int tower3aCount = 0;
-	private int tower1bCount = 0;
-	private int tower2bCount = 0;
-	private int tower3bCount = 0;
-	private int tower1cCount = 0;
-	private int tower2cCount = 0;
-	private int tower3cCount = 0;
 	private int currentLvl;
 	private string currentLvlName;
 
@@ -80,9 +72,6 @@ public class GameManager : MonoBehaviour
 		SaveControl.instance.Load();
 		Debug.Log(SaveControl.instance.towersUsedToWin.Count);
 		towerspawner = GetComponent<TowerSpawner>();
-		currentTowers.Add(0);
-		currentTowers.Add(0);
-		currentTowers.Add(0);
 		if (OPENlastLEVEL)
 		{
 			int lastUnlockedLevel = 0;
@@ -111,10 +100,11 @@ public class GameManager : MonoBehaviour
 		currentLvl = lvlmanager.level;
 		currentLvlName = lvlmanager.levelName;
 		towersContainer = GameObject.FindGameObjectWithTag("TowersContainer");
-		currentTowers[0] = (lvlmanager.tower1aCount);
-		currentTowers[1] = (lvlmanager.tower2aCount);
-		currentTowers[2] = (lvlmanager.tower3aCount);
-
+		
+		currentTowers.sphereCount = lvlmanager.GetSphereCount(currentTier);
+		currentTowers.coneCount = lvlmanager.GetConeCount(currentTier);
+		currentTowers.rayCount = lvlmanager.GetRayCount(currentTier);
+	
 		setTier(currentTier);
 		UpdateNumbers();
 
@@ -174,23 +164,23 @@ public class GameManager : MonoBehaviour
 	}
 	public static void UpdateNumbers()
 	{
-		if (instance.countTowerCircle)
+		if (instance.sphereTowerCount)
 		{
-			int count = currentTowers[0];
-			instance.countTowerCircle.text = count.ToString();
-			instance.countTowerCircle.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
+			int count = currentTowers.sphereCount;
+			instance.sphereTowerCount.text = count.ToString();
+			instance.sphereTowerCount.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
 		}
-		if (instance.countTowerArc)
+		if (instance.coneTowerCount)
 		{
-			int count = currentTowers[1];
-			instance.countTowerArc.text = count.ToString();
-			instance.countTowerArc.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
+			int count = currentTowers.coneCount;
+			instance.coneTowerCount.text = count.ToString();
+			instance.coneTowerCount.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
 		}
-		if (instance.countTowerLine)
+		if (instance.rayTowerCount)
 		{
-			int count = currentTowers[2];
-			instance.countTowerLine.text = count.ToString();
-			instance.countTowerLine.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
+			int count = currentTowers.rayCount;
+			instance.rayTowerCount.text = count.ToString();
+			instance.rayTowerCount.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
 		}
 		//instance.countTowerLine.text = currentTowers[2].ToString();
 	}
@@ -354,18 +344,10 @@ public class GameManager : MonoBehaviour
 		else
 		{
 			currentTier++;
-			if (currentTier == 1)
-			{
-				currentTowers[0] += (lvlmanager.tower1bCount);
-				currentTowers[1] += (lvlmanager.tower2bCount);
-				currentTowers[2] += (lvlmanager.tower3bCount);
-			}
-			else
-			{
-				currentTowers[0] += (lvlmanager.tower1cCount);
-				currentTowers[1] += (lvlmanager.tower2cCount);
-				currentTowers[2] += (lvlmanager.tower3cCount);
-			}
+			currentTowers.sphereCount += lvlmanager.GetSphereCount(currentTier);
+			currentTowers.coneCount += lvlmanager.GetConeCount(currentTier);
+			currentTowers.rayCount += lvlmanager.GetRayCount(currentTier);
+
 			setTier(currentTier);
 		}
 		UpdateNumbers();

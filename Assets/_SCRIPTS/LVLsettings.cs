@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LVLsettings : MonoBehaviour {
-
-	public int tower1aCount = 0;
-	public int tower2aCount = 0;
-	public int tower3aCount = 0;
-	public int tower1bCount = 0;
-	public int tower2bCount = 0;
-	public int tower3bCount = 0;
-	public int tower1cCount = 0;
-	public int tower2cCount = 0;
-	public int tower3cCount = 0;
-
 	public int level;
+	public List<TowerSet> tiers;
 	public string levelName;
+
+	public int GetSphereCount(int tier) {
+		if (tier < 0 || tier >= tiers.Count) return 0;
+		return tiers[tier].sphereCount;
+	}
+
+	public int GetConeCount(int tier) {
+		if (tier < 0 || tier >= tiers.Count) return 0;
+		return tiers[tier].coneCount;
+	}
+
+	public int GetRayCount(int tier) {
+		if (tier < 0 || tier >= tiers.Count) return 0;
+		return tiers[tier].rayCount;
+	}
 }

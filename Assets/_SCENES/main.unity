@@ -535,16 +535,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a38e2d89c3e36746b8094219748d714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower1aCount: 1
-  tower2aCount: 0
-  tower3aCount: 0
-  tower1bCount: 0
-  tower2bCount: 1
-  tower3bCount: 0
-  tower1cCount: 0
-  tower2cCount: 0
-  tower3cCount: 2
   level: 0
+  tiers:
+  - sphereCount: 1
+    coneCount: 0
+    rayCount: 0
+  - sphereCount: 0
+    coneCount: 1
+    rayCount: 0
+  - sphereCount: 0
+    coneCount: 0
+    rayCount: 2
   levelName: Colony Alpha
 --- !u!4 &1109528205
 Transform:
@@ -922,7 +923,7 @@ Prefab:
     - target: {fileID: 224080836836255036, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 250
+      value: 315
       objectReference: {fileID: 0}
     - target: {fileID: 82723205780010066, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}

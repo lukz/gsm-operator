@@ -14,8 +14,11 @@ public class TowerSpawner : MonoBehaviour {
 	GameObject towerToSpawn;
 	public GameObject towerExplosion;
 
-	public List<GameObject> towerPrefabs;
+	public GameObject sphereTowerPrefab;
+	public GameObject coneTowerPrefab;
+	public GameObject rayTowerPrefab;
 
+	GameObject[] towerPrefabs = new GameObject[3];
 	GraphicRaycaster raycaster;
     PointerEventData pointerEventData;
     EventSystem eventSystem;
@@ -39,20 +42,23 @@ public class TowerSpawner : MonoBehaviour {
 		Debug.Log("events " + eventSystem);
 
 		// set ids for stuff
-		for (int i = 0; i < towerPrefabs.Count; i++)
-		{
-			GameObject go = towerPrefabs[i];
-			if (!go) {
-				Debug.LogError("Missing tower prefab at " + i);
-				continue;
-			}
-			TowerScript ts = go.GetComponent<TowerScript>();
-			if (!ts) {
-				Debug.LogError("Missing TowerScript on tower prefab at " + i);
-				continue;
-			}
-			ts.id = i;
+		updateTowerId(sphereTowerPrefab, 0);
+		updateTowerId(coneTowerPrefab, 1);
+		updateTowerId(rayTowerPrefab, 2);
+	}
+
+	void updateTowerId(GameObject prefab, int id) {
+		if (!prefab) {
+			Debug.LogError("Missing tower prefab " + id);
+			return;
 		}
+		TowerScript ts = prefab.GetComponent<TowerScript>();
+		if (!ts) {
+			Debug.LogError("Missing TowerScript on tower prefab " + id);
+			return;
+		}
+		ts.id = id;
+		towerPrefabs[id] = prefab;
 	}
 	
 	// Update is called once per frame
