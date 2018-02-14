@@ -70,7 +70,7 @@ public class GroundSpawner : MonoBehaviour {
 					val *= multiplierDark;
 					val -= Mathf.Abs(sca-1)*0.25f;
 
-					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1.3f);
+					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1.2f);
 				}
 			}
 		} else {
@@ -98,7 +98,7 @@ public class GroundSpawner : MonoBehaviour {
 					val = 1f;
 				}
 				val -= (go.transform.position.y / 4 * 0.1f);
-				go.GetComponent<SpriteRenderer>().color = new Color(val, val, val * 1.2f);
+				go.GetComponent<SpriteRenderer>().color = new Color(val, val, val * 1.1f);
 
 			}
 		} else {
