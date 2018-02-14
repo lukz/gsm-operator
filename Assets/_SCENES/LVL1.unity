@@ -15537,6 +15537,16 @@ MonoBehaviour:
   tower2cCount: 0
   tower3cCount: 2
   level: 0
+  tiers:
+  - sphereCount: 1
+    coneCount: 0
+    rayCount: 0
+  - sphereCount: 0
+    coneCount: 1
+    rayCount: 0
+  - sphereCount: 0
+    coneCount: 0
+    rayCount: 2
   levelName: Colony Alpha
 --- !u!4 &1927867445
 Transform:

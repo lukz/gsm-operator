@@ -535,16 +535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a38e2d89c3e36746b8094219748d714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower1aCount: 1
-  tower2aCount: 0
-  tower3aCount: 0
-  tower1bCount: 0
-  tower2bCount: 1
-  tower3bCount: 0
-  tower1cCount: 0
-  tower2cCount: 0
-  tower3cCount: 2
   level: 0
+  tiers: []
   levelName: Colony Alpha
 --- !u!4 &1109528205
 Transform:
@@ -929,6 +921,24 @@ Prefab:
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114815657346740086, guid: 61e223a93ed2376488b10eaad4c66938,
+        type: 2}
+      propertyPath: sphereTowerPrefab
+      value: 
+      objectReference: {fileID: 1241436494150840, guid: 4b4fb01d0fb2ec246a8565de6db1244c,
+        type: 2}
+    - target: {fileID: 114815657346740086, guid: 61e223a93ed2376488b10eaad4c66938,
+        type: 2}
+      propertyPath: coneTowerPrefab
+      value: 
+      objectReference: {fileID: 1356770297676894, guid: 6411ad6ac071646f6b9f6af7775b0233,
+        type: 2}
+    - target: {fileID: 114815657346740086, guid: 61e223a93ed2376488b10eaad4c66938,
+        type: 2}
+      propertyPath: rayTowerPrefab
+      value: 
+      objectReference: {fileID: 1623847998014446, guid: 78de799895db74274ad59f37bede022f,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61e223a93ed2376488b10eaad4c66938, type: 2}
   m_IsPrefabParent: 0

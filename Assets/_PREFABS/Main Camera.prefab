@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 114503123205261612}
   - component: {fileID: 114107087887534980}
   m_Layer: 5
-  m_Name: TowerButtonConical
+  m_Name: ConeTowerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 222442408774492232}
   - component: {fileID: 114933586783628054}
   m_Layer: 5
-  m_Name: TowerAvailableCountText
+  m_Name: ConeCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 222984685850747502}
   - component: {fileID: 114286281599599500}
   m_Layer: 5
-  m_Name: TowerAvailableCountText
+  m_Name: RayCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 114764281554586854}
   - component: {fileID: 114589574433310200}
   m_Layer: 5
-  m_Name: TowerButtonDirectional
+  m_Name: RayTowerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 222153353523825454}
   - component: {fileID: 114189437105894246}
   m_Layer: 5
-  m_Name: TowerAvailableCountText
+  m_Name: SphereCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 114904874165418800}
   - component: {fileID: 114421982937372814}
   m_Layer: 5
-  m_Name: TowerButtonSpherical
+  m_Name: SphereTowerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1328,7 +1328,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2198,7 +2198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b387d8de14d31ca4abae1313973b9ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canDoActions: 1
   music: {fileID: 82298426522869060}
   winPhase: {fileID: 82466985466312244}
   winLvl: {fileID: 82723205780010066}
@@ -2207,9 +2206,9 @@ MonoBehaviour:
   towerBuilt: {fileID: 82145552966491430}
   deny: {fileID: 82060062547688384}
   splash: {fileID: 1658308925535994, guid: 8b35335955d10874991b55f933daff66, type: 2}
-  countTowerCircle: {fileID: 114189437105894246}
-  countTowerArc: {fileID: 114933586783628054}
-  countTowerLine: {fileID: 114286281599599500}
+  sphereTowerCount: {fileID: 114189437105894246}
+  coneTowerCount: {fileID: 114933586783628054}
+  rayTowerCount: {fileID: 114286281599599500}
   powerSlider: {fileID: 114790684201213668}
   powerUpTimeForSceneChange: 3
   restarting: 0
@@ -2624,10 +2623,12 @@ MonoBehaviour:
     type: 2}
   towerExplosion: {fileID: 1663869448402244, guid: 89c5ffd86f6314ee1940ca6e42cb7f9a,
     type: 2}
-  towerPrefabs:
-  - {fileID: 1241436494150840, guid: 4b4fb01d0fb2ec246a8565de6db1244c, type: 2}
-  - {fileID: 1356770297676894, guid: 6411ad6ac071646f6b9f6af7775b0233, type: 2}
-  - {fileID: 1623847998014446, guid: 78de799895db74274ad59f37bede022f, type: 2}
+  sphereTowerPrefab: {fileID: 1241436494150840, guid: 4b4fb01d0fb2ec246a8565de6db1244c,
+    type: 2}
+  coneTowerPrefab: {fileID: 1356770297676894, guid: 6411ad6ac071646f6b9f6af7775b0233,
+    type: 2}
+  rayTowerPrefab: {fileID: 1623847998014446, guid: 78de799895db74274ad59f37bede022f,
+    type: 2}
   rebuildOnClick: 1
 --- !u!114 &114872529721999960
 MonoBehaviour:
@@ -3014,7 +3015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 334, y: 0}
+  m_AnchoredPosition: {x: 315, y: 0}
   m_SizeDelta: {x: 900, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224124924492080706
