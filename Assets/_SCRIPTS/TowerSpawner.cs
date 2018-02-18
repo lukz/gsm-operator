@@ -153,7 +153,7 @@ public class TowerSpawner : MonoBehaviour {
 			if (getOverCount() > 0) {
 				return;
 			}
-			GameObject tower = getTowerAt(pos.x, pos.y);
+			/*GameObject tower = getTowerAt(pos.x, pos.y);
 			if (tower) {
 				if (rebuildOnClick) {
 					TowerScript ts = tower.GetComponent<TowerScript>();
@@ -165,7 +165,7 @@ public class TowerSpawner : MonoBehaviour {
 					transform.position = new Vector2(pos.x + towerOffset.x, pos.y + towerOffset.y);
 				}
 				destroyTower(tower);
-			}
+			}*/
 		}
 	}
 

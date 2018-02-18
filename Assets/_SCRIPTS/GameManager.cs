@@ -45,13 +45,15 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private float delayBetweenTowerRestart = 0.15f;
 	private float timerTowerRestart = 0f;
-	GameObject[] towersToDestroy;
+	List<GameObject> towersToDestroy = new List<GameObject>();
 	int currentlyDestroyedTower;
 	private TowerSpawner towerspawner;
 	public static GameObject towersContainer;
 	float timer;
 
 	public bool OPENlastLEVEL;
+
+	private int MAXLVLS = 2;
 
 
 	void Awake()
@@ -70,7 +72,6 @@ public class GameManager : MonoBehaviour
 	{
 		SceneManager.sceneLoaded += PrepareScene;
 		SaveControl.instance.Load();
-		Debug.Log(SaveControl.instance.towersUsedToWin.Count);
 		towerspawner = GetComponent<TowerSpawner>();
 		if (OPENlastLEVEL)
 		{
@@ -78,47 +79,78 @@ public class GameManager : MonoBehaviour
 			if (SaveControl.instance.towersUsedToWin.Count > 0) // wygral chociaz 1 poziom
 			{
 				lastUnlockedLevel = SaveControl.instance.towersUsedToWin.Count;
-				if (SaveControl.instance.towersUsedToWin.Count >= 24)
+				if (SaveControl.instance.towersUsedToWin.Count >= MAXLVLS)
 				{
-					lastUnlockedLevel = 23;
+					lastUnlockedLevel = 0;
 				}
 			}
 			string lvl = "LVL" + lastUnlockedLevel.ToString(); // zaladuj ostatni dostepny poziom
 			SceneManager.LoadScene(lvl);
 
-		}else
+		}
+		else
 		{
-			PrepareScene(SceneManager.GetSceneByName("main"),LoadSceneMode.Single);
+			PrepareScene(SceneManager.GetSceneByName("main"), LoadSceneMode.Single);
 		}
 		canDoActions = true;
 
 	}
-	void PrepareScene(Scene scene , LoadSceneMode mode)
-	{
-		currentTier = 0;
-		lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
-		currentLvl = lvlmanager.level;
-		currentLvlName = lvlmanager.levelName;
-		towersContainer = GameObject.FindGameObjectWithTag("TowersContainer");
-		
-		currentTowers.sphereCount = lvlmanager.GetSphereCount(currentTier);
-		currentTowers.coneCount = lvlmanager.GetConeCount(currentTier);
-		currentTowers.rayCount = lvlmanager.GetRayCount(currentTier);
-	
-		setTier(currentTier);
-		UpdateNumbers();
 
+	void PrepareScene(Scene scene, LoadSceneMode mode)
+	{
+		music.volume = 0.8f;
+		canDoActions = true;
+		splashShown = false;
+
+		currentTier = 0;
+
+		if (currentLvl == MAXLVLS + 1)
+		{
+			StartCoroutine(ChangeLvlTo1());
+		}else {
+			lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
+			currentLvl = lvlmanager.level;
+			currentLvlName = lvlmanager.levelName;
+			towersContainer = GameObject.FindGameObjectWithTag("TowersContainer");
+
+			currentTowers.sphereCount = lvlmanager.GetSphereCount(currentTier);
+			currentTowers.coneCount = lvlmanager.GetConeCount(currentTier);
+			currentTowers.rayCount = lvlmanager.GetRayCount(currentTier);
+
+			setTier(currentTier);
+			UpdateNumbers();
+		}
 	}
+
+	IEnumerator ChangeLvlTo1()
+	{
+		while (true)
+		{
+			yield return new WaitForSeconds(3);
+			currentLvl = 1;
+			SceneManager.LoadScene("LVL1");
+			StopCoroutine(ChangeLvlTo1());
+		}
+	}
+
 	public void Restart()
 	{
 		if (!canDoActions) return;
 		if (!restarting)
 		{
-			towersToDestroy = GameObject.FindGameObjectsWithTag("Tower");
+			GameObject[] towersTemp = GameObject.FindGameObjectsWithTag("Tower");
+			towersToDestroy = new List<GameObject>();
+			for (int i = 0; i < towersTemp.Length; i++)
+			{
+				if (towersTemp[i].GetComponent<TowerScript>().playerTower)
+				{
+					towersToDestroy.Add(towersTemp[i]);
+				}
+			}
 			timerTowerRestart = delayBetweenTowerRestart;
 			GameManager.instance.btnClick.Play();
 			currentlyDestroyedTower = 0;
-			if (towersToDestroy.Length > 0)
+			if (towersToDestroy.Count > 0)
 			{
 				restarting = true;
 			}
@@ -211,7 +243,7 @@ public class GameManager : MonoBehaviour
 	{
 		if (restarting)
 		{
-			if (towersToDestroy.Length > 0)
+			if (towersToDestroy.Count > 0)
 			{
 				timerTowerRestart -= Time.deltaTime;
 				if (timerTowerRestart <= 0)
@@ -219,7 +251,7 @@ public class GameManager : MonoBehaviour
 					timerTowerRestart = delayBetweenTowerRestart;
 					towerspawner.destroyTower(towersToDestroy[currentlyDestroyedTower]);
 					currentlyDestroyedTower++;
-					if (currentlyDestroyedTower >= towersToDestroy.Length)
+					if (currentlyDestroyedTower >= towersToDestroy.Count)
 					{
 						restarting = false;
 					}
@@ -261,14 +293,14 @@ public class GameManager : MonoBehaviour
 					canDoActions = false;
 
 					GameObject newSplash = Instantiate(splash);
-					if (IsNextTierAviable())
+					/*if (IsNextTierAviable())
 					{
 						newSplash.GetComponent<SplashScript>().setSplash(currentTier);
 					}
 					else
-					{
-						newSplash.GetComponent<SplashScript>().setEndSplash();
-					}
+					{*/
+					newSplash.GetComponent<SplashScript>().setEndSplash();
+					//}
 				}
 
 
@@ -299,6 +331,7 @@ public class GameManager : MonoBehaviour
 				if (timer >= powerUpTimeForSceneChange)
 				{
 					Debug.Log("Full power");
+					CheckSave();
 					changeTierOrScene();
 					timer = 0;
 				}
@@ -310,37 +343,37 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	private void CheckSave()
+	{
+		GameObject[] towersTemp = GameObject.FindGameObjectsWithTag("Tower");
+		if (currentLvl == SaveControl.instance.towersUsedToWin.Count)
+		{
+			SaveControl.instance.towersUsedToWin.Add(towersTemp.Length);
+		}
+		if (SaveControl.instance.towersUsedToWin[currentLvl] > towersTemp.Length)
+			SaveControl.instance.towersUsedToWin[currentLvl] = towersTemp.Length;
+
+		SaveControl.instance.Save();
+	}
+
 	public void changeTierOrScene()
 	{
-		music.volume = 0.8f;
-		canDoActions = true;
-		splashShown = false;
-		int maxTier = 0;
+		CheckSave();
+		/*int maxTier = 0;
 
 		// Check if next tier aviable
 		GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
 		for (int i = 0; i < houseSpots.Length; i++)
 		{
 			maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
-		}
+		}*/
 
 
-		if (!IsNextTierAviable())
-		{
-			towersToDestroy = GameObject.FindGameObjectsWithTag("Tower");
-			if (currentLvl == SaveControl.instance.towersUsedToWin.Count)
-			{
-				SaveControl.instance.towersUsedToWin.Add(towersToDestroy.Length);
-			}
-			if (SaveControl.instance.towersUsedToWin[currentLvl] > towersToDestroy.Length)
-				SaveControl.instance.towersUsedToWin[currentLvl] = towersToDestroy.Length;
+		//if (!IsNextTierAviable())
+		//{
 
-			SaveControl.instance.Save();
-
-			string nextScene = (++currentLvl).ToString();
-			SceneManager.LoadScene("LVL" + nextScene);
-
-		}
+		NextScene(true);
+		/*}
 		else
 		{
 			currentTier++;
@@ -349,10 +382,11 @@ public class GameManager : MonoBehaviour
 			currentTowers.rayCount += lvlmanager.GetRayCount(currentTier);
 
 			setTier(currentTier);
-		}
+		}*/
 		UpdateNumbers();
 	}
-	public bool IsNextTierAviable()
+
+	/*public bool IsNextTierAviable()
 	{
 		int maxTier = 0;
 
@@ -367,6 +401,36 @@ public class GameManager : MonoBehaviour
 		Debug.Log("Max tier: " + currentTier + " / " + maxTier);
 
 		return currentTier < maxTier;
+	}*/
+
+
+	public void NextScene(bool wonLvl = false)
+	{
+		if (currentLvl < SaveControl.instance.towersUsedToWin.Count)
+		{
+			if (currentLvl == MAXLVLS)
+			{
+				if (wonLvl)
+				{
+					currentLvl++;
+					SceneManager.LoadScene("END");
+				}
+			}
+			else
+			{
+				string nextScene = (++currentLvl).ToString();
+				SceneManager.LoadScene("LVL" + nextScene);
+			}
+		}
+	}
+
+	public void PrevScene()
+	{
+		if (currentLvl > 0)
+		{
+			string nextScene = (--currentLvl).ToString();
+			SceneManager.LoadScene("LVL" + nextScene);
+		}
 	}
 	public void showForbiddenZones(bool show)
 	{

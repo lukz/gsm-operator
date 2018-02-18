@@ -8,6 +8,8 @@ public class TowerScript : MonoBehaviour {
     public List<GameObject> powered;
     public int id;
 
+	public bool playerTower = true;
+
     private bool isBuildable;
     public bool IsBuildable {
         get {

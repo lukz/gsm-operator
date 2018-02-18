@@ -13,8 +13,16 @@ public class SaveControl : MonoBehaviour {
 	public List<int> towersUsedToWin = new List<int>();
 
 	void Awake () {
-			instance = this;
-	}
+			if (instance == null)
+			{
+				instance = this;
+				DontDestroyOnLoad(gameObject);
+			}
+			else if (instance != this)
+			{
+				Destroy(gameObject);
+			}
+		}
 	
 
 	public void Save()
