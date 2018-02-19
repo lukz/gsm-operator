@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	// public static bool IS_MOBILE = Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer;
-	public static bool IS_MOBILE = true;
+	public static bool IS_MOBILE = Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer;
+	// public static bool IS_MOBILE = true;
 
 	public static bool canDoActions = true;
 
