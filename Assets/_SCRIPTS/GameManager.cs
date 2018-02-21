@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 	public static bool canDoActions = true;
 
 	public AudioSource music;
-	public AudioSource winPhase;
 	public AudioSource winLvl;
 	public AudioSource btnClick;
 	public AudioSource destroy;
@@ -171,7 +170,6 @@ public class GameManager : MonoBehaviour
 		Debug.Log("Toggle sound " + enabled);
 		soundOn = enabled;
 		music.mute = !enabled;
-		winPhase.mute = !enabled;
 		winLvl.mute = !enabled;
 		btnClick.mute = !enabled;
 		destroy.mute = !enabled;
@@ -314,14 +312,7 @@ public class GameManager : MonoBehaviour
 						maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
 					}
 
-					if (currentTier >= maxTier)
-					{
 						winLvl.Play();
-					}
-					else
-					{
-						winPhase.Play();
-					}
 				}
 
 				timer += Time.deltaTime;
