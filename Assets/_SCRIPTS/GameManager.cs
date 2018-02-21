@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-	// public static bool IS_MOBILE = Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer;
-	public static bool IS_MOBILE = true;
+	public static bool IS_ANDROID = Application.platform == RuntimePlatform.Android;
+	public static bool IS_IOS = Application.platform == RuntimePlatform.IPhonePlayer;
+	public static bool IS_MOBILE = IS_ANDROID || IS_IOS;
+	// public static bool IS_MOBILE = true;
 
 	public static bool canDoActions = true;
 
@@ -62,6 +64,8 @@ public class GameManager : MonoBehaviour
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
+			// TODO actual volume?
+			toggleSound(Prefs.GetMasterVolume() > 0);
 		}
 		else if (instance != this)
 		{
@@ -159,29 +163,24 @@ public class GameManager : MonoBehaviour
 	}
 	public void toggleSound()
 	{
-		if (soundOn)
-		{
-			soundOn = false;
-			music.mute = true;
-			winPhase.mute = true;
-			winLvl.mute = true;
-			btnClick.mute = true;
-			destroy.mute = true;
-			towerBuilt.mute = true;
-			deny.mute = true;
-		}
-		else
-		{
-			soundOn = true;
-			music.mute = false;
-			winPhase.mute = false;
-			winLvl.mute = false;
-			btnClick.mute = false;
-			destroy.mute = false;
-			towerBuilt.mute = false;
-			deny.mute = false;
-		}
+		toggleSound(!soundOn);
 	}
+
+	public void toggleSound(bool enabled)
+	{
+		Debug.Log("Toggle sound " + enabled);
+		soundOn = enabled;
+		music.mute = !enabled;
+		winPhase.mute = !enabled;
+		winLvl.mute = !enabled;
+		btnClick.mute = !enabled;
+		destroy.mute = !enabled;
+		towerBuilt.mute = !enabled;
+		deny.mute = !enabled;
+
+		Prefs.SetMasterVolume(soundOn?1:0);
+	}
+
 	public void setTier(int tier)
 	{
 		GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
@@ -451,6 +450,11 @@ public class GameManager : MonoBehaviour
 		}
 
 	}
-
-
+	void OnDestroy() {
+		if (instance == this) {
+        	Debug.Log("GameManager nuked");
+			Prefs.Save();
+			instance = null;
+		}
+    }
 }
