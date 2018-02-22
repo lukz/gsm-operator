@@ -92,14 +92,15 @@ public class GroundSpawner : MonoBehaviour {
 				go = GameObject.Instantiate(go, pos, Quaternion.identity, transform);
 				float sca = Mathf.Max(0.45f,Mathf.Min(1, 1 - (go.transform.position.y / 5 * 0.9f)));
 				go.transform.localScale = new Vector3(1, sca, 1);
-				float val = 1 - ((Mathf.Abs(go.transform.position.x) + Mathf.Abs(go.transform.position.y)) / 12f * 0.12f) - Random.Range(0.02f, 0.05f);
-				if (Mathf.Abs(go.transform.position.x) + Mathf.Abs(go.transform.position.y) < 2)
-				{
-					val = 1f;
-				}
-				val -= (go.transform.position.y / 4 * 0.1f);
-				go.GetComponent<SpriteRenderer>().color = new Color(val, val, val * 1.1f);
-
+				
+					float val = 1 - ((Mathf.Abs(go.transform.position.x) + Mathf.Abs(go.transform.position.y)) / 12f * 0.01f) - Random.Range(0.02f, 0.05f);
+					if (Mathf.Abs(go.transform.position.x) + Mathf.Abs(go.transform.position.y) < 2)
+					{
+						val = 1f;
+					}
+					val -= (go.transform.position.y / 4 * 0.1f)*(scaleVanishingPoint/0.25f);
+					go.GetComponent<SpriteRenderer>().color = new Color(val, val, val * 1.1f);
+				
 			}
 		} else {
 			Debug.LogError("Ground: Decals are missing");

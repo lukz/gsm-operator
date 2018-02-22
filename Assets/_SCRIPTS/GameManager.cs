@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
 		{
 			PrepareScene(SceneManager.GetSceneByName("main"), LoadSceneMode.Single);
 		}
+		if (!music.isPlaying) music.Play();
 		canDoActions = true;
 
 	}
