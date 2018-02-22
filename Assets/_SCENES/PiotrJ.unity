@@ -488,6 +488,35 @@ Transform:
   m_PrefabParentObject: {fileID: 4452875696553008, guid: 22435998c38c0a145b3bd784ce2ec640,
     type: 2}
   m_PrefabInternal: {fileID: 439002070}
+--- !u!1 &577107717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1652171657}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 577107718}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &577107718
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4656267123251762, guid: 4b4fb01d0fb2ec246a8565de6db1244c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1652171657}
+  m_GameObject: {fileID: 577107717}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1652171658}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639785608
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
+  levelName: Colony Alpha
   tiers:
   - sphereCount: 1
     coneCount: 0
@@ -526,7 +556,6 @@ MonoBehaviour:
   - sphereCount: 0
     coneCount: 0
     rayCount: 2
-  levelName: Colony Alpha
 --- !u!4 &639785610
 Transform:
   m_ObjectHideFlags: 0
@@ -945,6 +974,21 @@ Transform:
   m_PrefabParentObject: {fileID: 4452875696553008, guid: 22435998c38c0a145b3bd784ce2ec640,
     type: 2}
   m_PrefabInternal: {fileID: 1130154043}
+--- !u!1 &1424102861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1652171657}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1652171658}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1001 &1450662461
 Prefab:
   m_ObjectHideFlags: 0
@@ -1121,11 +1165,20 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4b4fb01d0fb2ec246a8565de6db1244c, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1652171658 stripped
+--- !u!4 &1652171658
 Transform:
-  m_PrefabParentObject: {fileID: 4656267123251762, guid: 4b4fb01d0fb2ec246a8565de6db1244c,
-    type: 2}
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 1652171657}
+  m_GameObject: {fileID: 1424102861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 577107718}
+  m_Father: {fileID: 347592781}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760875174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,7 +1356,7 @@ Prefab:
     - target: {fileID: 224080836836255036, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 315
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 82723205780010066, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
