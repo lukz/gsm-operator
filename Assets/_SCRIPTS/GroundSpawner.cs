@@ -8,6 +8,7 @@ public class GroundSpawner : MonoBehaviour {
 	public GameObject[] decals;
 	public int decalCount = 50;
 	public GameObject particle;
+	public GameObject tile;
 	[Range(0, 1)]
 	public float particleSpawnChance = .4f;
 
@@ -39,6 +40,17 @@ public class GroundSpawner : MonoBehaviour {
 		// target ortho size
 		float height = 6;
 		float width = height * Camera.main.aspect;
+
+		for (int i = 0; i < 5; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				Vector3 pos = new Vector3(-3f + i*1.12f, -2f + j * 1.12f, 0);
+
+				GameObject ob = GameObject.Instantiate(tile, pos, Quaternion.identity, transform);
+
+			}
+		}
 
 		if (tiles.Length > 0) {
 			// size of the single tile, ie pixel width/cam pixels per unit
