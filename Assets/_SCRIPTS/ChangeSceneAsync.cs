@@ -41,7 +41,7 @@ public class ChangeSceneAsync : MonoBehaviour {
 		if (GameManager.IS_MOBILE) {
 			yield return new WaitForSeconds(1);
 		}
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("main");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
 		asyncLoad.allowSceneActivation = false;
         while (!asyncLoad.isDone)
         {
