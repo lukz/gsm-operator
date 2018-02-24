@@ -42,7 +42,7 @@ public class GroundSpawner : MonoBehaviour {
 
 		if (tiles.Length > 0) {
 			// size of the single tile, ie pixel width/cam pixels per unit
-			const float size = 0.56f;
+			const float size = 1.0f;
 			float hw = (width + size)/2;
 			float hh = 1f*(height + size)/2;
 			for (float x = -hw; x <= hw; x += size)
@@ -65,7 +65,7 @@ public class GroundSpawner : MonoBehaviour {
 					float val = 1 - ((Mathf.Abs(x) + Mathf.Abs(y))/12f * 0.4f) - Random.Range(0.02f,0.05f);
 					if (Mathf.Abs(x) + Mathf.Abs(y) < 2)
 					{
-						val = 1f;
+						//val = 1f;
 					}
 					val *= multiplierDark;
 					val -= Mathf.Abs(sca-1)*0.25f;
