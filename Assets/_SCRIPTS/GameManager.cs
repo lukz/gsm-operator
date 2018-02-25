@@ -121,7 +121,6 @@ public class GameManager : MonoBehaviour
 			currentTowers.coneCount = lvlmanager.GetConeCount(currentTier);
 			currentTowers.rayCount = lvlmanager.GetRayCount(currentTier);
 
-			setTier(currentTier);
 			UpdateNumbers();
 		}
 	}
@@ -180,18 +179,7 @@ public class GameManager : MonoBehaviour
 		Prefs.SetMasterVolume(soundOn?1:0);
 	}
 
-	public void setTier(int tier)
-	{
-		GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
 
-		for (int i = 0; i < houseSpots.Length; i++)
-		{
-			HouseSpot houseSpot = houseSpots[i].GetComponent<HouseSpot>();
-
-			houseSpot.SpawnTier(tier);
-		}
-		showForbiddenZones(false);
-	}
 	public static void UpdateNumbers()
 	{
 		if (instance.sphereTowerCount)
@@ -286,33 +274,18 @@ public class GameManager : MonoBehaviour
 			{
 				if (!splashShown)
 				{
-					Debug.Log("test! " + currentTier);
 					splashShown = true;
 					canDoActions = false;
 
 					GameObject newSplash = Instantiate(splash);
-					/*if (IsNextTierAviable())
-					{
-						newSplash.GetComponent<SplashScript>().setSplash(currentTier);
-					}
-					else
-					{*/
+
 					newSplash.GetComponent<SplashScript>().setEndSplash();
-					//}
+
 				}
 
 
 				if (timer == 0)
 				{
-					int maxTier = 0;
-
-					// Check if next tier aviable
-					GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
-					for (int i = 0; i < houseSpots.Length; i++)
-					{
-						maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
-					}
-
 						winLvl.Play();
 				}
 
@@ -350,49 +323,11 @@ public class GameManager : MonoBehaviour
 	public void changeTierOrScene()
 	{
 		CheckSave();
-		/*int maxTier = 0;
-
-		// Check if next tier aviable
-		GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
-		for (int i = 0; i < houseSpots.Length; i++)
-		{
-			maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
-		}*/
-
-
-		//if (!IsNextTierAviable())
-		//{
 
 		NextScene(true);
-		/*}
-		else
-		{
-			currentTier++;
-			currentTowers.sphereCount += lvlmanager.GetSphereCount(currentTier);
-			currentTowers.coneCount += lvlmanager.GetConeCount(currentTier);
-			currentTowers.rayCount += lvlmanager.GetRayCount(currentTier);
 
-			setTier(currentTier);
-		}*/
 		UpdateNumbers();
 	}
-
-	/*public bool IsNextTierAviable()
-	{
-		int maxTier = 0;
-
-		// Check if next tier aviable
-		GameObject[] houseSpots = GameObject.FindGameObjectsWithTag("HouseSpot");
-		Debug.Log("Spots found: " + houseSpots);
-		for (int i = 0; i < houseSpots.Length; i++)
-		{
-			maxTier = Mathf.Max(maxTier, houseSpots[i].GetComponent<HouseSpot>().houseTiers.Count - 1);
-		}
-
-		Debug.Log("Max tier: " + currentTier + " / " + maxTier);
-
-		return currentTier < maxTier;
-	}*/
 
 
 	public void NextScene(bool wonLvl = false)

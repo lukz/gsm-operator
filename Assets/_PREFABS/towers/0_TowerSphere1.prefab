@@ -72,7 +72,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4455647343495306}
   - component: {fileID: 114599775516000538}
-  - component: {fileID: 114252521695730128}
   - component: {fileID: 95071448247926256}
   m_Layer: 0
   m_Name: 0_TowerSphere1
@@ -267,18 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae2a41e3ccc49840a78222c305e6b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114252521695730128
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1302283097398374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01bfaadd2ae22c6409eaa4d5ec20d0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ile: 100
 --- !u!114 &114286713463834786
 MonoBehaviour:
   m_ObjectHideFlags: 1

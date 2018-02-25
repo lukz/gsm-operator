@@ -7,6 +7,8 @@ public class LVLsettings : MonoBehaviour {
 	public string levelName;
 	public List<TowerSet> tiers;
 
+	public List<Tile> tiles;
+
 	public int GetSphereCount(int tier) {
 		if (tier < 0 || tier >= tiers.Count) return 0;
 		return tiers[tier].sphereCount;
@@ -21,4 +23,8 @@ public class LVLsettings : MonoBehaviour {
 		if (tier < 0 || tier >= tiers.Count) return 0;
 		return tiers[tier].rayCount;
 	}
+
+
+
+
 }

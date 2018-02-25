@@ -5,6 +5,9 @@ using UnityEngine;
 public class Tile : MonoBehaviour {
 
 	public int powerLvl = 0;
+	public GameObject[] objectsHere;
+
+
 
 	// Use this for initialization
 	void Start () {
