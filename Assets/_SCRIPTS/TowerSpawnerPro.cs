@@ -74,7 +74,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		bodySprite.sortingOrder = 3;
 
 		Animator animator = draggedTowerInstance.GetComponent<Animator>();
-		animator.SetTrigger("squeeze");
+		animator.SetTrigger("shake");
 	}
 
 	public float PlaceTower (GameObject towerPrefab) {
@@ -114,6 +114,12 @@ public class TowerSpawnerPro : MonoBehaviour {
 		SpriteRenderer bodySprite = body.GetComponent<SpriteRenderer>();
 		bodySprite.sortingLayerName = "Buuldings";
 		bodySprite.sortingOrder = 0;
+
+		if (isOverUI.getOverCount(Input.mousePosition) > 0) {
+			GameObject.Destroy(draggedTowerInstance);
+			draggedTowerInstance = null;
+			return;
+		}
 
 		// GameObject.Destroy(draggedTowerInstance);
 		// draggedTowerInstance = null;

@@ -1193,6 +1193,7 @@ MonoBehaviour:
   - sphereCount: 0
     coneCount: 0
     rayCount: 2
+  tiles: []
 --- !u!4 &680249669
 Transform:
   m_ObjectHideFlags: 0
@@ -3840,7 +3841,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4455647343495306, guid: 5dccf7bb78741c742a348b3e58c10d50, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.484
       objectReference: {fileID: 0}
     - target: {fileID: 4455647343495306, guid: 5dccf7bb78741c742a348b3e58c10d50, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3848,15 +3849,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4455647343495306, guid: 5dccf7bb78741c742a348b3e58c10d50, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4455647343495306, guid: 5dccf7bb78741c742a348b3e58c10d50, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4455647343495306, guid: 5dccf7bb78741c742a348b3e58c10d50, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4455647343495306, guid: 5dccf7bb78741c742a348b3e58c10d50, type: 2}
       propertyPath: m_LocalRotation.w
