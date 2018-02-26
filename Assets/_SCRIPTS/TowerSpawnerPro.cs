@@ -112,7 +112,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 		GameObject body = draggedTowerInstance.transform.Find("Body").gameObject;
 		SpriteRenderer bodySprite = body.GetComponent<SpriteRenderer>();
-		bodySprite.sortingLayerName = "Buuldings";
+		bodySprite.sortingLayerName = "Buildings";
 		bodySprite.sortingOrder = 0;
 
 		if (isOverUI.getOverCount(Input.mousePosition) > 0) {

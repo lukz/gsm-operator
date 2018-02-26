@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class EventTriggerProxy : MonoBehaviour {
-	public GameObject towerPrefab;
+	private GameObject towerPrefab;
 	private TowerSpawnerPro towerSpawnerPro;
 	public Image towerImage;
 
@@ -52,6 +52,21 @@ public class EventTriggerProxy : MonoBehaviour {
 			trigger.triggers.Add(entry);
 		}
     }
+
+	public void SetTowerPrefab(GameObject prefab) {
+		towerPrefab = prefab;
+		Button button = GetComponent<Button>();
+		if (prefab) {
+			GameObject body = prefab.transform.Find("Body").gameObject;
+			SpriteRenderer spriteRenderer = body.GetComponent<SpriteRenderer>();
+			towerImage.sprite = spriteRenderer.sprite;
+			towerImage.enabled = true;
+			button.enabled = true;
+		} else {
+			towerImage.enabled = false;
+			button.enabled = false;
+		}
+	}
 
     void PickTower(PointerEventData data)
     {
