@@ -358,6 +358,7 @@ public class GameManager : MonoBehaviour
 			SceneManager.LoadScene("LVL" + nextScene);
 		}
 	}
+	/*
 	public void showForbiddenZones(bool show)
 	{
 		GameObject[] forbiddenZones = GameObject.FindGameObjectsWithTag("Forbidden");
@@ -376,7 +377,7 @@ public class GameManager : MonoBehaviour
 
 		}
 
-	}
+	}*/
 	void OnDestroy() {
 		if (instance == this) {
         	Debug.Log("GameManager nuked");
