@@ -14,10 +14,14 @@ public class GameManager : MonoBehaviour
 	public static bool canDoActions = true;
 
 	public AudioSource music;
+	public AudioSource music1;
 	public AudioSource winLvl;
+	public AudioSource startLvl;
+	public AudioSource finalWin;
 	public AudioSource btnClick;
 	public AudioSource destroy;
 	public AudioSource towerBuilt;
+	public AudioSource takeTower;
 	public AudioSource deny;
 
 	public GameObject splash;
@@ -123,6 +127,8 @@ public class GameManager : MonoBehaviour
 
 			UpdateNumbers();
 		}
+
+		startLvl.Play();
 	}
 
 	IEnumerator ChangeLvlTo1()
@@ -170,10 +176,14 @@ public class GameManager : MonoBehaviour
 		Debug.Log("Toggle sound " + enabled);
 		soundOn = enabled;
 		music.mute = !enabled;
+		music1.mute = !enabled;
+		finalWin.mute = !enabled;
 		winLvl.mute = !enabled;
 		btnClick.mute = !enabled;
 		destroy.mute = !enabled;
 		towerBuilt.mute = !enabled;
+		takeTower.mute = !enabled;
+		startLvl.mute = !enabled;
 		deny.mute = !enabled;
 
 		Prefs.SetMasterVolume(soundOn?1:0);

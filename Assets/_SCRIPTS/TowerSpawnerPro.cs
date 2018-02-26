@@ -62,6 +62,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 		dragging = true;
 		draggedTowerPrefab = towerPrefab;
 
+		GameManager.instance.takeTower.Play();
+
 		Transform parent = towerContainer.transform;
 		Vector3 pos = InputUtils.WorldMousePosition();
 		draggedTowerInstance = GameObject.Instantiate(draggedTowerPrefab, pos, Quaternion.identity, parent);
@@ -87,6 +89,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 			return .2f;
 		}
 		Debug.Log("PlaceTower");
+		GameManager.instance.towerBuilt.Play();
+
 		dragging = false;
 
 
