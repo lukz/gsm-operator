@@ -44,7 +44,7 @@ public class GroundSpawner : MonoBehaviour {
 
 		if (tiles.Length > 0) {
 			// size of the single tile, ie pixel width/cam pixels per unit
-			const float size = 1f;
+			const float size = 0.5f;
 			float hw = (width + size)/2;
 			float hh = 1f*(height + size)/2;
 			for (float x = -hw; x <= hw; x += size)
