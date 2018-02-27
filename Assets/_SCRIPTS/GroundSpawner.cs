@@ -44,7 +44,7 @@ public class GroundSpawner : MonoBehaviour {
 
 		if (tiles.Length > 0) {
 			// size of the single tile, ie pixel width/cam pixels per unit
-			const float size = 1.0f;
+			const float size = 1f;
 			float hw = (width + size)/2;
 			float hh = 1f*(height + size)/2;
 			for (float x = -hw; x <= hw; x += size)
@@ -101,7 +101,7 @@ public class GroundSpawner : MonoBehaviour {
 						val = 1f;
 					}
 					val -= (go.transform.position.y / 4 * 0.1f)*(scaleVanishingPoint/0.25f);
-					go.GetComponent<SpriteRenderer>().color = new Color(val, val, val * 1.1f);
+					//go.GetComponent<SpriteRenderer>().color = new Color(val, val, val * 1.1f);
 				
 			}
 		} else {
