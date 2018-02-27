@@ -62,6 +62,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 		dragging = true;
 		draggedTowerPrefab = towerPrefab;
 
+		GameManager.instance.takeTower.Play();
+
 		Transform parent = towerContainer.transform;
 		Vector3 pos = InputUtils.WorldMousePosition();
 		draggedTowerInstance = GameObject.Instantiate(draggedTowerPrefab, pos, Quaternion.identity, parent);
@@ -74,7 +76,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		bodySprite.sortingOrder = 3;
 
 		Animator animator = draggedTowerInstance.GetComponent<Animator>();
-		animator.SetTrigger("squeeze");
+		animator.SetTrigger("shake");
 	}
 
 	public float PlaceTower (GameObject towerPrefab) {
@@ -87,6 +89,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 			return .2f;
 		}
 		Debug.Log("PlaceTower");
+		GameManager.instance.towerBuilt.Play();
+
 		dragging = false;
 
 
@@ -112,8 +116,14 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 		GameObject body = draggedTowerInstance.transform.Find("Body").gameObject;
 		SpriteRenderer bodySprite = body.GetComponent<SpriteRenderer>();
-		bodySprite.sortingLayerName = "Buuldings";
+		bodySprite.sortingLayerName = "Buildings";
 		bodySprite.sortingOrder = 0;
+
+		if (isOverUI.getOverCount(Input.mousePosition) > 0) {
+			GameObject.Destroy(draggedTowerInstance);
+			draggedTowerInstance = null;
+			return;
+		}
 
 		// GameObject.Destroy(draggedTowerInstance);
 		// draggedTowerInstance = null;
