@@ -1208,8 +1208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere:
-  - {fileID: 527010966}
 --- !u!4 &288050951
 Transform:
   m_ObjectHideFlags: 0
@@ -1862,7 +1860,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &417786908
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2075,7 +2072,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &444141865
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2162,7 +2158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &478802001
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2249,8 +2244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere:
-  - {fileID: 0}
 --- !u!212 &488032313
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2408,11 +2401,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &527010966 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1902324608369842, guid: 605b4bf4cf548a144bf6113061ab3101,
-    type: 2}
-  m_PrefabInternal: {fileID: 1909844977}
 --- !u!4 &527010969 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101,
@@ -2573,7 +2561,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &608176004
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2786,7 +2773,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &637726964
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6490,7 +6476,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &758976636
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7870,7 +7855,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &943362590
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7967,7 +7951,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &1039981969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8054,7 +8037,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &1042377215
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8141,7 +8123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &1049937408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8561,7 +8542,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &1245981790
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9438,7 +9418,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &1435101438
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9525,7 +9504,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &1483586946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9620,7 +9598,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4426715145494488, guid: e31fdbfdc0fc3cf4394eb77b11724818, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114118329194058430, guid: e31fdbfdc0fc3cf4394eb77b11724818,
         type: 2}
@@ -13180,7 +13158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &1685914256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16972,7 +16949,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &1838770976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17407,7 +17383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &1936636106
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17525,7 +17500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &2000951632
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17915,7 +17889,7 @@ Transform:
   - {fileID: 1685914257}
   - {fileID: 1838770977}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2072969809
 GameObject:
@@ -18181,10 +18155,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 892878965}
+  music1: {fileID: 0}
   winLvl: {fileID: 167932878}
+  startLvl: {fileID: 0}
+  finalWin: {fileID: 0}
   btnClick: {fileID: 882081288}
   destroy: {fileID: 10975490}
   towerBuilt: {fileID: 2072969811}
+  takeTower: {fileID: 0}
   deny: {fileID: 302455759}
   splash: {fileID: 973564930}
   sphereTowerCount: {fileID: 0}
@@ -22010,7 +21988,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  objectsHere: []
 --- !u!212 &2139860315
 SpriteRenderer:
   m_ObjectHideFlags: 0

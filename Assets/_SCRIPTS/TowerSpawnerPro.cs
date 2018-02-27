@@ -112,6 +112,10 @@ public class TowerSpawnerPro : MonoBehaviour {
 	}
 
 	void PlaceOrReturnTower() {
+		if (draggedTowerInstance == null) {
+			Debug.LogError("Nothing to place");
+			return;
+		}
 		draggedTowerPrefab = null;
 
 		GameObject body = draggedTowerInstance.transform.Find("Body").gameObject;
@@ -130,6 +134,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 	}
 
 	bool isValidTowerPrafab(GameObject gameObject) {
+		if (!gameObject) return false;
 		foreach (var item in towerPrefabs){
 			if (item == gameObject) {
 				return true;

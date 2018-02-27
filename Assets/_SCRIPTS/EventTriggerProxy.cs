@@ -13,9 +13,6 @@ public class EventTriggerProxy : MonoBehaviour {
 	private float enableImageDelay = .2f;
 	void Start()
     {
-		if (!towerPrefab) {
-			Debug.LogError("TowerPrefab missing!");
-		}
 		towerSpawnerPro = FindObjectOfType<TowerSpawnerPro>();
 		if (!towerSpawnerPro) {
 			Debug.LogError("TowerSpawnerPro missing!");

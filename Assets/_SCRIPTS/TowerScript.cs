@@ -77,7 +77,7 @@ public class TowerScript : MonoBehaviour {
 
         Tile tileScript = transform.GetComponentInParent<Tile>();
 
-        tilesetScript.PowerUpTiles(tileScript.gameObject, powerOffsets);
+        // tilesetScript.PowerUpTiles(tileScript.gameObject, powerOffsets);
         //for (var i = 0; i < powered.Count; i++)
         //{
         //    powered[i].GetComponent<HouseScript>().powerUp();
