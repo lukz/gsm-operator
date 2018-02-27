@@ -24054,7 +24054,6 @@ GameObject:
   - component: {fileID: 2036082362}
   - component: {fileID: 2036082368}
   - component: {fileID: 2036082367}
-  - component: {fileID: 2036082365}
   - component: {fileID: 2036082366}
   - component: {fileID: 2036082364}
   - component: {fileID: 2036082363}
@@ -24111,22 +24110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Delegates: []
   delegates: []
---- !u!114 &2036082365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114904874165418800, guid: 61e223a93ed2376488b10eaad4c66938,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2036082361}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a52a230730bd4d4fb9d04cd8e1ec4e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tower: {fileID: 1302283097398374, guid: 5dccf7bb78741c742a348b3e58c10d50, type: 2}
-  rotator: {fileID: 0}
-  towerspawner: {fileID: 0}
-  ts: {fileID: 0}
 --- !u!114 &2036082366
 MonoBehaviour:
   m_ObjectHideFlags: 0
