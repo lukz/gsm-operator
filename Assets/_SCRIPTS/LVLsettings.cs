@@ -5,7 +5,6 @@ using UnityEngine;
 public class LVLsettings : MonoBehaviour {
 	public int level;
 	public string levelName;
-	public List<TowerSet> tiers;
 
 	public GameObject towerPrefab1;
 	public GameObject towerPrefab2;
@@ -28,22 +27,5 @@ public class LVLsettings : MonoBehaviour {
 		towerButton4.SetTowerPrefab(towerPrefab4);
 		towerButton5.SetTowerPrefab(towerPrefab5);
 	}
-
-	public int GetSphereCount(int tier) {
-		if (tier < 0 || tier >= tiers.Count) return 0;
-		return tiers[tier].sphereCount;
-	}
-
-	public int GetConeCount(int tier) {
-		if (tier < 0 || tier >= tiers.Count) return 0;
-		return tiers[tier].coneCount;
-	}
-
-	public int GetRayCount(int tier) {
-		if (tier < 0 || tier >= tiers.Count) return 0;
-		return tiers[tier].rayCount;
-	}
-
-
 }
 
