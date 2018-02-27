@@ -13,28 +13,13 @@ public class GameManager : MonoBehaviour
 
 	public static bool canDoActions = true;
 
-	public AudioSource music;
-	public AudioSource music1;
-	public AudioSource winLvl;
-	public AudioSource startLvl;
-	public AudioSource finalWin;
-	public AudioSource btnClick;
-	public AudioSource destroy;
-	public AudioSource towerBuilt;
-	public AudioSource takeTower;
-	public AudioSource deny;
+	public Sounds sounds;
 
 	public GameObject splash;
 
-	public static TowerSet currentTowers = new TowerSet();
-
 	[SerializeField]
-	private Text sphereTowerCount;
-	[SerializeField]
-	private Text coneTowerCount;
-	[SerializeField]
-	private Text rayTowerCount;
 	public static float shakePower = 0;
+
 	[SerializeField]
 	private Slider powerSlider;
 	private int currentLvl;
@@ -52,7 +37,7 @@ public class GameManager : MonoBehaviour
 	private float timerTowerRestart = 0f;
 	List<GameObject> towersToDestroy = new List<GameObject>();
 	int currentlyDestroyedTower;
-	private TowerSpawner towerspawner;
+	private TowerSpawnerPro towerspawner;
 	public static GameObject towersContainer;
 	float timer;
 
@@ -67,8 +52,6 @@ public class GameManager : MonoBehaviour
 		{
 			instance = this;
 			DontDestroyOnLoad(gameObject);
-			// TODO actual volume?
-			toggleSound(Prefs.GetMasterVolume() > 0);
 		}
 		else if (instance != this)
 		{
@@ -79,7 +62,7 @@ public class GameManager : MonoBehaviour
 	{
 		SceneManager.sceneLoaded += PrepareScene;
 		SaveControl.instance.Load();
-		towerspawner = GetComponent<TowerSpawner>();
+		towerspawner = GetComponent<TowerSpawnerPro>();
 		if (OPENlastLEVEL)
 		{
 			int lastUnlockedLevel = 0;
@@ -99,14 +82,15 @@ public class GameManager : MonoBehaviour
 		{
 			PrepareScene(SceneManager.GetSceneByName("main"), LoadSceneMode.Single);
 		}
-		if (!music.isPlaying) music.Play();
+		sounds.Prepare();
+		
+		Sounds.PlayMusic();
 		canDoActions = true;
 
 	}
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
 	{
-		music.volume = 0.8f;
 		canDoActions = true;
 		splashShown = false;
 
@@ -120,15 +104,9 @@ public class GameManager : MonoBehaviour
 			currentLvl = lvlmanager.level;
 			currentLvlName = lvlmanager.levelName;
 			towersContainer = GameObject.FindGameObjectWithTag("TowersContainer");
-
-			currentTowers.sphereCount = lvlmanager.GetSphereCount(currentTier);
-			currentTowers.coneCount = lvlmanager.GetConeCount(currentTier);
-			currentTowers.rayCount = lvlmanager.GetRayCount(currentTier);
-
-			UpdateNumbers();
 		}
 
-		startLvl.Play();
+		Sounds.PlayStartLevel();
 	}
 
 	IEnumerator ChangeLvlTo1()
@@ -157,7 +135,7 @@ public class GameManager : MonoBehaviour
 				}
 			}
 			timerTowerRestart = delayBetweenTowerRestart;
-			GameManager.instance.btnClick.Play();
+			Sounds.PlayButtonClick();
 			currentlyDestroyedTower = 0;
 			if (towersToDestroy.Count > 0)
 			{
@@ -166,52 +144,7 @@ public class GameManager : MonoBehaviour
 
 		}
 	}
-	public void toggleSound()
-	{
-		toggleSound(!soundOn);
-	}
 
-	public void toggleSound(bool enabled)
-	{
-		Debug.Log("Toggle sound " + enabled);
-		soundOn = enabled;
-		music.mute = !enabled;
-		music1.mute = !enabled;
-		finalWin.mute = !enabled;
-		winLvl.mute = !enabled;
-		btnClick.mute = !enabled;
-		destroy.mute = !enabled;
-		towerBuilt.mute = !enabled;
-		takeTower.mute = !enabled;
-		startLvl.mute = !enabled;
-		deny.mute = !enabled;
-
-		Prefs.SetMasterVolume(soundOn?1:0);
-	}
-
-
-	public static void UpdateNumbers()
-	{
-		if (instance.sphereTowerCount)
-		{
-			int count = currentTowers.sphereCount;
-			instance.sphereTowerCount.text = count.ToString();
-			instance.sphereTowerCount.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
-		}
-		if (instance.coneTowerCount)
-		{
-			int count = currentTowers.coneCount;
-			instance.coneTowerCount.text = count.ToString();
-			instance.coneTowerCount.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
-		}
-		if (instance.rayTowerCount)
-		{
-			int count = currentTowers.rayCount;
-			instance.rayTowerCount.text = count.ToString();
-			instance.rayTowerCount.GetComponent<Transform>().parent.GetComponent<Button>().enabled = count > 0;
-		}
-		//instance.countTowerLine.text = currentTowers[2].ToString();
-	}
 	void ShakeScreen()
 	{
 		if (shakePower > 0.01f)
@@ -226,8 +159,6 @@ public class GameManager : MonoBehaviour
 			{
 				Camera.main.transform.position = new Vector3(Random.Range(-shakePower / 2, -shakePower), Random.Range(-shakePower / 2, -shakePower), Camera.main.transform.position.z);
 			}
-
-
 		}
 		else
 		{
@@ -245,7 +176,7 @@ public class GameManager : MonoBehaviour
 				if (timerTowerRestart <= 0)
 				{
 					timerTowerRestart = delayBetweenTowerRestart;
-					towerspawner.destroyTower(towersToDestroy[currentlyDestroyedTower]);
+					towerspawner.DestroyTower(towersToDestroy[currentlyDestroyedTower]);
 					currentlyDestroyedTower++;
 					if (currentlyDestroyedTower >= towersToDestroy.Count)
 					{
@@ -296,11 +227,11 @@ public class GameManager : MonoBehaviour
 
 				if (timer == 0)
 				{
-						winLvl.Play();
+					Sounds.PlayWinLevel();
 				}
 
 				timer += Time.deltaTime;
-				music.volume = Mathf.Max(0.5f, (powerUpTimeForSceneChange - timer) * 0.8f);
+				Sounds.VolumeMusic(Mathf.Max(0.5f, (powerUpTimeForSceneChange - timer) * 0.8f));
 
 				if (timer >= powerUpTimeForSceneChange)
 				{
@@ -335,8 +266,6 @@ public class GameManager : MonoBehaviour
 		CheckSave();
 
 		NextScene(true);
-
-		UpdateNumbers();
 	}
 
 

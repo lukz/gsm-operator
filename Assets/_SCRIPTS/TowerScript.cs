@@ -45,7 +45,8 @@ public class TowerScript : MonoBehaviour {
     public void onBuilded()
     {
         isBuilded = true;
-		GameManager.instance.towerBuilt.Play();
+
+        Sounds.PlayTowerBuild();
 
         AttachToTile();
     }
@@ -61,7 +62,7 @@ public class TowerScript : MonoBehaviour {
     {
         isAddedToTile = false;
 
-        GameManager.instance.destroy.Play();
+        Sounds.PlayDestroy();
 		//for (var i = 0; i < powered.Count; i++)
         ///{
         //    powered[i].GetComponent<HouseScript>().powerDown();
