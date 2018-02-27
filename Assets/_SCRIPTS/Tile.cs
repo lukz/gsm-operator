@@ -65,6 +65,26 @@ public class Tile : MonoBehaviour {
     {
         return HasRocks() || HasHouse() || HasTower();
     }
+    
+    void SetAsBuildTarget()
+    {
+
+    }
+
+    void CancelBuildTarget()
+    {
+
+    }
+
+    void Build(GameObject tower)
+    {
+
+    }
+
+    public bool CanBuild()
+    {
+        return !IsBlocked();
+    }
 
     public void PowerUp()
     {
