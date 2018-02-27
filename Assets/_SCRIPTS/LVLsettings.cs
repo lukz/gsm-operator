@@ -19,7 +19,6 @@ public class LVLsettings : MonoBehaviour {
 	public EventTriggerProxy towerButton5;
 	public List<Tile> tiles;
 
-	
 	void Start () {
 		towerButton1.SetTowerPrefab(towerPrefab1);
 		towerButton2.SetTowerPrefab(towerPrefab2);
@@ -27,5 +26,7 @@ public class LVLsettings : MonoBehaviour {
 		towerButton4.SetTowerPrefab(towerPrefab4);
 		towerButton5.SetTowerPrefab(towerPrefab5);
 	}
+
+	
 }
 

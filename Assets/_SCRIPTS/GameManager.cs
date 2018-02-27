@@ -23,14 +23,11 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private Slider powerSlider;
 	private int currentLvl;
-	private string currentLvlName;
 
 	LVLsettings lvlmanager;
-	private int currentTier = 0;
 	public static GameManager instance = null;
 	public float powerUpTimeForSceneChange;
 	private bool splashShown = false;
-	private bool soundOn = true;
 	public bool restarting = false;
 	[SerializeField]
 	private float delayBetweenTowerRestart = 0.15f;
@@ -94,15 +91,12 @@ public class GameManager : MonoBehaviour
 		canDoActions = true;
 		splashShown = false;
 
-		currentTier = 0;
-
 		if (currentLvl == MAXLVLS + 1)
 		{
 			StartCoroutine(ChangeLvlTo1());
 		}else {
 			lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
 			currentLvl = lvlmanager.level;
-			currentLvlName = lvlmanager.levelName;
 			towersContainer = GameObject.FindGameObjectWithTag("TowersContainer");
 		}
 

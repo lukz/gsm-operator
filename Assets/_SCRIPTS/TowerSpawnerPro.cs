@@ -9,6 +9,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 	public GameObject[] towerPrefabs = new GameObject[3];
 
 	public GameObject towerExplosion;
+
+	public Tileset tileset;
 	
 	public IsOverUI isOverUI;
 
@@ -79,6 +81,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 		Animator animator = draggedTowerInstance.GetComponent<Animator>();
 		animator.SetTrigger("shake");
+		// this is in game units
+		towerOffset.y = .4f;
 	}
 
 	public float PlaceTower (GameObject towerPrefab) {
@@ -125,11 +129,24 @@ public class TowerSpawnerPro : MonoBehaviour {
 		bodySprite.sortingLayerName = "Buildings";
 		bodySprite.sortingOrder = 0;
 
+		// TODO return tower
 		if (isOverUI.getOverCount(Input.mousePosition) > 0) {
 			GameObject.Destroy(draggedTowerInstance);
 			draggedTowerInstance = null;
 			return;
 		}
+
+		Tile tile = tileset.GetTileAt(InputUtils.WorldMousePosition());
+		if (!tile) {
+			GameObject.Destroy(draggedTowerInstance);
+			return;
+		}
+		if (tile.CanBuild()) {
+			tile.Build(draggedTowerInstance);
+		} else {
+			GameObject.Destroy(draggedTowerInstance);
+		}
+		draggedTowerInstance = null;
 
 		// GameObject.Destroy(draggedTowerInstance);
 		// draggedTowerInstance = null;
