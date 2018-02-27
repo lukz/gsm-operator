@@ -7,6 +7,10 @@ using UnityEngine.EventSystems;
 public class TowerSpawnerPro : MonoBehaviour {
 	public GameObject towerContainer;
 	public GameObject[] towerPrefabs = new GameObject[3];
+
+	public GameObject towerExplosion;
+
+	public Tileset tileset;
 	
 	public IsOverUI isOverUI;
 
@@ -62,7 +66,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		dragging = true;
 		draggedTowerPrefab = towerPrefab;
 
-		GameManager.instance.takeTower.Play();
+		Sounds.PlayTowerTake();
 
 		Transform parent = towerContainer.transform;
 		Vector3 pos = InputUtils.WorldMousePosition();
@@ -77,6 +81,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 		Animator animator = draggedTowerInstance.GetComponent<Animator>();
 		animator.SetTrigger("shake");
+		// this is in game units
+		towerOffset.y = .4f;
 	}
 
 	public float PlaceTower (GameObject towerPrefab) {
@@ -89,7 +95,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 			return .2f;
 		}
 		Debug.Log("PlaceTower");
-		GameManager.instance.towerBuilt.Play();
+		Sounds.PlayTowerBuild();
 
 		dragging = false;
 
@@ -123,11 +129,24 @@ public class TowerSpawnerPro : MonoBehaviour {
 		bodySprite.sortingLayerName = "Buildings";
 		bodySprite.sortingOrder = 0;
 
+		// TODO return tower
 		if (isOverUI.getOverCount(Input.mousePosition) > 0) {
 			GameObject.Destroy(draggedTowerInstance);
 			draggedTowerInstance = null;
 			return;
 		}
+
+		Tile tile = tileset.GetTileAt(InputUtils.WorldMousePosition());
+		if (!tile) {
+			GameObject.Destroy(draggedTowerInstance);
+			return;
+		}
+		if (tile.CanBuild()) {
+			tile.Build(draggedTowerInstance);
+		} else {
+			GameObject.Destroy(draggedTowerInstance);
+		}
+		draggedTowerInstance = null;
 
 		// GameObject.Destroy(draggedTowerInstance);
 		// draggedTowerInstance = null;
@@ -141,5 +160,21 @@ public class TowerSpawnerPro : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	
+	public void DestroyTower(GameObject tower) {
+		if (!tower) {
+			return;
+		}
+		TowerScript ts = tower.GetComponent<TowerScript>();
+		ts.OnDestroyed();   
+		// GameManager.currentTowers[ts.id]++;
+		// GameManager.UpdateNumbers();
+		if (towerExplosion) {
+			Vector3 pos = new Vector3(tower.transform.position.x, tower.transform.position.y, 0);
+			GameObject.Instantiate(towerExplosion, pos, Quaternion.identity, gameObject.transform);
+		}
+		GameObject.Destroy(tower);
 	}
 }

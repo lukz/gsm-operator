@@ -76,9 +76,10 @@ public class Tile : MonoBehaviour {
 
     }
 
-    void Build(GameObject tower)
+    public void Build(GameObject tower)
     {
-
+        tower.transform.parent = transform;
+        tower.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     public bool CanBuild()

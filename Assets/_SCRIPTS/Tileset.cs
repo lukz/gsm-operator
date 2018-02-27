@@ -6,13 +6,26 @@ public class Tileset : MonoBehaviour {
 
     public List<TileRow> tiles;
 
-    // Use this for initialization
     void Start () {
+
 	}
 	
-	// Update is called once per frame
+	Tile lastTile;
 	void Update () {
-		
+		if (false) {
+			Vector3 mp = InputUtils.WorldMousePosition();
+			Tile tile = GetTileAt(mp);
+			if (tile != lastTile) {
+				if (lastTile != null) {
+					SpriteRenderer oldSprite = lastTile.gameObject.GetComponent<SpriteRenderer>();
+					oldSprite.color = new Color(1, 1, 1, .5f);
+				}
+				lastTile = tile;
+				SpriteRenderer sprite = tile.gameObject.GetComponent<SpriteRenderer>();
+				sprite.color = new Color(1, 1, 1, 1);
+				Debug.Log("Tile at " + mp + ": " + tile);
+			}
+		}
 	}
 
     public void PowerUpTiles(GameObject startTile, List<TowerScript.PowerOffset> offsets)
@@ -47,6 +60,24 @@ public class Tileset : MonoBehaviour {
 
         return new Vector2(-1, -1);
     }
+
+	public Tile GetTileAt(Vector3 at) {
+		Rect tmp = new Rect();
+		// tiles are 108 pixels, at 100 p/u, but theres a small gap
+		float tileSize = 1.15f;
+		foreach (var row in tiles) {
+            foreach (var tile in row.row) {
+                // apparently this is world pos, so thats nice
+                Vector3 tp = tile.transform.position;
+                // tiles are centered on the position
+                tmp.Set(tp.x - tileSize/2, tp.y - tileSize/2, tileSize, tileSize);
+                if (tmp.Contains(at)) {
+                    return tile.GetComponent<Tile>();
+                }   
+            }
+		}
+		return null;
+	}
 
     [System.Serializable]
     public class TileRow

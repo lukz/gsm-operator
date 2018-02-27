@@ -110,7 +110,7 @@ public class TowerSpawner : MonoBehaviour {
 				TowerScript ts = spawned.GetComponent<TowerScript>();
 
 				if (!ts.IsBuildable) {
-					GameManager.instance.deny.Play();
+					Sounds.PlayDeny();
 					return;
 				}
 
@@ -118,8 +118,8 @@ public class TowerSpawner : MonoBehaviour {
 
 				
 				ts.onBuilded();
-				GameManager.currentTowers[ts.id]--;
-				GameManager.UpdateNumbers();
+				// GameManager.currentTowers[ts.id]--;
+				// GameManager.UpdateNumbers();
 
 
 				// make it opaque
@@ -186,8 +186,8 @@ public class TowerSpawner : MonoBehaviour {
 	public void destroyTower(GameObject tower) {
 		TowerScript ts = tower.GetComponent<TowerScript>();
 			ts.OnDestroyed();   
-			GameManager.currentTowers[ts.id]++;
-			GameManager.UpdateNumbers();
+			// GameManager.currentTowers[ts.id]++;
+			// GameManager.UpdateNumbers();
 			if (towerExplosion) {
 				Vector3 pos = new Vector3(tower.transform.position.x, tower.transform.position.y, 0);
 				GameObject.Instantiate(towerExplosion, pos, Quaternion.identity, gameObject.transform);
@@ -211,7 +211,7 @@ public class TowerSpawner : MonoBehaviour {
 
 		lastSpawned = spawned;
 		if (!ts.IsBuildable) {
-			GameManager.instance.deny.Play();
+			Sounds.PlayDeny();
 
 			if (GameManager.IS_MOBILE) {
 				GameManager.canDoActions = false;
@@ -223,8 +223,8 @@ public class TowerSpawner : MonoBehaviour {
 			GameManager.shakePower += 0.15f;
 		
 			ts.onBuilded();
-			GameManager.currentTowers[ts.id]--;
-			GameManager.UpdateNumbers();
+			// GameManager.currentTowers[ts.id]--;
+			// GameManager.UpdateNumbers();
 			showForbiddenZones(false);
 		}
 
@@ -285,7 +285,7 @@ public class TowerSpawner : MonoBehaviour {
 		towerOffset = new Vector2(0, 1.0f);
 		Debug.Log("Spawning tower!");
 		towerToSpawn = tower;
-		GameManager.instance.btnClick.Play();
+		Sounds.PlayButtonClick();
 		Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 		Transform parent = GameManager.towersContainer.transform;
 		spawned = GameObject.Instantiate(tower, pos, Quaternion.identity, parent);
@@ -303,7 +303,7 @@ public class TowerSpawner : MonoBehaviour {
 		Debug.Log("destroy stuff?");
 		destroy = !destroy;
 		if (destroy) {
-			GameManager.instance.btnClick.Play();
+			Sounds.PlayButtonClick();
 			Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
 			Transform parent = GetComponent<Transform>();
 			destroyIcon = GameObject.Instantiate(destroyIconPrefab, pos, Quaternion.identity, parent);
