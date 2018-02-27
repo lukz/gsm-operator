@@ -185,7 +185,7 @@ public class TowerSpawner : MonoBehaviour {
 
 	public void destroyTower(GameObject tower) {
 		TowerScript ts = tower.GetComponent<TowerScript>();
-			ts.onDestroyed();   
+			ts.OnDestroyed();   
 			GameManager.currentTowers[ts.id]++;
 			GameManager.UpdateNumbers();
 			if (towerExplosion) {
@@ -290,7 +290,6 @@ public class TowerSpawner : MonoBehaviour {
 		Transform parent = GameManager.towersContainer.transform;
 		spawned = GameObject.Instantiate(tower, pos, Quaternion.identity, parent);
 		TowerScript ts = spawned.GetComponent<TowerScript>();
-        ts.setPowerRotation(angle + 90);
 
         ts.isBuilded = false;
         // make it semi transparent 

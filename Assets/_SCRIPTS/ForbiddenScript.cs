@@ -48,7 +48,7 @@ public class ForbiddenScript : MonoBehaviour
 
         if (transform.parent.GetComponent<TowerScript>().isBuilded && other.transform.parent.tag == "House")
         {
-            transform.parent.GetComponent<TowerScript>().onDestroyed();
+            transform.parent.GetComponent<TowerScript>().OnDestroyed();
             GameObject.Destroy(transform.parent.gameObject);
         }
     }

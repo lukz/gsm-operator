@@ -19,12 +19,8 @@ public class HouseScript : MonoBehaviour {
 		animator = GetComponent<Animator>();
 	}
 
-	public void powerUp() {
-        powered++;
-	}
-
-	public void powerDown() {
-        powered--;
+	public void PowerChanged() {
+        powered = transform.GetComponentInParent<Tile>().powerLvl;
 	}
 	
 	// Update is called once per frame
