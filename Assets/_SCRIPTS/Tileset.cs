@@ -23,11 +23,11 @@ public class Tileset : MonoBehaviour {
         {
             int xPos = (int)tilePos.x + offsets[i].x;
             int yPos = (int)tilePos.y + offsets[i].y;
-
+            
             // Check if not out of bounds
-            if (xPos < 0 || xPos > tiles[0].row.Count) continue;
-            if (yPos < 0 || yPos > tiles.Count) continue;
-
+            if (xPos < 0 || xPos >= tiles[0].row.Count) continue;
+            if (yPos < 0 || yPos >= tiles.Count) continue;
+            
             tiles[yPos].row[xPos].GetComponent<Tile>().PowerUp();
         }
     }
