@@ -5,10 +5,15 @@ using UnityEngine;
 public class Tile : MonoBehaviour {
 
 	public int powerLvl = 0;
-	//public GameObject[] objectsHere;
+    //public GameObject[] objectsHere;
 
-	// Use this for initialization
-	void Start () {
+    private Color normalColor = new Color(0xFF, 0xFF, 0xFF, 0x64);
+    private Color blockedColor = new Color(0xFF, 0x00, 0x00, 0xD0);
+    private Color poweredColor = new Color(0x00, 0xB5, 0xFF, 0xC0);
+    private Color targetColor = new Color(0xB2, 0xFF, 0x00, 0xFD);
+
+    // Use this for initialization
+    void Start () {
         
 	}
 	
@@ -68,12 +73,28 @@ public class Tile : MonoBehaviour {
     
     void SetAsBuildTarget()
     {
-
+        if(IsBlocked()) {
+            GetComponent<SpriteRenderer>().color = blockedColor;
+        } else {
+            GetComponent<SpriteRenderer>().color = targetColor;
+        }
     }
 
     void CancelBuildTarget()
     {
+        ResetState();
+    }
 
+    void ResetState()
+    {
+        if (powerLvl > 0)
+        {
+            GetComponent<SpriteRenderer>().color = poweredColor;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = normalColor;
+        }
     }
 
     public void Build(GameObject tower)
@@ -108,5 +129,7 @@ public class Tile : MonoBehaviour {
         {
             house.GetComponent<HouseScript>().PowerChanged();
         }
+
+        ResetState();
     }
 }
