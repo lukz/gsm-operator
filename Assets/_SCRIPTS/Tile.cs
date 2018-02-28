@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour {
 	public int powerLvl = 0;
     //public GameObject[] objectsHere;
 
-    private Color normalColor = new Color(0xFF, 0xFF, 0xFF, 0x64);
+    private Color normalColor = new Color(0xFF, 0xFF, 0xFF, 0.3f);
     private Color blockedColor = new Color(0xFF, 0x00, 0x00, 0xD0);
     private Color poweredColor = new Color(0x00, 0xB5, 0xFF, 0xC0);
     private Color targetColor = new Color(0xB2, 0xFF, 0x00, 0xFD);
@@ -60,8 +60,6 @@ public class Tile : MonoBehaviour {
 
     bool HasRocks()
     {
-
-
         return false;
 
     }
@@ -105,19 +103,12 @@ public class Tile : MonoBehaviour {
 
     public bool CanBuild()
     {
-        return !IsBlocked();
+        return !IsBlocked() && HasEnergyField();
     }
 
-    public void PowerUp()
+    public void PowerChange(int powerChange)
     {
-        powerLvl++;
-
-        OnPowerChange();
-    }
-
-    public void PowerDown()
-    {
-        powerLvl--;
+        powerLvl += powerChange;
 
         OnPowerChange();
     }

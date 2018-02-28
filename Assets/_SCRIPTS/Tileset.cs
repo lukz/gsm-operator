@@ -28,7 +28,7 @@ public class Tileset : MonoBehaviour {
 		}
 	}
 
-    public void PowerUpTiles(GameObject startTile, List<TowerScript.PowerOffset> offsets)
+    public void ChangeTilesPower(GameObject startTile, int powerChange, List<TowerScript.PowerOffset> offsets)
     {
         Vector2 tilePos = GetTilePos(startTile);
 
@@ -41,7 +41,7 @@ public class Tileset : MonoBehaviour {
             if (xPos < 0 || xPos >= tiles[0].row.Count) continue;
             if (yPos < 0 || yPos >= tiles.Count) continue;
             
-            tiles[yPos].row[xPos].GetComponent<Tile>().PowerUp();
+            tiles[yPos].row[xPos].GetComponent<Tile>().PowerChange(powerChange);
         }
     }
 

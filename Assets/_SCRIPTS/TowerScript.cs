@@ -63,10 +63,14 @@ public class TowerScript : MonoBehaviour {
         isAddedToTile = false;
 
         Sounds.PlayDestroy();
-		//for (var i = 0; i < powered.Count; i++)
+        //for (var i = 0; i < powered.Count; i++)
         ///{
         //    powered[i].GetComponent<HouseScript>().powerDown();
         //}
+
+        Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
+        Tile tileScript = transform.GetComponentInParent<Tile>();
+        tilesetScript.ChangeTilesPower(tileScript.gameObject, -1, powerOffsets);
     }
 
     public void AttachToTile()
@@ -74,11 +78,8 @@ public class TowerScript : MonoBehaviour {
         isAddedToTile = true;
 
         Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
-
-
         Tile tileScript = transform.GetComponentInParent<Tile>();
-
-        tilesetScript.PowerUpTiles(tileScript.gameObject, powerOffsets);
+        tilesetScript.ChangeTilesPower(tileScript.gameObject, 1, powerOffsets);
         //for (var i = 0; i < powered.Count; i++)
         //{
         //    powered[i].GetComponent<HouseScript>().powerUp();
