@@ -145,28 +145,33 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 		// TODO return tower
 		if (isOverUI.getOverCount(Input.mousePosition) > 0) {
-			GameObject.Destroy(draggedTowerInstance);
-			draggedTowerInstance = null;
+			ReturnTower();
 			return;
 		}
 
 		Tile tile = tileset.GetTileAt(InputUtils.WorldMousePosition());
 		if (tile == null) {
-			GameObject.Destroy(draggedTowerInstance);
-			return;
-		}
-		if (tile.CanBuild()) {
+			ReturnTower();
+		} else if (tile.CanBuild()) {
             tile.CancelBuildTarget();
 			tile.Build(draggedTowerInstance);
+        	previouslyDraggedTile = null;
+			draggedTowerInstance = null;
+			dragging = false;
 		} else {
             tile.CancelBuildTarget();
-            GameObject.Destroy(draggedTowerInstance);
+			ReturnTower();
 		}
-        previouslyDraggedTile = null;
-		draggedTowerInstance = null;
 
 		// GameObject.Destroy(draggedTowerInstance);
 		// draggedTowerInstance = null;
+	}
+
+	void ReturnTower() {
+        GameObject.Destroy(draggedTowerInstance);	
+        previouslyDraggedTile = null;
+		draggedTowerInstance = null;
+		dragging = false;
 	}
 
 	bool isValidTowerPrafab(GameObject gameObject) {
