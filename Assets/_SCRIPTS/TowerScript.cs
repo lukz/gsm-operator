@@ -12,11 +12,8 @@ public class TowerScript : MonoBehaviour {
 
     private bool isAttachedToTile = false;
 
-    private Animator animator;
-
     // Use this for initialization
     void Start () {
-        animator = GetComponentInParent<Animator>();
         if (!playerTower) {
             AttachToTile();
         }
@@ -24,6 +21,11 @@ public class TowerScript : MonoBehaviour {
 
     public void DetachFromTile()
     {
+
+        if (!isAttachedToTile) {
+            Debug.Log("Not attached to tile");
+            return;
+        }
         isAttachedToTile = false;
 
         Sounds.PlayDestroy();
@@ -39,6 +41,11 @@ public class TowerScript : MonoBehaviour {
 
     public void AttachToTile()
     {
+
+        if (isAttachedToTile) {
+            Debug.Log("Already attached to tile");
+            return;
+        }
         isAttachedToTile = true;
 
         Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
@@ -51,7 +58,7 @@ public class TowerScript : MonoBehaviour {
         //    powered[i].GetComponent<HouseScript>().powerUp();
         //}
     }
-
+    
     [System.Serializable]
     public class PowerOffset
     {

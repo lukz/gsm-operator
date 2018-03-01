@@ -10,6 +10,9 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 	public GameObject towerExplosion;
 
+	private GameManager gameManager;
+
+
 	public Tileset tileset;
 	
 	public IsOverUI isOverUI;
@@ -19,11 +22,13 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 	GameObject draggedTowerPrefab;
 	GameObject draggedTowerInstance;
+	EventTriggerProxy draggedTowerOwner;
 	bool dragging;
 
 	Vector2 towerOffset = new Vector2();
 
 	void Start () {
+		gameManager = FindObjectOfType<GameManager>();
 		for (int id = 0; id < towerPrefabs.Length; id++)
 		{
 			GameObject tp = towerPrefabs[id];
@@ -59,14 +64,11 @@ public class TowerSpawnerPro : MonoBehaviour {
                 if (tile != null) tile.SetAsBuildTarget();
 
                 previouslyDraggedTile = tile;
-            }
-
-
-            
+            }   
         }
 	}
 
-	public void PickTower (GameObject towerPrefab) {
+	public void PickTower (EventTriggerProxy owner, GameObject towerPrefab) {
 		if (draggedTowerPrefab != null) {
 			Debug.LogError("Already dragging a tower " + towerPrefab);
 			return;
@@ -79,13 +81,14 @@ public class TowerSpawnerPro : MonoBehaviour {
 		dragTime = 0;
 		dragging = true;
 		draggedTowerPrefab = towerPrefab;
+		draggedTowerOwner = owner;
 
 		Sounds.PlayTowerTake();
 
 		Transform parent = towerContainer.transform;
 		Vector3 pos = InputUtils.WorldMousePosition();
 		draggedTowerInstance = GameObject.Instantiate(draggedTowerPrefab, pos, Quaternion.identity, parent);
-		TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
+		// TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
 
 		GameObject body = draggedTowerInstance.transform.Find("Body").gameObject;
 		SpriteRenderer bodySprite = body.GetComponent<SpriteRenderer>();
@@ -98,30 +101,26 @@ public class TowerSpawnerPro : MonoBehaviour {
 		towerOffset.y = .4f;
 	}
 
-	public float PlaceTower (GameObject towerPrefab) {
+	public void PlaceTower (EventTriggerProxy owner, GameObject towerPrefab) {
 		if (draggedTowerPrefab == null) {
 			Debug.LogError("Nothing to place");
-			return .2f;
+			return;
 		}
 		if (draggedTowerPrefab != towerPrefab) {
 			Debug.LogError("Invalid tower to place " + towerPrefab + ", expected " + draggedTowerPrefab);
-			return .2f;
+			return;
 		}
 		Debug.Log("PlaceTower");
 		Sounds.PlayTowerBuild();
 
 		dragging = false;
 
-
-		// return -1 for valid spot?
 		if (dragTime <= minDragTime) {
-			// wait in given spot for a while and do whatever
 			StartCoroutine("PlaceOrReturnTowerLater");
-			return .2f + minDragTime;
+			return;
+		} else {
+			PlaceOrReturnTower();
 		}
-		PlaceOrReturnTower();
-		// do whatever
-		return .2f;
 	}
 
 	IEnumerator PlaceOrReturnTowerLater () {
@@ -140,7 +139,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		GameObject body = draggedTowerInstance.transform.Find("Body").gameObject;
 		SpriteRenderer bodySprite = body.GetComponent<SpriteRenderer>();
 		bodySprite.sortingLayerName = "Buildings";
-		bodySprite.sortingOrder = 0;
+		bodySprite.sortingOrder = 1;
 
 		// TODO return tower
 		if (isOverUI.getOverCount(Input.mousePosition) > 0) {
@@ -154,9 +153,11 @@ public class TowerSpawnerPro : MonoBehaviour {
 		} else if (tile.CanBuild()) {
             tile.CancelBuildTarget();
 			tile.Build(draggedTowerInstance);
+			gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
         	previouslyDraggedTile = null;
 			draggedTowerInstance = null;
 			dragging = false;
+			draggedTowerOwner = null;
 		} else {
             tile.CancelBuildTarget();
 			ReturnTower();
@@ -166,36 +167,29 @@ public class TowerSpawnerPro : MonoBehaviour {
 		// draggedTowerInstance = null;
 	}
 
-	void ReturnTower() {
+	public void ReturnTower() {
+		if (previouslyDraggedTile == null) return;
         GameObject.Destroy(draggedTowerInstance);	
         previouslyDraggedTile = null;
 		draggedTowerInstance = null;
-		dragging = false;
+		draggedTowerOwner.ReturnTower();
+		draggedTowerOwner = null;
+	}
+
+	public void ReturnTower(EventTriggerProxy button, GameObject tower) {
+		tower.GetComponent<TowerScript>().DetachFromTile();
+		button.ReturnTower();
+        GameObject.Destroy(tower);	
+		draggedTowerOwner = null;
 	}
 
 	bool isValidTowerPrafab(GameObject gameObject) {
-		if (!gameObject) return false;
+		if (gameObject == null) return false;
 		foreach (var item in towerPrefabs){
 			if (item == gameObject) {
 				return true;
 			}
 		}
 		return false;
-	}
-
-	
-	public void DestroyTower(GameObject tower) {
-		if (!tower) {
-			return;
-		}
-		TowerScript ts = tower.GetComponent<TowerScript>();
-		ts.DetachFromTile();
-		// GameManager.currentTowers[ts.id]++;
-		// GameManager.UpdateNumbers();
-		if (towerExplosion) {
-			Vector3 pos = new Vector3(tower.transform.position.x, tower.transform.position.y, 0);
-			GameObject.Instantiate(towerExplosion, pos, Quaternion.identity, gameObject.transform);
-		}
-		GameObject.Destroy(tower);
 	}
 }
