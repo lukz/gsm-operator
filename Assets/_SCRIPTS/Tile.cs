@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour {
     private Color normalColor = new Color(0xFF, 0xFF, 0xFF, 0.3f);
     private Color blockedColor = new Color(0xFF, 0x00, 0x00, 0xD0);
     private Color poweredColor = new Color(0x00, 0xB5, 0xFF, 0xC0);
-    private Color targetColor = new Color(0xB2, 0xFF, 0x00, 0xFD);
+    private Color targetColor = new Color(0x0, 0xFF, 0x00, 0xFD);
 
     // Use this for initialization
     void Start () {
@@ -69,16 +69,18 @@ public class Tile : MonoBehaviour {
         return HasRocks() || HasHouse() || HasTower();
     }
     
-    void SetAsBuildTarget()
+    public void SetAsBuildTarget()
     {
-        if(IsBlocked()) {
+        if(IsBlocked() || !HasEnergyField()) {
             GetComponent<SpriteRenderer>().color = blockedColor;
         } else {
             GetComponent<SpriteRenderer>().color = targetColor;
         }
+
+        
     }
 
-    void CancelBuildTarget()
+    public void CancelBuildTarget()
     {
         ResetState();
     }
@@ -99,6 +101,8 @@ public class Tile : MonoBehaviour {
     {
         tower.transform.parent = transform;
         tower.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        tower.GetComponent<TowerScript>().OnBuilded();
     }
 
     public bool CanBuild()

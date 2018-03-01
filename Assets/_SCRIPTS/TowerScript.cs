@@ -42,7 +42,7 @@ public class TowerScript : MonoBehaviour {
         }
     }
 
-    public void onBuilded()
+    public void OnBuilded()
     {
         isBuilded = true;
 

@@ -117,7 +117,7 @@ public class TowerSpawner : MonoBehaviour {
 				GameManager.shakePower += 0.15f;
 
 				
-				ts.onBuilded();
+				ts.OnBuilded();
 				// GameManager.currentTowers[ts.id]--;
 				// GameManager.UpdateNumbers();
 
@@ -222,7 +222,7 @@ public class TowerSpawner : MonoBehaviour {
 		} else{
 			GameManager.shakePower += 0.15f;
 		
-			ts.onBuilded();
+			ts.OnBuilded();
 			// GameManager.currentTowers[ts.id]--;
 			// GameManager.UpdateNumbers();
 			showForbiddenZones(false);

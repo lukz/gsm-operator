@@ -41,6 +41,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 	}
 
 	float dragTime;
+    private Tile previouslyDraggedTile;
+
 	void Update () {
 		if (!GameManager.canDoActions) return;
 
@@ -49,7 +51,19 @@ public class TowerSpawnerPro : MonoBehaviour {
 		if (dragging) {
 			dragTime += Time.deltaTime;
 			draggedTowerInstance.transform.position = new Vector2(pos.x + towerOffset.x, pos.y + towerOffset.y);
-		}
+
+            Tile tile = tileset.GetTileAt(pos);
+            if(previouslyDraggedTile != tile)
+            {
+                if (previouslyDraggedTile != null) previouslyDraggedTile.CancelBuildTarget();
+                if (tile != null) tile.SetAsBuildTarget();
+
+                previouslyDraggedTile = tile;
+            }
+
+
+            
+        }
 	}
 
 	public void PickTower (GameObject towerPrefab) {
@@ -137,15 +151,18 @@ public class TowerSpawnerPro : MonoBehaviour {
 		}
 
 		Tile tile = tileset.GetTileAt(InputUtils.WorldMousePosition());
-		if (!tile) {
+		if (tile == null) {
 			GameObject.Destroy(draggedTowerInstance);
 			return;
 		}
 		if (tile.CanBuild()) {
+            tile.CancelBuildTarget();
 			tile.Build(draggedTowerInstance);
 		} else {
-			GameObject.Destroy(draggedTowerInstance);
+            tile.CancelBuildTarget();
+            GameObject.Destroy(draggedTowerInstance);
 		}
+        previouslyDraggedTile = null;
 		draggedTowerInstance = null;
 
 		// GameObject.Destroy(draggedTowerInstance);
