@@ -102,7 +102,7 @@ public class Tile : MonoBehaviour {
         tower.transform.parent = transform;
         tower.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-        tower.GetComponent<TowerScript>().OnBuilded();
+        tower.GetComponent<TowerScript>().AttachToTile();
     }
 
     public bool CanBuild()

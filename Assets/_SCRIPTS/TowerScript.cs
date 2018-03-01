@@ -10,57 +10,21 @@ public class TowerScript : MonoBehaviour {
 
     public List<PowerOffset> powerOffsets;
 
-    private bool isBuildable;
-    public bool IsBuildable {
-        get {
-            return isBuildable;
-        }
-        set {
-            isBuildable = value;
-            if (animator) {
-                animator.SetBool("isBuildable", value);
-            }
-        }
-    }
-
-    public bool isBuilded;
-    private bool isAddedToTile = false;
+    private bool isAttachedToTile = false;
 
     private Animator animator;
 
     // Use this for initialization
     void Start () {
         animator = GetComponentInParent<Animator>();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-
-        if (isBuilded && !isAddedToTile)
-        {
+        if (!playerTower) {
             AttachToTile();
         }
     }
 
-    public void OnBuilded()
-    {
-        isBuilded = true;
-
-        Sounds.PlayTowerBuild();
-
-        AttachToTile();
-    }
-
-    public void OnDestroyed()
-    {
-        isBuilded = false;
-
-        DetachFromTile();
-    }
-
     public void DetachFromTile()
     {
-        isAddedToTile = false;
+        isAttachedToTile = false;
 
         Sounds.PlayDestroy();
         //for (var i = 0; i < powered.Count; i++)
@@ -75,11 +39,13 @@ public class TowerScript : MonoBehaviour {
 
     public void AttachToTile()
     {
-        isAddedToTile = true;
+        isAttachedToTile = true;
 
         Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
         Tile tileScript = transform.GetComponentInParent<Tile>();
         tilesetScript.ChangeTilesPower(tileScript.gameObject, 1, powerOffsets);
+
+        Sounds.PlayTowerBuild();
         //for (var i = 0; i < powered.Count; i++)
         //{
         //    powered[i].GetComponent<HouseScript>().powerUp();

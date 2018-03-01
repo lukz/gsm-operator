@@ -86,7 +86,6 @@ public class TowerSpawnerPro : MonoBehaviour {
 		Vector3 pos = InputUtils.WorldMousePosition();
 		draggedTowerInstance = GameObject.Instantiate(draggedTowerPrefab, pos, Quaternion.identity, parent);
 		TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
-		ts.isBuilded = false;
 
 		GameObject body = draggedTowerInstance.transform.Find("Body").gameObject;
 		SpriteRenderer bodySprite = body.GetComponent<SpriteRenderer>();
@@ -190,7 +189,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 			return;
 		}
 		TowerScript ts = tower.GetComponent<TowerScript>();
-		ts.OnDestroyed();   
+		ts.DetachFromTile();
 		// GameManager.currentTowers[ts.id]++;
 		// GameManager.UpdateNumbers();
 		if (towerExplosion) {
