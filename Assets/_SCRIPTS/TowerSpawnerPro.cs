@@ -11,6 +11,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 	public GameObject towerExplosion;
 
+	public GameObject towerDust;
+
 	private GameManager gameManager;
 
 
@@ -116,7 +118,6 @@ public class TowerSpawnerPro : MonoBehaviour {
 			return;
 		}
 		Debug.Log("PlaceTower");
-		Sounds.PlayTowerBuild();
 
 		dragging = false;
 
@@ -156,11 +157,11 @@ public class TowerSpawnerPro : MonoBehaviour {
 			draggedTowerInstance.transform.DOMove(tile.transform.position, .2f)
 				.SetEase(Ease.InOutFlash)
 				.OnComplete(()=>{
+					Sounds.PlayTowerBuild();
 					tile.CancelBuildTarget();
 					tile.Build(draggedTowerInstance);
 					gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
-					// TODO proper effect!
-					GameObject.Instantiate(towerExplosion, draggedTowerInstance.transform.position, Quaternion.identity, draggedTowerInstance.transform);
+					GameObject.Instantiate(towerDust, draggedTowerInstance.transform.position, Quaternion.identity, draggedTowerInstance.transform);
 					previouslyDraggedTile = null;
 					draggedTowerInstance = null;
 					dragging = false;

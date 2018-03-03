@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 95893783698960578}
   - component: {fileID: 114620496653685980}
   m_Layer: 0
-  m_Name: DestroyTowerFX
+  m_Name: TowerDestroyFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
