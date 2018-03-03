@@ -19,12 +19,12 @@ public class TowerScript : MonoBehaviour {
         }
     }
 
-    public void DetachFromTile()
+    public bool DetachFromTile()
     {
 
         if (!isAttachedToTile) {
             Debug.Log("Not attached to tile");
-            return;
+            return false;
         }
         isAttachedToTile = false;
 
@@ -37,14 +37,15 @@ public class TowerScript : MonoBehaviour {
         Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
         Tile tileScript = transform.GetComponentInParent<Tile>();
         tilesetScript.ChangeTilesPower(tileScript.gameObject, -1, powerOffsets);
+        return true;
     }
 
-    public void AttachToTile()
+    public bool AttachToTile()
     {
 
         if (isAttachedToTile) {
             Debug.Log("Already attached to tile");
-            return;
+            return false;
         }
         isAttachedToTile = true;
 
@@ -57,6 +58,7 @@ public class TowerScript : MonoBehaviour {
         //{
         //    powered[i].GetComponent<HouseScript>().powerUp();
         //}
+        return true;
     }
     
     [System.Serializable]

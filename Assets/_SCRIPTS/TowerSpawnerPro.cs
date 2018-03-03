@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class TowerSpawnerPro : MonoBehaviour {
 	public GameObject towerContainer;
@@ -90,15 +91,19 @@ public class TowerSpawnerPro : MonoBehaviour {
 		draggedTowerInstance = GameObject.Instantiate(draggedTowerPrefab, pos, Quaternion.identity, parent);
 		// TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
 
-		GameObject body = draggedTowerInstance.transform.Find("Body").gameObject;
-		SpriteRenderer bodySprite = body.GetComponent<SpriteRenderer>();
-		bodySprite.sortingLayerName = "GUI";
-		bodySprite.sortingOrder = 3;
+		ChangeDrawSorting(draggedTowerInstance, "GUI", 3);
 
 		Animator animator = draggedTowerInstance.GetComponent<Animator>();
 		animator.SetTrigger("shake");
 		// this is in game units
 		towerOffset.y = .4f;
+	}
+
+	void ChangeDrawSorting(GameObject tower, string layer, int order) {
+		GameObject body = tower.transform.Find("Body").gameObject;
+		SpriteRenderer bodySprite = body.GetComponent<SpriteRenderer>();
+		bodySprite.sortingLayerName = layer;
+		bodySprite.sortingOrder = order;
 	}
 
 	public void PlaceTower (EventTriggerProxy owner, GameObject towerPrefab) {
@@ -136,10 +141,6 @@ public class TowerSpawnerPro : MonoBehaviour {
 		}
 		draggedTowerPrefab = null;
 
-		GameObject body = draggedTowerInstance.transform.Find("Body").gameObject;
-		SpriteRenderer bodySprite = body.GetComponent<SpriteRenderer>();
-		bodySprite.sortingLayerName = "Buildings";
-		bodySprite.sortingOrder = 1;
 
 		// TODO return tower
 		if (isOverUI.getOverCount(Input.mousePosition) > 0) {
@@ -151,13 +152,21 @@ public class TowerSpawnerPro : MonoBehaviour {
 		if (tile == null) {
 			ReturnTower();
 		} else if (tile.CanBuild()) {
-            tile.CancelBuildTarget();
-			tile.Build(draggedTowerInstance);
-			gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
-        	previouslyDraggedTile = null;
-			draggedTowerInstance = null;
-			dragging = false;
-			draggedTowerOwner = null;
+			ChangeDrawSorting(draggedTowerInstance, "Buildings", 1);
+			draggedTowerInstance.transform.DOMove(tile.transform.position, .2f)
+				.SetEase(Ease.InOutFlash)
+				.OnComplete(()=>{
+					tile.CancelBuildTarget();
+					tile.Build(draggedTowerInstance);
+					gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
+					// TODO proper effect!
+					GameObject.Instantiate(towerExplosion, draggedTowerInstance.transform.position, Quaternion.identity, draggedTowerInstance.transform);
+					previouslyDraggedTile = null;
+					draggedTowerInstance = null;
+					dragging = false;
+					draggedTowerOwner = null;		
+				}
+			);
 		} else {
             tile.CancelBuildTarget();
 			ReturnTower();
@@ -168,19 +177,44 @@ public class TowerSpawnerPro : MonoBehaviour {
 	}
 
 	public void ReturnTower() {
-		if (previouslyDraggedTile == null) return;
-        GameObject.Destroy(draggedTowerInstance);	
+		if (draggedTowerInstance == null) return;
+		ReturnTower(draggedTowerOwner, draggedTowerInstance);
         previouslyDraggedTile = null;
 		draggedTowerInstance = null;
-		draggedTowerOwner.ReturnTower();
 		draggedTowerOwner = null;
 	}
 
-	public void ReturnTower(EventTriggerProxy button, GameObject tower) {
-		tower.GetComponent<TowerScript>().DetachFromTile();
-		button.ReturnTower();
-        GameObject.Destroy(tower);	
-		draggedTowerOwner = null;
+	public void ReturnTower(EventTriggerProxy button, GameObject tower, bool lockButton = false) {
+		ChangeDrawSorting(tower, "GUI", 3);
+		TowerScript ts = tower.GetComponent<TowerScript>();
+		bool wasAttached = ts.DetachFromTile();
+		if (wasAttached) {
+			GameObject.Instantiate(towerExplosion, tower.transform.position, Quaternion.identity, towerContainer.transform);
+				tower.transform.DOMove(button.transform.position, .5f)
+				.SetEase(Ease.InOutSine)
+				.OnComplete(()=>{
+					button.ReturnTower();
+					if (lockButton) {
+						button.Lock();
+					}
+					GameObject.Destroy(tower);	
+				}
+			);
+		} else {
+			// can we chain those in a nicer way?
+			tower.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1).OnComplete(()=>{
+				tower.transform.DOMove(button.transform.position, .5f)
+					.SetEase(Ease.InOutSine)
+					.OnComplete(()=>{
+						button.ReturnTower();
+						if (lockButton) {
+							button.Lock();
+						}
+						GameObject.Destroy(tower);	
+					}
+				);
+			});
+		}
 	}
 
 	bool isValidTowerPrafab(GameObject gameObject) {

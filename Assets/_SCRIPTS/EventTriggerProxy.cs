@@ -91,7 +91,7 @@ public class EventTriggerProxy : MonoBehaviour {
 		if (locked) return;
 		Button button = GetComponent<Button>();
 		if (!button.enabled) return;
-        Debug.Log("PickTower called " + towerPrefab);
+        // Debug.Log("PickTower called " + towerPrefab);
 		if (towerSpawnerPro != null && towerPrefab != null) {
 			towerSpawnerPro.PickTower(this, towerPrefab);
 			button.enabled = false;
@@ -103,7 +103,7 @@ public class EventTriggerProxy : MonoBehaviour {
 
 	void PlaceTower(PointerEventData data)
     {
-        Debug.Log("PlaceTower called "  + towerPrefab);
+        // Debug.Log("PlaceTower called "  + towerPrefab);
 		if (towerSpawnerPro != null && towerPrefab != null) {
 			towerSpawnerPro.PlaceTower(this, towerPrefab);
 		}

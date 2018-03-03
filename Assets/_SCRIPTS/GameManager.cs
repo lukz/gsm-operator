@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -62,6 +63,8 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
+		DOTween.Init(true, true, LogBehaviour.Verbose);
+
 		SceneManager.sceneLoaded += PrepareScene;
 		SaveControl.instance.Load();
 		towerspawner = GetComponent<TowerSpawnerPro>();
@@ -98,10 +101,14 @@ public class GameManager : MonoBehaviour
 	}
 
 	void LockCurrentTower(){
-		towerButtons[--firstLockedButton].Lock();
+		Debug.Log("Lock " + (firstLockedButton -1));
+		if (firstLockedButton > 0) {
+			towerButtons[--firstLockedButton].Lock();
+		}
 	}
 
 	void UnlockNextTower(){
+		Debug.Log("Unlock " + (firstLockedButton));
 		towerButtons[firstLockedButton++].Unlock();
 	}
 
@@ -139,11 +146,11 @@ public class GameManager : MonoBehaviour
 		if (!restarting)
 		{
 			towerspawner.ReturnTower();
-			LockCurrentTower();
-			timerTowerRestart = delayBetweenTowerRestart;
 			Sounds.PlayButtonClick();
 			if (buildTowers.Count > 0)
 			{
+				LockCurrentTower();
+				timerTowerRestart = delayBetweenTowerRestart;
 				currentlyDestroyedTower = buildTowers.Count;
 				restarting = true;
 			}
@@ -183,9 +190,13 @@ public class GameManager : MonoBehaviour
 				{
 					timerTowerRestart = delayBetweenTowerRestart;
 					ButtonTowerPair item = buildTowers[buildTowers.Count -1];
+					bool lockButton = buildTowers.Count > 1;
 					buildTowers.Remove(item);
-					towerspawner.ReturnTower(item.button, item.tower);
-					item.button.Lock();
+					towerspawner.ReturnTower(item.button, item.tower, lockButton);
+					// dont lock first one
+					// if (buildTowers.Count > 1) {
+						// item.button.Lock();
+					// }
 					// currentlyDestroyedTower++;
 					if (buildTowers.Count <= 0)
 					{
