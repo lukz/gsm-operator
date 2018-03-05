@@ -27,6 +27,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 	GameObject draggedTowerInstance;
 	EventTriggerProxy draggedTowerOwner;
 	bool dragging;
+	int flashMixId = Shader.PropertyToID("_FlashMix");
 
 	Vector2 towerOffset = new Vector2();
 
@@ -71,6 +72,7 @@ public class TowerSpawnerPro : MonoBehaviour {
         }
 	}
 
+	float mix;
 	public void PickTower (EventTriggerProxy owner, GameObject towerPrefab) {
 		if (draggedTowerPrefab != null) {
 			Debug.LogError("Already dragging a tower " + towerPrefab);
@@ -94,9 +96,25 @@ public class TowerSpawnerPro : MonoBehaviour {
 		// TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
 
 		ChangeDrawSorting(draggedTowerInstance, "GUI", 3);
-
-		Animator animator = draggedTowerInstance.GetComponent<Animator>();
-		animator.SetTrigger("shake");
+		draggedTowerInstance.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1);
+		SpriteRenderer sprite = draggedTowerInstance.transform.Find("Body").GetComponent<SpriteRenderer>();
+		
+		float flashDuration = .2f;
+		int repeats = 1;
+	
+		DOTween.Sequence()
+		.SetLoops(repeats * 2, LoopType.Yoyo)
+		.Append(
+			DOTween.To(
+				() => mix, 
+				v => {
+					sprite.material.SetFloat(flashMixId, mix = v);		
+				}, 
+				1, 
+				flashDuration/2
+			)
+		);
+		
 		// this is in game units
 		towerOffset.y = .4f;
 	}
@@ -202,8 +220,12 @@ public class TowerSpawnerPro : MonoBehaviour {
 				}
 			);
 		} else {
-			// can we chain those in a nicer way?
-			tower.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1).OnComplete(()=>{
+			// this api...
+			DOTween.Sequence()
+			.Append(
+				tower.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1)
+			)
+			.Append(
 				tower.transform.DOMove(button.transform.position, .5f)
 					.SetEase(Ease.InOutSine)
 					.OnComplete(()=>{
@@ -213,8 +235,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 						}
 						GameObject.Destroy(tower);	
 					}
-				);
-			});
+				)
+			);
 		}
 	}
 
