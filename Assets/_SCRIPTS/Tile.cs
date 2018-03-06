@@ -71,7 +71,7 @@ public class Tile : MonoBehaviour {
     
     public void SetAsBuildTarget()
     {
-        if(IsBlocked() || !HasEnergyField()) {
+        if(!CanBuild()) {
             GetComponent<SpriteRenderer>().color = blockedColor;
         } else {
             GetComponent<SpriteRenderer>().color = targetColor;
@@ -107,7 +107,7 @@ public class Tile : MonoBehaviour {
 
     public bool CanBuild()
     {
-        return !IsBlocked() && HasEnergyField();
+        return !IsBlocked() && (HasEnergyField() || powerLvl > 0);
     }
 
     public void PowerChange(int powerChange)
