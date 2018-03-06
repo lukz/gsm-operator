@@ -29,10 +29,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance = null;
 	public float powerUpTimeForSceneChange;
 	private bool splashShown = false;
-	public bool restarting = false;
-	[SerializeField]
-	private float delayBetweenTowerRestart = 0.15f;
-	private float timerTowerRestart = 0f;
+	
 	// List<GameObject> towersToDestroy = new List<GameObject>();
 	int currentlyDestroyedTower;
 	private TowerSpawnerPro towerspawner;
@@ -147,18 +144,16 @@ public class GameManager : MonoBehaviour
 	public void Restart()
 	{
 		if (!canDoActions) return;
-		if (!restarting)
-		{
-			towerspawner.ReturnTower();
-			Sounds.PlayButtonClick();
-			if (buildTowers.Count > 0)
-			{
-				LockCurrentTower();
-				timerTowerRestart = delayBetweenTowerRestart;
-				currentlyDestroyedTower = buildTowers.Count;
-				restarting = true;
-			}
-
+	
+		towerspawner.ReturnTower();
+		Sounds.PlayButtonClick();
+		// timerTowerRestart = delayBetweenTowerRestart;
+		if (buildTowers.Count > 0) {
+			LockCurrentTower();
+			ButtonTowerPair item = buildTowers[buildTowers.Count -1];
+			buildTowers.Remove(item);
+			towerspawner.ReturnTower(item.button, item.tower, false);
+		
 		}
 	}
 
@@ -183,41 +178,11 @@ public class GameManager : MonoBehaviour
 			Camera.main.transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
 		}
 	}
-	void HandleRestart()
-	{
-		if (restarting)
-		{
-			if (buildTowers.Count > 0)
-			{
-				timerTowerRestart -= Time.deltaTime;
-				if (timerTowerRestart <= 0)
-				{
-					timerTowerRestart = delayBetweenTowerRestart;
-					ButtonTowerPair item = buildTowers[buildTowers.Count -1];
-					bool lockButton = buildTowers.Count > 1;
-					buildTowers.Remove(item);
-					towerspawner.ReturnTower(item.button, item.tower, lockButton);
-					// dont lock first one
-					// if (buildTowers.Count > 1) {
-						// item.button.Lock();
-					// }
-					// currentlyDestroyedTower++;
-					if (buildTowers.Count <= 0)
-					{
-						firstLockedButton = 0;
-						UnlockNextTower();
-						restarting = false;
-					}
-				}
-			}
-		}
-	}
 
 	void Update()
 	{
 
 		ShakeScreen();
-		HandleRestart();
 
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
 		if (houses.Length > 0)
