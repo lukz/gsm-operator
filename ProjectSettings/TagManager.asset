@@ -15,6 +15,7 @@ TagManager:
   - HousesContainer
   - TowersContainer
   - EnergyField
+  - Blocker
   layers:
   - Default
   - TransparentFX
