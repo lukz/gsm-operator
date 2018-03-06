@@ -64,7 +64,7 @@ public class Tile : MonoBehaviour {
         {
             if (transform.GetChild(i).transform.tag == "Blocker") return true;
         }
-        
+
         return false;
     }
 
@@ -123,10 +123,19 @@ public class Tile : MonoBehaviour {
 
     private void OnPowerChange()
     {
-        GameObject house = GetHouse();
-        if (house != null)
+        HouseScript[] hss = GetComponentsInChildren<HouseScript>();
+        foreach (var hs in hss) 
         {
-            house.GetComponent<HouseScript>().PowerChanged();
+            hs.PowerChanged();
+            TowerScript ts = hs.gameObject.GetComponent<TowerScript>();
+            if (ts != null) {
+                if (powerLvl == 0) {
+                    ts.PowerDown();
+                } else {
+                    ts.PowerUp();
+                }
+                
+            }
         }
 
         ResetState();

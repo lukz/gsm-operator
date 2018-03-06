@@ -14,7 +14,8 @@ public class TowerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        if (!playerTower) {
+        // hack to disable mine with id == 3
+        if (!playerTower && id < 3) {
             AttachToTile();
         }
     }
@@ -33,10 +34,7 @@ public class TowerScript : MonoBehaviour {
         ///{
         //    powered[i].GetComponent<HouseScript>().powerDown();
         //}
-
-        Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
-        Tile tileScript = transform.GetComponentInParent<Tile>();
-        tilesetScript.ChangeTilesPower(tileScript.gameObject, -1, powerOffsets);
+        PowerDown();
         return true;
     }
 
@@ -49,9 +47,7 @@ public class TowerScript : MonoBehaviour {
         }
         isAttachedToTile = true;
 
-        Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
-        Tile tileScript = transform.GetComponentInParent<Tile>();
-        tilesetScript.ChangeTilesPower(tileScript.gameObject, 1, powerOffsets);
+        PowerUp();
 
         Sounds.PlayTowerBuild();
         //for (var i = 0; i < powered.Count; i++)
@@ -59,6 +55,20 @@ public class TowerScript : MonoBehaviour {
         //    powered[i].GetComponent<HouseScript>().powerUp();
         //}
         return true;
+    }
+
+    public void PowerDown() 
+    {
+        Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
+        Tile tileScript = transform.GetComponentInParent<Tile>();
+        tilesetScript.ChangeTilesPower(tileScript.gameObject, -1, powerOffsets);
+    }
+
+    public void PowerUp() 
+    {
+        Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
+        Tile tileScript = transform.GetComponentInParent<Tile>();
+        tilesetScript.ChangeTilesPower(tileScript.gameObject, 1, powerOffsets);
     }
     
     [System.Serializable]

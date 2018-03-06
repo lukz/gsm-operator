@@ -37,9 +37,11 @@ GameObject:
   - component: {fileID: 4862082104123746}
   - component: {fileID: 95242762326050694}
   - component: {fileID: 212213669934242108}
+  - component: {fileID: 114781926435298400}
+  - component: {fileID: 114263215416745228}
   m_Layer: 8
   m_Name: MineFriendly
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +52,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1749812144885018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -88,6 +90,41 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114263215416745228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749812144885018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d0c953c426c624881a17dc4f48b767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powered: 0
+  requiredPower: 1
+--- !u!114 &114781926435298400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749812144885018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f065c4860c1a6694a89e309c25b72bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
+  playerTower: 0
+  powerOffsets:
+  - x: 1
+    y: 0
+  - x: -1
+    y: 0
+  - x: 0
+    y: 1
+  - x: 0
+    y: -1
 --- !u!212 &212213669934242108
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -119,9 +156,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 823275467
+  m_SortingLayer: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
