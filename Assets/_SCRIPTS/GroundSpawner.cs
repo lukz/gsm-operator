@@ -70,9 +70,9 @@ public class GroundSpawner : MonoBehaviour {
 						//val = 1f;
 					}
 					val *= multiplierDark;
-					val -= Mathf.Abs(sca-1)*0.25f;
+				//	val -= Mathf.Abs(sca-1)*0.25f;
 
-					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1.2f);
+					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1f);
 				}
 			}
 		} else {
