@@ -15,7 +15,7 @@ public class YearSplashScript : MonoBehaviour {
 		
 	}
 
-    public void showSplash(int year)
+    public void ShowSplash(int year)
     {
         SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         SuperTextMesh textMesh = GetComponentInChildren<SuperTextMesh>();
