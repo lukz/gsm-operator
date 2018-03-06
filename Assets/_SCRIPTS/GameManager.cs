@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
 
 
         GameObject newSplash = Instantiate(splash);
-        newSplash.GetComponent<YearSplashScript>().showSplash(currentLvl);
+        newSplash.GetComponent<YearSplashScript>().ShowSplash(currentLvl);
     }
 
 	IEnumerator ChangeLvlTo1()
