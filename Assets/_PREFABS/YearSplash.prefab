@@ -37,6 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4426715145494488}
+  - component: {fileID: 114207377997158450}
   m_Layer: 0
   m_Name: YearSplash
   m_TagString: Untagged
@@ -253,6 +254,17 @@ MonoBehaviour:
   drawOrder: 0
   latestNumber: 0
   lowestLine: 0
+--- !u!114 &114207377997158450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1389999361447452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4605225e8ee3be4a9d218355f4c896f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114704398022532498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -321,8 +333,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1577305865
-  m_SortingLayer: 6
+  m_SortingLayerID: -629694189
+  m_SortingLayer: 7
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 1363e18f88165cc41a2c68baf1b0feeb, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
@@ -357,7 +369,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 1
-  m_SortingLayerID: -1577305865
+  m_SortingLayerID: -629694189
   m_SortingOrder: 11
   m_TargetDisplay: 0
 --- !u!224 &224155455275271346

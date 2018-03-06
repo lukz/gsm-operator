@@ -127,7 +127,11 @@ public class GameManager : MonoBehaviour
 		}
 
 		Sounds.PlayStartLevel();
-	}
+
+
+        GameObject newSplash = Instantiate(splash);
+        newSplash.GetComponent<YearSplashScript>().showSplash(currentLvl);
+    }
 
 	IEnumerator ChangeLvlTo1()
 	{
@@ -237,12 +241,12 @@ public class GameManager : MonoBehaviour
 			{
 				if (!splashShown)
 				{
-					splashShown = true;
+					//splashShown = true;
 					canDoActions = false;
 
-					GameObject newSplash = Instantiate(splash);
+					//GameObject newSplash = Instantiate(splash);
 
-					newSplash.GetComponent<SplashScript>().setEndSplash();
+					//newSplash.GetComponent<SplashScript>().setEndSplash();
 
 				}
 
@@ -285,7 +289,7 @@ public class GameManager : MonoBehaviour
 
 	public void changeTierOrScene()
 	{
-		CheckSave();
+        CheckSave();
 
 		NextScene(true);
 	}
