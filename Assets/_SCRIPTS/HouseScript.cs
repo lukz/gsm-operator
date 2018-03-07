@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class HouseScript : MonoBehaviour {
 
-    public GameObject restrictedZone;
-	//public int Powered { get { return powered; } private set { powered = value;} }
-
-
  	[SerializeField]
 	private int powered = 0;
 

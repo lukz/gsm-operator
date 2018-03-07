@@ -54,42 +54,42 @@ public class Sounds : MonoBehaviour {
 	}
 
 	public static void PlayMusic() {
-		if (!instance.music.isPlaying) instance.music.Play();
+		if (instance != null) if (!instance.music.isPlaying) instance.music.Play();
 	}
 
 	public static void VolumeMusic(float volume) {
-		instance.music.volume = volume;
+		if (instance != null) instance.music.volume = volume;
 	}
 
 	public static void StopMusic() {
-		if (!instance.music.isPlaying) instance.music.Play();
+		if (instance != null) if (!instance.music.isPlaying) instance.music.Play();
 	}
 
 	public static void PlayStartLevel() {
-		instance.startLvl.Play();
+		if (instance != null) instance.startLvl.Play();
 	}
 
 	public static void PlayButtonClick() {
-		instance.btnClick.Play();
+		if (instance != null) instance.btnClick.Play();
 	}
 
 	public static void PlayWinLevel() {
-		instance.winLvl.Play();
+		if (instance != null) instance.winLvl.Play();
 	}
 	
 	public static void PlayTowerBuild() {
-		instance.towerBuilt.Play();
+		if (instance != null) instance.towerBuilt.Play();
 	}
 
 	public static void PlayTowerTake() {
-		instance.takeTower.Play();
+		if (instance != null) instance.takeTower.Play();
 	}
 
 	public static void PlayDeny() {
-		instance.deny.Play();
+		if (instance != null) instance.deny.Play();
 	}
 	
 	public static void PlayDestroy() {
-		instance.destroy.Play();
+		if (instance != null) instance.destroy.Play();
 	}
 }

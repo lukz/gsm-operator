@@ -8,8 +8,9 @@ public class EventTriggerProxy : MonoBehaviour {
 	private GameObject towerPrefab;
 	private TowerSpawnerPro towerSpawnerPro;
 	public Image towerImage;
+	public SpriteRenderer gateSprite;
+	bool locked = true;
 
-	
 	private float enableImageDelay = .2f;
 	void Start()
     {
@@ -20,6 +21,9 @@ public class EventTriggerProxy : MonoBehaviour {
 
 		if (!towerImage) {
 			Debug.LogError("Image missing!");
+		}
+		if (!gateSprite) {
+			Debug.LogError("Gate missing!");
 		}
 
         EventTrigger trigger = GetComponent<EventTrigger>();
@@ -53,7 +57,7 @@ public class EventTriggerProxy : MonoBehaviour {
 	public void SetTowerPrefab(GameObject prefab) {
 		towerPrefab = prefab;
 		Button button = GetComponent<Button>();
-		if (prefab) {
+		if (prefab != null) {
 			GameObject body = prefab.transform.Find("Body").gameObject;
 			SpriteRenderer spriteRenderer = body.GetComponent<SpriteRenderer>();
 			towerImage.sprite = spriteRenderer.sprite;
@@ -65,32 +69,74 @@ public class EventTriggerProxy : MonoBehaviour {
 		}
 	}
 
+	private float lockTimer;
+	void Update() {
+		if (locked) {
+			if (lockTimer > 0) {
+				lockTimer -= Time.deltaTime;
+				float a = 1- Mathf.Clamp01(lockTimer/.5f);
+				gateSprite.color = new Color(1, 1, 1, a);
+			}
+		} else {
+			if (lockTimer > 0) {
+				lockTimer -= Time.deltaTime;
+				float a = Mathf.Clamp01(lockTimer/.5f);
+				gateSprite.color = new Color(1, 1, 1, a);
+			}
+		}
+	}
+
     void PickTower(PointerEventData data)
     {
-        Debug.Log("PickTower called " + towerPrefab);
-		if (towerSpawnerPro && towerPrefab) {
-			towerSpawnerPro.PickTower(towerPrefab);
+		if (locked) return;
+		Button button = GetComponent<Button>();
+		if (!button.enabled) return;
+        // Debug.Log("PickTower called " + towerPrefab);
+		if (towerSpawnerPro != null && towerPrefab != null) {
+			towerSpawnerPro.PickTower(this, towerPrefab);
+			button.enabled = false;
 		}
-		if (towerImage) {
+		if (towerImage != null ) {
 			towerImage.enabled = false;
 		}
     }
 
 	void PlaceTower(PointerEventData data)
     {
-        Debug.Log("PlaceTower called "  + towerPrefab);
-		if (towerSpawnerPro && towerPrefab) {
-			enableImageDelay = towerSpawnerPro.PlaceTower(towerPrefab);
+        // Debug.Log("PlaceTower called "  + towerPrefab);
+		if (towerSpawnerPro != null && towerPrefab != null) {
+			towerSpawnerPro.PlaceTower(this, towerPrefab);
 		}
-		StartCoroutine("EnableTowerImage");
-		
     }
 
-	IEnumerator EnableTowerImage () {
-		yield return new WaitForSeconds(enableImageDelay);
-		if (towerImage) {
+	public void ReturnTower() {
+		if (towerImage != null) {
 			towerImage.enabled = true;
 		}
-		yield return null;
+		Button button = GetComponent<Button>();
+		button.enabled = true;
+	}
+
+	public void Unlock() {
+		if (towerPrefab == null) return;
+		if (!locked) return;
+		Debug.Log("Unlock");
+		locked = false;
+		lockTimer = .5f;
+		// TODO hide the graphic
+	}
+
+	public void Lock() {
+		if (towerPrefab == null) return;
+		if (locked) return;
+		Debug.Log("Lock");
+		locked = true;
+		lockTimer = .5f;
+		// TODO show the graphic
+	}
+
+	public void Reset () {
+		ReturnTower();
+		Lock();
 	}
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,11 +29,8 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance = null;
 	public float powerUpTimeForSceneChange;
 	private bool splashShown = false;
-	public bool restarting = false;
-	[SerializeField]
-	private float delayBetweenTowerRestart = 0.15f;
-	private float timerTowerRestart = 0f;
-	List<GameObject> towersToDestroy = new List<GameObject>();
+	
+	// List<GameObject> towersToDestroy = new List<GameObject>();
 	int currentlyDestroyedTower;
 	private TowerSpawnerPro towerspawner;
 	public static GameObject towersContainer;
@@ -42,6 +40,10 @@ public class GameManager : MonoBehaviour
 
 	private int MAXLVLS = 2;
 
+
+	private int firstLockedButton = 0;
+	public EventTriggerProxy[] towerButtons = new EventTriggerProxy[5];
+	private List<ButtonTowerPair> buildTowers = new List<ButtonTowerPair>();
 
 	void Awake()
 	{
@@ -55,8 +57,11 @@ public class GameManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 	}
+
 	void Start()
 	{
+		DOTween.Init(true, true, LogBehaviour.Verbose);
+
 		SceneManager.sceneLoaded += PrepareScene;
 		SaveControl.instance.Load();
 		towerspawner = GetComponent<TowerSpawnerPro>();
@@ -84,6 +89,24 @@ public class GameManager : MonoBehaviour
 		Sounds.PlayMusic();
 		canDoActions = true;
 
+		UnlockNextTower();
+	}
+
+	public void TowerBuild(EventTriggerProxy button, GameObject tower) {
+		buildTowers.Add(new ButtonTowerPair(button, tower));
+		UnlockNextTower();
+	}
+
+	void LockCurrentTower(){
+		Debug.Log("Lock " + (firstLockedButton -1));
+		if (firstLockedButton > 0) {
+			towerButtons[--firstLockedButton].Lock();
+		}
+	}
+
+	void UnlockNextTower(){
+		Debug.Log("Unlock " + (firstLockedButton));
+		towerButtons[firstLockedButton++].Unlock();
 	}
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
@@ -101,7 +124,11 @@ public class GameManager : MonoBehaviour
 		}
 
 		Sounds.PlayStartLevel();
-	}
+
+
+        GameObject newSplash = Instantiate(splash);
+        newSplash.GetComponent<YearSplashScript>().ShowSplash(currentLvl);
+    }
 
 	IEnumerator ChangeLvlTo1()
 	{
@@ -117,25 +144,16 @@ public class GameManager : MonoBehaviour
 	public void Restart()
 	{
 		if (!canDoActions) return;
-		if (!restarting)
-		{
-			GameObject[] towersTemp = GameObject.FindGameObjectsWithTag("Tower");
-			towersToDestroy = new List<GameObject>();
-			for (int i = 0; i < towersTemp.Length; i++)
-			{
-				if (towersTemp[i].GetComponent<TowerScript>().playerTower)
-				{
-					towersToDestroy.Add(towersTemp[i]);
-				}
-			}
-			timerTowerRestart = delayBetweenTowerRestart;
-			Sounds.PlayButtonClick();
-			currentlyDestroyedTower = 0;
-			if (towersToDestroy.Count > 0)
-			{
-				restarting = true;
-			}
-
+	
+		towerspawner.ReturnTower();
+		Sounds.PlayButtonClick();
+		// timerTowerRestart = delayBetweenTowerRestart;
+		if (buildTowers.Count > 0) {
+			LockCurrentTower();
+			ButtonTowerPair item = buildTowers[buildTowers.Count -1];
+			buildTowers.Remove(item);
+			towerspawner.ReturnTower(item.button, item.tower, false);
+		
 		}
 	}
 
@@ -160,32 +178,11 @@ public class GameManager : MonoBehaviour
 			Camera.main.transform.position = new Vector3(0, 0, Camera.main.transform.position.z);
 		}
 	}
-	void HandleRestart()
-	{
-		if (restarting)
-		{
-			if (towersToDestroy.Count > 0)
-			{
-				timerTowerRestart -= Time.deltaTime;
-				if (timerTowerRestart <= 0)
-				{
-					timerTowerRestart = delayBetweenTowerRestart;
-					towerspawner.DestroyTower(towersToDestroy[currentlyDestroyedTower]);
-					currentlyDestroyedTower++;
-					if (currentlyDestroyedTower >= towersToDestroy.Count)
-					{
-						restarting = false;
-					}
-				}
-			}
-		}
-	}
 
 	void Update()
 	{
 
 		ShakeScreen();
-		HandleRestart();
 
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
 		if (houses.Length > 0)
@@ -209,12 +206,12 @@ public class GameManager : MonoBehaviour
 			{
 				if (!splashShown)
 				{
-					splashShown = true;
+					//splashShown = true;
 					canDoActions = false;
 
-					GameObject newSplash = Instantiate(splash);
+					//GameObject newSplash = Instantiate(splash);
 
-					newSplash.GetComponent<SplashScript>().setEndSplash();
+					//newSplash.GetComponent<SplashScript>().setEndSplash();
 
 				}
 
@@ -257,7 +254,7 @@ public class GameManager : MonoBehaviour
 
 	public void changeTierOrScene()
 	{
-		CheckSave();
+        CheckSave();
 
 		NextScene(true);
 	}
@@ -291,31 +288,23 @@ public class GameManager : MonoBehaviour
 			SceneManager.LoadScene("LVL" + nextScene);
 		}
 	}
-	/*
-	public void showForbiddenZones(bool show)
-	{
-		GameObject[] forbiddenZones = GameObject.FindGameObjectsWithTag("Forbidden");
-		for (int i = 0; i < forbiddenZones.Length; i++)
-		{
-			SpriteRenderer sr = forbiddenZones[i].GetComponentInChildren<SpriteRenderer>();
 
-			if (show)
-			{
-				sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
-			}
-			else
-			{
-				sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
-			}
-
-		}
-
-	}*/
 	void OnDestroy() {
 		if (instance == this) {
         	Debug.Log("GameManager nuked");
 			Prefs.Save();
 			instance = null;
+		}
+    }
+
+	[System.Serializable]
+    class ButtonTowerPair
+    {
+		public EventTriggerProxy button;
+		public GameObject tower;
+		public ButtonTowerPair(EventTriggerProxy button, GameObject tower) {
+			this.button = button;
+			this.tower = tower;
 		}
     }
 }

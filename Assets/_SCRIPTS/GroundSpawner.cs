@@ -70,9 +70,9 @@ public class GroundSpawner : MonoBehaviour {
 						//val = 1f;
 					}
 					val *= multiplierDark;
-					val -= Mathf.Abs(sca-1)*0.25f;
+				//	val -= Mathf.Abs(sca-1)*0.25f;
 
-					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1.2f);
+					ob.GetComponent<SpriteRenderer>().color = new Color(val, val, val*1f);
 				}
 			}
 		} else {
@@ -92,7 +92,7 @@ public class GroundSpawner : MonoBehaviour {
 				} 
 				Vector3 pos = new Vector3(cx + Random.Range(-hw, hw)-1, cx + Random.Range(-hh, hh), 0);
 				go = GameObject.Instantiate(go, pos, Quaternion.identity, transform);
-				float sca = Mathf.Max(0.45f,Mathf.Min(1, 1 - (go.transform.position.y / 5 * 0.9f)));
+				// float sca = Mathf.Max(0.45f,Mathf.Min(1, 1 - (go.transform.position.y / 5 * 0.9f)));
 			//	go.transform.localScale = new Vector3(1, sca, 1);
 				
 					float val = 1 - ((Mathf.Abs(go.transform.position.x) + Mathf.Abs(go.transform.position.y)) / 12f * 0.01f) - Random.Range(0.02f, 0.05f);

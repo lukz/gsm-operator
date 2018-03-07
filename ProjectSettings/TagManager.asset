@@ -15,6 +15,7 @@ TagManager:
   - HousesContainer
   - TowersContainer
   - EnergyField
+  - Blocker
   layers:
   - Default
   - TransparentFX
@@ -69,4 +70,7 @@ TagManager:
     locked: 0
   - name: GUI
     uniqueID: 2717661431
+    locked: 0
+  - name: TOP Overlay
+    uniqueID: 3665273107
     locked: 0

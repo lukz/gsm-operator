@@ -10,82 +10,67 @@ public class TowerScript : MonoBehaviour {
 
     public List<PowerOffset> powerOffsets;
 
-    private bool isBuildable;
-    public bool IsBuildable {
-        get {
-            return isBuildable;
-        }
-        set {
-            isBuildable = value;
-            if (animator) {
-                animator.SetBool("isBuildable", value);
-            }
-        }
-    }
-
-    public bool isBuilded;
-    private bool isAddedToTile = false;
-
-    private Animator animator;
+    private bool isAttachedToTile = false;
 
     // Use this for initialization
     void Start () {
-        animator = GetComponentInParent<Animator>();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-
-        if (isBuilded && !isAddedToTile)
-        {
+        // hack to disable mine with id == 3
+        if (!playerTower && id < 3) {
             AttachToTile();
         }
     }
 
-    public void onBuilded()
+    public bool DetachFromTile()
     {
-        isBuilded = true;
 
-        Sounds.PlayTowerBuild();
-
-        AttachToTile();
-    }
-
-    public void OnDestroyed()
-    {
-        isBuilded = false;
-
-        DetachFromTile();
-    }
-
-    public void DetachFromTile()
-    {
-        isAddedToTile = false;
+        if (!isAttachedToTile) {
+            Debug.Log("Not attached to tile");
+            return false;
+        }
+        isAttachedToTile = false;
 
         Sounds.PlayDestroy();
         //for (var i = 0; i < powered.Count; i++)
         ///{
         //    powered[i].GetComponent<HouseScript>().powerDown();
         //}
+        PowerDown();
+        return true;
+    }
 
+    public bool AttachToTile()
+    {
+
+        if (isAttachedToTile) {
+            Debug.Log("Already attached to tile");
+            return false;
+        }
+        isAttachedToTile = true;
+
+        PowerUp();
+
+        Sounds.PlayTowerBuild();
+        //for (var i = 0; i < powered.Count; i++)
+        //{
+        //    powered[i].GetComponent<HouseScript>().powerUp();
+        //}
+        return true;
+    }
+
+    public void PowerDown() 
+    {
         Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
         Tile tileScript = transform.GetComponentInParent<Tile>();
         tilesetScript.ChangeTilesPower(tileScript.gameObject, -1, powerOffsets);
     }
 
-    public void AttachToTile()
+    public void PowerUp() 
     {
-        isAddedToTile = true;
-
         Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
         Tile tileScript = transform.GetComponentInParent<Tile>();
         tilesetScript.ChangeTilesPower(tileScript.gameObject, 1, powerOffsets);
-        //for (var i = 0; i < powered.Count; i++)
-        //{
-        //    powered[i].GetComponent<HouseScript>().powerUp();
-        //}
     }
-
+    
     [System.Serializable]
     public class PowerOffset
     {
