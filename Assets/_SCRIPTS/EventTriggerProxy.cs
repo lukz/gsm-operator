@@ -11,7 +11,8 @@ public class EventTriggerProxy : MonoBehaviour {
 	public Image towerImage;
 	bool locked = true;
 
-    public SpriteRenderer gateSprite;
+    public SpriteRenderer gateSpriteFilled;
+    public SpriteRenderer gateSpriteEmpty;
     private Vector3 gateSpritePos;
 
 	private float enableImageDelay = .2f;
@@ -25,10 +26,13 @@ public class EventTriggerProxy : MonoBehaviour {
 		if (!towerImage) {
 			Debug.LogError("Image missing!");
 		}
-		if (!gateSprite) {
-			Debug.LogError("Gate missing!");
+		if (!gateSpriteFilled) {
+			Debug.LogError("Gate filled missing!");
 		}
-        gateSpritePos = gateSprite.transform.position;
+        gateSpritePos = gateSpriteFilled.transform.position;
+		if (!gateSpriteEmpty) {
+			Debug.LogError("Gate empty missing!");
+		}
 
         EventTrigger trigger = GetComponent<EventTrigger>();
         {
@@ -67,9 +71,13 @@ public class EventTriggerProxy : MonoBehaviour {
 			towerImage.sprite = spriteRenderer.sprite;
 			towerImage.enabled = true;
 			button.enabled = true;
+			gateSpriteFilled.enabled = true;
+			gateSpriteEmpty.enabled = false;
 		} else {
 			towerImage.enabled = false;
 			button.enabled = false;
+			gateSpriteFilled.enabled = false;
+			gateSpriteEmpty.enabled = true;
 		}
 	}
 
@@ -146,7 +154,7 @@ public class EventTriggerProxy : MonoBehaviour {
                     () => mix,
                     v =>
                     {
-                        gateSprite.material.SetFloat(flashMixId, mix = v);
+                        gateSpriteFilled.material.SetFloat(flashMixId, mix = v);
                     },
                     1,
                     flashDuration / 2
@@ -157,7 +165,7 @@ public class EventTriggerProxy : MonoBehaviour {
                     () => mix,
                     v =>
                     {
-                        gateSprite.material.SetFloat(flashMixId, mix = v);
+                        gateSpriteFilled.material.SetFloat(flashMixId, mix = v);
                     },
                     0,
                     flashDuration / 2
@@ -168,12 +176,12 @@ public class EventTriggerProxy : MonoBehaviour {
             .SetId("PokrywaMove")
 
             //.Append(flashSequence)
-            .Append(gateSprite.transform.DOMoveY(gateSpritePos.y + 0.5f, 0.15f).SetEase(Ease.OutSine))
-            .Append(gateSprite.transform.DOMoveY(gateSpritePos.y + -3, 0.8f).SetEase(Ease.InSine))
+            .Append(gateSpriteFilled.transform.DOMoveY(gateSpritePos.y + 0.5f, 0.15f).SetEase(Ease.OutSine))
+            .Append(gateSpriteFilled.transform.DOMoveY(gateSpritePos.y + -3, 0.8f).SetEase(Ease.InSine))
 
-            .Insert(0, gateSprite.transform.DORotate(new Vector3(0, 0, 25), 0.5f).SetEase(Ease.InOutSine))
-            .Insert(0, gateSprite.transform.DOMoveX(gateSpritePos.x - 1.5f, 1.5f).SetEase(Ease.OutSine))
-            .Insert(0, gateSprite.DOFade(0, 0.9f).SetEase(Ease.InSine))
+            .Insert(0, gateSpriteFilled.transform.DORotate(new Vector3(0, 0, 25), 0.5f).SetEase(Ease.InOutSine))
+            .Insert(0, gateSpriteFilled.transform.DOMoveX(gateSpritePos.x - 1.5f, 1.5f).SetEase(Ease.OutSine))
+            .Insert(0, gateSpriteFilled.DOFade(0, 0.9f).SetEase(Ease.InSine))
 
             .PrependInterval(flashDuration);
             ;
@@ -189,15 +197,15 @@ public class EventTriggerProxy : MonoBehaviour {
         //lockTimer = .5f;
         // TODO show the graphic
 
-        gateSprite.transform.DOKill();
-        gateSprite.material.DOKill();
+        gateSpriteFilled.transform.DOKill();
+        gateSpriteFilled.material.DOKill();
 
         DOTween.Kill("PokrywaFlash");
         DOTween.Kill("PokrywaMove");
 
-        gateSprite.transform.localPosition = new Vector3(0, 0, 0);
-        gateSprite.transform.rotation = Quaternion.EulerAngles(new Vector3(0, 0, 0));
-        gateSprite.DOFade(1, 1f).SetEase(Ease.InSine);
+        gateSpriteFilled.transform.localPosition = new Vector3(0, 0, 0);
+        gateSpriteFilled.transform.rotation = Quaternion.EulerAngles(new Vector3(0, 0, 0));
+        gateSpriteFilled.DOFade(1, 1f).SetEase(Ease.InSine);
 
     }
 
