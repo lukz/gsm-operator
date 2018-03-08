@@ -116,7 +116,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		);
 		
 		// this is in game units
-		towerOffset.y = .4f;
+		towerOffset.y = 1.0f;
 	}
 
 	void ChangeDrawSorting(GameObject tower, string layer, int order) {

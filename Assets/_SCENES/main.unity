@@ -19490,7 +19490,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1151246146
+  randomSeed: 2020357315
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -25995,7 +25995,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -962722194
+  randomSeed: -1114346261
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -35190,7 +35190,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 68548000
+  randomSeed: 1720146540
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -40464,8 +40464,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds: {fileID: 747639771}
   splash: {fileID: 1389999361447452, guid: e31fdbfdc0fc3cf4394eb77b11724818, type: 2}
+  tint: {fileID: 1775950363725364, guid: bed1bf69928b03c4086d37309afd5225, type: 2}
   powerSlider: {fileID: 1943042076}
-  powerUpTimeForSceneChange: 3
+  powerUpTimeForSceneChange: 4
   OPENlastLEVEL: 0
   towerButtons:
   - {fileID: 119341493}
@@ -40510,7 +40511,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 4.8044553
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

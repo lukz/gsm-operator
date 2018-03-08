@@ -17,8 +17,9 @@ public class GameManager : MonoBehaviour
 	public Sounds sounds;
 
 	public GameObject splash;
+    public GameObject tint;
 
-	[SerializeField]
+    [SerializeField]
 	public static float shakePower = 0;
 
 	[SerializeField]
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
 	LVLsettings lvlmanager;
 	public static GameManager instance = null;
 	public float powerUpTimeForSceneChange;
-	private bool splashShown = false;
+	private bool tintShwon = false;
 	
 	// List<GameObject> towersToDestroy = new List<GameObject>();
 	int currentlyDestroyedTower;
@@ -112,7 +113,7 @@ public class GameManager : MonoBehaviour
 	void PrepareScene(Scene scene, LoadSceneMode mode)
 	{
 		canDoActions = true;
-		splashShown = false;
+		tintShwon = false;
 
 		if (currentLvl == MAXLVLS + 1)
 		{
@@ -128,6 +129,8 @@ public class GameManager : MonoBehaviour
 
         GameObject newSplash = Instantiate(splash);
         newSplash.GetComponent<YearSplashScript>().ShowSplash(currentLvl);
+
+        showWhiteTint(false);
     }
 
 	IEnumerator ChangeLvlTo1()
@@ -204,15 +207,16 @@ public class GameManager : MonoBehaviour
 
 			if (allPowered)
 			{
-				if (!splashShown)
+				if (!tintShwon)
 				{
 					//splashShown = true;
 					canDoActions = false;
+                    tintShwon = true;
 
-					//GameObject newSplash = Instantiate(splash);
+                    //GameObject newSplash = Instantiate(splash);
 
-					//newSplash.GetComponent<SplashScript>().setEndSplash();
-
+                    //newSplash.GetComponent<SplashScript>().setEndSplash();
+                    showWhiteTint(true);
 				}
 
 
@@ -239,7 +243,21 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	private void CheckSave()
+    private void showWhiteTint(bool fadeIn)
+    {
+        GameObject newTint = Instantiate(tint);
+
+        if(fadeIn) {
+            newTint.GetComponent<FullScreenTintScript>().fadeIn(1f);
+        } else
+        {
+            newTint.GetComponent<FullScreenTintScript>().fadeOut();
+        }
+        
+    }
+
+
+    private void CheckSave()
 	{
 		GameObject[] towersTemp = GameObject.FindGameObjectsWithTag("Tower");
 		if (currentLvl == SaveControl.instance.towersUsedToWin.Count)
