@@ -29,6 +29,6 @@ public class YearSplashScript : MonoBehaviour {
             ).OnComplete(() => {
                 //gameObject.SetActive(false);
                 Destroy(gameObject);
-            });
+            }).PrependInterval(1f);
     }
 }
