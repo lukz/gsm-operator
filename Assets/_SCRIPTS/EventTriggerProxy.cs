@@ -16,9 +16,15 @@ public class EventTriggerProxy : MonoBehaviour {
     private Vector3 gateSpritePos;
 
 	private float enableImageDelay = .2f;
-	void Start()
+
+    private float timeToShake = 3f;
+    private float timeToShakeLeft;
+
+    void Start()
     {
-		towerSpawnerPro = FindObjectOfType<TowerSpawnerPro>();
+        timeToShakeLeft = timeToShake;
+
+        towerSpawnerPro = FindObjectOfType<TowerSpawnerPro>();
 		if (!towerSpawnerPro) {
 			Debug.LogError("TowerSpawnerPro missing!");
 		}
@@ -83,24 +89,17 @@ public class EventTriggerProxy : MonoBehaviour {
 
 	//private float lockTimer;
 	void Update() {
-        //if (locked)
-        //{
-        //    if (lockTimer > 0)
-        //    {
-        //        lockTimer -= Time.deltaTime;
-        //        float a = 1 - Mathf.Clamp01(lockTimer / .5f);
-        //        gateSprite.color = new Color(1, 1, 1, a);
-        //    }
-        //}
-        //else
-        //{
-        //    if (lockTimer > 0)
-        //    {
-        //        lockTimer -= Time.deltaTime;
-        //        float a = Mathf.Clamp01(lockTimer / .5f);
-        //        gateSprite.color = new Color(1, 1, 1, a);
-        //    }
-        //}
+        if(!locked && towerImage != null && towerImage.enabled)
+        {
+            timeToShakeLeft -= Time.deltaTime;
+
+            if(timeToShakeLeft <= 0)
+            {
+                timeToShakeLeft = timeToShake;
+                towerImage.rectTransform.DOPunchRotation(new Vector3(0, 0, 20), .5f, 10, 1);
+            }
+
+        }
     }
 
     void PickTower(PointerEventData data)

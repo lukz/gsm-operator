@@ -96,7 +96,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		// TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
 
 		ChangeDrawSorting(draggedTowerInstance, "GUI", 3);
-		draggedTowerInstance.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1);
+		//draggedTowerInstance.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1);
 		SpriteRenderer sprite = draggedTowerInstance.transform.Find("Body").GetComponent<SpriteRenderer>();
 		
 		float flashDuration = .2f;
@@ -179,7 +179,9 @@ public class TowerSpawnerPro : MonoBehaviour {
 					tile.CancelBuildTarget();
 					tile.Build(draggedTowerInstance);
 					gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
-					GameObject.Instantiate(towerDust, draggedTowerInstance.transform.position, Quaternion.identity, draggedTowerInstance.transform);
+					GameObject dust = GameObject.Instantiate(towerDust, draggedTowerInstance.transform.position, Quaternion.identity, draggedTowerInstance.transform);
+                    dust.transform.localPosition = new Vector3(0, -0.1f, 0);
+
 					previouslyDraggedTile = null;
 					draggedTowerInstance = null;
 					dragging = false;
