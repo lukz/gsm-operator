@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
 	public static bool canDoActions = true;
 
-	public Sounds sounds;
 
 	public GameObject splash;
 	public GameObject tint;
@@ -69,7 +68,6 @@ public class GameManager : MonoBehaviour
 		if (OPENlastLEVEL)
 		{
 			int lastUnlockedLevel = 0;
-			Debug.Log(SaveControl.instance.towersUsedToWin.Count);
 			if (SaveControl.instance.towersUsedToWin.Count > 0) // wygral chociaz 1 poziom
 			{
 				lastUnlockedLevel = SaveControl.instance.towersUsedToWin.Count;
@@ -86,12 +84,8 @@ public class GameManager : MonoBehaviour
 		{
 			PrepareScene(SceneManager.GetSceneByName("main"), LoadSceneMode.Single);
 		}
-		sounds.Prepare();
 
 
-
-
-		Sounds.PlayMusic();
 		canDoActions = true;
 	}
 
@@ -140,7 +134,6 @@ public class GameManager : MonoBehaviour
 			UnlockNextTower();
 
 		}
-
 		Sounds.PlayStartLevel();
 
 
@@ -244,7 +237,7 @@ public class GameManager : MonoBehaviour
 				}
 
 				timer += Time.deltaTime;
-				Sounds.VolumeMusic(Mathf.Max(0.5f, (powerUpTimeForSceneChange - timer) * 0.8f));
+				Sounds.VolumeMusic(Mathf.Max(0.5f, (powerUpTimeForSceneChange - timer)));
 
 				if (timer >= powerUpTimeForSceneChange)
 				{

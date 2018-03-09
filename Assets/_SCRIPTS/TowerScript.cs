@@ -49,7 +49,7 @@ public class TowerScript : MonoBehaviour {
 
         PowerUp();
 
-        Sounds.PlayTowerBuild();
+		if(playerTower) Sounds.PlayTowerBuild();
         //for (var i = 0; i < powered.Count; i++)
         //{
         //    powered[i].GetComponent<HouseScript>().powerUp();

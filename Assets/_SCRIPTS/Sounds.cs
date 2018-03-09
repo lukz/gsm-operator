@@ -18,12 +18,12 @@ public class Sounds : MonoBehaviour {
 	bool soundOn;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		ToggleSound(Prefs.GetMasterVolume() > 0);
 
 		music.loop = true;
 
-		music.volume = 0.8f;
+		//music.volume = 0.8f;
 		Prepare();
 	}
 
@@ -50,7 +50,15 @@ public class Sounds : MonoBehaviour {
 	}
 
 	public void Prepare() {
-		instance = this;
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else if (instance != this)
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	public static void PlayMusic() {

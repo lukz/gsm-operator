@@ -2842,7 +2842,7 @@ GameObject:
   - component: {fileID: 1677031364}
   m_Layer: 0
   m_Name: TileSet
-  m_TagString: Untagged
+  m_TagString: Tileset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30227,11 +30227,6 @@ MonoBehaviour:
   towerPrefab4: {fileID: 1302283097398374, guid: 5dccf7bb78741c742a348b3e58c10d50,
     type: 2}
   towerPrefab5: {fileID: 0}
-  towerButton1: {fileID: 119341493}
-  towerButton2: {fileID: 1537405701}
-  towerButton3: {fileID: 774938480}
-  towerButton4: {fileID: 851665996}
-  towerButton5: {fileID: 377844879}
   tiles:
   - {fileID: 1677031386}
   - {fileID: 1677031385}

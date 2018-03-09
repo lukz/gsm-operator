@@ -27,8 +27,9 @@ public class YearSplashScript : MonoBehaviour {
             .Append(
                 spriteRenderer.DOFade(0.3f, 2f)
             ).OnComplete(() => {
-                //gameObject.SetActive(false);
-                Destroy(gameObject);
+				//gameObject.SetActive(false);
+					Sounds.PlayMusic();
+				Destroy(gameObject);
             }).PrependInterval(1f);
     }
 }
