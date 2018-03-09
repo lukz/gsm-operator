@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
 	public Sounds sounds;
 
 	public GameObject splash;
-    public GameObject tint;
+	public GameObject tint;
 
-    [SerializeField]
+	[SerializeField]
 	public static float shakePower = 0;
 
 	[SerializeField]
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance = null;
 	public float powerUpTimeForSceneChange;
 	private bool tintShwon = false;
-	
+
 	// List<GameObject> towersToDestroy = new List<GameObject>();
 	int currentlyDestroyedTower;
 	private TowerSpawnerPro towerspawner;
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
 	public bool OPENlastLEVEL;
 
-	private int MAXLVLS = 9;
+	private int MAXLVLS = 2;
 
 
 	private int firstLockedButton = 0;
@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
 		if (OPENlastLEVEL)
 		{
 			int lastUnlockedLevel = 0;
+			Debug.Log(SaveControl.instance.towersUsedToWin.Count);
 			if (SaveControl.instance.towersUsedToWin.Count > 0) // wygral chociaz 1 poziom
 			{
 				lastUnlockedLevel = SaveControl.instance.towersUsedToWin.Count;
@@ -86,77 +87,86 @@ public class GameManager : MonoBehaviour
 			PrepareScene(SceneManager.GetSceneByName("main"), LoadSceneMode.Single);
 		}
 		sounds.Prepare();
-		
+
+
+
+
 		Sounds.PlayMusic();
 		canDoActions = true;
-
-		UnlockNextTower();
 	}
 
-	public void TowerBuild(EventTriggerProxy button, GameObject tower) {
+	public void TowerBuild(EventTriggerProxy button, GameObject tower)
+	{
 		buildTowers.Add(new ButtonTowerPair(button, tower));
 		UnlockNextTower();
 	}
 
-	void LockCurrentTower(){
-		Debug.Log("Lock " + (firstLockedButton -1));
-		if (firstLockedButton > 0) {
+	void LockCurrentTower()
+	{
+		Debug.Log("Lock " + (firstLockedButton - 1));
+		if (firstLockedButton > 0)
+		{
 			towerButtons[--firstLockedButton].Lock();
 		}
 	}
 
-	void UnlockNextTower(){
+	void UnlockNextTower()
+	{
 		Debug.Log("Unlock " + (firstLockedButton));
 		towerButtons[firstLockedButton++].Unlock();
 	}
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
 	{
+		buildTowers = new List<ButtonTowerPair>();
+		firstLockedButton = 0;
 		canDoActions = true;
 		tintShwon = false;
 
 		if (currentLvl == MAXLVLS + 1)
 		{
-			StartCoroutine(ChangeLvlTo1());
-		}else {
+			Invoke("ChangeLvlTo1", 3f);
+		}
+		else
+		{
 			lvlmanager = GameObject.FindGameObjectWithTag("LVLmanager").GetComponent<LVLsettings>();
 			currentLvl = lvlmanager.level;
 			towersContainer = GameObject.FindGameObjectWithTag("TowersContainer");
+			towerspawner.towerContainer = towersContainer;
+			towerspawner.tileset = GameObject.FindGameObjectWithTag("Tileset").GetComponent<Tileset>();
+
+			GameObject newSplash = Instantiate(splash);
+			newSplash.GetComponent<YearSplashScript>().ShowSplash(lvlmanager.levelName);
+			UnlockNextTower();
+
 		}
 
 		Sounds.PlayStartLevel();
 
 
-        GameObject newSplash = Instantiate(splash);
-        newSplash.GetComponent<YearSplashScript>().ShowSplash(lvlmanager.levelName);
+		showWhiteTint(false);
+	}
 
-        showWhiteTint(false);
-    }
-
-	IEnumerator ChangeLvlTo1()
+	void ChangeLvlTo1()
 	{
-		while (true)
-		{
-			yield return new WaitForSeconds(3);
-			currentLvl = 1;
-			SceneManager.LoadScene("LVL1");
-			StopCoroutine(ChangeLvlTo1());
-		}
+		currentLvl = 1;
+		SceneManager.LoadScene("LVL1");
 	}
 
 	public void Restart()
 	{
 		if (!canDoActions) return;
-	
+
 		towerspawner.ReturnTower();
 		Sounds.PlayButtonClick();
 		// timerTowerRestart = delayBetweenTowerRestart;
-		if (buildTowers.Count > 0) {
+		if (buildTowers.Count > 0)
+		{
 			LockCurrentTower();
-			ButtonTowerPair item = buildTowers[buildTowers.Count -1];
+			ButtonTowerPair item = buildTowers[buildTowers.Count - 1];
 			buildTowers.Remove(item);
 			towerspawner.ReturnTower(item.button, item.tower, false);
-		
+
 		}
 	}
 
@@ -182,7 +192,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-    private float cachedProgress;
+	private float cachedProgress;
 
 	void Update()
 	{
@@ -207,24 +217,24 @@ public class GameManager : MonoBehaviour
 			float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
 			powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
 
-            if (realProgress > cachedProgress)
-            {
-                powerSlider.gameObject.GetComponentInChildren<SliderFillScript>().FlashSlider();
-            }
-            cachedProgress = realProgress;
+			if (realProgress > cachedProgress)
+			{
+				powerSlider.gameObject.GetComponentInChildren<SliderFillScript>().FlashSlider();
+			}
+			cachedProgress = realProgress;
 
-            if (allPowered)
+			if (allPowered)
 			{
 				if (!tintShwon)
 				{
 					//splashShown = true;
 					canDoActions = false;
-                    tintShwon = true;
+					tintShwon = true;
 
-                    //GameObject newSplash = Instantiate(splash);
+					//GameObject newSplash = Instantiate(splash);
 
-                    //newSplash.GetComponent<SplashScript>().setEndSplash();
-                    showWhiteTint(true);
+					//newSplash.GetComponent<SplashScript>().setEndSplash();
+					showWhiteTint(true);
 				}
 
 
@@ -251,21 +261,23 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-    private void showWhiteTint(bool fadeIn)
-    {
-        GameObject newTint = Instantiate(tint);
+	private void showWhiteTint(bool fadeIn)
+	{
+		GameObject newTint = Instantiate(tint);
 
-        if(fadeIn) {
-            newTint.GetComponent<FullScreenTintScript>().fadeIn(1f);
-        } else
-        {
-            newTint.GetComponent<FullScreenTintScript>().fadeOut();
-        }
-        
-    }
+		if (fadeIn)
+		{
+			newTint.GetComponent<FullScreenTintScript>().fadeIn(1f);
+		}
+		else
+		{
+			newTint.GetComponent<FullScreenTintScript>().fadeOut();
+		}
+
+	}
 
 
-    private void CheckSave()
+	private void CheckSave()
 	{
 		GameObject[] towersTemp = GameObject.FindGameObjectsWithTag("Tower");
 		if (currentLvl == SaveControl.instance.towersUsedToWin.Count)
@@ -280,7 +292,7 @@ public class GameManager : MonoBehaviour
 
 	public void changeTierOrScene()
 	{
-        CheckSave();
+		CheckSave();
 
 		NextScene(true);
 	}
@@ -315,22 +327,25 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	void OnDestroy() {
-		if (instance == this) {
-        	Debug.Log("GameManager nuked");
+	void OnDestroy()
+	{
+		if (instance == this)
+		{
+			Debug.Log("GameManager nuked");
 			Prefs.Save();
 			instance = null;
 		}
-    }
+	}
 
 	[System.Serializable]
-    class ButtonTowerPair
-    {
+	class ButtonTowerPair
+	{
 		public EventTriggerProxy button;
 		public GameObject tower;
-		public ButtonTowerPair(EventTriggerProxy button, GameObject tower) {
+		public ButtonTowerPair(EventTriggerProxy button, GameObject tower)
+		{
 			this.button = button;
 			this.tower = tower;
 		}
-    }
+	}
 }

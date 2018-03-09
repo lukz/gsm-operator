@@ -20,7 +20,7 @@ public class YearSplashScript : MonoBehaviour {
         SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         SuperTextMesh textMesh = GetComponentInChildren<SuperTextMesh>();
 
-        textMesh.Text = year;
+        textMesh.Text = "YEAR  " + year;
 
         DOTween.Sequence()
             .SetDelay(1f)

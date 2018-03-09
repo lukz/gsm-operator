@@ -11,7 +11,7 @@ public class IsOverUI : MonoBehaviour {
     EventSystem eventSystem;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		//Fetch the Raycaster from the GameObject (the Canvas)
 		Canvas canvas = FindObjectOfType<Canvas>();
         raycaster = canvas.GetComponent<GraphicRaycaster>();

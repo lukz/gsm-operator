@@ -12,19 +12,19 @@ public class LVLsettings : MonoBehaviour {
 	public GameObject towerPrefab4;
 	public GameObject towerPrefab5;
 
-	public EventTriggerProxy towerButton1;
-	public EventTriggerProxy towerButton2;
-	public EventTriggerProxy towerButton3;
-	public EventTriggerProxy towerButton4;
-	public EventTriggerProxy towerButton5;
 	public List<Tile> tiles;
 
-	void Start () {
-		towerButton1.SetTowerPrefab(towerPrefab1);
-		towerButton2.SetTowerPrefab(towerPrefab2);
-		towerButton3.SetTowerPrefab(towerPrefab3);
-		towerButton4.SetTowerPrefab(towerPrefab4);
-		towerButton5.SetTowerPrefab(towerPrefab5);
+	void Awake () {
+
+
+		// trzeba patrzec co ginie na zmiane sceny, nigdy nie robi sie referencji do stalego elementu, od elementow ktore dostajesz od nowej sceny, bo referencje ZAWSZE sa nullami wtedy. Albo wszystko dontDelete albo nic. Jak pomiedzy to trzeba szukac po tagach.
+		EventTriggerProxy[] list = GameObject.FindGameObjectWithTag("MainCamera").GetComponentsInChildren<EventTriggerProxy>();
+
+		list[0].SetTowerPrefab(towerPrefab1);
+		list[1].SetTowerPrefab(towerPrefab2);
+		list[2].SetTowerPrefab(towerPrefab3);
+		list[3].SetTowerPrefab(towerPrefab4);
+		list[4].SetTowerPrefab(towerPrefab5);
 	}
 
 	
