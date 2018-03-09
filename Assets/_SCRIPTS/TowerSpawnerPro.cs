@@ -179,7 +179,9 @@ public class TowerSpawnerPro : MonoBehaviour {
 					tile.CancelBuildTarget();
 					tile.Build(draggedTowerInstance);
 					gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
-					GameObject.Instantiate(towerDust, draggedTowerInstance.transform.position, Quaternion.identity, draggedTowerInstance.transform);
+					GameObject dust = GameObject.Instantiate(towerDust, draggedTowerInstance.transform.position, Quaternion.identity, draggedTowerInstance.transform);
+                    dust.transform.localPosition = new Vector3(0, -0.1f, 0);
+
 					previouslyDraggedTile = null;
 					draggedTowerInstance = null;
 					dragging = false;
