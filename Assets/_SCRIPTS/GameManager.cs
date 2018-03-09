@@ -182,6 +182,8 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+    private float cachedProgress;
+
 	void Update()
 	{
 
@@ -205,7 +207,13 @@ public class GameManager : MonoBehaviour
 			float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
 			powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
 
-			if (allPowered)
+            if (realProgress > cachedProgress)
+            {
+                powerSlider.gameObject.GetComponentInChildren<SliderFillScript>().FlashSlider();
+            }
+            cachedProgress = realProgress;
+
+            if (allPowered)
 			{
 				if (!tintShwon)
 				{
