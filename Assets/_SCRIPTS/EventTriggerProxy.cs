@@ -89,28 +89,6 @@ public class EventTriggerProxy : MonoBehaviour {
 
 	//private float lockTimer;
 	void Update() {
-        //if (locked)
-        //{
-        //    if (lockTimer > 0)
-        //    {
-        //        lockTimer -= Time.deltaTime;
-        //        float a = 1 - Mathf.Clamp01(lockTimer / .5f);
-        //        gateSprite.color = new Color(1, 1, 1, a);
-        //    }
-        //}
-        //else
-        //{
-        //    if (lockTimer > 0)
-        //    {
-        //        lockTimer -= Time.deltaTime;
-        //        float a = Mathf.Clamp01(lockTimer / .5f);
-        //        gateSprite.color = new Color(1, 1, 1, a);
-        //    }
-        //}
-
-
-        // draggedTowerInstance.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1);
-
         if(!locked && towerImage != null && towerImage.enabled)
         {
             timeToShakeLeft -= Time.deltaTime;
