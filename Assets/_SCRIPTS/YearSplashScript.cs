@@ -29,6 +29,7 @@ public class YearSplashScript : MonoBehaviour {
             ).OnComplete(() => {
 				//gameObject.SetActive(false);
 					Sounds.PlayMusic();
+				Sounds.RestoreMusic();
 				Destroy(gameObject);
             }).PrependInterval(1f);
     }

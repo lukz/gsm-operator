@@ -61,6 +61,35 @@ public class Sounds : MonoBehaviour {
 		}
 	}
 
+
+
+	private float timerRestoreMusic = 0;
+	private bool restoringMusic = false;
+	public static void RestoreMusic()
+	{
+		if (instance != null)
+		{
+			if (instance.music.volume < 1)
+			{
+				instance.timerRestoreMusic = 0f;
+				instance.restoringMusic = true;
+			}
+		}
+	}
+
+	private void Update()
+	{
+		if (restoringMusic)
+		{
+			timerRestoreMusic += 0.02f;
+			VolumeMusic(timerRestoreMusic / 1f);
+			if (timerRestoreMusic >= 1)
+			{
+				restoringMusic = false;
+			}
+		}
+	}
+
 	public static void PlayMusic() {
 		if (instance != null) if (!instance.music.isPlaying) instance.music.Play();
 	}
@@ -91,6 +120,11 @@ public class Sounds : MonoBehaviour {
 
 	public static void PlayTowerTake() {
 		if (instance != null) instance.takeTower.Play();
+	}
+
+	public static void PlayFinal()
+	{
+		if (instance != null) instance.finalWin.Play();
 	}
 
 	public static void PlayDeny() {

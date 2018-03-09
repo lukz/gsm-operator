@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
 
 		if (currentLvl == MAXLVLS + 1)
 		{
-			Invoke("ChangeLvlTo1", 3f);
+			Invoke("ChangeLvlTo1", 15f);
 		}
 		else
 		{
@@ -237,7 +237,7 @@ public class GameManager : MonoBehaviour
 				}
 
 				timer += Time.deltaTime;
-				Sounds.VolumeMusic(Mathf.Max(0.5f, (powerUpTimeForSceneChange - timer)));
+				Sounds.VolumeMusic(Mathf.Max(0f, (powerUpTimeForSceneChange - timer*3f)));
 
 				if (timer >= powerUpTimeForSceneChange)
 				{
@@ -307,6 +307,7 @@ public class GameManager : MonoBehaviour
 			{
 				string nextScene = (++currentLvl).ToString();
 				SceneManager.LoadScene("LVL" + nextScene);
+				Sounds.VolumeMusic(0);
 			}
 		}
 	}
@@ -316,6 +317,7 @@ public class GameManager : MonoBehaviour
 		if (currentLvl > 0)
 		{
 			string nextScene = (--currentLvl).ToString();
+			Sounds.VolumeMusic(0);
 			SceneManager.LoadScene("LVL" + nextScene);
 		}
 	}
