@@ -11,7 +11,7 @@ public class Tile : MonoBehaviour {
     private Color blockedColor = new Color(0xFF, 0x00, 0x00, 0xD0);
     private Color poweredColor = new Color(0x00, 0xB5, 0xFF, 0xC0);
     private Color powered2Color = new Color(0x60, 0x90, 0xFF, 0xC0);
-    private Color powered3Color = new Color(0xc0, 0x60, 0xFF, 0xC0);
+    private Color powered3Color = new Color(0x00, 0x00, 0x0, 0xC0);
 	private Color targetColor = new Color(0x0, 0xFF, 0x00, 0xFD);
 
     // Use this for initialization
