@@ -5,7 +5,6 @@ using UnityEngine;
 public class Sounds : MonoBehaviour {
 
 	public AudioSource music;
-	public AudioSource music1;
 	public AudioSource winLvl;
 	public AudioSource startLvl;
 	public AudioSource finalWin;
@@ -22,6 +21,8 @@ public class Sounds : MonoBehaviour {
 	void Start () {
 		ToggleSound(Prefs.GetMasterVolume() > 0);
 
+		music.loop = true;
+
 		music.volume = 0.8f;
 		Prepare();
 	}
@@ -36,7 +37,6 @@ public class Sounds : MonoBehaviour {
 		Debug.Log("Toggle sound " + enabled);
 		soundOn = enabled;
 		music.mute = !enabled;
-		music1.mute = !enabled;
 		finalWin.mute = !enabled;
 		winLvl.mute = !enabled;
 		btnClick.mute = !enabled;
