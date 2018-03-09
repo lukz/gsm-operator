@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
 	public bool OPENlastLEVEL;
 
-	private int MAXLVLS = 2;
+	private int MAXLVLS = 9;
 
 
 	private int firstLockedButton = 0;
@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
 
 
         GameObject newSplash = Instantiate(splash);
-        newSplash.GetComponent<YearSplashScript>().ShowSplash(currentLvl);
+        newSplash.GetComponent<YearSplashScript>().ShowSplash(lvlmanager.levelName);
 
         showWhiteTint(false);
     }
