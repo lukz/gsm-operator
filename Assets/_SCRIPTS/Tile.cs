@@ -142,7 +142,7 @@ public class Tile : MonoBehaviour {
         foreach (var hs in hss) 
         {
             hs.PowerChanged();
-            TowerScript ts = hs.gameObject.GetComponent<TowerScript>();
+            MineScript ts = hs.gameObject.GetComponent<MineScript>();
             if (ts != null) {
                 if (powerLvl == 0) {
                     ts.PowerDown();
