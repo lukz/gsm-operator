@@ -101,6 +101,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		Transform parent = towerContainer.transform;
 		Vector3 pos = InputUtils.WorldMousePosition();
 		draggedTowerInstance = GameObject.Instantiate(draggedTowerPrefab, pos, Quaternion.identity, parent);
+		draggedTowerInstance.transform.Find("Shadow").gameObject.SetActive(false);
 		// TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
 
 		// buttons are at 50 for some reason...
@@ -194,6 +195,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 					tile.CancelBuildTarget();
 					tile.Build(draggedTowerInstance);
 					gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
+					draggedTowerInstance.transform.Find("Shadow").gameObject.SetActive(true);
 					GameObject dust = GameObject.Instantiate(towerDust, draggedTowerInstance.transform.position, Quaternion.identity, draggedTowerInstance.transform);
                     dust.transform.localPosition = new Vector3(0, -0.1f, 0);
 
@@ -225,6 +227,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		TowerScript ts = tower.GetComponent<TowerScript>();
 		bool wasAttached = ts.DetachFromTile();
 		if (wasAttached) {
+			tower.transform.Find("Shadow").gameObject.SetActive(false);
 			GameObject.Instantiate(towerExplosion, tower.transform.position, Quaternion.identity, towerContainer.transform);
 				tower.transform.DOMove(button.transform.position, .5f)
 				.SetEase(Ease.InOutSine)
