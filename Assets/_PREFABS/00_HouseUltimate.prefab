@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 114291208996870788}
   - component: {fileID: 95131524346033362}
   m_Layer: 0
-  m_Name: HouseUltimate
+  m_Name: 00_HouseUltimate
   m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,7 +519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d0c953c426c624881a17dc4f48b767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restrictedZone: {fileID: 1875107907283100}
   powered: 0
   requiredPower: 3
 --- !u!114 &114906879929269916
