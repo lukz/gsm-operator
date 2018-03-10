@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
 	public bool OPENlastLEVEL;
 
-	private int MAXLVLS = 2;
+	private int MAXLVLS = 5;
 
 
 	private int firstLockedButton = 0;
