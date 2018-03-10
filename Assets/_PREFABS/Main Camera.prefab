@@ -2850,9 +2850,11 @@ MonoBehaviour:
   towerExplosion: {fileID: 1663869448402244, guid: 89c5ffd86f6314ee1940ca6e42cb7f9a,
     type: 2}
   towerDust: {fileID: 1201648230090310, guid: 110c7b8a8c34f40918c32551f4ad829d, type: 2}
+  towerPump: {fileID: 1064975303659196, guid: 158e1add10f414a3895532bdd5c9085e, type: 2}
   tileset: {fileID: 0}
   isOverUI: {fileID: 114451202578102300}
   minDragTime: 0.2
+  towerGuiSorting: 51
 --- !u!114 &114899530417577562
 MonoBehaviour:
   m_ObjectHideFlags: 1

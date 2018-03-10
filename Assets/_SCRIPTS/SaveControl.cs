@@ -39,12 +39,17 @@ public class SaveControl : MonoBehaviour {
 
 	public void Load()
 	{
-		if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
-		{
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat",FileMode.Open);
-			PlayerData data = (PlayerData)bf.Deserialize(file);
-			towersUsedToWin = data.towersUsedToWin;
+		try {
+			if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+			{
+				BinaryFormatter bf = new BinaryFormatter();
+				FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat",FileMode.Open);
+				PlayerData data = (PlayerData)bf.Deserialize(file);
+				towersUsedToWin = data.towersUsedToWin;
+			}
+		} catch (Exception ex) {
+			Debug.LogError("Failed to load player info " + ex);
+			File.Delete(Application.persistentDataPath + "/playerInfo.dat");
 		}
 	}
 }
