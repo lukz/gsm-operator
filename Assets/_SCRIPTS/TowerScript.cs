@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class TowerScript : MonoBehaviour {
     
@@ -11,22 +13,30 @@ public class TowerScript : MonoBehaviour {
     public List<PowerOffset> powerOffsets;
 
     private bool isAttachedToTile = false;
+    private Tile tile;
+    private GameObject pump;
 
     // Use this for initialization
     void Start () {
         // hack to disable mine with id == 3
         if (!playerTower && id < 3) {
-            AttachToTile();
+            Tileset tileSet = FindObjectOfType<Tileset>();
+            Tile tile = tileSet.GetTileAt(transform.position);
+            if (tile != null) {
+                AttachToTile(tile);
+            } else {
+                Debug.Log("No tile for tower at " + transform.position);
+            }
         }
     }
 
-    public bool DetachFromTile()
+    public Tile DetachFromTile()
     {
 
         if (!isAttachedToTile) {
             Debug.Log("Not attached to tile");
 			Sounds.PlayDeny();
-            return false;
+            return tile;
         }
         isAttachedToTile = false;
 
@@ -36,10 +46,19 @@ public class TowerScript : MonoBehaviour {
         //    powered[i].GetComponent<HouseScript>().powerDown();
         //}
         PowerDown();
-        return true;
+        Tile t = tile;
+        tile = null;
+        if (pump != null) {
+            SpriteRenderer sr = pump.GetComponentInChildren<SpriteRenderer>();
+            sr.DOFade(0, .2f).OnComplete(() => {
+                Destroy(pump);
+            });
+            pump = null;
+        }
+        return t;
     }
 
-    public bool AttachToTile()
+    public bool AttachToTile(Tile tile)
     {
 
         if (isAttachedToTile) {
@@ -55,6 +74,16 @@ public class TowerScript : MonoBehaviour {
         //{
         //    powered[i].GetComponent<HouseScript>().powerUp();
         //}
+        this.tile = tile;
+        if (tile != null && tile.HasEnergyField()) {
+            TowerSpawnerPro tsp = FindObjectOfType<TowerSpawnerPro>();
+            pump = GameObject.Instantiate(tsp.GetPumpPrefab(), tile.transform.position, Quaternion.identity, tile.transform);
+            SpriteRenderer sr = pump.GetComponentInChildren<SpriteRenderer>();
+            sr.color = new Color(1, 1, 1, 0);
+            sr.DOFade(1, .2f);
+        }
+        
+
         return true;
     }
 

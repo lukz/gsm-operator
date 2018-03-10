@@ -13,6 +13,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 	public GameObject towerDust;
 
+	public GameObject towerPump;
+
 	private GameManager gameManager;
 
 
@@ -187,8 +189,9 @@ public class TowerSpawnerPro : MonoBehaviour {
 		if (tile == null || !tile.gameObject.activeInHierarchy) {
 			ReturnTower();
 		} else if (tile.CanBuild()) {
-			ChangeDrawSorting(draggedTowerInstance, "Buildings", 1);
-			draggedTowerInstance.transform.DOMove(tile.transform.position, .2f)
+			ChangeDrawSorting(draggedTowerInstance, "Buildings", 3);
+			Vector3 targetPos = tile.transform.position;
+			draggedTowerInstance.transform.DOMove(targetPos, .2f)
 				.SetEase(Ease.InOutFlash)
 				.OnComplete(()=>{
 					Sounds.PlayTowerBuild();
@@ -196,7 +199,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 					tile.Build(draggedTowerInstance);
 					gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
 					draggedTowerInstance.transform.Find("Shadow").gameObject.SetActive(true);
-					GameObject dust = GameObject.Instantiate(towerDust, draggedTowerInstance.transform.position, Quaternion.identity, draggedTowerInstance.transform);
+					GameObject dust = GameObject.Instantiate(towerDust, targetPos, Quaternion.identity, draggedTowerInstance.transform);
                     dust.transform.localPosition = new Vector3(0, -0.1f, 0);
 
 					previouslyDraggedTile = null;
@@ -228,6 +231,23 @@ public class TowerSpawnerPro : MonoBehaviour {
 		bool wasAttached = ts.DetachFromTile();
 		if (wasAttached) {
 			tower.transform.Find("Shadow").gameObject.SetActive(false);
+			// lol jank
+			Tile tile = tileset.GetTileAt(tower.transform.position);
+			if (tile != null) {
+				GameObject pump = null;
+				for (int i = 0; i < tile.transform.childCount; i++)
+        		{
+					Transform child = tile.transform.GetChild(i);
+					if (child.tag == "Pump")
+					{
+						pump = child.gameObject;
+						break;	
+					}
+				}
+				if (pump != null) {
+					
+				}
+			}
 			GameObject.Instantiate(towerExplosion, tower.transform.position, Quaternion.identity, towerContainer.transform);
 				tower.transform.DOMove(button.transform.position, .5f)
 				.SetEase(Ease.InOutSine)
@@ -268,5 +288,9 @@ public class TowerSpawnerPro : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	public GameObject GetPumpPrefab() {
+		return towerPump;
 	}
 }

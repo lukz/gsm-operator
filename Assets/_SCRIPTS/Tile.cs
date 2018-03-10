@@ -24,7 +24,7 @@ public class Tile : MonoBehaviour {
 		
 	}
 
-    bool HasEnergyField()
+    public bool HasEnergyField()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -120,7 +120,7 @@ public class Tile : MonoBehaviour {
         tower.transform.parent = transform;
         tower.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
-        tower.GetComponent<TowerScript>().AttachToTile();
+        tower.GetComponent<TowerScript>().AttachToTile(this);
     }
 
     public bool CanBuild()
@@ -131,6 +131,7 @@ public class Tile : MonoBehaviour {
     public void PowerChange(int powerChange)
     {
         powerLvl += powerChange;
+        if (powerLvl < 0) powerLvl = 0;
 
         OnPowerChange();
     }

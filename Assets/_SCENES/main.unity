@@ -3883,6 +3883,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114160543993613028, guid: 78de799895db74274ad59f37bede022f,
+        type: 2}
+      propertyPath: playerTower
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279313577378432, guid: 78de799895db74274ad59f37bede022f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78de799895db74274ad59f37bede022f, type: 2}
   m_IsPrefabParent: 0
@@ -4362,6 +4371,12 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114862242147868974, guid: 61e223a93ed2376488b10eaad4c66938,
+        type: 2}
+      propertyPath: towerPump
+      value: 
+      objectReference: {fileID: 1064975303659196, guid: 158e1add10f414a3895532bdd5c9085e,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61e223a93ed2376488b10eaad4c66938, type: 2}
   m_IsPrefabParent: 0

@@ -17,6 +17,7 @@ TagManager:
   - EnergyField
   - Blocker
   - Tileset
+  - Pump
   layers:
   - Default
   - TransparentFX
