@@ -11,15 +11,15 @@ public class EndScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Invoke("changeText", 5f);
+		Invoke("changeText", 6f);
 	}
 	
 
 	void changeText()
 	{
 		Sounds.PlayFinal();
-				endText.DOFade(0f, 4f);
-		endText.gameObject.transform.DOLocalMove(new Vector3(0, 1, 0), 4f);
+				endText.DOFade(0f, 5f);
+		endText.gameObject.transform.DOLocalMove(new Vector3(0, 1, 0), 5f);
 	}
 
 }
