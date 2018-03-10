@@ -23,6 +23,10 @@ public class TowerSpawnerPro : MonoBehaviour {
 	[Range(0f, 1f)]
 	public float minDragTime = .2f;
 
+	public int towerGuiSorting = 51;
+	// offset for tile check at the towers base
+	float towerBaseYOffset = -.4f;
+
 	GameObject draggedTowerPrefab;
 	GameObject draggedTowerInstance;
 	EventTriggerProxy draggedTowerOwner;
@@ -55,17 +59,21 @@ public class TowerSpawnerPro : MonoBehaviour {
 	void Update () {
 		if (!GameManager.canDoActions) return;
 
-		Vector3 pos = InputUtils.WorldMousePosition();
 		// we are actively dragging the tower
 		if (dragging) {
 			dragTime += Time.deltaTime;
-			draggedTowerInstance.transform.position = new Vector2(pos.x + towerOffset.x, pos.y + towerOffset.y);
+			Vector3 pos = InputUtils.WorldMousePosition();
+			// apply offset
+			pos = new Vector2(pos.x + towerOffset.x, pos.y + towerOffset.y);
+			draggedTowerInstance.transform.position = pos;
 
-            Tile tile = tileset.GetTileAt(pos);
+			// check bottom of the tower
+            Tile tile = tileset.GetTileAt(new Vector2(pos.x, pos.y + towerBaseYOffset));
             if(previouslyDraggedTile != tile)
             {
                 if (previouslyDraggedTile != null) previouslyDraggedTile.CancelBuildTarget();
-                if (tile != null) tile.SetAsBuildTarget();
+				// only allow active tiles
+                if (tile != null && tile.gameObject.activeInHierarchy) tile.SetAsBuildTarget();
 
                 previouslyDraggedTile = tile;
             }   
@@ -95,7 +103,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 		draggedTowerInstance = GameObject.Instantiate(draggedTowerPrefab, pos, Quaternion.identity, parent);
 		// TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
 
-		ChangeDrawSorting(draggedTowerInstance, "GUI", 3);
+		// buttons are at 50 for some reason...
+		ChangeDrawSorting(draggedTowerInstance, "GUI", towerGuiSorting);
 		//draggedTowerInstance.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1);
 		SpriteRenderer sprite = draggedTowerInstance.transform.Find("Body").GetComponent<SpriteRenderer>();
 		
@@ -116,7 +125,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		);
 		
 		// this is in game units
-		towerOffset.y = 1.0f;
+		towerOffset.y = GameManager.IS_MOBILE?1.0f:0.4f;
 	}
 
 	void ChangeDrawSorting(GameObject tower, string layer, int order) {
@@ -161,14 +170,20 @@ public class TowerSpawnerPro : MonoBehaviour {
 		draggedTowerPrefab = null;
 
 
+		if (previouslyDraggedTile != null) previouslyDraggedTile.CancelBuildTarget();
+		previouslyDraggedTile = null;
+
 		// TODO return tower
 		if (isOverUI.getOverCount(Input.mousePosition) > 0) {
 			ReturnTower();
 			return;
 		}
+		Vector3 pos = InputUtils.WorldMousePosition();
+		// drag offset + tower base offset
+		pos = new Vector2(pos.x + towerOffset.x, pos.y + towerOffset.y + towerBaseYOffset);
 
-		Tile tile = tileset.GetTileAt(InputUtils.WorldMousePosition());
-		if (tile == null) {
+		Tile tile = tileset.GetTileAt(pos);
+		if (tile == null || !tile.gameObject.activeInHierarchy) {
 			ReturnTower();
 		} else if (tile.CanBuild()) {
 			ChangeDrawSorting(draggedTowerInstance, "Buildings", 1);
@@ -206,7 +221,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 	}
 
 	public void ReturnTower(EventTriggerProxy button, GameObject tower, bool lockButton = false) {
-		ChangeDrawSorting(tower, "GUI", 3);
+		ChangeDrawSorting(tower, "GUI", towerGuiSorting);
 		TowerScript ts = tower.GetComponent<TowerScript>();
 		bool wasAttached = ts.DetachFromTile();
 		if (wasAttached) {

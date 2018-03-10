@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe482be86ecf64dbfbf222fb0d154ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: main
+  sceneToLoad: LVL0
 --- !u!20 &399586335
 Camera:
   m_ObjectHideFlags: 0
