@@ -43,24 +43,15 @@ public class EventTriggerProxy : MonoBehaviour {
         EventTrigger trigger = GetComponent<EventTrigger>();
         {
 			EventTrigger.Entry entry = new EventTrigger.Entry();
-			entry.eventID = EventTriggerType.PointerClick;
+			entry.eventID = EventTriggerType.PointerDown;
 			entry.callback.AddListener((data) => { 
 				PickTower((PointerEventData)data); 
-				PlaceTower((PointerEventData)data);
 			});
 			trigger.triggers.Add(entry);
 		}
 		{
 			EventTrigger.Entry entry = new EventTrigger.Entry();
-			entry.eventID = EventTriggerType.BeginDrag;
-			entry.callback.AddListener((data) => { 
-				PickTower((PointerEventData)data);
-			});
-			trigger.triggers.Add(entry);
-		}
-		{
-			EventTrigger.Entry entry = new EventTrigger.Entry();
-			entry.eventID = EventTriggerType.EndDrag;
+			entry.eventID = EventTriggerType.PointerUp;
 			entry.callback.AddListener((data) => { 
 				PlaceTower((PointerEventData)data);
 			});
