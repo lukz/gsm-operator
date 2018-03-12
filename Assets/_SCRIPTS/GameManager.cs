@@ -100,14 +100,19 @@ public class GameManager : MonoBehaviour
 		Debug.Log("Lock " + (firstLockedButton - 1));
 		if (firstLockedButton > 0)
 		{
-			towerButtons[--firstLockedButton].Lock();
+			--firstLockedButton;
+			if (firstLockedButton <=4)
+			towerButtons[firstLockedButton].Lock();
 		}
 	}
 
 	void UnlockNextTower()
 	{
 		Debug.Log("Unlock " + (firstLockedButton));
-		towerButtons[firstLockedButton++].Unlock();
+		if(firstLockedButton<5)
+		towerButtons[firstLockedButton].Unlock();
+		firstLockedButton++;
+		firstLockedButton = Mathf.Min(firstLockedButton, 6);
 	}
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
