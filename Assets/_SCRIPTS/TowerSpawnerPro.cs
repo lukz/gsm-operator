@@ -128,7 +128,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		);
 		
 		// this is in game units
-		towerOffset.y = GameManager.IS_MOBILE?1.0f:0.4f;
+		towerOffset.y = GameManager.IS_MOBILE?1.0f:0.0f;
 	}
 
 	void ChangeDrawSorting(GameObject tower, string layer, int order) {
