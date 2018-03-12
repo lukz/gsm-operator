@@ -270,12 +270,13 @@ public class GameManager : MonoBehaviour
 
 		if (fadeIn)
 		{
-			newTint.GetComponent<FullScreenTintScript>().fadeIn(1f);
-		}
+            newTint.GetComponent<FullScreenTintScript>().fadeIn(1f);
+        }
 		else
 		{
-			newTint.GetComponent<FullScreenTintScript>().fadeOut();
-		}
+            
+            newTint.GetComponent<FullScreenTintScript>().fadeOut();
+        }
 
 	}
 

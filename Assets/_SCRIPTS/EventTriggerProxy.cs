@@ -147,7 +147,7 @@ public class EventTriggerProxy : MonoBehaviour {
                         gateSpriteFilled.material.SetFloat(flashMixId, mix = v);
                     },
                     1,
-                    flashDuration / 2
+                    flashDuration * 0.1f
                 ).SetEase(Ease.OutSine)
             )
             .Append(
@@ -158,7 +158,7 @@ public class EventTriggerProxy : MonoBehaviour {
                         gateSpriteFilled.material.SetFloat(flashMixId, mix = v);
                     },
                     0,
-                    flashDuration / 2
+                    flashDuration * 0.9f
                 ).SetEase(Ease.InSine)
             );
 
@@ -167,11 +167,11 @@ public class EventTriggerProxy : MonoBehaviour {
 
             //.Append(flashSequence)
             .Append(gateSpriteFilled.transform.DOMoveY(gateSpritePos.y + 0.5f, 0.15f).SetEase(Ease.OutSine))
-            .Append(gateSpriteFilled.transform.DOMoveY(gateSpritePos.y + -3, 0.8f).SetEase(Ease.InSine))
+            .Append(gateSpriteFilled.transform.DOMoveY(gateSpritePos.y + -5, 0.8f).SetEase(Ease.InSine))
 
             .Insert(0, gateSpriteFilled.transform.DORotate(new Vector3(0, 0, 25), 0.5f).SetEase(Ease.InOutSine))
             .Insert(0, gateSpriteFilled.transform.DOMoveX(gateSpritePos.x - 1.5f, 1.5f).SetEase(Ease.OutSine))
-            .Insert(0, gateSpriteFilled.DOFade(0, 0.9f).SetEase(Ease.InSine))
+            .Insert(0, gateSpriteFilled.DOFade(0, 0.7f).SetEase(Ease.InSine))
 
             .PrependInterval(flashDuration);
             ;
