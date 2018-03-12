@@ -204,6 +204,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	private float cachedProgress;
+	private bool allPowered;
 
 	void Update()
 	{
@@ -213,7 +214,7 @@ public class GameManager : MonoBehaviour
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
 		if (houses.Length > 0)
 		{
-			bool allPowered = true;
+			allPowered = true;
 			float countPowered = 0;
 			foreach (GameObject house in houses)
 			{
@@ -312,6 +313,10 @@ public class GameManager : MonoBehaviour
 
 	public void NextScene(bool wonLvl = false)
 	{
+		if (!wonLvl)
+		{
+			if (allPowered) return;
+		}
 		if (currentLvl < SaveControl.instance.towersUsedToWin.Count)
 		{
 			if (currentLvl == MAXLVLS)
@@ -333,6 +338,9 @@ public class GameManager : MonoBehaviour
 
 	public void PrevScene()
 	{
+		
+			if (allPowered) return;
+		
 		if (currentLvl > 0)
 		{
 			string nextScene = (--currentLvl).ToString();
