@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powered: 0
   requiredPower: 1
+  sprite: {fileID: 212339324200358552}
 --- !u!114 &114781926435298400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,6 +138,7 @@ MonoBehaviour:
     y: 1
   - x: 0
     y: -1
+  sprite: {fileID: 212339324200358552}
 --- !u!212 &212213669934242108
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -195,7 +197,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1f2536b468e4b4859a6413ed4e4817f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
