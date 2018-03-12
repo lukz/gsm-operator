@@ -279,8 +279,10 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 
 		} else {
-			// this api...
-			DOTween.Sequence()
+            ts.FlashRed();
+
+            // this api...
+            DOTween.Sequence()
 			.Append(
 				tower.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1)
 			)
