@@ -141,7 +141,6 @@ public class GameManager : MonoBehaviour
 
 			GameObject newSplash = Instantiate(splash);
 			newSplash.GetComponent<YearSplashScript>().ShowSplash(lvlmanager.levelName);
-			newSplash.GetComponent<YearSplashScript>().reDraw() ;
 
 			UnlockNextTower();
 
