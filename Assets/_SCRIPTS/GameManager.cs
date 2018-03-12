@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	public static float shakePower = 0;
 
+    [SerializeField]
+    private GameObject restartFlareFx;
+
 	[SerializeField]
 	private Slider powerSlider;
 	private int currentLvl;
@@ -101,7 +104,12 @@ public class GameManager : MonoBehaviour
 
 	void LockCurrentTower()
 	{
-		Debug.Log("Lock " + (firstLockedButton - 1));
+        if (firstLockedButton - 1 <= lvlmanager.allTowers)
+        {
+            restartFlareFx.SetActive(false);
+        }
+
+        Debug.Log("Lock " + (firstLockedButton - 1));
 		if (firstLockedButton > 0)
 		{
 			--firstLockedButton;
@@ -112,7 +120,11 @@ public class GameManager : MonoBehaviour
 
 	void UnlockNextTower()
 	{
-		Debug.Log("Unlock " + (firstLockedButton));
+        if (firstLockedButton >= lvlmanager.allTowers)
+        {
+            restartFlareFx.SetActive(true);
+        }
+        
 		if(firstLockedButton<5)
 		towerButtons[firstLockedButton].Unlock();
 		firstLockedButton++;
@@ -247,7 +259,10 @@ public class GameManager : MonoBehaviour
 
 					//newSplash.GetComponent<SplashScript>().setEndSplash();
 					showWhiteTint(true);
-				}
+
+                    restartFlareFx.SetActive(false);
+
+                }
 
 
 				if (timer == 0)

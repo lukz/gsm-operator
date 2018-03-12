@@ -4003,6 +4003,7 @@ MonoBehaviour:
   - {fileID: 278815472}
   - {fileID: 2032656447}
   - {fileID: 1280574885}
+  allTowers: 0
 --- !u!4 &1509777755
 Transform:
   m_ObjectHideFlags: 0
@@ -5193,6 +5194,11 @@ Prefab:
     - target: {fileID: 224974315177995322, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114018255875537550, guid: 61e223a93ed2376488b10eaad4c66938,
+        type: 2}
+      propertyPath: OPENlastLEVEL
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

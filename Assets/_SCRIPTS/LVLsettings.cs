@@ -14,6 +14,8 @@ public class LVLsettings : MonoBehaviour {
 
 	public List<Tile> tiles;
 
+    public int allTowers = 0;
+
 	void Awake () {
 
 
@@ -25,7 +27,15 @@ public class LVLsettings : MonoBehaviour {
 		list[2].SetTowerPrefab(towerPrefab3);
 		list[3].SetTowerPrefab(towerPrefab4);
 		list[4].SetTowerPrefab(towerPrefab5);
-	}
+
+        allTowers = 0;
+
+        if (towerPrefab1 != null) allTowers++;
+        if (towerPrefab2 != null) allTowers++;
+        if (towerPrefab3 != null) allTowers++;
+        if (towerPrefab4 != null) allTowers++;
+        if (towerPrefab5 != null) allTowers++;
+    }
 
 	
 }
