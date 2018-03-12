@@ -17,6 +17,7 @@ public class AddToTile : MonoBehaviour {
 	
     void HierarchyChanged()
     {
+		if (EditorApplication.isPlaying) return; // otherwise gets called ALWAYS in the editor
 		// called when we are destroyed as well
 		// unity...
 		if (this == null) {
