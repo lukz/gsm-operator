@@ -140,6 +140,7 @@ MonoBehaviour:
     y: 0
   - x: 2
     y: 0
+  sprite: {fileID: 212851316821111440}
 --- !u!212 &212420166492144882
 SpriteRenderer:
   m_ObjectHideFlags: 1

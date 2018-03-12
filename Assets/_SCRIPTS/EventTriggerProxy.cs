@@ -125,6 +125,7 @@ public class EventTriggerProxy : MonoBehaviour {
 	}
 
     int flashMixId = Shader.PropertyToID("_FlashMix");
+
     float mix;
 
     public void Unlock() {

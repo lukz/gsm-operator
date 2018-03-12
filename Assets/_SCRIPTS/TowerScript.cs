@@ -16,6 +16,9 @@ public class TowerScript : MonoBehaviour {
     private Tile tile;
     private GameObject pump;
 
+    [SerializeField]
+    private SpriteRenderer sprite;
+
     // Use this for initialization
     void Start () {
         // hack to disable mine with id == 3
@@ -100,7 +103,42 @@ public class TowerScript : MonoBehaviour {
         Tile tileScript = transform.GetComponentInParent<Tile>();
         tilesetScript.ChangeTilesPower(tileScript.gameObject, 1, powerOffsets);
     }
-    
+
+    private float mix;
+    private int flashColorId = Shader.PropertyToID("_FlashColor");
+    private int flashMixId = Shader.PropertyToID("_FlashMix");
+
+    public void FlashRed()
+    {
+        sprite.material.SetColor(flashColorId, new Color(1, 0, 0, 0));
+
+        float flashDuration = .3f;
+
+        DOTween.Sequence()
+            .Append(
+                DOTween.To(
+                    () => mix,
+                    v =>
+                    {
+                        sprite.material.SetFloat(flashMixId, mix = v);
+                    },
+                    1,
+                    flashDuration * 0.1f
+                ).SetEase(Ease.OutSine)
+            )
+            .Append(
+                DOTween.To(
+                    () => mix,
+                    v =>
+                    { 
+                        sprite.material.SetFloat(flashMixId, mix = v);
+                    },
+                    0,
+                    flashDuration * 0.9f
+                ).SetEase(Ease.InSine)
+            );
+    }
+
     [System.Serializable]
     public class PowerOffset
     {
