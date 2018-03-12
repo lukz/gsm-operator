@@ -4,22 +4,18 @@ using UnityEngine;
 using DG.Tweening;
 
 public class YearSplashScript : MonoBehaviour {
-
-	// Use this for initialization
+    bool init;
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        if (init) return;
+		SuperTextMesh textMesh = GetComponentInChildren<SuperTextMesh>();
+        textMesh.Text = "";
 	}
 
     public void ShowSplash(string year)
     {
+        init = true;
         SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         SuperTextMesh textMesh = GetComponentInChildren<SuperTextMesh>();
-
         textMesh.Text = "YEAR  " + year;
 
         DOTween.Sequence()
