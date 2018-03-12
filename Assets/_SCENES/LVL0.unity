@@ -1524,6 +1524,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114455895255065568, guid: 61e223a93ed2376488b10eaad4c66938,
+        type: 2}
+      propertyPath: textMesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 114862242147868974, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
       propertyPath: tileset
@@ -1538,11 +1543,6 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114018255875537550, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: OPENlastLEVEL
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61e223a93ed2376488b10eaad4c66938, type: 2}

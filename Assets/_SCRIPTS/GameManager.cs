@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
 		if (instance == null)
 		{
 			instance = this;
+			Transform oldSplash = transform.Find("YearSplash");
+			if (oldSplash != null) {
+				oldSplash.gameObject.SetActive(true);
+			}
 			DontDestroyOnLoad(gameObject);
 		}
 		else if (instance != this)
@@ -138,7 +142,10 @@ public class GameManager : MonoBehaviour
 			{
 				towerButtons[i].Lock();
 			}
-
+			Transform oldSplash = transform.Find("YearSplash");
+			if (oldSplash != null) {
+				Destroy(oldSplash.gameObject);
+			}
 			GameObject newSplash = Instantiate(splash);
 			newSplash.GetComponent<YearSplashScript>().ShowSplash(lvlmanager.levelName);
 
