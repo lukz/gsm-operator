@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 4197337043469462}
   - component: {fileID: 60278182960637526}
   - component: {fileID: 114894456084269560}
+  - component: {fileID: 114469350160760266}
   m_Layer: 0
   m_Name: EnergyCrystalCluster
   m_TagString: EnergyField
@@ -1534,6 +1535,17 @@ MonoBehaviour:
   - {fileID: 7400000, guid: b90a73304835f4927abe0ab857c7c12d, type: 2}
   - {fileID: 7400000, guid: c4be394203160434894605fab24f9432, type: 2}
   - {fileID: 7400000, guid: 99f895625e583455a81aca75a85ec8c4, type: 2}
+--- !u!114 &114469350160760266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1399098518138118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55536423d43324316a82d8ce3f90014b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114475720924131086
 MonoBehaviour:
   m_ObjectHideFlags: 1

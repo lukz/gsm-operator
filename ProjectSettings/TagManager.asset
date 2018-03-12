@@ -18,6 +18,7 @@ TagManager:
   - Blocker
   - Tileset
   - Pump
+  - Tile
   layers:
   - Default
   - TransparentFX

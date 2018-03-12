@@ -14,6 +14,9 @@ public class Tile : MonoBehaviour {
     private Color powered3Color = new Color(0x00, 0x00, 0x0, 0xC0);
 	private Color targetColor = new Color(0x0, 0xFF, 0x00, 0xFD);
 
+    public int x;
+    public int y;
+
     // Use this for initialization
     void Start () {
         
@@ -154,5 +157,9 @@ public class Tile : MonoBehaviour {
         }
 
         ResetState();
+    }
+
+    public override string ToString() {
+        return "Tile{["+x + "," + y+"], active="+gameObject.activeInHierarchy+"}";
     }
 }

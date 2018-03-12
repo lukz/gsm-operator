@@ -35,6 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4610356178143022}
+  - component: {fileID: 114152436543028828}
   m_Layer: 0
   m_Name: Crater1
   m_TagString: Blocker
@@ -69,6 +70,17 @@ Transform:
   m_Father: {fileID: 4610356178143022}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114152436543028828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1391748758900672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55536423d43324316a82d8ce3f90014b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212483456835550078
 SpriteRenderer:
   m_ObjectHideFlags: 1
