@@ -34,7 +34,7 @@ public class Sounds : MonoBehaviour {
 
 	public void ToggleSound(bool enabled)
 	{
-		Debug.Log("Toggle sound " + enabled);
+		//Debug.Log("Toggle sound " + enabled);
 		soundOn = enabled;
 		music.mute = !enabled;
 		finalWin.mute = !enabled;
@@ -53,11 +53,9 @@ public class Sounds : MonoBehaviour {
 		if (instance == null)
 		{
 			instance = this;
-			DontDestroyOnLoad(gameObject);
 		}
 		else if (instance != this)
 		{
-			Destroy(gameObject);
 		}
 	}
 

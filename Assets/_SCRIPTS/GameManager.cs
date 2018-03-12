@@ -275,7 +275,7 @@ public class GameManager : MonoBehaviour
 
 				if (timer >= powerUpTimeForSceneChange)
 				{
-					Debug.Log("Full power");
+					//Debug.Log("Full power");
 					CheckSave();
 					changeTierOrScene();
 					timer = 0;

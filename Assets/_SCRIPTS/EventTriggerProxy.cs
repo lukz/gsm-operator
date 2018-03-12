@@ -141,7 +141,7 @@ public class EventTriggerProxy : MonoBehaviour {
     public void Unlock() {
 		if (towerPrefab == null) return;
 		if (!locked) return;
-		Debug.Log("Unlock");
+	//	Debug.Log("Unlock");
 		locked = false;
 
        
@@ -196,7 +196,7 @@ public class EventTriggerProxy : MonoBehaviour {
 	public void Lock() {
 		if (towerPrefab == null) return;
 		if (locked) return;
-		Debug.Log("Lock");
+		//Debug.Log("Lock");
 		locked = true;
         
         //lockTimer = .5f;
@@ -209,7 +209,7 @@ public class EventTriggerProxy : MonoBehaviour {
         DOTween.Kill("PokrywaMove");
 
         gateSpriteFilled.transform.localPosition = new Vector3(0, 0, 0);
-        gateSpriteFilled.transform.rotation = Quaternion.EulerAngles(new Vector3(0, 0, 0));
+        gateSpriteFilled.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 
         gateSpriteFilled.DOFade(1, 0f).SetEase(Ease.InSine);
         Tweens.Squeeze(gateSpriteFilled.gameObject, 1f, 0.5f, gateSpriteFilled.transform.localScale.x, gateSpriteFilled.transform.localScale.y);

@@ -15,10 +15,10 @@ public class IsOverUI : MonoBehaviour {
 		//Fetch the Raycaster from the GameObject (the Canvas)
 		Canvas canvas = FindObjectOfType<Canvas>();
         raycaster = canvas.GetComponent<GraphicRaycaster>();
-		Debug.Log("raycaster " + raycaster);
+	//	Debug.Log("raycaster " + raycaster);
         //Fetch the Event System from the Scene
         eventSystem = FindObjectOfType<EventSystem>();
-		Debug.Log("events " + eventSystem);
+	//	Debug.Log("events " + eventSystem);
 	}	
 
 

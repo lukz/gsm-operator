@@ -27,7 +27,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 	public int towerGuiSorting = 51;
 	// offset for tile check at the towers base
-	float towerBaseYOffset = -.4f;
+	float towerBaseYOffset = 0;//-.4f;
 
 	GameObject draggedTowerPrefab;
 	GameObject draggedTowerInstance;
@@ -92,7 +92,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 			Debug.LogError("Invalid tower prefab! " + towerPrefab);
 			return;
 		}
-		Debug.Log("PickTower " + towerPrefab);
+	//	Debug.Log("PickTower " + towerPrefab);
 		dragTime = 0;
 		dragging = true;
 		draggedTowerPrefab = towerPrefab;
@@ -147,7 +147,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 			Debug.LogError("Invalid tower to place " + towerPrefab + ", expected " + draggedTowerPrefab);
 			return;
 		}
-		Debug.Log("PlaceTower");
+	//	Debug.Log("PlaceTower");
 
 		dragging = false;
 

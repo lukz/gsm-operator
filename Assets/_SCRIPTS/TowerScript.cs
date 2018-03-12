@@ -37,7 +37,7 @@ public class TowerScript : MonoBehaviour {
     {
 
         if (!isAttachedToTile) {
-            Debug.Log("Not attached to tile");
+            //Debug.Log("Not attached to tile");
 			Sounds.PlayDeny();
             return tile;
         }
