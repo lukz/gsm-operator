@@ -165,6 +165,12 @@ public class TowerSpawnerPro : MonoBehaviour {
 		yield return null;
 	}
 
+    [SerializeField]
+    private float towerPlacementSqueezeStrength = 0.75f;
+
+    [SerializeField]
+    private Vector2 cameraShakeTimeStrength = new Vector2(0.06f, 0.12f);
+
 	void PlaceOrReturnTower() {
 		if (draggedTowerInstance == null) {
 			Debug.LogError("Nothing to place");
@@ -199,13 +205,19 @@ public class TowerSpawnerPro : MonoBehaviour {
 					tile.Build(draggedTowerInstance);
 					gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
 					draggedTowerInstance.transform.Find("Shadow").gameObject.SetActive(true);
-					GameObject dust = GameObject.Instantiate(towerDust, targetPos, Quaternion.identity, draggedTowerInstance.transform);
-                    dust.transform.localPosition = new Vector3(0, -0.1f, 0);
 
-					previouslyDraggedTile = null;
+					GameObject dust = GameObject.Instantiate(towerDust, targetPos, Quaternion.identity, draggedTowerInstance.transform);
+                    dust.transform.localPosition = new Vector3(-0.05f, 0.05f, 0);
+
+                    Tweens.Squeeze(draggedTowerInstance, towerPlacementSqueezeStrength);
+
+                    previouslyDraggedTile = null;
 					draggedTowerInstance = null;
 					dragging = false;
-					draggedTowerOwner = null;		
+					draggedTowerOwner = null;
+
+
+                    gameObject.transform.DOShakePosition(cameraShakeTimeStrength.x, cameraShakeTimeStrength.y);
 				}
 			);
 		} else {
@@ -229,6 +241,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		ChangeDrawSorting(tower, "GUI", towerGuiSorting);
 		TowerScript ts = tower.GetComponent<TowerScript>();
 		bool wasAttached = ts.DetachFromTile();
+            
 		if (wasAttached) {
 			tower.transform.Find("Shadow").gameObject.SetActive(false);
 			// lol jank
@@ -248,9 +261,13 @@ public class TowerSpawnerPro : MonoBehaviour {
 					
 				}
 			}
+
 			GameObject.Instantiate(towerExplosion, tower.transform.position, Quaternion.identity, towerContainer.transform);
-				tower.transform.DOMove(button.transform.position, .5f)
-				.SetEase(Ease.InOutSine)
+
+            Tweens.Squeeze(tower, 2, 1.5f);
+
+            tower.transform.DOMove(button.transform.position, .5f)
+				.SetEase(Ease.InSine)
 				.OnComplete(()=>{
 					button.ReturnTower();
 					if (lockButton) {
@@ -259,6 +276,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 					GameObject.Destroy(tower);	
 				}
 			);
+
+
 		} else {
 			// this api...
 			DOTween.Sequence()

@@ -24,7 +24,7 @@ public class SliderFillScript : MonoBehaviour {
 
     public void FlashSlider()
     {
-        float flashDuration = .2f;
+        float flashDuration = .8f;
 
         DOTween.Sequence()
             .Append(
@@ -35,7 +35,7 @@ public class SliderFillScript : MonoBehaviour {
                         imageScript.material.SetFloat(flashMixId, mix = v);
                     },
                     1,
-                    flashDuration * 0.3f
+                    flashDuration * 0.1f
                 ).SetEase(Ease.OutSine)
             )
             .Append(
@@ -46,7 +46,7 @@ public class SliderFillScript : MonoBehaviour {
                         imageScript.material.SetFloat(flashMixId, mix = v);
                     },
                     0,
-                    flashDuration *0.7f
+                    flashDuration * 0.9f
                 ).SetEase(Ease.InSine)
             );
     }
