@@ -26,7 +26,7 @@ public class GroundSpawner : MonoBehaviour {
 	}
 
 	public void SpawnGround() {
-		// clear existing children if any
+	/*	// clear existing children if any
 		while (transform.childCount > 0)
 		{
 			// we use DestroyImmediate so this works in the editor
@@ -106,7 +106,7 @@ public class GroundSpawner : MonoBehaviour {
 			}
 		} else {
 			Debug.LogError("Ground: Decals are missing");
-		}
+		}*/
 	}
 
 
