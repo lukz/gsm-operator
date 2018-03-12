@@ -20,8 +20,15 @@ public class EventTriggerProxy : MonoBehaviour {
     private float timeToShake = 3f;
     private float timeToShakeLeft;
 
+    private GameObject flareObject;
+
     void Start()
     {
+        if(GetComponentInChildren<FlareScript>() != null)
+        {
+            flareObject = GetComponentInChildren<FlareScript>().gameObject;
+        }
+
         timeToShakeLeft = timeToShake;
 
         towerSpawnerPro = FindObjectOfType<TowerSpawnerPro>();
@@ -90,6 +97,10 @@ public class EventTriggerProxy : MonoBehaviour {
                 towerImage.rectTransform.DOPunchRotation(new Vector3(0, 0, 20), .5f, 10, 1);
             }
 
+            ShowFlare(true);
+        } else
+        {
+            ShowFlare(false);
         }
     }
 
@@ -125,7 +136,6 @@ public class EventTriggerProxy : MonoBehaviour {
 	}
 
     int flashMixId = Shader.PropertyToID("_FlashMix");
-
     float mix;
 
     public void Unlock() {
@@ -133,6 +143,9 @@ public class EventTriggerProxy : MonoBehaviour {
 		if (!locked) return;
 		Debug.Log("Unlock");
 		locked = false;
+
+       
+
         //lockTimer = .5f;
         // TODO hide the graphic
 
@@ -185,6 +198,7 @@ public class EventTriggerProxy : MonoBehaviour {
 		if (locked) return;
 		Debug.Log("Lock");
 		locked = true;
+        
         //lockTimer = .5f;
         // TODO show the graphic
 
@@ -206,4 +220,11 @@ public class EventTriggerProxy : MonoBehaviour {
 		ReturnTower();
 		Lock();
 	}
+
+    public void ShowFlare(bool show)
+    {
+        if (flareObject == null || flareObject.activeSelf == show) return;
+
+        flareObject.SetActive(show);
+    }
 }

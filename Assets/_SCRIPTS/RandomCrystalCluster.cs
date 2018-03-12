@@ -24,7 +24,7 @@ public class RandomCrystalCluster : MonoBehaviour {
 				Transform child = transform.GetChild(i);
 				Vector3 dir = new Vector3(Random.Range(0, spread), 0, 0);
 				Vector3 offset = Quaternion.AngleAxis(Random.Range(-180f, 180f), Vector3.up) * dir;
-				Debug.Log("Move " +offset);
+
 				child.position += offset;
 			}
 		}
