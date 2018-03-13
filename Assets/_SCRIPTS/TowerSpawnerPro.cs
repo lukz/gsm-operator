@@ -281,13 +281,15 @@ public class TowerSpawnerPro : MonoBehaviour {
 		} else {
             ts.FlashRed();
 
+			Vector3 newTowerPosOnBtn = new Vector3(button.transform.position.x, button.transform.position.y - 0.15f, button.transform.position.z);
+
             // this api...
             DOTween.Sequence()
 			.Append(
 				tower.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1)
 			)
 			.Append(
-				tower.transform.DOMove(button.transform.position, .5f)
+				tower.transform.DOMove(newTowerPosOnBtn, .5f)
 					.SetEase(Ease.InOutSine)
 					.OnComplete(()=>{
 						button.ReturnTower();
