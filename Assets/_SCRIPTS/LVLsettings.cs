@@ -14,12 +14,15 @@ public class LVLsettings : MonoBehaviour {
 
 	public List<Tile> tiles;
 
+	[HideInInspector]
     public int allTowers = 0;
 
 	void Awake () {
 
 
-		// trzeba patrzec co ginie na zmiane sceny, nigdy nie robi sie referencji do stalego elementu, od elementow ktore dostajesz od nowej sceny, bo referencje ZAWSZE sa nullami wtedy. Albo wszystko dontDelete albo nic. Jak pomiedzy to trzeba szukac po tagach.
+		// trzeba patrzec co ginie na zmiane sceny, nigdy nie robi sie referencji do stalego elementu, 
+		// od elementow ktore dostajesz od nowej sceny, bo referencje ZAWSZE sa nullami wtedy.
+		// Albo wszystko dontDelete albo nic. Jak pomiedzy to trzeba szukac po tagach.
 		EventTriggerProxy[] list = GameObject.FindGameObjectWithTag("MainCamera").GetComponentsInChildren<EventTriggerProxy>();
 
 		list[0].SetTowerPrefab(towerPrefab1);
