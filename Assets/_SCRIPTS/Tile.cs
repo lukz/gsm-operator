@@ -17,9 +17,18 @@ public class Tile : MonoBehaviour {
     public int x;
     public int y;
 
+    public PowerMarker powerMarker;
+
     // Use this for initialization
     void Start () {
-        
+        GameObject house = GetHouse();
+        if (house != null) {
+            HouseScript hs = house.GetComponent<HouseScript>();
+            powerMarker.SetRequiredPower(hs.requiredPower);
+        } else {
+            powerMarker.SetRequiredPower(0);
+            powerMarker.SetPower(powerLvl);
+        }
 	}
 	
 	// Update is called once per frame
@@ -135,7 +144,7 @@ public class Tile : MonoBehaviour {
     {
         powerLvl += powerChange;
         if (powerLvl < 0) powerLvl = 0;
-
+        powerMarker.SetPower(powerLvl);
         OnPowerChange();
     }
 
