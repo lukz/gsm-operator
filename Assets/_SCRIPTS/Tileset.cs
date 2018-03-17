@@ -40,8 +40,10 @@ public class Tileset : MonoBehaviour {
             // Check if not out of bounds
             if (xPos < 0 || xPos >= tiles[0].row.Count) continue;
             if (yPos < 0 || yPos >= tiles.Count) continue;
-            
-            tiles[yPos].row[xPos].GetComponent<Tile>().PowerChange(powerChange);
+            GameObject t = tiles[yPos].row[xPos];
+            if (t.activeInHierarchy) {
+                t.GetComponent<Tile>().PowerChange(powerChange);
+            }
         }
     }
 

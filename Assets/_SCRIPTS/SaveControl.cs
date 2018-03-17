@@ -24,17 +24,27 @@ public class SaveControl : MonoBehaviour {
 			}
 		}
 	
-
+	private bool retrySave;
 	public void Save()
 	{
-		BinaryFormatter bf = new BinaryFormatter();
-		FileStream file = File.Create(Application.persistentDataPath + "/playerInfo1.dat");
+		
+		try {
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream file = File.Open(Application.persistentDataPath + "/playerInfo1.dat", FileMode.OpenOrCreate);
 
-		PlayerData data = new PlayerData();
-		data.towersUsedToWin = towersUsedToWin;
+			PlayerData data = new PlayerData();
+			data.towersUsedToWin = towersUsedToWin;
 
-		bf.Serialize(file, data);
-		file.Close();
+			bf.Serialize(file, data);
+			file.Close();
+		} catch (Exception ex) {
+			Debug.LogError("Failed to save player info " + ex);
+			File.Delete(Application.persistentDataPath + "/playerInfo1.dat");
+			if (retrySave) return;
+			retrySave = true;
+			Save();
+			retrySave = false;
+		}
 	}
 
 	public void Load()

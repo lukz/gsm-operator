@@ -105,26 +105,7 @@ public class Tile : MonoBehaviour {
 
     void ResetState()
     {
-        if (powerLvl > 0)
-        {
-			switch (powerLvl)
-			{
-				case 1:
-					GetComponent<SpriteRenderer>().color = poweredColor;
-					break;
-				case 2:
-					GetComponent<SpriteRenderer>().color = powered2Color;
-					break;
-				case 3:
-					GetComponent<SpriteRenderer>().color = powered3Color;
-					break;
-			}
-
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().color = normalColor;
-        }
+        GetComponent<SpriteRenderer>().color = normalColor;
     }
 
     public void Build(GameObject tower)

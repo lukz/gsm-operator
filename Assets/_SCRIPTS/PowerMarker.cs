@@ -15,9 +15,20 @@ public class PowerMarker : MonoBehaviour {
 	public GameObject markerHigh2;
 	public GameObject markerHigh3;
 	
+	private Animator overlay;
+	
 	public int power = 0;
 
 	public int requiredPower = 0;
+
+	void Start()
+	{
+		overlay = GetComponentInChildren<Animator>();
+		
+		if (overlay == null) {
+			Debug.LogError("Overlay not found " + this);
+		}
+	}
 
 #if UNITY_EDITOR
 	private int _power;
@@ -83,6 +94,17 @@ public class PowerMarker : MonoBehaviour {
 				markerHigh2.SetActive(true);
 				markerHigh3.SetActive(true);
 			}
+		}
+		// if Start is not called before we run this...
+		if (overlay == null) {
+			overlay = GetComponentInChildren<Animator>();
+			if (overlay == null) {
+				Debug.LogError("Overlay not found " + this);
+			} else {
+				overlay.SetInteger("power", power);
+			}
+		} else {
+			overlay.SetInteger("power", power);
 		}
 	}
 
