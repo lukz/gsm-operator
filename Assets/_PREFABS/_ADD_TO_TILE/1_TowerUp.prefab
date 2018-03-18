@@ -144,12 +144,10 @@ MonoBehaviour:
   id: 1
   playerTower: 1
   powerOffsets:
-  - x: -1
+  - x: -2
     y: 0
-  - x: 1
+  - x: 2
     y: 0
-  - x: 0
-    y: -1
   - x: 0
     y: -2
   sprite: {fileID: 212594811681619868}
