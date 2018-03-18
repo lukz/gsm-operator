@@ -7,6 +7,9 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+
+	public static bool SOFTLAUNCH = true; //TODO REMEMBER MAKE THIS FALSE before official final release
+
 	public static bool IS_ANDROID = Application.platform == RuntimePlatform.Android;
 	public static bool IS_IOS = Application.platform == RuntimePlatform.IPhonePlayer;
 	public static bool IS_MOBILE = IS_ANDROID || IS_IOS;
@@ -41,7 +44,8 @@ public class GameManager : MonoBehaviour
 
 	public bool OPENlastLEVEL;
 
-	private int MAXLVLS = 5;
+	[SerializeField]
+	private int lvlsDochodzaDoJakiejLiczby;// how many lvls in game, minus something
 
 
 	private int firstLockedButton = 0;
@@ -78,7 +82,7 @@ public class GameManager : MonoBehaviour
 			if (SaveControl.instance.towersUsedToWin.Count > 0) // wygral chociaz 1 poziom
 			{
 				lastUnlockedLevel = SaveControl.instance.towersUsedToWin.Count;
-				if (SaveControl.instance.towersUsedToWin.Count >= MAXLVLS)
+				if (SaveControl.instance.towersUsedToWin.Count >= lvlsDochodzaDoJakiejLiczby)
 				{
 					lastUnlockedLevel = 0;
 				}
@@ -138,8 +142,9 @@ public class GameManager : MonoBehaviour
 		canDoActions = true;
 		tintShwon = false;
 
-		if (currentLvl == MAXLVLS + 1)
+		if (currentLvl == lvlsDochodzaDoJakiejLiczby + 1)
 		{
+			if(!SOFTLAUNCH)
 			Invoke("ChangeLvlTo1", 15f);
 		}
 		else
@@ -334,7 +339,7 @@ public class GameManager : MonoBehaviour
 		}
 		if (currentLvl < SaveControl.instance.towersUsedToWin.Count)
 		{
-			if (currentLvl == MAXLVLS)
+			if (currentLvl == lvlsDochodzaDoJakiejLiczby)
 			{
 				if (wonLvl)
 				{

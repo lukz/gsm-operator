@@ -7,6 +7,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveControl : MonoBehaviour {
 
+	[SerializeField]
+	private string saveVersion;
 
 	public static SaveControl instance;
 
@@ -30,7 +32,7 @@ public class SaveControl : MonoBehaviour {
 		
 		try {
 			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath + "/playerInfo2.dat", FileMode.OpenOrCreate);
+			FileStream file = File.Open(Application.persistentDataPath + "/playerInfo"+saveVersion+".dat", FileMode.OpenOrCreate);
 
 			PlayerData data = new PlayerData();
 			data.towersUsedToWin = towersUsedToWin;
@@ -39,7 +41,7 @@ public class SaveControl : MonoBehaviour {
 			file.Close();
 		} catch (Exception ex) {
 			Debug.LogError("Failed to save player info " + ex);
-			File.Delete(Application.persistentDataPath + "/playerInfo2.dat");
+			File.Delete(Application.persistentDataPath + "/playerInfo" + saveVersion + ".dat");
 			if (retrySave) return;
 			retrySave = true;
 			Save();
@@ -50,16 +52,16 @@ public class SaveControl : MonoBehaviour {
 	public void Load()
 	{
 		try {
-			if(File.Exists(Application.persistentDataPath + "/playerInfo2.dat"))
+			if(File.Exists(Application.persistentDataPath + "/playerInfo" + saveVersion + ".dat"))
 			{
 				BinaryFormatter bf = new BinaryFormatter();
-				FileStream file = File.Open(Application.persistentDataPath + "/playerInfo2.dat",FileMode.Open);
+				FileStream file = File.Open(Application.persistentDataPath + "/playerInfo" + saveVersion + ".dat", FileMode.Open);
 				PlayerData data = (PlayerData)bf.Deserialize(file);
 				towersUsedToWin = data.towersUsedToWin;
 			}
 		} catch (Exception ex) {
 			Debug.LogError("Failed to load player info " + ex);
-			File.Delete(Application.persistentDataPath + "/playerInfo2.dat");
+			File.Delete(Application.persistentDataPath + "/playerInfo" + saveVersion + ".dat");
 		}
 	}
 }

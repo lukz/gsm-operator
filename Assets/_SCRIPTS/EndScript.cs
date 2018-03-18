@@ -11,6 +11,7 @@ public class EndScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if(!GameManager.SOFTLAUNCH)
 		Invoke("changeText", 6f);
 	}
 	
