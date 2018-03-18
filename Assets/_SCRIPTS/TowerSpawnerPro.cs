@@ -32,6 +32,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 	GameObject draggedTowerPrefab;
 	GameObject draggedTowerInstance;
 	EventTriggerProxy draggedTowerOwner;
+	List<TowerScript.PowerOffset> powerOffsets;
 	bool dragging;
 	int flashMixId = Shader.PropertyToID("_FlashMix");
 
@@ -75,9 +76,11 @@ public class TowerSpawnerPro : MonoBehaviour {
             {
                 if (previouslyDraggedTile != null) previouslyDraggedTile.CancelBuildTarget();
 				// only allow active tiles
-                if (tile != null && tile.gameObject.activeInHierarchy) tile.SetAsBuildTarget();
-
-                previouslyDraggedTile = tile;
+                if (tile != null && tile.gameObject.activeInHierarchy) {
+					tile.SetAsBuildTarget(powerOffsets);
+					previouslyDraggedTile = tile;
+				}
+                
             }   
         }
 	}
@@ -129,6 +132,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 		
 		// this is in game units
 		towerOffset.y = GameManager.IS_MOBILE?1.0f:0.0f;
+		powerOffsets = draggedTowerInstance.GetComponent<TowerScript>().powerOffsets;
+		tileset.ShowTileBuildStatus();
 	}
 
 	void ChangeDrawSorting(GameObject tower, string layer, int order) {
@@ -176,6 +181,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 			Debug.LogError("Nothing to place");
 			return;
 		}
+		tileset.HideTileBuildStatus();
 		draggedTowerPrefab = null;
 
 
