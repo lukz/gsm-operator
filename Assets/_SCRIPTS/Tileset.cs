@@ -45,10 +45,6 @@ public class Tileset : MonoBehaviour {
 		if (false) {
 			Vector3 mp = InputUtils.WorldMousePosition();
 			Tile tile = GetTileAt(mp);
-            Debug.Log("Cursor at x= " + mp.x + ", y= " +mp.y);
-            Debug.Log("Cursor at ox= " + (3.8f + mp.x) + ", oy= " + (2.3f + mp.y));
-            Debug.Log("Cursor at sx= " + (3.8f + mp.x)/tileSize + ", soy= " + (2.3f + mp.y)/tileSize);
-            Debug.Log("Cursor at gx= " + GridX(mp.x) + ", gy= " + GridY(mp.y));
 			if (tile != lastTile) {
 				if (lastTile != null) {
 					SpriteRenderer oldSprite = lastTile.gameObject.GetComponent<SpriteRenderer>();

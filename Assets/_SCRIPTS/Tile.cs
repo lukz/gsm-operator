@@ -103,12 +103,12 @@ public class Tile : MonoBehaviour {
             if (towerPowerOffsets != null) {
                 int bx = tileset.GridX(transform.position.x);
                 int by = tileset.GridY(transform.position.y);
-                Debug.Log("Target tile at " + bx + ", " + by);
+                // Debug.Log("Target tile at " + bx + ", " + by);
                 // go over all tiles and enable power
                 foreach (var offset in powerOffsets) {
                     int tx = bx + offset.x;
                     int ty = by - offset.y;
-                    Debug.Log("Will power at " + tx + ", " + ty);
+                    // Debug.Log("Will power at " + tx + ", " + ty);
                     Tile at = tileset.GetTileAt(tx, ty);
                     if (at != null && at.gameObject.activeInHierarchy) {
                         at.buildMarker.StartWillPowerUp();
