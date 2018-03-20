@@ -45,13 +45,17 @@ public class GameManager : MonoBehaviour
 	public bool OPENlastLEVEL;
 
 	[SerializeField]
-	private int lvlsDochodzaDoJakiejLiczby;// how many lvls in game, minus something
+	private int lastLevelId;// how many lvls in game, minus something
 
 
 	private int firstLockedButton = 0;
 	public EventTriggerProxy[] towerButtons = new EventTriggerProxy[5];
 	private List<ButtonTowerPair> buildTowers = new List<ButtonTowerPair>();
 
+	public Button nextLevelButton;
+	public Button prevLevelButton;
+	public Button restartButton;
+	
 	void Awake()
 	{
 		if (instance == null)
@@ -82,7 +86,7 @@ public class GameManager : MonoBehaviour
 			if (SaveControl.instance.towersUsedToWin.Count > 0) // wygral chociaz 1 poziom
 			{
 				lastUnlockedLevel = SaveControl.instance.towersUsedToWin.Count;
-				if (SaveControl.instance.towersUsedToWin.Count >= lvlsDochodzaDoJakiejLiczby)
+				if (SaveControl.instance.towersUsedToWin.Count >= lastLevelId)
 				{
 					lastUnlockedLevel = 0;
 				}
@@ -118,7 +122,12 @@ public class GameManager : MonoBehaviour
 		{
 			--firstLockedButton;
 			if (firstLockedButton <=4)
-			towerButtons[firstLockedButton].Lock();
+			{
+				towerButtons[firstLockedButton].Lock();
+			}
+			if (firstLockedButton <= 1) {
+				restartButton.interactable = false;
+			}
 		}
 	}
 
@@ -130,9 +139,15 @@ public class GameManager : MonoBehaviour
         }
         
 		if(firstLockedButton<5)
-		towerButtons[firstLockedButton].Unlock();
+		{
+			towerButtons[firstLockedButton].Unlock();
+		}
+		if (firstLockedButton > 0) {
+			restartButton.interactable = true;
+		}
 		firstLockedButton++;
 		firstLockedButton = Mathf.Min(firstLockedButton, 6);
+		restartButton.interactable = true;
 	}
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
@@ -142,7 +157,7 @@ public class GameManager : MonoBehaviour
 		canDoActions = true;
 		tintShwon = false;
 
-		if (currentLvl == lvlsDochodzaDoJakiejLiczby + 1)
+		if (currentLvl == lastLevelId + 1)
 		{
 			if(!SOFTLAUNCH)
 			Invoke("ChangeLvlTo1", 15f);
@@ -167,7 +182,9 @@ public class GameManager : MonoBehaviour
 			newSplash.GetComponent<YearSplashScript>().ShowSplash(lvlmanager.levelName);
 
 			UnlockNextTower();
-
+			prevLevelButton.interactable = currentLvl > 0;
+			nextLevelButton.interactable = currentLvl < SaveControl.instance.towersUsedToWin.Count;
+			restartButton.interactable = false;
 		}
 		Sounds.PlayStartLevel();
 
@@ -335,11 +352,14 @@ public class GameManager : MonoBehaviour
 	{
 		if (!wonLvl)
 		{
+			// already changing
 			if (allPowered) return;
+
+
 		}
 		if (currentLvl < SaveControl.instance.towersUsedToWin.Count)
 		{
-			if (currentLvl == lvlsDochodzaDoJakiejLiczby)
+			if (currentLvl == lastLevelId)
 			{
 				if (wonLvl)
 				{

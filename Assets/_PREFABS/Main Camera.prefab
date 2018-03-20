@@ -3392,13 +3392,16 @@ MonoBehaviour:
   powerSlider: {fileID: 114924009610083464}
   powerUpTimeForSceneChange: 4
   OPENlastLEVEL: 1
-  lvlsDochodzaDoJakiejLiczby: 18
+  lastLevelId: 18
   towerButtons:
   - {fileID: 114131500199868582}
   - {fileID: 114504384754667224}
   - {fileID: 114938921032846956}
   - {fileID: 114695737363965014}
   - {fileID: 114401370904387172}
+  nextLevelButton: {fileID: 114027293516775766}
+  prevLevelButton: {fileID: 114189587059501558}
+  restartButton: {fileID: 114652808639365204}
 --- !u!114 &114023759682695858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3443,7 +3446,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: b07bd0374b681434c953e13b0ec29d8f, type: 3}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 53aff33c4a15a48d6a43de073a936ba4, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -3745,7 +3748,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: 83ea02377b5ea3c489476aca9c1fd5f7, type: 3}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: d483a49acd95d45a08d6230b42ba65e1, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -4592,7 +4595,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: 09e6970cd2c5b5f45a0b6e29c27c0eb2, type: 3}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 669bc4e02192d4551bbc2b591a637581, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -24419,7 +24422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 250, y: 0}
+  m_AnchoredPosition: {x: 277, y: 0}
   m_SizeDelta: {x: 900, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224738375971047090
