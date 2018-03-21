@@ -131,7 +131,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		);
 		
 		// this is in game units
-		towerOffset.y = GameManager.IS_MOBILE?1.0f:0.0f;
+		towerOffset.y = GameManager.IS_MOBILE?0.5f:0.0f;
 		powerOffsets = draggedTowerInstance.GetComponent<TowerScript>().powerOffsets;
 		tileset.ShowTileBuildStatus();
 	}
@@ -201,7 +201,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		if (tile == null || !tile.gameObject.activeInHierarchy) {
 			ReturnTower();
 		} else if (tile.CanBuild()) {
-			ChangeDrawSorting(draggedTowerInstance, "Buildings", 3);
+			ChangeDrawSorting(draggedTowerInstance, "GUI", 4);
 			Vector3 targetPos = tile.transform.position;
 			draggedTowerInstance.transform.DOMove(targetPos, .2f)
 				.SetEase(Ease.InOutFlash)
@@ -287,7 +287,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		} else {
             ts.FlashRed();
 
-			Vector3 newTowerPosOnBtn = new Vector3(button.transform.position.x, button.transform.position.y - 0.15f, button.transform.position.z);
+			Vector3 newTowerPosOnBtn = new Vector3(button.transform.position.x-0f, button.transform.position.y - 0.23f, button.transform.position.z);
 
             // this api...
             DOTween.Sequence()

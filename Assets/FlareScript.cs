@@ -64,7 +64,7 @@ public class FlareScript : MonoBehaviour {
     {
         float startPos = transform.localPosition.y;
 
-        float flashDuration = .2f;
+        float flashDuration = .4f;
 
 
         if(isImage && flash != null)
