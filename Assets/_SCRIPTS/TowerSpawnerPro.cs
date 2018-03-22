@@ -76,11 +76,11 @@ public class TowerSpawnerPro : MonoBehaviour {
             {
                 if (previouslyDraggedTile != null) previouslyDraggedTile.CancelBuildTarget();
 				// only allow active tiles
-                if (tile != null && tile.gameObject.activeInHierarchy) {
+                if (tile != null && tile.gameObject.activeInHierarchy) 
+				{
 					tile.SetAsBuildTarget(powerOffsets);
-					previouslyDraggedTile = tile;
 				}
-                
+                previouslyDraggedTile = tile;
             }   
         }
 	}
