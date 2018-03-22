@@ -132,4 +132,9 @@ public class Sounds : MonoBehaviour {
 	public static void PlayDestroy() {
 		if (instance != null) instance.destroy.Play();
 	}
+
+	public bool IsSoundOn() 
+	{
+		return soundOn;
+	}
 }
