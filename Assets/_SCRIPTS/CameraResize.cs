@@ -11,7 +11,7 @@ public class CameraResize : MonoBehaviour {
 	[SerializeField]
 	private Canvas guiCanvas;
 	
-	void LateUpdate () {
+	void Awake () {
 		float targetAspect = width/height;
 		float aspect = Screen.width/(float)Screen.height;
 		
