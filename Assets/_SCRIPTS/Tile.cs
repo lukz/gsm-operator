@@ -187,11 +187,15 @@ public class Tile : MonoBehaviour {
     }
 
     public void ShowBuildStatus() {
-        buildMarker.StartBuild(CanBuild());
+        if (gameObject.activeInHierarchy) {
+            buildMarker.StartBuild(CanBuild());
+        }
     }
 
     public void HideBuildStatus() {
-        buildMarker.CancelBuild();
+        if (gameObject.activeInHierarchy) {
+            buildMarker.CancelBuild();
+        }
     }
 
 
