@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEngine.Analytics;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,6 +44,10 @@ public class GameManager : MonoBehaviour
 	float timer;
 
 	public bool OPENlastLEVEL;
+
+
+	private float timeOnLevel = 0;
+	private float backs = 0;
 
 	[SerializeField]
 	private int lastLevelId;// how many lvls in game, minus something
@@ -185,6 +190,8 @@ public class GameManager : MonoBehaviour
 			prevLevelButton.interactable = currentLvl > 0;
 			nextLevelButton.interactable = currentLvl < SaveControl.instance.towersUsedToWin.Count;
 			restartButton.interactable = false;
+			timeOnLevel = 0;
+			backs = 0;
 		}
 		Sounds.PlayStartLevel();
 
@@ -211,7 +218,7 @@ public class GameManager : MonoBehaviour
 			ButtonTowerPair item = buildTowers[buildTowers.Count - 1];
 			buildTowers.Remove(item);
 			towerspawner.ReturnTower(item.button, item.tower, false);
-
+			backs++;
 		}
 	}
 
@@ -242,7 +249,7 @@ public class GameManager : MonoBehaviour
 
 	void Update()
 	{
-
+		timeOnLevel += Time.deltaTime;
 		ShakeScreen();
 
 		GameObject[] houses = GameObject.FindGameObjectsWithTag("House");
@@ -298,6 +305,14 @@ public class GameManager : MonoBehaviour
 				if (timer >= powerUpTimeForSceneChange)
 				{
 					//Debug.Log("Full power");
+					string nameEvent = "levelWin_" + lvlmanager.level.ToString();
+
+					Analytics.CustomEvent(nameEvent, new Dictionary<string, object>
+		{
+			{ "timeToWin", timeOnLevel },
+			{ "backs", backs }
+		});
+
 					CheckSave();
 					changeTierOrScene();
 					timer = 0;

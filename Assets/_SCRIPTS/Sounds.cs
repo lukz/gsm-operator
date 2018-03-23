@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Sounds : MonoBehaviour {
 
@@ -34,6 +35,7 @@ public class Sounds : MonoBehaviour {
 
 	public void ToggleSound(bool enabled)
 	{
+		if(!enabled)Analytics.CustomEvent("muted");
 		//Debug.Log("Toggle sound " + enabled);
 		soundOn = enabled;
 		music.mute = !enabled;
