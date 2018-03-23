@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
 
 	public static bool IS_ANDROID = Application.platform == RuntimePlatform.Android;
 	public static bool IS_IOS = Application.platform == RuntimePlatform.IPhonePlayer;
-//	public static bool IS_MOBILE = IS_ANDROID || IS_IOS;
-	 public static bool IS_MOBILE = true;
+	public static bool IS_MOBILE = IS_ANDROID || IS_IOS;
+//	 public static bool IS_MOBILE = true;
 
 	public static bool canDoActions = true;
 
