@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
+		Application.targetFrameRate = 30;
 		DOTween.Init(true, true, LogBehaviour.Verbose);
 
 		SceneManager.sceneLoaded += PrepareScene;
