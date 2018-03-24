@@ -8926,7 +8926,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1030996099
+  randomSeed: -1429758397
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12295,7 +12295,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1371852992
+  randomSeed: -1635880187
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -15664,7 +15664,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1239100211
+  randomSeed: 1621772813
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -19033,7 +19033,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1376155386
+  randomSeed: 1244105047
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -22647,7 +22647,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ec6dde88b194f0146ae1908819f6eeca, type: 3}
-  m_Color: {r: 0.14901961, g: 0.1254902, b: 0.14901961, a: 1}
+  m_Color: {r: 1, g: 0.86666673, b: 0.38823533, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22691,7 +22691,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ec6dde88b194f0146ae1908819f6eeca, type: 3}
-  m_Color: {r: 0.14901961, g: 0.1254902, b: 0.14901961, a: 1}
+  m_Color: {r: 1, g: 0.86666673, b: 0.38823533, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -23263,7 +23263,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ec6dde88b194f0146ae1908819f6eeca, type: 3}
-  m_Color: {r: 0.14901961, g: 0.1254902, b: 0.14901961, a: 1}
+  m_Color: {r: 1, g: 0.86666673, b: 0.38823533, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -23439,7 +23439,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ec6dde88b194f0146ae1908819f6eeca, type: 3}
-  m_Color: {r: 0.14901961, g: 0.1254902, b: 0.14901961, a: 1}
+  m_Color: {r: 1, g: 0.86666673, b: 0.38823533, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
