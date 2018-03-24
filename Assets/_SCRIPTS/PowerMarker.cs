@@ -14,12 +14,16 @@ public class PowerMarker : MonoBehaviour {
 	public GameObject markerHigh1;
 	public GameObject markerHigh2;
 	public GameObject markerHigh3;
+
+	public bool showIfNoPower = false;
 	
 	private Animator overlay;
 	
 	public int power = 0;
 
 	public int requiredPower = 0;
+
+
 
 	void Start()
 	{
@@ -54,11 +58,9 @@ public class PowerMarker : MonoBehaviour {
 		markerHigh1.SetActive(false);
 		markerHigh2.SetActive(false);
 		markerHigh3.SetActive(false);
+		UpdateBorders();
 		// no border, just full markers based on power
 		if (requiredPower == 0) {
-			markerBorder1.SetActive(false);
-			markerBorder2.SetActive(false);
-			markerBorder3.SetActive(false);
 			if (power == 1) {
 				markerHigh1.SetActive(true);
 				markerBorder1.SetActive(true);
@@ -110,6 +112,18 @@ public class PowerMarker : MonoBehaviour {
 
 	public void SetRequiredPower(int requiredPower) {
 		this.requiredPower = requiredPower;
+		UpdateBorders();
+		SetPower(power);
+	}
+
+	private void UpdateBorders() 
+	{
+		if (!showIfNoPower && power == 0) {
+			markerBorder1.SetActive(false);
+			markerBorder2.SetActive(false);
+			markerBorder3.SetActive(false);
+			return;
+		}
 		switch(requiredPower) {
 			case 0: {
 				markerBorder1.SetActive(false);
@@ -132,7 +146,5 @@ public class PowerMarker : MonoBehaviour {
 				markerBorder3.SetActive(true);
 			} break;
 		}
-
-		SetPower(power);
 	}
 }
