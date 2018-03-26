@@ -273,6 +273,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 
             Tweens.Squeeze(tower, 2, 1.5f);
 
+			tile.GetComponent<SpriteRenderer>().enabled = true;
+
             tower.transform.DOMove(button.transform.position, .5f)
 				.SetEase(Ease.InSine)
 				.OnComplete(()=>{

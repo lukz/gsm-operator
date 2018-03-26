@@ -27,17 +27,24 @@ public class Tile : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        GetComponent<SpriteRenderer>().enabled = false;
+       // GetComponent<SpriteRenderer>().enabled = false;
         GameObject house = GetHouse();
         if (house != null) {
             HouseScript hs = house.GetComponent<HouseScript>();
             powerMarker.SetRequiredPower(hs.requiredPower);
-        } else {
-            powerMarker.SetRequiredPower(0);
+
+			GetComponent<SpriteRenderer>().enabled = false;
+
+		} else {
+			if (HasRocks()) GetComponent<SpriteRenderer>().enabled = false;
+
+			powerMarker.SetRequiredPower(0);
             powerMarker.SetPower(powerLvl);
         }
 
-        tileset = GetComponentInParent<Tileset>();
+
+
+		tileset = GetComponentInParent<Tileset>();
 	}
 
     public bool HasEnergyField()
@@ -157,7 +164,9 @@ public class Tile : MonoBehaviour {
         tower.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
         tower.GetComponent<TowerScript>().AttachToTile(this);
-    }
+		buildMarker.CancelBuild();
+		GetComponent<SpriteRenderer>().enabled = false;
+	}
 
     public bool CanBuild()
     {
