@@ -71,6 +71,9 @@ TagManager:
   - name: Efects
     uniqueID: 5428501
     locked: 0
+  - name: Hooks
+    uniqueID: 2533155759
+    locked: 0
   - name: GUI
     uniqueID: 2717661431
     locked: 0
