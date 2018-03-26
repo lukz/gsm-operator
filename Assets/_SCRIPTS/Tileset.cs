@@ -79,6 +79,19 @@ public class Tileset : MonoBehaviour {
         }
     }
 
+    public void StartBuilding () 
+    {
+        foreach (var tile in map) {
+            tile.StartBuilding();
+        }
+    }
+
+    public void CancelBuilding () 
+    {
+        foreach (var tile in map) {
+            tile.CancelBuilding();
+        }
+    }
     public Vector2 GetTilePos(GameObject tile)
     {
         for (int y = 0; y < tiles.Count; y++)
@@ -118,22 +131,6 @@ public class Tileset : MonoBehaviour {
         if (x < 0 || x >= MAP_WIDTH || y < 0 || y >= MAP_HEIGHT) return null;
         // return map[x, MAP_HEIGHT - 1 - y];
         return map[x, y];
-    }
-
-    public void ShowTileBuildStatus() {
-        foreach (var row in tiles) {
-            foreach (var tile in row.row) {
-                tile.GetComponent<Tile>().ShowBuildStatus();
-            }
-		}
-    }
-
-    public void HideTileBuildStatus() {
-        foreach (var row in tiles) {
-            foreach (var tile in row.row) {
-                tile.GetComponent<Tile>().HideBuildStatus();
-            }
-		}
     }
 
     [System.Serializable]

@@ -5,14 +5,15 @@ using UnityEngine;
 public class Tile : MonoBehaviour {
 
 	public int powerLvl = 0;
+
     //public GameObject[] objectsHere;
 
-    private Color normalColor = new Color(0xFF, 0xFF, 0xFF, 0f);
-    private Color blockedColor = new Color(0xFF, 0x00, 0x00, 0xD0);
-    private Color poweredColor = new Color(0x00, 0xB5, 0xFF, 0xC0);
-    private Color powered2Color = new Color(0x60, 0x90, 0xFF, 0xC0);
-    private Color powered3Color = new Color(0x00, 0x00, 0x0, 0xC0);
-	private Color targetColor = new Color(0x0, 0xFF, 0x00, 0xFD);
+    // private Color normalColor = new Color(0xFF, 0xFF, 0xFF, 0f);
+    // private Color blockedColor = new Color(0xFF, 0x00, 0x00, 0xD0);
+    // private Color poweredColor = new Color(0x00, 0xB5, 0xFF, 0xC0);
+    // private Color powered2Color = new Color(0x60, 0x90, 0xFF, 0xC0);
+    // private Color powered3Color = new Color(0x00, 0x00, 0x0, 0xC0);
+	// private Color targetColor = new Color(0x0, 0xFF, 0x00, 0xFD);
 
     public int x;
     public int y;
@@ -89,40 +90,51 @@ public class Tile : MonoBehaviour {
     {
         return HasRocks() || HasHouse() || HasTower();
     }
-    
+
+    public void StartBuilding() 
+    {   
+        if (gameObject.activeInHierarchy) 
+        {
+            buildMarker.StartBuild(CanBuild());
+        }
+    }
+
+    public void CancelBuilding() 
+    {
+        if (gameObject.activeInHierarchy) 
+        {
+            buildMarker.CancelBuild();
+        }
+    }
+
     public void SetAsBuildTarget(List<TowerScript.PowerOffset> powerOffsets)
     {
-        if(!CanBuild()) {
-            GetComponent<SpriteRenderer>().color = blockedColor;
-        } else {
-            GetComponent<SpriteRenderer>().color = targetColor;
-            if (towerPowerOffsets != null) {
-                CancelBuildTarget();
-            }
-            towerPowerOffsets = powerOffsets;
-            if (towerPowerOffsets != null) {
-                int bx = tileset.GridX(transform.position.x);
-                int by = tileset.GridY(transform.position.y);
-                // Debug.Log("Target tile at " + bx + ", " + by);
-                // go over all tiles and enable power
-                foreach (var offset in powerOffsets) {
-                    int tx = bx + offset.x;
-                    int ty = by - offset.y;
-                    // Debug.Log("Will power at " + tx + ", " + ty);
-                    Tile at = tileset.GetTileAt(tx, ty);
-                    if (at != null && at.gameObject.activeInHierarchy) {
-                        at.buildMarker.StartWillPowerUp();
-                    }
+        buildMarker.OverBuild(CanBuild());
+        if (towerPowerOffsets != null) {
+            CancelBuildTarget();
+        }
+        towerPowerOffsets = powerOffsets;
+        if (towerPowerOffsets != null) {
+            int bx = tileset.GridX(transform.position.x);
+            int by = tileset.GridY(transform.position.y);
+            // Debug.Log("Target tile at " + bx + ", " + by);
+            // go over all tiles and enable power
+            foreach (var offset in powerOffsets) {
+                int tx = bx + offset.x;
+                int ty = by - offset.y;
+                // Debug.Log("Will power at " + tx + ", " + ty);
+                Tile at = tileset.GetTileAt(tx, ty);
+                if (at != null && at.gameObject.activeInHierarchy) {
+                    at.buildMarker.StartWillPowerUp();
                 }
             }
         }
-
-        
     }
 
     public void CancelBuildTarget()
     {
-        ResetState();
+        buildMarker.CancelOverBuild(CanBuild());
+    
         if (towerPowerOffsets != null) {
             // go over all tiles and disable power
             int bx = tileset.GridX(transform.position.x);
@@ -139,12 +151,6 @@ public class Tile : MonoBehaviour {
             towerPowerOffsets = null;
         }
     }
-
-    void ResetState()
-    {
-        GetComponent<SpriteRenderer>().color = normalColor;
-    }
-
     public void Build(GameObject tower)
     {
         tower.transform.parent = transform;
@@ -182,22 +188,7 @@ public class Tile : MonoBehaviour {
                 
             }
         }
-
-        ResetState();
     }
-
-    public void ShowBuildStatus() {
-        if (gameObject.activeInHierarchy) {
-            buildMarker.StartBuild(CanBuild());
-        }
-    }
-
-    public void HideBuildStatus() {
-        if (gameObject.activeInHierarchy) {
-            buildMarker.CancelBuild();
-        }
-    }
-
 
     public override string ToString() {
         return "Tile{["+x + "," + y+"], active="+gameObject.activeInHierarchy+"}";

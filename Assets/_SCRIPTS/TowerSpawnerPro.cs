@@ -133,7 +133,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 		// this is in game units
 		towerOffset.y = GameManager.IS_MOBILE?0.5f:0.0f;
 		powerOffsets = draggedTowerInstance.GetComponent<TowerScript>().powerOffsets;
-		tileset.ShowTileBuildStatus();
+
+		tileset.StartBuilding();
 	}
 
 	void ChangeDrawSorting(GameObject tower, string layer, int order) {
@@ -177,11 +178,11 @@ public class TowerSpawnerPro : MonoBehaviour {
     private Vector2 cameraShakeTimeStrength = new Vector2(0.06f, 0.12f);
 
 	void PlaceOrReturnTower() {
+		tileset.CancelBuilding();
 		if (draggedTowerInstance == null) {
 			Debug.LogError("Nothing to place");
 			return;
 		}
-		tileset.HideTileBuildStatus();
 		draggedTowerPrefab = null;
 
 

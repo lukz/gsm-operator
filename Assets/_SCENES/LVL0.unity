@@ -14574,12 +14574,12 @@ Prefab:
     - target: {fileID: 224974315177995322, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224974315177995322, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 20191297050054184, guid: 61e223a93ed2376488b10eaad4c66938,
         type: 2}
@@ -16109,7 +16109,7 @@ SpriteRenderer:
   m_SortingLayerID: -1577305865
   m_SortingLayer: 6
   m_SortingOrder: 13
-  m_Sprite: {fileID: 21300000, guid: 56d07842da6859c47bee9b9849105e65, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6583272140a2404ab0c719695a49528, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
