@@ -21,6 +21,72 @@ EditorBuildSettings:
     path: Assets/_SCENES/LVL3.unity
     guid: fffd2b447115e3b4dac2ef5d44ad9561
   - enabled: 1
+    path: Assets/_SCENES/LVL8.unity
+    guid: 86ff6c65b40c9134a8cb543365a95bfa
+  - enabled: 1
+    path: Assets/_SCENES/LVL9.unity
+    guid: 9af5bd76e05db3b4781211246f731cf3
+  - enabled: 1
+    path: Assets/_SCENES/LVL10.unity
+    guid: 599a27a5ca85de24491660249c263369
+  - enabled: 1
+    path: Assets/_SCENES/LVL11.unity
+    guid: 0671ac1278c5bc94ba7416f68b69f051
+  - enabled: 1
+    path: Assets/_SCENES/LVL12.unity
+    guid: 5efbdc3383d832147bdebaaf037baad4
+  - enabled: 1
+    path: Assets/_SCENES/LVL13.unity
+    guid: 9481e4c45a3019b4bb1056d4d1e0fe02
+  - enabled: 1
+    path: Assets/_SCENES/LVL14.unity
+    guid: 8b8417a741671ed4295dedf94e50ceb2
+  - enabled: 1
+    path: Assets/_SCENES/LVL15.unity
+    guid: 0fb66ab1c6156bd46a8e98de4d0af142
+  - enabled: 1
+    path: Assets/_SCENES/LVL16.unity
+    guid: b55be0c3d18709944bbdf51047fd1439
+  - enabled: 1
+    path: Assets/_SCENES/LVL17.unity
+    guid: ba9f83d5edd1cf646b8e532494f7bd1b
+  - enabled: 1
+    path: Assets/_SCENES/LVL18.unity
+    guid: b2773a00214756a4e83efe47ec06e787
+  - enabled: 1
+    path: Assets/_SCENES/LVL19.unity
+    guid: 52065fcb191368f4b9a4c4430f5b0862
+  - enabled: 1
+    path: Assets/_SCENES/LVL20.unity
+    guid: e7c078e36200fdf41a4357e664155a4e
+  - enabled: 1
+    path: Assets/_SCENES/LVL21.unity
+    guid: 024dfccb56cc23a4895f71d0430cfa04
+  - enabled: 1
+    path: Assets/_SCENES/LVL22.unity
+    guid: 97fdd1b7fb7bac2408d0c654b4bb89c5
+  - enabled: 1
+    path: Assets/_SCENES/LVL23.unity
+    guid: a09cb317f6eef99498a9596efb8b924c
+  - enabled: 1
+    path: Assets/_SCENES/LVL24.unity
+    guid: 1d803d6a137556d479fcd8f675295519
+  - enabled: 1
+    path: Assets/_SCENES/LVL25.unity
+    guid: f47d84c17e5434340a1be2e38e368fba
+  - enabled: 1
+    path: Assets/_SCENES/LVL26.unity
+    guid: d66520f0da09188438d6eb39601b16eb
+  - enabled: 1
+    path: Assets/_SCENES/LVL27.unity
+    guid: dab5e99e886cc18478eb6f10af0472b7
+  - enabled: 1
+    path: Assets/_SCENES/LVL28.unity
+    guid: 07a5c6baec0b2f242a5cb927d29c62ab
+  - enabled: 1
+    path: Assets/_SCENES/LVL29.unity
+    guid: 690c9b4752bcbba409097cb23effbf75
+  - enabled: 1
     path: Assets/_SCENES/LVL4.unity
     guid: 5800c5b368903c94a97afe40a0357b6c
   - enabled: 1
