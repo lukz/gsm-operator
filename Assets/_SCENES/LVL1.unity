@@ -10909,7 +10909,8 @@ MonoBehaviour:
     type: 2}
   towerPrefab2: {fileID: 1592755470088062, guid: 78de799895db74274ad59f37bede022f,
     type: 2}
-  towerPrefab3: {fileID: 0}
+  towerPrefab3: {fileID: 1592755470088062, guid: 78de799895db74274ad59f37bede022f,
+    type: 2}
   towerPrefab4: {fileID: 0}
   towerPrefab5: {fileID: 0}
   tiles:
