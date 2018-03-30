@@ -9,7 +9,7 @@ using UnityEngine.Analytics;
 public class GameManager : MonoBehaviour
 {
 
-	public static bool SOFTLAUNCH = true; //TODO REMEMBER MAKE THIS FALSE before official final release
+	public static bool SOFTLAUNCH = false; //TODO REMEMBER MAKE THIS FALSE before official final release
 
 	public static bool IS_ANDROID = Application.platform == RuntimePlatform.Android;
 	public static bool IS_IOS = Application.platform == RuntimePlatform.IPhonePlayer;
