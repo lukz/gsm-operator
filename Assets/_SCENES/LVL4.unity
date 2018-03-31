@@ -10859,9 +10859,12 @@ MonoBehaviour:
   levelName: 5
   towerPrefab1: {fileID: 1592755470088062, guid: 78de799895db74274ad59f37bede022f,
     type: 2}
-  towerPrefab2: {fileID: 0}
-  towerPrefab3: {fileID: 0}
-  towerPrefab4: {fileID: 0}
+  towerPrefab2: {fileID: 1592755470088062, guid: 78de799895db74274ad59f37bede022f,
+    type: 2}
+  towerPrefab3: {fileID: 1592755470088062, guid: 78de799895db74274ad59f37bede022f,
+    type: 2}
+  towerPrefab4: {fileID: 1592755470088062, guid: 78de799895db74274ad59f37bede022f,
+    type: 2}
   towerPrefab5: {fileID: 0}
   tiles:
   - {fileID: 207387636}
