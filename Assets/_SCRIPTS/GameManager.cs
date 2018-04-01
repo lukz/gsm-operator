@@ -80,9 +80,11 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
-		float aspect = Screen.width / (float)Screen.height;
-		Screen.SetResolution( Mathf.FloorToInt(600*aspect), 600, true);
-
+		if (IS_MOBILE)
+		{
+			float aspect = Screen.width / (float)Screen.height;
+			Screen.SetResolution(Mathf.FloorToInt(600 * aspect), 600, true);
+		}
 
 		Application.targetFrameRate = 30;
 		DOTween.Init(true, true, LogBehaviour.Verbose);
