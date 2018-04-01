@@ -25,6 +25,13 @@ public class Tileset : MonoBehaviour {
                 // Debug.Log("Tile " + t);
                 // Debug.Log(tp + " -> [" + x +", " + y + "]");
                 map[x, y] = t;
+
+                // if there is a tower at the start, its not players
+                GameObject tower = t.GetTower();
+                if (tower != null)
+                {
+                    tower.GetComponent<TowerScript>().InitAsNotPlayers();
+                }
             }
 		}
 	}

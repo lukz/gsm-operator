@@ -19,6 +19,10 @@ public class SaveControl : MonoBehaviour {
 			{
 				instance = this;
 				DontDestroyOnLoad(gameObject);
+            for (int i = 0; i < 100; i++)
+            {
+                towersUsedToWin.Add(-1);
+            }
 			}
 			else if (instance != this)
 			{
@@ -57,8 +61,17 @@ public class SaveControl : MonoBehaviour {
 				BinaryFormatter bf = new BinaryFormatter();
 				FileStream file = File.Open(Application.persistentDataPath + "/playerInfo" + saveVersion + ".dat", FileMode.Open);
 				PlayerData data = (PlayerData)bf.Deserialize(file);
-				towersUsedToWin = data.towersUsedToWin;
-			}
+                int baseCount = towersUsedToWin.Count;
+                towersUsedToWin = data.towersUsedToWin;
+
+                if (towersUsedToWin.Count < baseCount)
+                {
+                    for (int i = towersUsedToWin.Count; i < baseCount; i++)
+                    {
+                        towersUsedToWin.Add(-1);
+                    }
+                }
+            }
 		} catch (Exception ex) {
 			Debug.LogError("Failed to load player info " + ex);
 			File.Delete(Application.persistentDataPath + "/playerInfo" + saveVersion + ".dat");

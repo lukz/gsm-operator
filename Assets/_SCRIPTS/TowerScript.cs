@@ -19,15 +19,21 @@ public class TowerScript : MonoBehaviour {
     [SerializeField]
     private SpriteRenderer sprite;
 
-    // Use this for initialization
-    void Start () {
+    public void InitAsNotPlayers()
+    {
+        playerTower = false;
         // hack to disable mine with id == 3
-        if (!playerTower && id < 3) {
+        if (id < 3)
+        {
             Tileset tileSet = FindObjectOfType<Tileset>();
             Tile tile = tileSet.GetTileAt(transform.position);
-            if (tile != null) {
-                AttachToTile(tile);
-            } else {
+            if (tile != null)
+            {
+                tile.Build(gameObject);
+                //AttachToTile(tile);
+            }
+            else
+            {
                 Debug.Log("No tile for tower at " + transform.position);
             }
         }
