@@ -346,12 +346,23 @@ public class GameManager : MonoBehaviour
 	private void CheckSave()
 	{
 		GameObject[] towersTemp = GameObject.FindGameObjectsWithTag("Tower");
-		if (currentLvl == SaveControl.instance.towersUsedToWin.Count)
+        int playerTowersCount = 0;
+        foreach (var go in towersTemp) 
+        {
+            TowerScript ts = go.GetComponent<TowerScript>();
+            if (ts.playerTower)
+            {
+                playerTowersCount++;
+            }
+        }
+        var towersUsedToWin = SaveControl.instance.towersUsedToWin;
+
+        if (towersUsedToWin[currentLvl] == -1)
 		{
-			SaveControl.instance.towersUsedToWin.Add(towersTemp.Length);
+            towersUsedToWin[currentLvl] = playerTowersCount;
 		}
-		if (SaveControl.instance.towersUsedToWin[currentLvl] > towersTemp.Length)
-			SaveControl.instance.towersUsedToWin[currentLvl] = towersTemp.Length;
+		if (towersUsedToWin[currentLvl] > playerTowersCount)
+            towersUsedToWin[currentLvl] = playerTowersCount;
 
 		SaveControl.instance.Save();
 	}

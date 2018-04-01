@@ -5926,7 +5926,7 @@ Prefab:
     - target: {fileID: 114160543993613028, guid: 78de799895db74274ad59f37bede022f,
         type: 2}
       propertyPath: playerTower
-      value: 0
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78de799895db74274ad59f37bede022f, type: 2}

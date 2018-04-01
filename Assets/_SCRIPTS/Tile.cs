@@ -67,6 +67,16 @@ public class Tile : MonoBehaviour {
         return false;
     }
 
+    public GameObject GetTower()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).transform.tag == "Tower") return transform.GetChild(i).gameObject;
+        }
+
+        return null;
+    }
+
     bool HasHouse()
     {
         if (GetHouse() != null) return true;
