@@ -88,16 +88,12 @@ public class GameManager : MonoBehaviour
 		towerspawner = GetComponent<TowerSpawnerPro>();
 		if (OPENlastLEVEL)
 		{
-			int lastUnlockedLevel = 0;
-			if (SaveControl.instance.towersUsedToWin.Count > 0) // wygral chociaz 1 poziom
-			{
-				lastUnlockedLevel = SaveControl.instance.towersUsedToWin.Count;
-				if (SaveControl.instance.towersUsedToWin.Count >= lastLevelId)
-				{
-					lastUnlockedLevel = 0;
-				}
-			}
-			string lvl = "LVL" + lastUnlockedLevel.ToString(); // zaladuj ostatni dostepny poziom
+			int lastUnlockedLevel = SaveControl.instance.LastWonLevel();
+            if (lastUnlockedLevel >= lastLevelId)
+            {
+                lastUnlockedLevel = 0;
+            }
+			string lvl = "LVL" + lastUnlockedLevel; // zaladuj ostatni dostepny poziom
 			SceneManager.LoadScene(lvl);
 
 		}
@@ -189,7 +185,7 @@ public class GameManager : MonoBehaviour
 
 			UnlockNextTower();
 			prevLevelButton.interactable = currentLvl > 0;
-			nextLevelButton.interactable = currentLvl < SaveControl.instance.towersUsedToWin.Count;
+			nextLevelButton.interactable = currentLvl < SaveControl.instance.LastWonLevel();
 			restartButton.interactable = false;
 			timeOnLevel = 0;
 			backs = 0;
@@ -355,15 +351,7 @@ public class GameManager : MonoBehaviour
                 playerTowersCount++;
             }
         }
-        var towersUsedToWin = SaveControl.instance.towersUsedToWin;
-
-        if (towersUsedToWin[currentLvl] == -1)
-		{
-            towersUsedToWin[currentLvl] = playerTowersCount;
-		}
-		if (towersUsedToWin[currentLvl] > playerTowersCount)
-            towersUsedToWin[currentLvl] = playerTowersCount;
-
+        SaveControl.instance.UpdateTowers(currentLvl, playerTowersCount);
 		SaveControl.instance.Save();
 	}
 
@@ -384,7 +372,7 @@ public class GameManager : MonoBehaviour
 
 
 		}
-		if (currentLvl < SaveControl.instance.towersUsedToWin.Count)
+		if (currentLvl < SaveControl.instance.LastWonLevel())
 		{
 			if (currentLvl == lastLevelId)
 			{

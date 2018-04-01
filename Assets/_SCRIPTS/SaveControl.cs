@@ -12,7 +12,7 @@ public class SaveControl : MonoBehaviour {
 
 	public static SaveControl instance;
 
-	public List<int> towersUsedToWin = new List<int>();
+	private List<int> towersUsedToWin = new List<int>();
 
 	void Awake () {
 			if (instance == null)
@@ -77,6 +77,35 @@ public class SaveControl : MonoBehaviour {
 			File.Delete(Application.persistentDataPath + "/playerInfo" + saveVersion + ".dat");
 		}
 	}
+
+    public int LastWonLevel()
+    {
+        int level = 0;
+        for (int i = 0; i < 100; i++)
+        {
+            if (towersUsedToWin[i] == -1)
+            {
+                break;
+            }
+            level++;
+        }
+        return level;
+    }
+
+    internal void UpdateTowers(int currentLvl, int playerTowersCount)
+    {
+        
+        if (towersUsedToWin[currentLvl] == -1)
+        {
+            towersUsedToWin[currentLvl] = playerTowersCount;
+        }
+
+        if (towersUsedToWin[currentLvl] > playerTowersCount)
+        {
+            towersUsedToWin[currentLvl] = playerTowersCount;
+        }
+            
+    }
 }
 
 [Serializable]
