@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
 			if (oldSplash != null) {
 				oldSplash.gameObject.SetActive(true);
 			}
+			Input.multiTouchEnabled = false;
 			DontDestroyOnLoad(gameObject);
 		}
 		else if (instance != this)
