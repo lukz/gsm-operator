@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
 		}
 		else if (instance != this)
 		{
+            instance.Reset();
 			Destroy(gameObject);
 		}
 	}
@@ -93,7 +94,8 @@ public class GameManager : MonoBehaviour
 		SceneManager.sceneLoaded += PrepareScene;
 		SaveControl.instance.Load();
 		towerspawner = GetComponent<TowerSpawnerPro>();
-		if (OPENlastLEVEL)
+
+        if (OPENlastLEVEL)
 		{
 			int lastUnlockedLevel = SaveControl.instance.LastWonLevel();
             if (lastUnlockedLevel >= lastLevelId)
@@ -112,6 +114,15 @@ public class GameManager : MonoBehaviour
 
 		canDoActions = true;
 	}
+
+    void Reset()
+    {
+        towerspawner.Reset();
+        foreach (var tb in towerButtons)
+        {
+            tb.Reset();
+        }
+    }
 
 	public void TowerBuild(EventTriggerProxy button, GameObject tower)
 	{
