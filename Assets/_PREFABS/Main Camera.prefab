@@ -2453,7 +2453,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 3.5625002
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3403,6 +3403,8 @@ MonoBehaviour:
   nextLevelButton: {fileID: 114027293516775766}
   prevLevelButton: {fileID: 114189587059501558}
   restartButton: {fileID: 114652808639365204}
+  towerDragTutorial: {fileID: 1892785526111032, guid: c17a897761e828546a9303c51ec4f9fe,
+    type: 2}
 --- !u!114 &114023759682695858
 MonoBehaviour:
   m_ObjectHideFlags: 1

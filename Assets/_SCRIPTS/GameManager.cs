@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
 	public Button prevLevelButton;
 	public Button restartButton;
 	
+	public GameObject towerDragTutorial;
+	private GameObject towerDragTutorialInstance;
+
 	void Awake()
 	{
 		if (instance == null)
@@ -97,7 +100,7 @@ public class GameManager : MonoBehaviour
 
         if (OPENlastLEVEL)
 		{
-			int lastUnlockedLevel = SaveControl.instance.LastWonLevel();
+		int lastUnlockedLevel = SaveControl.instance.LastWonLevel();
             if (lastUnlockedLevel >= lastLevelId)
             {
                 lastUnlockedLevel = 0;
@@ -207,6 +210,24 @@ public class GameManager : MonoBehaviour
 			restartButton.interactable = false;
 			timeOnLevel = 0;
 			backs = 0;
+			
+			// add and nuke tutorial as needed
+			// if (currentLvl == 0 && !nextLevelButton.interactable) {
+			if (currentLvl == 0) {
+				towerDragTutorialInstance = GameObject.Instantiate(towerDragTutorial);
+				
+				// conflicts with Analytics
+				UnityEngine.EventSystems.EventTrigger trigger = towerButtons[0].GetComponent<UnityEngine.EventSystems.EventTrigger>();
+				UnityEngine.EventSystems.EventTrigger.Entry entry = new UnityEngine.EventSystems.EventTrigger.Entry();
+				entry.eventID = UnityEngine.EventSystems.EventTriggerType.PointerDown;
+				entry.callback.AddListener((data) => { 
+					if (towerDragTutorialInstance != null) {
+						GameObject.Destroy(towerDragTutorialInstance);
+						towerDragTutorialInstance = null;
+					}
+				});
+				trigger.triggers.Add(entry);
+			}
 		}
 		Sounds.PlayStartLevel();
 
