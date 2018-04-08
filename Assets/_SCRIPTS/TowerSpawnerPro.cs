@@ -85,6 +85,18 @@ public class TowerSpawnerPro : MonoBehaviour {
         }
 	}
 
+    public void Reset()
+    {
+        draggedTowerPrefab = null;
+        draggedTowerInstance = null;
+        draggedTowerOwner = null;
+        powerOffsets = null;
+        bool dragging = false;
+        previouslyDraggedTile = null;
+        dragTime = 0;
+        StopAllCoroutines();
+    }
+
 	float mix;
 	public void PickTower (EventTriggerProxy owner, GameObject towerPrefab) {
 		if (draggedTowerPrefab != null) {

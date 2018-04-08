@@ -93,7 +93,12 @@ public class GameManager : MonoBehaviour
 		SceneManager.sceneLoaded += PrepareScene;
 		SaveControl.instance.Load();
 		towerspawner = GetComponent<TowerSpawnerPro>();
-		if (OPENlastLEVEL)
+        towerspawner.Reset();
+        foreach(var tb in towerButtons)
+        {
+            tb.Reset();
+        }
+        if (OPENlastLEVEL)
 		{
 			int lastUnlockedLevel = SaveControl.instance.LastWonLevel();
             if (lastUnlockedLevel >= lastLevelId)
