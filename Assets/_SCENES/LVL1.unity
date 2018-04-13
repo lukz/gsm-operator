@@ -470,15 +470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 155523343}
-  markerBorder2: {fileID: 1150512897}
-  markerBorder3: {fileID: 420039939}
-  markerLow: {fileID: 139489198}
-  markerMed1: {fileID: 1752477177}
-  markerMed2: {fileID: 1404161733}
-  markerHigh1: {fileID: 17963868}
-  markerHigh2: {fileID: 337550162}
-  markerHigh3: {fileID: 402943821}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -1390,15 +1383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1896702783}
-  markerBorder2: {fileID: 2040268973}
-  markerBorder3: {fileID: 1678832593}
-  markerLow: {fileID: 881346739}
-  markerMed1: {fileID: 888643036}
-  markerMed2: {fileID: 279033352}
-  markerHigh1: {fileID: 1449182470}
-  markerHigh2: {fileID: 1784497245}
-  markerHigh3: {fileID: 1886032651}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -2547,15 +2533,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1930483382}
-  markerBorder2: {fileID: 1632507252}
-  markerBorder3: {fileID: 995127030}
-  markerLow: {fileID: 969424614}
-  markerMed1: {fileID: 148063208}
-  markerMed2: {fileID: 1871095872}
-  markerHigh1: {fileID: 158428516}
-  markerHigh2: {fileID: 1930970690}
-  markerHigh3: {fileID: 1922212892}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -2907,15 +2886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1437243394}
-  markerBorder2: {fileID: 766120881}
-  markerBorder3: {fileID: 1530810109}
-  markerLow: {fileID: 187320395}
-  markerMed1: {fileID: 122676960}
-  markerMed2: {fileID: 1610796063}
-  markerHigh1: {fileID: 374915984}
-  markerHigh2: {fileID: 588640133}
-  markerHigh3: {fileID: 730432611}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -3699,15 +3671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1537284244}
-  markerBorder2: {fileID: 26437576}
-  markerBorder3: {fileID: 527907798}
-  markerLow: {fileID: 1005463781}
-  markerMed1: {fileID: 1075007337}
-  markerMed2: {fileID: 437296453}
-  markerHigh1: {fileID: 347476327}
-  markerHigh2: {fileID: 889831927}
-  markerHigh3: {fileID: 723396854}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -3764,15 +3729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1232982819}
-  markerBorder2: {fileID: 1949223479}
-  markerBorder3: {fileID: 1539139901}
-  markerLow: {fileID: 659551825}
-  markerMed1: {fileID: 882981352}
-  markerMed2: {fileID: 1968917753}
-  markerHigh1: {fileID: 1822557568}
-  markerHigh2: {fileID: 1486453913}
-  markerHigh3: {fileID: 20451450}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -3981,15 +3939,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1919230644}
-  markerBorder2: {fileID: 677556209}
-  markerBorder3: {fileID: 1585540404}
-  markerLow: {fileID: 1983049614}
-  markerMed1: {fileID: 2004202780}
-  markerMed2: {fileID: 1848837337}
-  markerHigh1: {fileID: 241487851}
-  markerHigh2: {fileID: 710238830}
-  markerHigh3: {fileID: 507569120}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -7285,15 +7236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1592019897}
-  markerBorder2: {fileID: 1158034139}
-  markerBorder3: {fileID: 1125440518}
-  markerLow: {fileID: 70197685}
-  markerMed1: {fileID: 1102792794}
-  markerMed2: {fileID: 910559837}
-  markerHigh1: {fileID: 1781905719}
-  markerHigh2: {fileID: 1918296312}
-  markerHigh3: {fileID: 87967361}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -8332,15 +8276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1313631761}
-  markerBorder2: {fileID: 915937971}
-  markerBorder3: {fileID: 760878715}
-  markerLow: {fileID: 173909798}
-  markerMed1: {fileID: 362657343}
-  markerMed2: {fileID: 2099042467}
-  markerHigh1: {fileID: 648028166}
-  markerHigh2: {fileID: 2017262694}
-  markerHigh3: {fileID: 694689831}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -8538,15 +8475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1889384179}
-  markerBorder2: {fileID: 1108274622}
-  markerBorder3: {fileID: 528068216}
-  markerLow: {fileID: 960253700}
-  markerMed1: {fileID: 640844414}
-  markerMed2: {fileID: 1052533459}
-  markerHigh1: {fileID: 1766454622}
-  markerHigh2: {fileID: 148043876}
-  markerHigh3: {fileID: 1776167179}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -12037,15 +11967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1566238161}
-  markerBorder2: {fileID: 335428710}
-  markerBorder3: {fileID: 1457527418}
-  markerLow: {fileID: 502272172}
-  markerMed1: {fileID: 1092741481}
-  markerMed2: {fileID: 2007392167}
-  markerHigh1: {fileID: 466227754}
-  markerHigh2: {fileID: 346621069}
-  markerHigh3: {fileID: 1455165875}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -12323,15 +12246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1329217107}
-  markerBorder2: {fileID: 1358336289}
-  markerBorder3: {fileID: 428392826}
-  markerLow: {fileID: 1942992760}
-  markerMed1: {fileID: 644294298}
-  markerMed2: {fileID: 1368589470}
-  markerHigh1: {fileID: 1870701998}
-  markerHigh2: {fileID: 255543510}
-  markerHigh3: {fileID: 689685277}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -13654,15 +13570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 2083937349}
-  markerBorder2: {fileID: 1805732722}
-  markerBorder3: {fileID: 52805010}
-  markerLow: {fileID: 1119828699}
-  markerMed1: {fileID: 26399321}
-  markerMed2: {fileID: 264043022}
-  markerHigh1: {fileID: 226071642}
-  markerHigh2: {fileID: 509327030}
-  markerHigh3: {fileID: 1680687529}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -14605,15 +14514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1216115981}
-  markerBorder2: {fileID: 343369854}
-  markerBorder3: {fileID: 1381898750}
-  markerLow: {fileID: 1711020999}
-  markerMed1: {fileID: 1339191461}
-  markerMed2: {fileID: 764243039}
-  markerHigh1: {fileID: 2080990093}
-  markerHigh2: {fileID: 842204910}
-  markerHigh3: {fileID: 341757055}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -16034,15 +15936,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1496692828}
-  markerBorder2: {fileID: 1652890771}
-  markerBorder3: {fileID: 1269994903}
-  markerLow: {fileID: 2097077121}
-  markerMed1: {fileID: 764597036}
-  markerMed2: {fileID: 1651076860}
-  markerHigh1: {fileID: 1190015651}
-  markerHigh2: {fileID: 402180271}
-  markerHigh3: {fileID: 161007000}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -17788,15 +17683,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 1243369901}
-  markerBorder2: {fileID: 1798006386}
-  markerBorder3: {fileID: 1818222097}
-  markerLow: {fileID: 1616781861}
-  markerMed1: {fileID: 905092246}
-  markerMed2: {fileID: 851879614}
-  markerHigh1: {fileID: 937913666}
-  markerHigh2: {fileID: 1828139484}
-  markerHigh3: {fileID: 1141401455}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -17853,15 +17741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 398486036}
-  markerBorder2: {fileID: 759922757}
-  markerBorder3: {fileID: 1713461678}
-  markerLow: {fileID: 1170328097}
-  markerMed1: {fileID: 968916534}
-  markerMed2: {fileID: 1992801483}
-  markerHigh1: {fileID: 105160943}
-  markerHigh2: {fileID: 172938865}
-  markerHigh3: {fileID: 128519201}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -18775,15 +18656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 479008319}
-  markerBorder2: {fileID: 194081316}
-  markerBorder3: {fileID: 158505255}
-  markerLow: {fileID: 2067834300}
-  markerMed1: {fileID: 1228654103}
-  markerMed2: {fileID: 1740422054}
-  markerHigh1: {fileID: 299660160}
-  markerHigh2: {fileID: 814762815}
-  markerHigh3: {fileID: 1667868702}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -19529,15 +19403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 2130693706}
-  markerBorder2: {fileID: 363820504}
-  markerBorder3: {fileID: 995521458}
-  markerLow: {fileID: 1880974846}
-  markerMed1: {fileID: 510569125}
-  markerMed2: {fileID: 98924102}
-  markerHigh1: {fileID: 1518481479}
-  markerHigh2: {fileID: 1976789447}
-  markerHigh3: {fileID: 1026868355}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0
@@ -21672,15 +21539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a41574e669a427abe38d327154c660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markerBorder1: {fileID: 149981425}
-  markerBorder2: {fileID: 142762169}
-  markerBorder3: {fileID: 1634596893}
-  markerLow: {fileID: 1378174749}
-  markerMed1: {fileID: 1147704147}
-  markerMed2: {fileID: 2068994699}
-  markerHigh1: {fileID: 1259277978}
-  markerHigh2: {fileID: 534853460}
-  markerHigh3: {fileID: 1239341921}
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
   power: 0
   requiredPower: 0

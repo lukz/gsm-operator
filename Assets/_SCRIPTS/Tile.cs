@@ -32,7 +32,7 @@ public class Tile : MonoBehaviour {
         if (house != null) {
             HouseScript hs = house.GetComponent<HouseScript>();
             powerMarker.SetRequiredPower(hs.requiredPower);
-
+            
 			GetComponent<SpriteRenderer>().enabled = false;
 
 		} else {
