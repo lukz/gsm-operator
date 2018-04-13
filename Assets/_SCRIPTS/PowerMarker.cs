@@ -18,9 +18,9 @@ public class PowerMarker : MonoBehaviour {
     public void SetPower(int power) 
     {
         if (power < 0) power = 0;
-        if (this.power == power) return;
 		this.power = power;
-		Debug.Log("power = " + power);
+		// Debug.Log("power = " + power);
+		// if we dont need power, create them dynamically
         if (requiredPower == 0) {
             CreateMarkers(power);
         }
@@ -29,6 +29,9 @@ public class PowerMarker : MonoBehaviour {
             sr.sprite = powerOff;
         }
         switch(power) {
+			case 0: {
+				// do nothing
+			} break;
             case 1: {
                 markerRenderers[0].sprite = powerOn;
             } break;
@@ -36,7 +39,7 @@ public class PowerMarker : MonoBehaviour {
                 markerRenderers[0].sprite = powerOn;
                 markerRenderers[1].sprite = powerOn;
             } break;
-            default: {
+            default: { // 3+
                 markerRenderers[0].sprite = powerOn;
                 markerRenderers[1].sprite = powerOn;
                 markerRenderers[2].sprite = powerOn;
@@ -48,12 +51,15 @@ public class PowerMarker : MonoBehaviour {
     {
         if (requiredPower < 0) requiredPower = 0;
         if (requiredPower > 3) requiredPower = 3;
-        if (this.requiredPower == requiredPower) return;
 
         this.requiredPower = requiredPower;
         Debug.Log("req power = " + requiredPower);
 
         CreateMarkers(requiredPower);
+
+		if (requiredPower > 0) {
+			SetPower(power);
+		}
     }
 
     private void CreateMarkers(int count) {
@@ -61,6 +67,7 @@ public class PowerMarker : MonoBehaviour {
             GameObject.Destroy(go);
         }
         markers.Clear();
+		markerRenderers.Clear();
         float y = .4f;
         // added in light up order
         switch(count) {
@@ -81,10 +88,10 @@ public class PowerMarker : MonoBehaviour {
 
     private void CreateMarker(string name, float x, float y) 
     {
-        Debug.Log("Create marker at " + x + ", " + y);
+        // Debug.Log("Create marker at " + x + ", " + y);
         GameObject m = new GameObject(name);
         m.transform.parent = transform;
-        m.transform.position = new Vector2(transform.position.x +  x, transform.position.y + y);
+        m.transform.position = new Vector2(transform.position.x + x, transform.position.y + y);
         float scale = 2;
         m.transform.localScale = new Vector3(scale, scale, scale);
         markers.Add(m);
