@@ -44,8 +44,9 @@ public class BuildMarker : MonoBehaviour {
 		canBuildAnimator.SetInteger("state", CAN_BUILD_OFF);
 	}
 
-	public void StartWillPowerUp() {
+	public void StartWillPowerUp(bool blocked) {
 		willPowerMarker.SetActive(true);
+		willPowerMarker.GetComponent<Animator>().SetBool("blocked", blocked);
 	}
 
 	public void CancelWillPowerUp() {
