@@ -2453,7 +2453,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.5625002
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3375,7 +3375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edaf4da0df999e499abfdba2f3416aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveVersion: 8
+  saveVersion: 9
 --- !u!114 &114018255875537550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3392,7 +3392,7 @@ MonoBehaviour:
   restartFlareFx: {fileID: 1801182346414798}
   powerSlider: {fileID: 114924009610083464}
   powerUpTimeForSceneChange: 4
-  OPENlastLEVEL: 1
+  OPENlastLEVEL: 0
   lastLevelId: 29
   towerButtons:
   - {fileID: 114131500199868582}
