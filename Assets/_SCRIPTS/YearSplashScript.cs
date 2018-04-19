@@ -21,7 +21,7 @@ public class YearSplashScript : MonoBehaviour {
         DOTween.Sequence()
             .SetDelay(1f)
             .Append(
-                spriteRenderer.DOFade(0.3f, 2f)
+                spriteRenderer.DOFade(0f, 2f)
             ).OnComplete(() => {
 				//gameObject.SetActive(false);
 					Sounds.PlayMusic();
