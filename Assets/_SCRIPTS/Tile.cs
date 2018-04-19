@@ -21,22 +21,44 @@ public class Tile : MonoBehaviour {
     public PowerMarker powerMarker;
     public BuildMarker buildMarker;
 
-    private List<TowerScript.PowerOffset> towerPowerOffsets;
+
+	[SerializeField]
+	private Sprite hookLvl0;
+
+	[SerializeField]
+	private Sprite hookLvl1;
+
+	[SerializeField]
+	private Sprite hookLvl2;
+
+	[SerializeField]
+	private Sprite hookLvl3;
+
+	[SerializeField]
+	private Sprite hookBad;
+
+	private List<TowerScript.PowerOffset> towerPowerOffsets;
 
     private Tileset tileset;
 
+	private SpriteRenderer _spriterenderer;
+
     // Use this for initialization
     void Start () {
-       // GetComponent<SpriteRenderer>().enabled = false;
-        GameObject house = GetHouse();
+		_spriterenderer = GetComponent<SpriteRenderer>();
+
+		ChangeHooks();
+
+		// GetComponent<SpriteRenderer>().enabled = false;
+		GameObject house = GetHouse();
         if (house != null) {
             HouseScript hs = house.GetComponent<HouseScript>();
             powerMarker.SetRequiredPower(hs.requiredPower);
-            
-			GetComponent<SpriteRenderer>().enabled = false;
+
+			_spriterenderer.enabled = false;
 
 		} else {
-			if (HasRocks()) GetComponent<SpriteRenderer>().enabled = false;
+			if (HasRocks()) _spriterenderer.enabled = false;
 
 			powerMarker.SetRequiredPower(0);
             powerMarker.SetPower(powerLvl);
@@ -175,7 +197,7 @@ public class Tile : MonoBehaviour {
 
         tower.GetComponent<TowerScript>().AttachToTile(this);
 		buildMarker.CancelBuild();
-		GetComponent<SpriteRenderer>().enabled = false;
+		_spriterenderer.enabled = false;
 	}
 
     public bool CanBuild()
@@ -185,11 +207,37 @@ public class Tile : MonoBehaviour {
 
     public void PowerChange(int powerChange)
     {
+
+
         powerLvl += powerChange;
         if (powerLvl < 0) powerLvl = 0;
         powerMarker.SetPower(powerLvl);
         OnPowerChange();
+
+		ChangeHooks();
+
+
     }
+
+	private void ChangeHooks()
+	{
+		switch (powerLvl)
+		{
+			case 0:
+				_spriterenderer.sprite = hookBad;
+				if (HasEnergyField()) _spriterenderer.sprite = hookLvl0;
+				break;
+			case 1:
+				_spriterenderer.sprite = hookLvl1;
+				break;
+			case 2:
+				_spriterenderer.sprite = hookLvl2;
+				break;
+			case 3:
+				_spriterenderer.sprite = hookLvl3;
+				break;
+		}
+	}
 
     private void OnPowerChange()
     {

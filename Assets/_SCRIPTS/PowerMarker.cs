@@ -15,6 +15,9 @@ public class PowerMarker : MonoBehaviour {
     private List<GameObject> markers = new List<GameObject>();
     private List<SpriteRenderer> markerRenderers = new List<SpriteRenderer>();
 
+	[SerializeField]
+	private Animator animatorPower;
+
     public void SetPower(int power) 
     {
         if (power < 0) power = 0;
@@ -28,6 +31,8 @@ public class PowerMarker : MonoBehaviour {
         {
             sr.sprite = powerOff;
         }
+		if(animatorPower)
+		animatorPower.SetInteger("power", power);
         switch(power) {
 			case 0: {
 				// do nothing
