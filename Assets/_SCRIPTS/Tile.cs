@@ -163,7 +163,7 @@ public class Tile : MonoBehaviour {
                 // Debug.Log("Will power at " + tx + ", " + ty);
                 Tile at = tileset.GetTileAt(tx, ty);
                 if (at != null && at.gameObject.activeInHierarchy) {
-                    at.buildMarker.StartWillPowerUp(at.IsBlocked());
+                    at.buildMarker.StartWillPowerUp(!CanBuild());
                 }
             }
         }
