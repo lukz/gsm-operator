@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 95071448247926256}
   - component: {fileID: 114072506418033078}
   m_Layer: 0
-  m_Name: 0_TowerBottom
+  m_Name: 0_TowerArc
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,11 +175,11 @@ MonoBehaviour:
   playerTower: 1
   powerOffsets:
   - x: -1
-    y: 1
+    y: -1
   - x: 0
-    y: 1
+    y: -1
   - x: 1
-    y: 1
+    y: -1
   sprite: {fileID: 212708362489883862}
 --- !u!212 &212510514819316126
 SpriteRenderer:
