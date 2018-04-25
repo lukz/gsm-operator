@@ -67,6 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4660573855465522}
   - component: {fileID: 212014431751266116}
+  - component: {fileID: 114223028348801868}
   m_Layer: 0
   m_Name: FX Sprite (2)
   m_TagString: Untagged
@@ -116,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4866600438409388}
   - component: {fileID: 212943768632949358}
+  - component: {fileID: 114009146105053976}
   m_Layer: 0
   m_Name: FX Sprite (1)
   m_TagString: Untagged
@@ -198,8 +200,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1718925264414520}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1289253, y: 1.0275253, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.000000014901161, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4748179001493196}
@@ -237,6 +239,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114009146105053976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988822704495506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410f836311cce9646bd98e6b85edaea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blendModeShader: {fileID: 4800000, guid: 83b4ec0962fb7354397c4bcedd8c2467, type: 3}
+  _enableGrayBase: 0
+  _blendMode: 8
+  _effectTexture: {fileID: 0}
+  _effectTextureTiling: {x: 1, y: 1}
+  _effectTextureOffset: {x: 0, y: 0}
+  _effectColor: {r: 1, g: 1, b: 1, a: 1}
+  _colorSoloMode: 0
+  _pixelSnap: 0
 --- !u!114 &114082893198191956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,6 +270,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55536423d43324316a82d8ce3f90014b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114223028348801868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1645261062392100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410f836311cce9646bd98e6b85edaea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blendModeShader: {fileID: 4800000, guid: 83b4ec0962fb7354397c4bcedd8c2467, type: 3}
+  _enableGrayBase: 0
+  _blendMode: 8
+  _effectTexture: {fileID: 0}
+  _effectTextureTiling: {x: 1, y: 1}
+  _effectTextureOffset: {x: 0, y: 0}
+  _effectColor: {r: 1, g: 1, b: 1, a: 1}
+  _colorSoloMode: 0
+  _pixelSnap: 0
 --- !u!114 &114645111398921722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,7 +318,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -297,7 +339,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 14930784c619b49f0bfc74ff6da39d34, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.334}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -408,7 +450,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -429,7 +471,7 @@ SpriteRenderer:
   m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 14930784c619b49f0bfc74ff6da39d34, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.156}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.88235295}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
