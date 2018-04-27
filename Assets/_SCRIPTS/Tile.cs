@@ -43,10 +43,15 @@ public class Tile : MonoBehaviour {
 
 	private SpriteRenderer _spriterenderer;
 
-    // Use this for initialization
-    void Start () {
-		_spriterenderer = GetComponent<SpriteRenderer>();
+	// Use this for initialization
 
+	private void Awake()
+	{
+		_spriterenderer = GetComponent<SpriteRenderer>();
+		_spriterenderer.enabled = true;
+	}
+
+	void Start () {
 		ChangeHooks();
 
 		// GetComponent<SpriteRenderer>().enabled = false;
@@ -58,7 +63,8 @@ public class Tile : MonoBehaviour {
 
 		} else {
 			if (HasRocks()) _spriterenderer.enabled = false;
-
+			if(HasTower()) _spriterenderer.enabled = false;
+			
 			powerMarker.SetRequiredPower(0);
            // powerMarker.SetPower(powerLvl);
         }

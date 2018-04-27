@@ -50,14 +50,14 @@ public class PowerMarker : MonoBehaviour
 				case 2:
 					{
 						markerRenderers[0].sprite = powerOn;
-						markerRenderers[1].sprite = powerOn;
+						if(markerRenderers.Count>1)	markerRenderers[1].sprite = powerOn;
 					}
 					break;
 				default:
 					{ // 3+
 						markerRenderers[0].sprite = powerOn;
-						markerRenderers[1].sprite = powerOn;
-						markerRenderers[2].sprite = powerOn;
+						if (markerRenderers.Count > 1)markerRenderers[1].sprite = powerOn;
+						if (markerRenderers.Count > 2) markerRenderers[2].sprite = powerOn;
 					}
 					break;
 			}
