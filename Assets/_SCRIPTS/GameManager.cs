@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
 				oldSplash.gameObject.SetActive(true);
 			}
 			Input.multiTouchEnabled = false;
+			Screen.sleepTimeout = SleepTimeout.NeverSleep;
 			DontDestroyOnLoad(gameObject);
 		}
 		else if (instance != this)
