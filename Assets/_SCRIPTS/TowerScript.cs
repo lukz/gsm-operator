@@ -19,9 +19,17 @@ public class TowerScript : MonoBehaviour {
     [SerializeField]
     private SpriteRenderer sprite;
 
+    private Animator animator;
+
+    void Start() 
+    {
+        animator = GetComponent<Animator>();
+    }
+
     public void InitAsNotPlayers()
     {
         playerTower = false;
+        animator = GetComponent<Animator>();
         // hack to disable mine with id == 3
         if (id < 3)
         {
@@ -64,6 +72,9 @@ public class TowerScript : MonoBehaviour {
             });
             pump = null;
         }
+        if (animator != null) {
+            animator.SetBool("off", true);
+        }
         return t;
     }
 
@@ -92,6 +103,9 @@ public class TowerScript : MonoBehaviour {
             sr.DOFade(1, .2f);
         }
         
+        if (animator != null) {
+            animator.SetBool("off", false);
+        }
 
         return true;
     }
