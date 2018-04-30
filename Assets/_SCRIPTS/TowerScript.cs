@@ -13,6 +13,7 @@ public class TowerScript : MonoBehaviour {
     public List<PowerOffset> powerOffsets;
 
     private bool isAttachedToTile = false;
+    private Tileset tileset;
     private Tile tile;
     private GameObject pump;
 
@@ -20,7 +21,6 @@ public class TowerScript : MonoBehaviour {
     private SpriteRenderer sprite;
 
     private Animator animator;
-
     void Start() 
     {
         animator = GetComponent<Animator>();
@@ -87,6 +87,8 @@ public class TowerScript : MonoBehaviour {
         }
         isAttachedToTile = true;
 
+        this.tile = tile;
+        tileset = tile.Tileset;
         PowerUp();
 
 		if(playerTower) Sounds.PlayTowerBuild();
@@ -94,7 +96,6 @@ public class TowerScript : MonoBehaviour {
         //{
         //    powered[i].GetComponent<HouseScript>().powerUp();
         //}
-        this.tile = tile;
         if (tile != null && tile.HasEnergyField()) {
             TowerSpawnerPro tsp = FindObjectOfType<TowerSpawnerPro>();
             pump = GameObject.Instantiate(tsp.GetPumpPrefab(), tile.transform.position, Quaternion.identity, tile.transform);
@@ -112,16 +113,20 @@ public class TowerScript : MonoBehaviour {
 
     public void PowerDown() 
     {
-        Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
-        Tile tileScript = transform.GetComponentInParent<Tile>();
-        tilesetScript.ChangeTilesPower(tileScript.gameObject, -1, powerOffsets);
+        if (tile == null || tileset == null) {
+            tile = transform.GetComponentInParent<Tile>();
+            tileset = tile.Tileset;
+        }
+        tileset.ChangeTilesPower(tile, -1, powerOffsets);
     }
 
     public void PowerUp() 
     {
-        Tileset tilesetScript = transform.GetComponentInParent<Tileset>();
-        Tile tileScript = transform.GetComponentInParent<Tile>();
-        tilesetScript.ChangeTilesPower(tileScript.gameObject, 1, powerOffsets);
+        if (tile == null || tileset == null) {
+            tile = transform.GetComponentInParent<Tile>();
+            tileset = tile.Tileset;
+        }
+        tileset.ChangeTilesPower(tile, 1, powerOffsets);
     }
 
     private float mix;
