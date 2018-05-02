@@ -218,18 +218,18 @@ public class Tile : MonoBehaviour {
         return !IsBlocked() && (HasEnergyField() || powerLvl > 0);
     }
 
-    public void PowerChange(int powerChange)
+    public void PowerChange(TowerScript source, int powerChange)
     {
-
-
+		// Debug.Log("Tile#[" + x + ", " + y + "] power change " + source.GetInstanceID());
         powerLvl += powerChange;
-        if (powerLvl < 0) powerLvl = 0;
+        if (powerLvl < 0) {
+            Debug.Log("This sohuld not happen " + powerLvl + " -> " + source);
+            powerLvl = 0;
+        }
         powerMarker.SetPower(powerLvl);
-        OnPowerChange();
+        OnPowerChange(source, powerChange);
 
 		ChangeHooks();
-
-
     }
 
 	private void ChangeHooks()
@@ -252,7 +252,7 @@ public class Tile : MonoBehaviour {
 		}
 	}
 
-    private void OnPowerChange()
+    private void OnPowerChange(TowerScript source, int powerChange)
     {
         HouseScript[] hss = GetComponentsInChildren<HouseScript>();
         foreach (var hs in hss) 
@@ -260,12 +260,7 @@ public class Tile : MonoBehaviour {
             hs.PowerChanged();
             MineScript ts = hs.gameObject.GetComponent<MineScript>();
             if (ts != null) {
-                if (powerLvl == 0) {
-                    ts.PowerDown();
-                } else {
-                    ts.PowerUp();
-                }
-                
+                ts.PowerChange(source, powerChange);
             }
         }
     }
