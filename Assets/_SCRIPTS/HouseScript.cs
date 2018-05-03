@@ -47,6 +47,10 @@ public class HouseScript : MonoBehaviour {
 
     public void FlashPowered()
     {
+        if (!Application.isPlaying && Application.isEditor) {
+            Debug.Log("Not flashing in editor");
+            return;
+        }
         sprite.material.SetColor(flashColorId, new Color(1, 1, 1, 0));
 
         float flashDuration = .4f;
