@@ -64,6 +64,8 @@ public class Tile : MonoBehaviour {
 	{
 		_spriterenderer = GetComponent<SpriteRenderer>();
 		_spriterenderer.enabled = true;
+		if (HasRocks()) _spriterenderer.enabled = false;
+		if (HasTower()) _spriterenderer.enabled = false;
 	}
 
 	void Start () {

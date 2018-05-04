@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 5
-  y: 4
+  x: 4
+  y: 0
   powerMarker: {fileID: 2045127902}
   buildMarker: {fileID: 1317152052}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -2371,7 +2371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 4
+  x: 3
   y: 2
   powerMarker: {fileID: 730035144}
   buildMarker: {fileID: 187117744}
@@ -4144,8 +4144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 2
-  y: 3
+  x: 1
+  y: 1
   powerMarker: {fileID: 10587059}
   buildMarker: {fileID: 873464864}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -4458,8 +4458,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 3
-  y: 4
+  x: 2
+  y: 0
   powerMarker: {fileID: 1295252890}
   buildMarker: {fileID: 304954638}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -4509,7 +4509,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 907577422}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4560,8 +4560,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 5
-  y: 1
+  x: 4
+  y: 3
   powerMarker: {fileID: 812823813}
   buildMarker: {fileID: 89159575}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -4611,7 +4611,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 914889387}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4662,8 +4662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 3
-  y: 1
+  x: 2
+  y: 3
   powerMarker: {fileID: 1566165928}
   buildMarker: {fileID: 767086665}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -4967,8 +4967,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 2
-  y: 4
+  x: 1
+  y: 0
   powerMarker: {fileID: 49865457}
   buildMarker: {fileID: 1167062121}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -5068,7 +5068,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 974023939}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -5120,7 +5120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerLvl: 0
   x: 3
-  y: 1
+  y: 3
   powerMarker: {fileID: 1166248702}
   buildMarker: {fileID: 999853397}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -5382,7 +5382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 1
+  x: 0
   y: 2
   powerMarker: {fileID: 1641913159}
   buildMarker: {fileID: 1995784447}
@@ -6720,8 +6720,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 2
-  y: 1
+  x: 1
+  y: 3
   powerMarker: {fileID: 1200840167}
   buildMarker: {fileID: 1950314962}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -6926,8 +6926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 5
-  y: 3
+  x: 4
+  y: 1
   powerMarker: {fileID: 1675395357}
   buildMarker: {fileID: 2042243223}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -7429,7 +7429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 3
+  x: 2
   y: 2
   powerMarker: {fileID: 1725758812}
   buildMarker: {fileID: 1362038935}
@@ -8140,8 +8140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 1
-  y: 4
+  x: 0
+  y: 0
   powerMarker: {fileID: 1293746936}
   buildMarker: {fileID: 1672416165}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -8566,8 +8566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 4
-  y: 3
+  x: 3
+  y: 1
   powerMarker: {fileID: 555688241}
   buildMarker: {fileID: 257860370}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -8743,7 +8743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 2
+  x: 1
   y: 2
   powerMarker: {fileID: 502386606}
   buildMarker: {fileID: 901677858}
@@ -8959,8 +8959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 1
-  y: 3
+  x: 0
+  y: 1
   powerMarker: {fileID: 937630629}
   buildMarker: {fileID: 1305784626}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -9443,8 +9443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 4
-  y: 4
+  x: 3
+  y: 0
   powerMarker: {fileID: 1723721418}
   buildMarker: {fileID: 1592489079}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -9896,7 +9896,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1731665969}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -9947,7 +9947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 5
+  x: 4
   y: 2
   powerMarker: {fileID: 678667696}
   buildMarker: {fileID: 1439914781}
@@ -11381,8 +11381,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 3
-  y: 3
+  x: 2
+  y: 1
   powerMarker: {fileID: 786663108}
   buildMarker: {fileID: 62530415}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -11483,8 +11483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 1
-  y: 1
+  x: 0
+  y: 3
   powerMarker: {fileID: 398119338}
   buildMarker: {fileID: 168564093}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
