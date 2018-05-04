@@ -160,7 +160,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.rarykos.mars
     Standalone: com.rarykos.mars
-    iOS: com.rarykos.mars
+    iOS: com.7agames.marspuzzle
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
