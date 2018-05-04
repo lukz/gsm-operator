@@ -934,8 +934,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 1
-  y: 1
+  x: 0
+  y: 3
   powerMarker: {fileID: 1394426410}
   buildMarker: {fileID: 1349112553}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -1659,8 +1659,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 4
-  y: 3
+  x: 3
+  y: 1
   powerMarker: {fileID: 1077078952}
   buildMarker: {fileID: 1430294378}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -2196,7 +2196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 1
+  x: 0
   y: 2
   powerMarker: {fileID: 1094722749}
   buildMarker: {fileID: 172329059}
@@ -2423,8 +2423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 4
-  y: 4
+  x: 3
+  y: 0
   powerMarker: {fileID: 291002661}
   buildMarker: {fileID: 694027459}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -3183,7 +3183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 2
+  x: 1
   y: 2
   powerMarker: {fileID: 211548910}
   buildMarker: {fileID: 814154368}
@@ -3913,8 +3913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 2
-  y: 1
+  x: 1
+  y: 3
   powerMarker: {fileID: 1545288209}
   buildMarker: {fileID: 2108557448}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -4307,8 +4307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 5
-  y: 1
+  x: 4
+  y: 3
   powerMarker: {fileID: 190314814}
   buildMarker: {fileID: 620019694}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -4473,7 +4473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 5
+  x: 4
   y: 2
   powerMarker: {fileID: 289581575}
   buildMarker: {fileID: 879054234}
@@ -5229,8 +5229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 5
-  y: 4
+  x: 4
+  y: 0
   powerMarker: {fileID: 1197787388}
   buildMarker: {fileID: 144185377}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -5391,8 +5391,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 1
-  y: 4
+  x: 0
+  y: 0
   powerMarker: {fileID: 599522139}
   buildMarker: {fileID: 1393852778}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -5564,8 +5564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 2
-  y: 3
+  x: 1
+  y: 1
   powerMarker: {fileID: 332066283}
   buildMarker: {fileID: 1847218529}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -5780,7 +5780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 4
+  x: 3
   y: 2
   powerMarker: {fileID: 1539448259}
   buildMarker: {fileID: 2052739518}
@@ -6127,11 +6127,6 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224728716026691132, guid: 61e223a93ed2376488b10eaad4c66938,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61e223a93ed2376488b10eaad4c66938, type: 2}
@@ -6519,8 +6514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 1
-  y: 3
+  x: 0
+  y: 1
   powerMarker: {fileID: 40057496}
   buildMarker: {fileID: 1688011121}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -7039,8 +7034,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 3
-  y: 4
+  x: 2
+  y: 0
   powerMarker: {fileID: 701469803}
   buildMarker: {fileID: 1465961635}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -8159,8 +8154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 2
-  y: 4
+  x: 1
+  y: 0
   powerMarker: {fileID: 129392767}
   buildMarker: {fileID: 1523064002}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -8900,8 +8895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 5
-  y: 3
+  x: 4
+  y: 1
   powerMarker: {fileID: 1708549888}
   buildMarker: {fileID: 1228946922}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -9192,8 +9187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 3
-  y: 1
+  x: 2
+  y: 3
   powerMarker: {fileID: 1297837544}
   buildMarker: {fileID: 412605324}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -9788,8 +9783,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 3
-  y: 3
+  x: 2
+  y: 1
   powerMarker: {fileID: 721585037}
   buildMarker: {fileID: 703505729}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
@@ -10562,7 +10557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 3
+  x: 2
   y: 2
   powerMarker: {fileID: 1880439647}
   buildMarker: {fileID: 445221909}
@@ -10844,7 +10839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerLvl: 0
   x: 3
-  y: 1
+  y: 3
   powerMarker: {fileID: 1654533465}
   buildMarker: {fileID: 1673928092}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
