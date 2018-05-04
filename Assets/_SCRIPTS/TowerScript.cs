@@ -68,6 +68,7 @@ public class TowerScript : MonoBehaviour {
         if (pump != null) {
             SpriteRenderer sr = pump.GetComponentInChildren<SpriteRenderer>();
             sr.DOFade(0, .2f).OnComplete(() => {
+                // Debug.Log("Pump nuked " + pump.GetInstanceID());
                 Destroy(pump);
             });
             pump = null;
@@ -96,12 +97,13 @@ public class TowerScript : MonoBehaviour {
         //{
         //    powered[i].GetComponent<HouseScript>().powerUp();
         //}
-        if (tile != null && tile.HasEnergyField()) {
+        if (tile != null && tile.HasEnergyField() && Application.isPlaying) {
             TowerSpawnerPro tsp = FindObjectOfType<TowerSpawnerPro>();
             pump = GameObject.Instantiate(tsp.GetPumpPrefab(), tile.transform.position, Quaternion.identity, tile.transform);
             SpriteRenderer sr = pump.GetComponentInChildren<SpriteRenderer>();
             sr.color = new Color(1, 1, 1, 0);
             sr.DOFade(1, .2f);
+            // Debug.Log("Pump created " + pump.GetInstanceID());
         }
         
         if (animator != null) {
@@ -117,7 +119,7 @@ public class TowerScript : MonoBehaviour {
             tile = transform.GetComponentInParent<Tile>();
             tileset = tile.Tileset;
         }
-        tileset.ChangeTilesPower(tile, -1, powerOffsets);
+        tileset.ChangeTilesPower(this, tile, -1, powerOffsets);
     }
 
     public void PowerUp() 
@@ -126,7 +128,7 @@ public class TowerScript : MonoBehaviour {
             tile = transform.GetComponentInParent<Tile>();
             tileset = tile.Tileset;
         }
-        tileset.ChangeTilesPower(tile, 1, powerOffsets);
+        tileset.ChangeTilesPower(this, tile, 1, powerOffsets);
     }
 
     private float mix;
@@ -162,6 +164,14 @@ public class TowerScript : MonoBehaviour {
                     flashDuration * 0.9f
                 ).SetEase(Ease.InSine)
             );
+    }
+
+    void OnDestroy(){
+        if (pump != null) {
+            Destroy(pump);
+            // Debug.Log("Pump nuked " + pump.GetInstanceID());
+            pump = null;
+        }
     }
 
     [System.Serializable]

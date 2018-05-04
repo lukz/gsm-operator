@@ -52,7 +52,7 @@ public class Tileset : MonoBehaviour {
         return Mathf.FloorToInt((2.3f + y)/tileSize);
     }
 	
-    public void ChangeTilesPower(Tile startTile, int powerChange, List<TowerScript.PowerOffset> offsets)
+    public void ChangeTilesPower(TowerScript tower, Tile startTile, int powerChange, List<TowerScript.PowerOffset> offsets)
     {
         for (int i = 0; i < offsets.Count; i++)
         {
@@ -62,7 +62,7 @@ public class Tileset : MonoBehaviour {
             
             Tile t = GetTileAt(xPos, yPos);
             if (t != null && t.gameObject.activeInHierarchy) {
-                t.PowerChange(powerChange);
+                t.PowerChange(tower, powerChange);
             }
         }
     }
