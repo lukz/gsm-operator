@@ -41,9 +41,24 @@ public class Tile : MonoBehaviour {
 
     private Tileset tileset;
 
+    public Tileset Tileset {
+        get { return tileset; } 
+        set { tileset = value; }
+    }
+
 	private SpriteRenderer _spriterenderer;
 
 	// Use this for initialization
+
+    public void Init(Tileset tileset, int x, int y) 
+    {
+        Tileset = tileset;
+        this.x = x;
+        this.y = y;
+        powerLvl = 0;
+        _spriterenderer = GetComponent<SpriteRenderer>();
+		_spriterenderer.enabled = true;
+    }
 
 	private void Awake()
 	{
@@ -68,10 +83,6 @@ public class Tile : MonoBehaviour {
 			powerMarker.SetRequiredPower(0);
            // powerMarker.SetPower(powerLvl);
         }
-
-
-
-		tileset = GetComponentInParent<Tileset>();
 	}
 
     public bool HasEnergyField()
@@ -151,6 +162,7 @@ public class Tile : MonoBehaviour {
         }
     }
 
+    private delegate void DoTile (Tile parameter);
     public void SetAsBuildTarget(List<TowerScript.PowerOffset> powerOffsets)
     {
         buildMarker.OverBuild(CanBuild());
@@ -159,40 +171,36 @@ public class Tile : MonoBehaviour {
         }
         towerPowerOffsets = powerOffsets;
         if (towerPowerOffsets != null) {
-            int bx = tileset.GridX(transform.position.x);
-            int by = tileset.GridY(transform.position.y);
-            // Debug.Log("Target tile at " + bx + ", " + by);
-            // go over all tiles and enable power
-            foreach (var offset in powerOffsets) {
-                int tx = bx + offset.x;
-                int ty = by - offset.y;
-                // Debug.Log("Will power at " + tx + ", " + ty);
-                Tile at = tileset.GetTileAt(tx, ty);
-                if (at != null && at.gameObject.activeInHierarchy) {
-                    at.buildMarker.StartWillPowerUp(!CanBuild());
-                }
-            }
+            DoOverOffsetTiles(t => {
+                t.buildMarker.StartWillPowerUp(!CanBuild());
+            });
         }
     }
-
     public void CancelBuildTarget()
     {
         buildMarker.CancelOverBuild(CanBuild());
     
         if (towerPowerOffsets != null) {
-            // go over all tiles and disable power
+            DoOverOffsetTiles(t => {
+                t.buildMarker.CancelWillPowerUp();
+            });
+            towerPowerOffsets = null;
+        }
+    }
+
+    private void DoOverOffsetTiles (DoTile doTile) 
+    {
+        if (towerPowerOffsets != null) {
             int bx = tileset.GridX(transform.position.x);
             int by = tileset.GridY(transform.position.y);
-            // go over all tiles and enable power
             foreach (var offset in towerPowerOffsets) {
                 int tx = bx + offset.x;
                 int ty = by - offset.y;
                 Tile at = tileset.GetTileAt(tx, ty);
                 if (at != null && at.gameObject.activeInHierarchy) {
-                    at.buildMarker.CancelWillPowerUp();
+                    doTile(at);
                 }
             }
-            towerPowerOffsets = null;
         }
     }
     public void Build(GameObject tower)
