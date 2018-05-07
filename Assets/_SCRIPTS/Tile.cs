@@ -60,16 +60,20 @@ public class Tile : MonoBehaviour {
 		_spriterenderer.enabled = true;
 
         if (HasEnergyField()) PowerChange(null, 1);
-    }
+		if (HasHouse()) _spriterenderer.enabled = false;
+		if (HasRocks()) _spriterenderer.enabled = false;
+		if (HasTower()) _spriterenderer.enabled = false;
+	}
 
 	private void Awake()
 	{
 		_spriterenderer = GetComponent<SpriteRenderer>();
 		_spriterenderer.enabled = true;
+		if (HasHouse()) _spriterenderer.enabled = false;
 		if (HasRocks()) _spriterenderer.enabled = false;
 		if (HasTower()) _spriterenderer.enabled = false;
 
-        
+
 	}
 
 	void Start () {

@@ -98,11 +98,11 @@ public class TowerScript : MonoBehaviour {
         //    powered[i].GetComponent<HouseScript>().powerUp();
         //}
         if (tile != null && tile.HasEnergyField() && Application.isPlaying) {
-            TowerSpawnerPro tsp = FindObjectOfType<TowerSpawnerPro>();
+           /* TowerSpawnerPro tsp = FindObjectOfType<TowerSpawnerPro>();
             pump = GameObject.Instantiate(tsp.GetPumpPrefab(), tile.transform.position, Quaternion.identity, tile.transform);
             SpriteRenderer sr = pump.GetComponentInChildren<SpriteRenderer>();
             sr.color = new Color(1, 1, 1, 0);
-            sr.DOFade(1, .2f);
+            sr.DOFade(1, .2f);*/
             // Debug.Log("Pump created " + pump.GetInstanceID());
         }
         
