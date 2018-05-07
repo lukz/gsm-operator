@@ -58,6 +58,8 @@ public class Tile : MonoBehaviour {
         powerLvl = 0;
         _spriterenderer = GetComponent<SpriteRenderer>();
 		_spriterenderer.enabled = true;
+
+        if (HasEnergyField()) PowerChange(null, 1);
     }
 
 	private void Awake()
@@ -66,6 +68,8 @@ public class Tile : MonoBehaviour {
 		_spriterenderer.enabled = true;
 		if (HasRocks()) _spriterenderer.enabled = false;
 		if (HasTower()) _spriterenderer.enabled = false;
+
+        
 	}
 
 	void Start () {
