@@ -274,15 +274,17 @@ public class GameManager : MonoBehaviour
 		{
 			PowerSticker ps = GameObject.Instantiate(powerStickerPrefab).GetComponent<PowerSticker>();
 			ps.transform.parent = gameObject.transform;
-			powerStickers.Add(ps);
-			if (i == powerNeeded-1)
+			
+			if (i == 0)
 			{
+				powerStickers.Add(ps);
 				ps.transform.position = topPowerStickerPosition.transform.position;
 			}
 			else
 			{
+				powerStickers.Add(ps);
 				float dist = topPowerStickerPosition.transform.position.y - bottomStickerPosition.transform.position.y;
-				float po = topPowerStickerPosition.transform.position.y - dist / (powerNeeded-1) * (i+1);
+				float po = topPowerStickerPosition.transform.position.y - dist / (powerNeeded) * (i);
 				Vector3 pos = new Vector3(topPowerStickerPosition.transform.position.x, po, topPowerStickerPosition.transform.position.z);
 				ps.transform.position = pos;
 			}
@@ -363,10 +365,12 @@ public class GameManager : MonoBehaviour
 			{
 				powerStickers[i].PowerDown();
 				if (i < countPowered)
-				powerStickers[i].PowerUp();
+				{
+					powerStickers[i].PowerUp();
+				}
 			}
 
-			float realProgress = (countPowered / powerNeeded);
+			float realProgress = (countPowered / powerNeeded)*0.85f;
 			float swim = Mathf.Sin(Time.timeSinceLevelLoad * 1f);
 			if (realProgress == 0 || realProgress == 1) swim = 0;
 			float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
