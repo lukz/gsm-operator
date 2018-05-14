@@ -75,6 +75,8 @@ public class GameManager : MonoBehaviour
 
 	[SerializeField]
 	private GameObject topPowerStickerPosition;
+	[SerializeField]
+	private GameObject bottomStickerPosition;
 
 	private bool preparedScene = false;
 
@@ -268,12 +270,24 @@ public class GameManager : MonoBehaviour
 			GameObject.Destroy(powerStickers[i].gameObject);
 		}
 		powerStickers = new List<PowerSticker>();
-		Vector3 TopStickerPosition = new Vector3();
-		for (int i = 0; i < powerNeeded; i++)
+		for (int i = powerNeeded-1; i >=0 ; i--)
 		{
-			GameObject.Instantiate(powerStickerPrefab);
+			PowerSticker ps = GameObject.Instantiate(powerStickerPrefab).GetComponent<PowerSticker>();
+			ps.transform.parent = gameObject.transform;
+			powerStickers.Add(ps);
+			if (i == powerNeeded-1)
+			{
+				ps.transform.position = topPowerStickerPosition.transform.position;
+			}
+			else
+			{
+				float dist = topPowerStickerPosition.transform.position.y - bottomStickerPosition.transform.position.y;
+				float po = topPowerStickerPosition.transform.position.y - dist / (powerNeeded-1) * (i+1);
+				Vector3 pos = new Vector3(topPowerStickerPosition.transform.position.x, po, topPowerStickerPosition.transform.position.z);
+				ps.transform.position = pos;
+			}
 
-			//Vector3 position = new Vector3
+
 
 		}
 		preparedScene = true;
@@ -343,6 +357,14 @@ public class GameManager : MonoBehaviour
 				countPowered += Mathf.Min(hs.powered, hs.requiredPower);
 			}
 			if (countPowered >= powerNeeded) allPowered = true;
+
+			//TODO czekaj na zmiane i sprawdz ile sie zmienilo
+			for (int i = powerNeeded-1; i>=0; i--)
+			{
+				powerStickers[i].PowerDown();
+				if (i < countPowered)
+				powerStickers[i].PowerUp();
+			}
 
 			float realProgress = (countPowered / powerNeeded);
 			float swim = Mathf.Sin(Time.timeSinceLevelLoad * 1f);
