@@ -62,10 +62,12 @@ public class Tileset : MonoBehaviour {
             
             Tile t = GetTileAt(xPos, yPos);
             if (t != null && t.gameObject.activeInHierarchy) {
-                t.PowerChange(tower, powerChange);
+                t.PowerChangeDelayed(tower, powerChange, i);
             }
         }
     }
+
+
 
     public void StartBuilding () 
     {
