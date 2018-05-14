@@ -56,6 +56,43 @@ public class Tileset : MonoBehaviour {
         return Mathf.FloorToInt((2.3f + y)/tileSize);
     }
 	
+    private List<Tile> willPowerTiles = new List<Tile>();
+	public List<GameObject> WillPowerRocks(List<GameObject> rocks, Tile startTile, TowerScript tower) {
+        willPowerTiles.Clear();
+        WillPowerRocksInternal(rocks, startTile, tower);
+		return rocks;
+	}
+
+    private List<GameObject> WillPowerRocksInternal(List<GameObject> rocks, Tile startTile, TowerScript tower) {
+        List<TowerScript.PowerOffset> offsets = tower.powerOffsets;
+        for (int i = 0; i < offsets.Count; i++)
+        {
+            int xPos = startTile.x + offsets[i].x;
+            // fliped y
+            int yPos = startTile.y - offsets[i].y;
+            
+            Tile t = GetTileAt(xPos, yPos);
+            if (t != null && t.gameObject.activeInHierarchy) {
+                // dont process same tile more then once
+                if (willPowerTiles.Contains(t)) {
+                    continue;
+                }
+                willPowerTiles.Add(t);
+                GameObject rock = t.GetRocks();
+                if (rock != null) {
+                    // Debug.Log("Got rocks " + t.x + ", " + t.y);
+                    rocks.Add(rock);
+                }
+                MineScript ms = t.GetMine();
+                if (ms != null) {
+                    //  Debug.Log("Got mine " + t.x + ", " + t.y);
+                     WillPowerRocksInternal(rocks, t, t.GetTower().GetComponent<TowerScript>());
+                }
+            }
+        }
+        return rocks;
+    }
+
     public void ChangeTilesPower(TowerScript tower, Tile startTile, int powerChange, List<TowerScript.PowerOffset> offsets)
     {
         for (int i = 0; i < offsets.Count; i++)

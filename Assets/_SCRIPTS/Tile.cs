@@ -126,6 +126,15 @@ public class Tile : MonoBehaviour {
         return null;
     }
 
+    public MineScript GetMine()
+    {
+        GameObject mine = GetTower();
+        if (mine != null) {
+            return mine.GetComponent<MineScript>();
+        }
+        return null;
+    }
+
     bool HasHouse()
     {
         if (GetHouse() != null) return true;
@@ -144,12 +153,22 @@ public class Tile : MonoBehaviour {
 
     bool HasRocks()
     {
+        return GetRocks() != null;
+    }
+    public GameObject GetRocks()
+    {
         for (int i = 0; i < transform.childCount; i++)
         {
-            if (transform.GetChild(i).transform.tag == "Blocker") return true;
+            Transform t = transform.GetChild(i);
+            if (t.transform.tag == "Blocker") {
+                // check if they are on or something?
+                ToggleRocks rocks = t.gameObject.GetComponent<ToggleRocks>();
+                if (rocks != null) {
+                    return t.gameObject;
+                }
+            }
         }
-
-        return false;
+        return null;
     }
 
     bool IsBlocked()

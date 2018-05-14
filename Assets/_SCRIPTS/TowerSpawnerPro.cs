@@ -214,6 +214,17 @@ public class TowerSpawnerPro : MonoBehaviour {
 		if (tile == null || !tile.gameObject.activeInHierarchy) {
 			ReturnTower();
 		} else if (tile.CanBuild()) {
+        	List<GameObject> rocks = new List<GameObject>();
+			tileset.WillPowerRocks(rocks, tile, draggedTowerInstance.GetComponent<TowerScript>());
+			if (rocks.Count > 0) {
+				Debug.Log("Got rocks, cant build! " + rocks.Count);
+				foreach (var rock in rocks) {
+					// TODO animation
+				}
+				tile.CancelBuildTarget();
+				ReturnTower();
+				return;
+			}
 			ChangeDrawSorting(draggedTowerInstance, "GUI", 4);
 			Vector3 targetPos = tile.transform.position;
 			draggedTowerInstance.transform.DOMove(targetPos, .2f)
@@ -255,6 +266,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 	public void ReturnTower() {
 		if (draggedTowerInstance == null) return;
 		ReturnTower(draggedTowerOwner, draggedTowerInstance);
+		tileset.CancelBuilding();
         previouslyDraggedTile = null;
 		draggedTowerInstance = null;
 		draggedTowerOwner = null;
