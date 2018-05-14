@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
 	private GameObject topPowerStickerPosition;
 	[SerializeField]
 	private GameObject bottomStickerPosition;
+	[SerializeField]
+	private GameObject winAnimationPowerBar;
 
 	private bool preparedScene = false;
 
@@ -193,6 +195,7 @@ public class GameManager : MonoBehaviour
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
 	{
+
 		buildTowers = new List<ButtonTowerPair>();
 		firstLockedButton = 0;
 		canDoActions = true;
@@ -293,7 +296,7 @@ public class GameManager : MonoBehaviour
 
 		}
 		preparedScene = true;
-
+		winAnimationPowerBar.SetActive(false);
 	}
 
 	void ChangeLvlTo1()
@@ -392,6 +395,7 @@ public class GameManager : MonoBehaviour
 			{
 				if (!tintShwon)
 				{
+					winAnimationPowerBar.SetActive(true);
 					//splashShown = true;
 					canDoActions = false;
 					tintShwon = true;
