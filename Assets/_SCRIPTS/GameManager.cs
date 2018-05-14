@@ -365,11 +365,15 @@ public class GameManager : MonoBehaviour
 			//TODO czekaj na zmiane i sprawdz ile sie zmienilo
 			for (int i = powerNeeded-1; i>=0; i--)
 			{
-				powerStickers[i].PowerDown();
-				if (i < countPowered)
+
+				if (i < countPowered && !powerStickers[i].isPowered)
 				{
 					powerStickers[i].PowerUp();
 				}
+                else if(i >= countPowered && powerStickers[i].isPowered)
+                {
+                    powerStickers[i].PowerDown();
+                }
 			}
 
 			float realProgress = (countPowered / powerNeeded)*0.85f;
