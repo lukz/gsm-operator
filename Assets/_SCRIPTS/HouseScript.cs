@@ -6,8 +6,8 @@ using DG.Tweening;
 
 public class HouseScript : MonoBehaviour {
 
- 	[SerializeField]
-	private int powered = 0;
+ 	
+	public int powered = 0;
 
     public int requiredPower = 1;
 	
