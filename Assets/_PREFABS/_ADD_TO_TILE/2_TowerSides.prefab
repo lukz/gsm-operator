@@ -133,9 +133,9 @@ MonoBehaviour:
   id: 2
   playerTower: 1
   powerOffsets:
-  - x: 1
-    y: 0
   - x: -1
+    y: 0
+  - x: 1
     y: 0
   sprite: {fileID: 212851316821111440}
 --- !u!114 &114719197982897370

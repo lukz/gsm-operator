@@ -241,9 +241,27 @@ public class Tile : MonoBehaviour {
         OnPowerChange(source, powerChange);
 
 		ChangeHooks();
+
+        if (powerChange > 0 && Application.isPlaying)
+        {
+            GameObject powerUpFx = GameObject.Instantiate(powerUpFlashEffect);
+            powerUpFx.transform.parent = transform;
+            powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
+        }
     }
 
-	private void ChangeHooks()
+    public void PowerChangeDelayed(TowerScript source, int powerChange, int delayIndex)
+    {
+        StartCoroutine(PowerChangeCorutine(source, powerChange, delayIndex));
+    }
+
+    IEnumerator PowerChangeCorutine(TowerScript source, int powerChange, int delayIndex)
+    {
+        yield return new WaitForSeconds(delayIndex * 0.1f);
+        PowerChange(source, powerChange);
+    }
+
+    private void ChangeHooks()
 	{
 		switch (powerLvl)
 		{
@@ -273,13 +291,6 @@ public class Tile : MonoBehaviour {
             if (ts != null) {
                 ts.PowerChange(source, powerChange);
             }
-        }
-
-        if(powerChange > 0 && Application.isPlaying)
-        {
-            GameObject powerUpFx = GameObject.Instantiate(powerUpFlashEffect);
-            powerUpFx.transform.parent = transform;
-            powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
 
