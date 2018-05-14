@@ -21,6 +21,7 @@ public class Tile : MonoBehaviour {
     public PowerMarker powerMarker;
     public BuildMarker buildMarker;
 
+    public GameObject powerUpFlashEffect;
 
 	[SerializeField]
 	private Sprite hookLvl0;
@@ -272,6 +273,13 @@ public class Tile : MonoBehaviour {
             if (ts != null) {
                 ts.PowerChange(source, powerChange);
             }
+        }
+
+        if(powerChange > 0 && Application.isPlaying)
+        {
+            GameObject powerUpFx = GameObject.Instantiate(powerUpFlashEffect);
+            powerUpFx.transform.parent = transform;
+            powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
 
