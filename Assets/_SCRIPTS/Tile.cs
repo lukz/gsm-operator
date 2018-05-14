@@ -261,8 +261,16 @@ public class Tile : MonoBehaviour {
         PowerChange(source, powerChange);
     }
 
-    private void ChangeHooks()
+    public void ChangeHooks()
 	{
+		if (HasRocks() || HasTower() || HasHouse())
+		{
+			_spriterenderer.enabled = false;
+		}
+		else
+		{
+			_spriterenderer.enabled = true;
+		}
 		switch (powerLvl)
 		{
 			case 0:

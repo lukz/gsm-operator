@@ -135,6 +135,7 @@ public class Tileset : MonoBehaviour {
         for (int i = 0; i < allRocks.Length; i++)
         {
             allRocks[i].ToggleState();
+			allRocks[i].gameObject.transform.parent.GetComponent<Tile>().ChangeHooks();
         }
     }
 }
