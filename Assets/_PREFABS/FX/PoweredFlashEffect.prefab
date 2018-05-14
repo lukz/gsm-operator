@@ -9,67 +9,55 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1307271345332966}
+  m_RootGameObject: {fileID: 1915644587776916}
   m_IsPrefabParent: 1
---- !u!1 &1307271345332966
+--- !u!1 &1915644587776916
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4377319244866518}
-  - component: {fileID: 212268997998726018}
-  - component: {fileID: 114509792734165354}
+  - component: {fileID: 4576589523468960}
+  - component: {fileID: 212804561282657684}
+  - component: {fileID: 114032476060121182}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: PoweredFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4377319244866518
+--- !u!4 &4576589523468960
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1307271345332966}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 1.36, z: 0}
+  m_GameObject: {fileID: 1915644587776916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.256, y: 1.546, z: -0.029296875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114509792734165354
+--- !u!114 &114032476060121182
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1307271345332966}
+  m_GameObject: {fileID: 1915644587776916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2090ffd3c4f19943820c52a1b0721a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3aa82f529aa16d04eafa98316ded2b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerLvl: 0
-  x: 0
-  y: 0
-  powerMarker: {fileID: 0}
-  buildMarker: {fileID: 0}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
-    type: 2}
-  hookLvl0: {fileID: 0}
-  hookLvl1: {fileID: 0}
-  hookLvl2: {fileID: 0}
-  hookLvl3: {fileID: 0}
-  hookBad: {fileID: 0}
---- !u!212 &212268997998726018
+--- !u!212 &212804561282657684
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1307271345332966}
+  m_GameObject: {fileID: 1915644587776916}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -95,16 +83,16 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 841740989
-  m_SortingLayer: 1
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 731dc34ab6405d848b6baa85acee7076, type: 3}
+  m_SortingLayerID: -629694189
+  m_SortingLayer: 8
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 6d4d9c69694a54b568cdd1c00e2ea954, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.08, y: 1.08}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
