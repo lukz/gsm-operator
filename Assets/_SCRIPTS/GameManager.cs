@@ -313,7 +313,9 @@ public class GameManager : MonoBehaviour
 			buildTowers.Remove(item);
 			towerspawner.ReturnTower(item.button, item.tower, false);
 			backs++;
-		}
+
+            towerspawner.tileset.ToggleRocks();
+        }
 	}
 	void ShakeScreen()
 	{
@@ -524,4 +526,6 @@ public class GameManager : MonoBehaviour
 			this.tower = tower;
 		}
 	}
+
+
 }

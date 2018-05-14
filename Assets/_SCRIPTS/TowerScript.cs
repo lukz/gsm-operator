@@ -76,6 +76,10 @@ public class TowerScript : MonoBehaviour {
         if (animator != null) {
             animator.SetBool("off", true);
         }
+
+        ToggleRocks toggleRocks = t.GetComponentInChildren<ToggleRocks>();
+        if (toggleRocks != null) toggleRocks.Show();
+
         return t;
     }
 
@@ -109,6 +113,9 @@ public class TowerScript : MonoBehaviour {
         if (animator != null) {
             animator.SetBool("off", false);
         }
+
+        ToggleRocks toggleRocks = tile.GetComponentInChildren<ToggleRocks>();
+        if (toggleRocks != null) toggleRocks.Hide();
 
         return true;
     }

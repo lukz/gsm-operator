@@ -237,8 +237,12 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 
                     gameObject.transform.DOShakePosition(cameraShakeTimeStrength.x, cameraShakeTimeStrength.y);
-				}
+
+                    tileset.ToggleRocks();
+                }
 			);
+
+            
 		} else {
             tile.CancelBuildTarget();
 			ReturnTower();

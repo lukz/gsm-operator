@@ -6,6 +6,8 @@ public class Tileset : MonoBehaviour {
 
     public List<TileRow> tiles;
 
+    private ToggleRocks[] allRocks;
+
     private const int MAP_HEIGHT = 4;
     private const int MAP_WIDTH = 5;
     // x, y
@@ -39,7 +41,9 @@ public class Tileset : MonoBehaviour {
                 }
             }
         }
-	}
+
+        allRocks = transform.GetComponentsInChildren<ToggleRocks>();
+    }
 
     public int GridX (float x) 
     {
@@ -105,25 +109,32 @@ public class Tileset : MonoBehaviour {
     {
         public List<GameObject> row;
     }
-    
-	// Tile lastTile;
-	// void Update () {
-	// 	if (false) {
-	// 		Vector3 mp = InputUtils.WorldMousePosition();
-	// 		Tile tile = GetTileAt(mp);
-	// 		if (tile != lastTile) {
-	// 			if (lastTile != null) {
-	// 				SpriteRenderer oldSprite = lastTile.gameObject.GetComponent<SpriteRenderer>();
-	// 				oldSprite.color = new Color(1, 1, 1, .5f);
-	// 			}
-	// 			lastTile = tile;
-    //             if (tile != null) {
-	// 			    SpriteRenderer sprite = tile.gameObject.GetComponent<SpriteRenderer>();
-	// 			    sprite.color = new Color(1, 1, 1, 1);
-    //             }
-	// 			Debug.Log("Tile at " + mp + ": " + tile);
-	// 		}
-	// 	}
-	// }
 
+    // Tile lastTile;
+    // void Update () {
+    // 	if (false) {
+    // 		Vector3 mp = InputUtils.WorldMousePosition();
+    // 		Tile tile = GetTileAt(mp);
+    // 		if (tile != lastTile) {
+    // 			if (lastTile != null) {
+    // 				SpriteRenderer oldSprite = lastTile.gameObject.GetComponent<SpriteRenderer>();
+    // 				oldSprite.color = new Color(1, 1, 1, .5f);
+    // 			}
+    // 			lastTile = tile;
+    //             if (tile != null) {
+    // 			    SpriteRenderer sprite = tile.gameObject.GetComponent<SpriteRenderer>();
+    // 			    sprite.color = new Color(1, 1, 1, 1);
+    //             }
+    // 			Debug.Log("Tile at " + mp + ": " + tile);
+    // 		}
+    // 	}
+    // }
+
+    public void ToggleRocks()
+    {
+        for (int i = 0; i < allRocks.Length; i++)
+        {
+            allRocks[i].ToggleState();
+        }
+    }
 }
