@@ -153,16 +153,24 @@ public class Tile : MonoBehaviour {
 
     bool HasRocks()
     {
-        return GetRocks() != null;
+		for (int i = 0; i < transform.childCount; i++)
+		{
+		if (transform.GetChild(i).transform.tag == "Blocker")
+			{
+				return true;
+			}
+		}
+
+		return false;
     }
-    public GameObject GetRocks()
+    public GameObject GetEnemy()
     {
         for (int i = 0; i < transform.childCount; i++)
         {
             Transform t = transform.GetChild(i);
             if (t.transform.tag == "Blocker") {
                 // check if they are on or something?
-                ToggleRocks rocks = t.gameObject.GetComponent<ToggleRocks>();
+                EnemyCrystal rocks = t.gameObject.GetComponent<EnemyCrystal>();
                 if (rocks != null) {
                     return t.gameObject;
                 }

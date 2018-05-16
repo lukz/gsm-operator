@@ -78,7 +78,7 @@ public class Tileset : MonoBehaviour {
                     continue;
                 }
                 willPowerTiles.Add(t);
-                GameObject rock = t.GetRocks();
+                GameObject rock = t.GetEnemy();
                 if (rock != null) {
                     // Debug.Log("Got rocks " + t.x + ", " + t.y);
                     rocks.Add(rock);

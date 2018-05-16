@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4704800701744964}
   - component: {fileID: 95800052873315200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pump
   m_TagString: Pump
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4811392790997662}
   - component: {fileID: 212640372278567420}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4300645583149452}
   - component: {fileID: 114101984230282640}
-  m_Layer: 0
+  - component: {fileID: 114406153810073164}
+  m_Layer: 8
   m_Name: EnemyCrystal
   m_TagString: Blocker
   m_Icon: {fileID: 0}
@@ -68,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4046213656548444}
   - component: {fileID: 212392124477820772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ENERGYCRYSTAL1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +157,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55536423d43324316a82d8ce3f90014b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114406153810073164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1851581235662554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001dcfa848a3bb642a5bc5a756ff1bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212392124477820772
