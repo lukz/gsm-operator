@@ -276,7 +276,7 @@ public class GameManager : MonoBehaviour
 		for (int i = powerNeeded-1; i >=0 ; i--)
 		{
 			PowerSticker ps = GameObject.Instantiate(powerStickerPrefab).GetComponent<PowerSticker>();
-			ps.transform.parent = gameObject.transform;
+			ps.transform.parent = powerSlider.gameObject.transform;
 			
 			if (i == 0)
 			{
@@ -352,90 +352,92 @@ public class GameManager : MonoBehaviour
 		timeOnLevel += Time.deltaTime;
 		ShakeScreen();
 
-
-		if (houses.Length > 0)
+		if (houses != null)
 		{
-			allPowered = false;
-			float countPowered = 0;
-			if (!preparedScene) return;
-			foreach (GameObject house in houses)
+			if (houses.Length > 0)
 			{
-				HouseScript hs = house.GetComponent<HouseScript>();
-				countPowered += Mathf.Min(hs.powered, hs.requiredPower);
-			}
-			if (countPowered >= powerNeeded) allPowered = true;
-
-			//TODO czekaj na zmiane i sprawdz ile sie zmienilo
-			for (int i = powerNeeded-1; i>=0; i--)
-			{
-
-				if (i < countPowered && !powerStickers[i].isPowered)
+				allPowered = false;
+				float countPowered = 0;
+				if (!preparedScene) return;
+				foreach (GameObject house in houses)
 				{
-					powerStickers[i].PowerUp();
+					HouseScript hs = house.GetComponent<HouseScript>();
+					countPowered += Mathf.Min(hs.powered, hs.requiredPower);
 				}
-                else if(i >= countPowered && powerStickers[i].isPowered)
-                {
-                    powerStickers[i].PowerDown();
-                }
-			}
+				if (countPowered >= powerNeeded) allPowered = true;
 
-			float realProgress = (countPowered / powerNeeded)*0.85f;
-			float swim = Mathf.Sin(Time.timeSinceLevelLoad * 1f);
-			if (realProgress == 0 || realProgress == 1) swim = 0;
-			float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
-			powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
-
-			if (realProgress > cachedProgress)
-			{
-				powerSlider.gameObject.GetComponentInChildren<SliderFillScript>().FlashSlider();
-			}
-			cachedProgress = realProgress;
-
-			if (allPowered)
-			{
-				if (!tintShwon)
+				//TODO czekaj na zmiane i sprawdz ile sie zmienilo
+				for (int i = powerNeeded - 1; i >= 0; i--)
 				{
-					winAnimationPowerBar.SetActive(true);
-					//splashShown = true;
-					canDoActions = false;
-					tintShwon = true;
 
-					//GameObject newSplash = Instantiate(splash);
-
-					//newSplash.GetComponent<SplashScript>().setEndSplash();
-					showWhiteTint(true);
-					restartFlareFx.SetActive(false);
-
+					if (i < countPowered && !powerStickers[i].isPowered)
+					{
+						powerStickers[i].PowerUp();
+					}
+					else if (i >= countPowered && powerStickers[i].isPowered)
+					{
+						powerStickers[i].PowerDown();
+					}
 				}
 
+				float realProgress = (countPowered / powerNeeded) * 0.85f;
+				float swim = Mathf.Sin(Time.timeSinceLevelLoad * 1f);
+				if (realProgress == 0 || realProgress == 1) swim = 0;
+				float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
+				powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
 
-				if (timer == 0)
+				if (realProgress > cachedProgress)
 				{
-					Sounds.PlayWinLevel();
+					powerSlider.gameObject.GetComponentInChildren<SliderFillScript>().FlashSlider();
 				}
+				cachedProgress = realProgress;
 
-				timer += Time.deltaTime;
-				Sounds.VolumeMusic(Mathf.Max(0f, (powerUpTimeForSceneChange - timer * 3f)));
-
-				if (timer >= powerUpTimeForSceneChange)
+				if (allPowered)
 				{
-					//Debug.Log("Full power");
-					string nameEvent = "levelWin_" + lvlmanager.level.ToString();
+					if (!tintShwon)
+					{
+						winAnimationPowerBar.SetActive(true);
+						//splashShown = true;
+						canDoActions = false;
+						tintShwon = true;
 
-					Analytics.CustomEvent(nameEvent, new Dictionary<string, object>
+						//GameObject newSplash = Instantiate(splash);
+
+						//newSplash.GetComponent<SplashScript>().setEndSplash();
+						showWhiteTint(true);
+						restartFlareFx.SetActive(false);
+
+					}
+
+
+					if (timer == 0)
+					{
+						Sounds.PlayWinLevel();
+					}
+
+					timer += Time.deltaTime;
+					Sounds.VolumeMusic(Mathf.Max(0f, (powerUpTimeForSceneChange - timer * 3f)));
+
+					if (timer >= powerUpTimeForSceneChange)
+					{
+						//Debug.Log("Full power");
+						string nameEvent = "levelWin_" + lvlmanager.level.ToString();
+
+						Analytics.CustomEvent(nameEvent, new Dictionary<string, object>
 		{
 			{ "timeToWin", timeOnLevel },
 			{ "backs", backs }
 		});
 
-					CheckSave();
-					changeTierOrScene();
+						CheckSave();
+						changeTierOrScene();
+						timer = 0;
+					}
+				}
+				else
+				{
 					timer = 0;
 				}
-			}
-			else
-			{
-				timer = 0;
 			}
 		}
 	}

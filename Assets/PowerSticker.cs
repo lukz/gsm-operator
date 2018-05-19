@@ -32,20 +32,26 @@ public class PowerSticker : MonoBehaviour {
 
 	public void PowerUp()
 	{
-		_spriterenderer.sprite = powerOnSprite;
-        isPowered = true;
+		if (_spriterenderer)
+		{
+			_spriterenderer.sprite = powerOnSprite;
+			isPowered = true;
 
-        Vector3 initialScale = transform.localScale;
+			Vector3 initialScale = transform.localScale;
 
-        DOTween.Sequence()
-            .Append(transform.DOScale(new Vector3(initialScale.x * 1.5f, initialScale.y * 1.5f, 1), 0.02f)).SetEase(Ease.OutSine)
-            .Append(transform.DOScale(new Vector3(initialScale.x, initialScale.y, 1f),              0.6f)).SetEase(Ease.InSine);
+			DOTween.Sequence()
+				.Append(transform.DOScale(new Vector3(initialScale.x * 1.5f, initialScale.y * 1.5f, 1), 0.02f)).SetEase(Ease.OutSine)
+				.Append(transform.DOScale(new Vector3(initialScale.x, initialScale.y, 1f), 0.6f)).SetEase(Ease.InSine);
+		}
     }
 
 	public void PowerDown()
 	{
-		_spriterenderer.sprite = powerOffSprite;
-        isPowered = false;
+		if (_spriterenderer)
+		{
+			_spriterenderer.sprite = powerOffSprite;
+			isPowered = false;
+		}
 
     }
 
