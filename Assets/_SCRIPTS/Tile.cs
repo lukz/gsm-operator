@@ -274,6 +274,7 @@ public class Tile : MonoBehaviour {
             GameObject powerUpFx = GameObject.Instantiate(powerUpFlashEffect);
             powerUpFx.transform.parent = transform;
             powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
+			Sounds.PlayPowerUp();
         }
     }
 
@@ -284,13 +285,13 @@ public class Tile : MonoBehaviour {
 
     IEnumerator PowerChangeCorutine(TowerScript source, int powerChange, int delayIndex)
     {
-        yield return new WaitForSeconds(delayIndex * 0.1f);
+        yield return new WaitForSeconds(delayIndex * GameManager.instance.delayPowerFx);
         PowerChange(source, powerChange);
     }
 
     public void ChangeHooks()
 	{
-		if (HasRocks() || HasTower() || HasHouse())
+		/*if (HasRocks() || HasTower() || HasHouse())
 		{
 			_spriterenderer.enabled = false;
 		}
@@ -313,7 +314,7 @@ public class Tile : MonoBehaviour {
 			case 3:
 				_spriterenderer.sprite = hookLvl3;
 				break;
-		}
+		}*/
 	}
 
     private void OnPowerChange(TowerScript source, int powerChange)

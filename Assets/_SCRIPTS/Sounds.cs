@@ -14,6 +14,7 @@ public class Sounds : MonoBehaviour {
 	public AudioSource towerBuilt;
 	public AudioSource takeTower;
 	public AudioSource deny;
+	public AudioSource powerUp;
 	protected static Sounds instance;
 	
 	bool soundOn;
@@ -41,6 +42,7 @@ public class Sounds : MonoBehaviour {
 		music.mute = !enabled;
 		finalWin.mute = !enabled;
 		winLvl.mute = !enabled;
+		powerUp.mute = !enabled;
 		btnClick.mute = !enabled;
 		destroy.mute = !enabled;
 		towerBuilt.mute = !enabled;
@@ -125,6 +127,11 @@ public class Sounds : MonoBehaviour {
 	public static void PlayFinal()
 	{
 		if (instance != null) instance.finalWin.Play();
+	}
+	public static void PlayPowerUp()
+	{
+		if (instance != null) instance.powerUp.Stop();
+		if (instance != null) instance.powerUp.Play();
 	}
 
 	public static void PlayDeny() {

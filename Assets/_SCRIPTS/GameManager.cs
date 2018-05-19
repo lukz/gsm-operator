@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
 	public bool OPENlastLEVEL;
 
-
+	public float delayPowerFx;
 	private float timeOnLevel = 0;
 	private float backs = 0;
 
