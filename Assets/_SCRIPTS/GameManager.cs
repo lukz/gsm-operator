@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 	public bool OPENlastLEVEL;
 
 	public float delayPowerFx;
-	private float timeOnLevel = 0;
+	public float timeOnLevel = 0;
 	private float backs = 0;
 
 	[SerializeField]
@@ -195,7 +195,7 @@ public class GameManager : MonoBehaviour
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
 	{
-
+		
 		buildTowers = new List<ButtonTowerPair>();
 		firstLockedButton = 0;
 		canDoActions = true;
