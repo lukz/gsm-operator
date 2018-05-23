@@ -3,15 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ToggleRocks : MonoBehaviour {
-
-
-
-	[SerializeField]
-	private Sprite sprite_off;
-
-	[SerializeField]
-	private Sprite sprite_on;
-
     public bool areBlocking = true;
     private SpriteRenderer renderer;
 
@@ -23,11 +14,7 @@ public class ToggleRocks : MonoBehaviour {
         SetBlocking(areBlocking);
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
     public void ToggleState()
     {
@@ -40,10 +27,10 @@ public class ToggleRocks : MonoBehaviour {
 
         if(areBlocking)
         {
-            renderer.sprite = sprite_on;
+            GetComponent<Animator>().SetBool("on", true);
             gameObject.tag = "Blocker";
         } else {
-            renderer.sprite = sprite_off;
+            GetComponent<Animator>().SetBool("on", false);
             gameObject.tag = "Untagged";
         }
 
