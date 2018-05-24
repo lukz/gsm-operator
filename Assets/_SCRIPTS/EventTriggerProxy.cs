@@ -86,6 +86,10 @@ public class EventTriggerProxy : MonoBehaviour {
 	}
 
 	//private float lockTimer;
+    bool drag;
+    bool drop;
+    float dropTime;
+    Vector3 dropPos = new Vector3();
 	void Update() {
         if(!locked && towerImage != null && towerImage.enabled)
         {
@@ -102,6 +106,49 @@ public class EventTriggerProxy : MonoBehaviour {
         {
             ShowFlare(false);
         }
+        if (!GameManager.IS_MOBILE) return;
+        if (drop) {
+            dropTime += Time.deltaTime;
+            if (dropTime >= .2f) {
+                PlaceTower();
+                return;
+            }
+            if (IsTouching()) {
+                float dst = Vector3.Distance(dropPos, InputUtils.WorldMousePosition());
+                if (dst >= .5f) {
+                    // return if far enough from drop point
+                    PlaceTower();
+                    return;
+                } 
+                drop = false;
+                dropTime = 0;
+                drag = true;
+            }
+        } else if (drag && !IsTouching()) {
+            drag = false;
+            drop = true;
+            dropPos = InputUtils.WorldMousePosition(); 
+        }
+    }
+
+    void PlaceTower() {
+        drop = false;
+        drag = false;
+        dropTime = 0;
+        // Debug.Log("PlaceTower called "  + towerPrefab);
+        if (towerSpawnerPro != null && towerPrefab != null) {
+            towerSpawnerPro.PlaceTower(this, towerPrefab);
+        }
+    }
+
+    bool IsTouching () {
+        if (!GameManager.IS_MOBILE) return false;
+        // we dont do multi touch
+        TouchPhase phase = Input.GetTouch(0).phase;
+        if (phase == TouchPhase.Began) return true;
+        if (phase == TouchPhase.Stationary) return true;
+        if (phase == TouchPhase.Moved) return true;
+        return false;
     }
 
     void PickTower(PointerEventData data)
@@ -109,22 +156,45 @@ public class EventTriggerProxy : MonoBehaviour {
 		if (locked) return;
 		Button button = GetComponent<Button>();
 		if (!button.enabled) return;
-        // Debug.Log("PickTower called " + towerPrefab);
-		if (towerSpawnerPro != null && towerPrefab != null) {
-			towerSpawnerPro.PickTower(this, towerPrefab);
-			button.enabled = false;
-		}
-		if (towerImage != null ) {
-			towerImage.enabled = false;
-		}
+        if (drop) {
+            float dst = Vector3.Distance(dropPos, InputUtils.WorldMousePosition());
+            Debug.Log("dst = " + dst);
+            if (dst >= .5f) {
+                // ignore if far enough from drop point
+                return;
+            } 
+            drop = false;
+            dropTime = 0;
+            drag = true;
+            return;
+        }
+        if (!drag) {
+            drag = true;
+            
+            // Debug.Log("PickTower called " + towerPrefab);
+            if (towerSpawnerPro != null && towerPrefab != null) {
+                towerSpawnerPro.PickTower(this, towerPrefab);
+                button.enabled = false;
+            }
+            if (towerImage != null ) {
+                towerImage.enabled = false;
+            }
+        }
+
     }
 
 	void PlaceTower(PointerEventData data)
     {
-        // Debug.Log("PlaceTower called "  + towerPrefab);
-		if (towerSpawnerPro != null && towerPrefab != null) {
-			towerSpawnerPro.PlaceTower(this, towerPrefab);
-		}
+        if (!GameManager.IS_MOBILE) {
+            // just drop on desktop
+            PlaceTower();
+            return;
+        } 
+        if (drag) {
+            drag = false;
+            drop = true;
+            dropPos = InputUtils.WorldMousePosition(); 
+        }
     }
 
 	public void ReturnTower() {
