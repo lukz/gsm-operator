@@ -3583,7 +3583,7 @@ MonoBehaviour:
   restartFlareFx: {fileID: 1801182346414798}
   powerSlider: {fileID: 114924009610083464}
   powerUpTimeForSceneChange: 4
-  OPENlastLEVEL: 1
+  OPENlastLEVEL: 0
   delayPowerFx: 0.2
   timeOnLevel: 0
   lastLevelId: 4

@@ -91,7 +91,7 @@ public class TowerSpawnerPro : MonoBehaviour {
         draggedTowerInstance = null;
         draggedTowerOwner = null;
         powerOffsets = null;
-        bool dragging = false;
+        dragging = false;
         previouslyDraggedTile = null;
         dragTime = 0;
         StopAllCoroutines();
