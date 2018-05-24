@@ -2719,7 +2719,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0b29923dfd27c5f4c9f9f10a005ddd00, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1260633faaa8f374f914213550974e0d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2814,9 +2814,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e173152522349e546a4403e1d8d1bee1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c81232321f8bcef48a1ff7148cce6f4f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.95
   m_Pitch: 1.2
   Loop: 0
   Mute: 0
@@ -3004,7 +3004,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8f8d826bbe19c6b438166b5b7e099686, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a0d3dba853c83894db40c2b8f44faefc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3099,7 +3099,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: de3df7e4d71ef7a4cbb6143bebfa0cc3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0f3318c21da0ccf43a25efe51bc2c1bf, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3289,7 +3289,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9f0a194af525056448a3f9ee3ae803de, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f6b8d138545199746a9eb881f21c946e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3479,10 +3479,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d0f9bc55db613e3438ac91fc7182e14c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7a0aa5aec192c444b823a78d0c150d79, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.9
   Loop: 0
   Mute: 0
   Spatialize: 0
