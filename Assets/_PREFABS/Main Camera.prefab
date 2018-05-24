@@ -2816,7 +2816,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c81232321f8bcef48a1ff7148cce6f4f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.9
   m_Pitch: 1.4
   Loop: 0
   Mute: 0
@@ -3481,7 +3481,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7a0aa5aec192c444b823a78d0c150d79, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 0.9
   Loop: 0
   Mute: 0
@@ -3736,7 +3736,7 @@ MonoBehaviour:
   powerSlider: {fileID: 114924009610083464}
   powerUpTimeForSceneChange: 4
   OPENlastLEVEL: 0
-  delayPowerFx: 0.18
+  delayPowerFx: 0.2
   timeOnLevel: 0
   lastLevelId: 4
   towerButtons:
