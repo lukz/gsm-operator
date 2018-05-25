@@ -13,6 +13,10 @@ public class CameraResize : MonoBehaviour {
 	
 	void Awake () {
 		float targetAspect = width/height;
+		// seems some weird stuff is going on when running in edit mode...
+		if (Screen.width == 0 || Screen.height == 0) {
+			return;
+		}
 		float aspect = Screen.width/(float)Screen.height;
 		
 		Camera.main.orthographicSize = Mathf.Max(orthoSize, orthoSize * targetAspect/aspect);
