@@ -272,7 +272,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		draggedTowerOwner = null;
 	}
 
-	public void ReturnTower(EventTriggerProxy button, GameObject tower, bool lockButton = false) {
+	public void ReturnTower(EventTriggerProxy button, GameObject tower) {
 		ChangeDrawSorting(tower, "GUI", towerGuiSorting);
 		TowerScript ts = tower.GetComponent<TowerScript>();
 		bool wasAttached = ts.DetachFromTile();
@@ -306,10 +306,7 @@ public class TowerSpawnerPro : MonoBehaviour {
             tower.transform.DOMove(button.transform.position, .5f)
 				.SetEase(Ease.InSine)
 				.OnComplete(()=>{
-					button.ReturnTower();
-					if (lockButton) {
-						button.Lock();
-					}
+					gameManager.ReturnTower();
 					GameObject.Destroy(tower);	
 				}
 			);
@@ -329,10 +326,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 				tower.transform.DOMove(newTowerPosOnBtn, .5f)
 					.SetEase(Ease.InOutSine)
 					.OnComplete(()=>{
-						button.ReturnTower();
-						if (lockButton) {
-							button.Lock();
-						}
+						gameManager.ReturnTower();
 						GameObject.Destroy(tower);	
 					}
 				)

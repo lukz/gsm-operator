@@ -70,7 +70,7 @@ public class PowerMarker : MonoBehaviour
 		if (requiredPower > 3) requiredPower = 3;
 
 		this.requiredPower = requiredPower;
-		Debug.Log("req power = " + requiredPower);
+		// Debug.Log("req power = " + requiredPower);
 
 		CreateMarkers(requiredPower);
 
