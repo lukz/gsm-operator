@@ -26,11 +26,16 @@ public class TowerBox : MonoBehaviour {
 	int type = -1;
 	public int SlotId {get; private set;}
 	GameObject prefab;
+	Tweener tween;
 
 	public void SetPrefab (GameObject prefab) {
 		this.prefab = prefab;
 		if (prefab == null) {
 			SetType(-1);
+			if (tween != null) {
+				tween.Kill();
+			}
+			tween = null;
 		} else {
 			TowerScript ts = prefab.GetComponent<TowerScript>();
 			SetType(ts.id);
@@ -69,10 +74,12 @@ public class TowerBox : MonoBehaviour {
 		if (slotId < 0) {
 			return;
 		}
-		DOTween.Kill(tweenId);
+		if (tween != null) {
+			tween.Kill();
+		}
 		float duration = .5f * diff;
 		Vector3 pos = controller.GetSlotPosition(slotId);
-		transform.DOMove(pos, duration)
+		tween = transform.DOMove(pos, duration)
             	.SetId(tweenId)
 				.SetDelay(delay)
 				.SetEase(Ease.InOutFlash)
