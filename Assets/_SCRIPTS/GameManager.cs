@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
 	public bool OPENlastLEVEL;
 
 	public float delayPowerFx;
-	public float timeOnLevel = 0;
+    public float delayPowerLargeFx;
+    public float timeOnLevel = 0;
 	private float backs = 0;
 
 	[SerializeField]
