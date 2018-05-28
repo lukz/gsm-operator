@@ -32,13 +32,12 @@ public class BoxController : MonoBehaviour {
 		}
 	}
 
-	public void Restart () {
+	public void Restart (LVLsettings settings) {
 		InitBoxes();
 		gameManager.towerButton.SetTowerPrefab(null);
 		Debug.Log("Start BoxManager");
 		
 
-		LVLsettings settings = FindObjectOfType<LVLsettings>();
 		List<GameObject> prefabs = new List<GameObject>();
 
 		if (settings.towerPrefab1 != null) prefabs.Add(settings.towerPrefab1);

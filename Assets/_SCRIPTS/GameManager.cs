@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviour
 			towerspawner.towerContainer = towersContainer;
 			towerspawner.tileset = GameObject.FindGameObjectWithTag("Tileset").GetComponent<Tileset>();
 
-			boxController.Restart();
+			boxController.Restart(lvlmanager);
 			// for (int i = 0; i < 5; i++)
 			// {
 			// 	   towerButtons[i].Lock();
