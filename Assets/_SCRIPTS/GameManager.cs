@@ -289,6 +289,7 @@ public class GameManager : MonoBehaviour
 			{
 				powerStickers.Add(ps);
 				ps.transform.position = topPowerStickerPosition.transform.position;
+				ps.GetComponent<SpriteRenderer>().enabled = false;
 			}
 			else
 			{
@@ -387,7 +388,7 @@ public class GameManager : MonoBehaviour
 					}
 				}
 
-				float realProgress = (countPowered / powerNeeded) * 0.85f;
+				float realProgress = (countPowered / powerNeeded) * 1f;
 				float swim = Mathf.Sin(Time.timeSinceLevelLoad * 1f);
 				if (realProgress == 0 || realProgress == 1) swim = 0;
 				float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);

@@ -49,7 +49,7 @@ public class Tileset : MonoBehaviour {
 
     public int GridX (float x) 
     {
-        return Mathf.FloorToInt((3.8f + x)/tileSize);
+        return Mathf.FloorToInt((3.3f + x)/tileSize);
     }
 
     public int GridY (float y) 
