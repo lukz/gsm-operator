@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
 	public bool OPENlastLEVEL;
 
 	public float delayPowerFx;
-	public float timeOnLevel = 0;
+    public float delayPowerLargeFx;
+    public float timeOnLevel = 0;
 	private float backs = 0;
 
 	[SerializeField]
@@ -219,7 +220,7 @@ public class GameManager : MonoBehaviour
 			towerspawner.towerContainer = towersContainer;
 			towerspawner.tileset = GameObject.FindGameObjectWithTag("Tileset").GetComponent<Tileset>();
 
-			boxController.Restart();
+			boxController.Restart(lvlmanager);
 			// for (int i = 0; i < 5; i++)
 			// {
 			// 	   towerButtons[i].Lock();

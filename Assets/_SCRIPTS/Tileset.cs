@@ -97,21 +97,29 @@ public class Tileset : MonoBehaviour {
 
     public void ChangeTilesPower(TowerScript tower, Tile startTile, int powerChange, List<TowerScript.PowerOffset> offsets)
     {
+        List<Tile> validTiles = new List<Tile>();
+
         for (int i = 0; i < offsets.Count; i++)
         {
             int xPos = startTile.x + offsets[i].x;
-            // fliped y
-            int yPos = startTile.y - offsets[i].y;
-            
+            int yPos = startTile.y - offsets[i].y; // fliped y
+
             Tile t = GetTileAt(xPos, yPos);
             if (t != null && t.gameObject.activeInHierarchy) {
-
-                float delay = (GameManager.instance.delayPowerFx / offsets.Count) * i;
-
-                Debug.Log("DELAY: " + delay);
-
-                t.PowerChangeDelayed(tower, powerChange, delay);
+                validTiles.Add(t);
             }
+        }
+
+        for (int i = 0; i < validTiles.Count; i++)
+        {
+            float delay = 0;
+            float fullTime = validTiles.Count < 5 ? GameManager.instance.delayPowerFx : GameManager.instance.delayPowerLargeFx;
+
+            delay = (fullTime / validTiles.Count) * i;
+
+            if (powerChange <= 0) delay = 0;
+
+            validTiles[i].PowerChangeDelayed(tower, powerChange, delay);
         }
     }
 

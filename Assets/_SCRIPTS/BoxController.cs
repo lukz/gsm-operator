@@ -7,38 +7,37 @@ public class BoxController : MonoBehaviour {
 	public Transform[] slots = new Transform[6];
 
 	public GameObject boxPrefab;
-
+	public List<TowerBox> allBoxes = new List<TowerBox>();
 	public List<TowerBox> boxes = new List<TowerBox>();
 
 	public GameManager gameManager;
-	
-	int currentId;
 
 	void Start () {
 		
 	}
 
 	void InitBoxes() {
-		if (boxes.Count == 0) {
+		boxes.Clear();
+		if (allBoxes.Count == 0) {
 			for (int i = 0; i < 5; i++)
 			{
 				Transform slot = slots[i + 1];
 				GameObject inst = GameObject.Instantiate(boxPrefab, this.transform);
 				TowerBox box = inst.GetComponent<TowerBox>();
-				boxes.Add(box);
+				allBoxes.Add(box);
 			}
 		}
-		foreach(var box in boxes) {
+		foreach(var box in allBoxes) {
 			box.SetPrefab(null);
 		}
 	}
 
-	public void Restart () {
+	public void Restart (LVLsettings settings) {
 		InitBoxes();
+		gameManager.towerButton.SetTowerPrefab(null);
 		Debug.Log("Start BoxManager");
 		
 
-		LVLsettings settings = FindObjectOfType<LVLsettings>();
 		List<GameObject> prefabs = new List<GameObject>();
 
 		if (settings.towerPrefab1 != null) prefabs.Add(settings.towerPrefab1);
@@ -51,9 +50,10 @@ public class BoxController : MonoBehaviour {
 		for (int i = 0; i < prefabs.Count; i++)
 		{
 			Transform slot = slots[i + 1];
-			TowerBox box = boxes[i];
+			TowerBox box = allBoxes[i];
 			box.Init(this, i + 1);
 			box.SetPrefab(prefabs[i]);
+			boxes.Add(box);
 		}
 	}
 
@@ -76,7 +76,7 @@ public class BoxController : MonoBehaviour {
 	public void PrevTower() {
 		Debug.Log("PrevTower");
 		// cant go up if already at last box
-		if (boxes[boxes.Count -1].SlotId >= 5){
+		if (boxes[boxes.Count -1].SlotId >= boxes.Count){
 			return;
 		}
 		foreach(var box in boxes) {

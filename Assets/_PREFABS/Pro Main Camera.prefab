@@ -3188,6 +3188,7 @@ MonoBehaviour:
   powerUpTimeForSceneChange: 4
   OPENlastLEVEL: 1
   delayPowerFx: 0.6
+  delayPowerLargeFx: 1.2
   timeOnLevel: 0
   lastLevelId: 4
   towerButton: {fileID: 114031874394970906}
