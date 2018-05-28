@@ -12,8 +12,33 @@ public class BoxController : MonoBehaviour {
 
 	public GameManager gameManager;
 
+	public SpriteRenderer beltRenderer;
+
+	public Sprite[] beltFrames;
+
+
+	int moving = 0;
+	int nextFrame = 0;
+
 	void Start () {
 		
+	}
+
+	float timer;
+
+	[SerializeField]
+	float frameDuration = .1f;
+	void Update () {
+		if (moving != 0) {
+			timer += Time.deltaTime;
+			if (timer >= frameDuration) {
+				timer -= frameDuration;
+				nextFrame += moving;
+				if (nextFrame < 0) nextFrame = beltFrames.Length - 1;
+				if (nextFrame >= beltFrames.Length) nextFrame = 0;
+				beltRenderer.sprite = beltFrames[nextFrame];
+			}
+		}
 	}
 
 	void InitBoxes() {
@@ -63,10 +88,12 @@ public class BoxController : MonoBehaviour {
 
 	public void NextTower() {
 		Debug.Log("NextTower");
+		moving = 1;
 		foreach(var box in boxes) {
 			if (box.SlotId - 1 == 0) {
 				box.MoveToSlot(box.SlotId - 1, 0, (tb) => {
-					gameManager.towerButton.SetTowerPrefab(box.GetPrefab(), true);
+					gameManager.towerButton.SetTowerPrefab(tb.GetPrefab(), true);
+					moving = 0;
 				});
 			} else{
 				box.MoveToSlot(box.SlotId - 1, 0);
@@ -79,8 +106,12 @@ public class BoxController : MonoBehaviour {
 		if (boxes[boxes.Count -1].SlotId >= boxes.Count){
 			return;
 		}
+		moving = -1;
+		TowerBox.OnDone onDone = (tb) => {
+			moving = 0;
+		};
 		foreach(var box in boxes) {
-			box.MoveToSlot(box.SlotId + 1, 0);
+			box.MoveToSlot(box.SlotId + 1, 0, onDone);
 		}	
 		gameManager.towerButton.SetTowerPrefab(null);
 	}
