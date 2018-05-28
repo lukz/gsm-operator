@@ -1976,7 +1976,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.811523
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3187,7 +3187,7 @@ MonoBehaviour:
   powerSlider: {fileID: 114556626220750970}
   powerUpTimeForSceneChange: 4
   OPENlastLEVEL: 1
-  delayPowerFx: 0.2
+  delayPowerFx: 0.6
   timeOnLevel: 0
   lastLevelId: 4
   towerButton: {fileID: 114031874394970906}

@@ -105,7 +105,12 @@ public class Tileset : MonoBehaviour {
             
             Tile t = GetTileAt(xPos, yPos);
             if (t != null && t.gameObject.activeInHierarchy) {
-                t.PowerChangeDelayed(tower, powerChange, i);
+
+                float delay = (GameManager.instance.delayPowerFx / offsets.Count) * i;
+
+                Debug.Log("DELAY: " + delay);
+
+                t.PowerChangeDelayed(tower, powerChange, delay);
             }
         }
     }

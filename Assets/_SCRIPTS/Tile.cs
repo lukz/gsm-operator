@@ -281,14 +281,14 @@ public class Tile : MonoBehaviour {
         }
     }
 
-    public void PowerChangeDelayed(TowerScript source, int powerChange, int delayIndex)
+    public void PowerChangeDelayed(TowerScript source, int powerChange, float delay)
     {
-        StartCoroutine(PowerChangeCorutine(source, powerChange, delayIndex));
+        StartCoroutine(PowerChangeCorutine(source, powerChange, delay));
     }
 
-    IEnumerator PowerChangeCorutine(TowerScript source, int powerChange, int delayIndex)
+    IEnumerator PowerChangeCorutine(TowerScript source, int powerChange, float delay)
     {
-        yield return new WaitForSeconds(delayIndex * GameManager.instance.delayPowerFx);
+        yield return new WaitForSeconds(delay);
         PowerChange(source, powerChange);
     }
 
