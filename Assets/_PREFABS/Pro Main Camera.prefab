@@ -3853,6 +3853,12 @@ MonoBehaviour:
   allBoxes: []
   boxes: []
   gameManager: {fileID: 114031898059294940}
+  beltRenderer: {fileID: 212707223056291976}
+  beltFrames:
+  - {fileID: 21300000, guid: 9c21779613886214694c0b84bc61974c, type: 3}
+  - {fileID: 21300000, guid: b292658164bc49f418f7afcc9de2462c, type: 3}
+  - {fileID: 21300000, guid: 9bcd2ff0227b1fb4b975ad2bc0a0558c, type: 3}
+  frameDuration: 0.1
 --- !u!114 &114491973954762336
 MonoBehaviour:
   m_ObjectHideFlags: 1

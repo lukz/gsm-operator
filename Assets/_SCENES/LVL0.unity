@@ -160,7 +160,7 @@ MonoBehaviour:
   powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
   powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
-  power: 0
+  power: 1
   requiredPower: 0
   animatorPower: {fileID: 1485921313}
 --- !u!1001 &41681054
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 1
+  x: 0
   y: 3
   powerMarker: {fileID: 1394426410}
   buildMarker: {fileID: 1349112553}
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
   powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
-  power: 0
+  power: 1
   requiredPower: 0
   animatorPower: {fileID: 1335375380}
 --- !u!1 &291002659
@@ -1683,7 +1683,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 383195664}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3980,7 +3980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 2
+  x: 1
   y: 3
   powerMarker: {fileID: 1545288209}
   buildMarker: {fileID: 2108557448}
@@ -4324,7 +4324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 5
+  x: 4
   y: 3
   powerMarker: {fileID: 190314814}
   buildMarker: {fileID: 620019694}
@@ -5141,7 +5141,7 @@ MonoBehaviour:
   powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
   powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
-  power: 0
+  power: 1
   requiredPower: 0
   animatorPower: {fileID: 576952787}
 --- !u!1 &1096992780
@@ -9440,7 +9440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 3
+  x: 2
   y: 3
   powerMarker: {fileID: 1297837544}
   buildMarker: {fileID: 412605324}
@@ -11326,7 +11326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerLvl: 0
-  x: 4
+  x: 3
   y: 3
   powerMarker: {fileID: 1654533465}
   buildMarker: {fileID: 1673928092}
