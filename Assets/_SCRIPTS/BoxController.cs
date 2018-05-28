@@ -86,18 +86,28 @@ public class BoxController : MonoBehaviour {
 		return slots[slotId].position;
 	}
 
+	private void StopMoving(TowerBox tb) {
+		moving = 0;
+	}
+
 	public void NextTower() {
 		Debug.Log("NextTower");
-		moving = 1;
+		bool anyMoved = false;
 		foreach(var box in boxes) {
+			if (box.SlotId -1 >= 0) {
+				anyMoved = true;
+			}
 			if (box.SlotId - 1 == 0) {
 				box.MoveToSlot(box.SlotId - 1, 0, (tb) => {
 					gameManager.towerButton.SetTowerPrefab(tb.GetPrefab(), true);
 					moving = 0;
 				});
-			} else{
-				box.MoveToSlot(box.SlotId - 1, 0);
+			} else {
+				box.MoveToSlot(box.SlotId - 1, 0, StopMoving);
 			}
+		}
+		if (anyMoved) {
+			moving = 1;
 		}
 	}
 	public void PrevTower() {
@@ -107,11 +117,8 @@ public class BoxController : MonoBehaviour {
 			return;
 		}
 		moving = -1;
-		TowerBox.OnDone onDone = (tb) => {
-			moving = 0;
-		};
 		foreach(var box in boxes) {
-			box.MoveToSlot(box.SlotId + 1, 0, onDone);
+			box.MoveToSlot(box.SlotId + 1, 0, StopMoving);
 		}	
 		gameManager.towerButton.SetTowerPrefab(null);
 	}
