@@ -45,7 +45,7 @@ public class ChangeSceneAsync : MonoBehaviour {
 		asyncLoad.allowSceneActivation = false;
         while (!asyncLoad.isDone)
         {
-			Debug.Log("Load progress... " + asyncLoad.progress);
+			// Debug.Log("Load progress... " + asyncLoad.progress);
 			// apparently .8f or .9f is fully loaded for whatever goddamn reason
 			const float fullyLoaded = .9f;
 			Progress = Mathf.Min(asyncLoad.progress / fullyLoaded, 1);
