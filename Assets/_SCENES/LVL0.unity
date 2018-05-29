@@ -160,7 +160,7 @@ MonoBehaviour:
   powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
   powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
-  power: 1
+  power: 0
   requiredPower: 0
   animatorPower: {fileID: 1485921313}
 --- !u!1001 &41681054
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
   powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
-  power: 1
+  power: 0
   requiredPower: 0
   animatorPower: {fileID: 1335375380}
 --- !u!1 &291002659
@@ -5141,7 +5141,7 @@ MonoBehaviour:
   powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
   powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
   showIfNoPower: 0
-  power: 1
+  power: 0
   requiredPower: 0
   animatorPower: {fileID: 576952787}
 --- !u!1 &1096992780
@@ -7260,6 +7260,11 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224343676791519946, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 80.99999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9, type: 2}
