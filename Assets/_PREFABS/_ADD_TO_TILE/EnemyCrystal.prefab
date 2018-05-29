@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 4300645583149452}
   - component: {fileID: 114101984230282640}
   - component: {fileID: 114406153810073164}
+  - component: {fileID: 95993409863734930}
   m_Layer: 8
   m_Name: EnemyCrystal
   m_TagString: Blocker
@@ -83,8 +84,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1882051725640148}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 0.22, z: -0.16210938}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalPosition: {x: 0.018, y: 0.327, z: -0.16210938}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4300645583149452}
   m_RootOrder: 0
@@ -148,6 +149,25 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95993409863734930
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1851581235662554}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9ed8aa03790d0141947558d38291028, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114101984230282640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,6 +190,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001dcfa848a3bb642a5bc5a756ff1bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCrystalFX: {fileID: 1379632111807988, guid: 65fb91dbc5b4d3f41ad2fd23f1c23676,
+    type: 2}
 --- !u!212 &212392124477820772
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -183,6 +205,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -203,8 +226,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 823275467
   m_SortingLayer: 4
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 94ed5d6224001a7469990369156ec572, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 21300000, guid: 16149f9ac62293c4794dfe3fbf7e9b29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -227,6 +250,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:

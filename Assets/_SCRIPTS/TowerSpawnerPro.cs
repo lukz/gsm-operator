@@ -219,7 +219,10 @@ public class TowerSpawnerPro : MonoBehaviour {
 			if (rocks.Count > 0) {
 				Debug.Log("Got rocks, cant build! " + rocks.Count);
 				foreach (var rock in rocks) {
-					// TODO animation
+					EnemyCrystal ec = rock.GetComponent<EnemyCrystal>();
+					if (ec != null) {
+						ec.SpawnFX();
+					}
 				}
 				tile.CancelBuildTarget();
 				ReturnTower();
