@@ -266,13 +266,14 @@ public class TowerSpawnerPro : MonoBehaviour {
 		// draggedTowerInstance = null;
 	}
 
-	public void ReturnTower() {
-		if (draggedTowerInstance == null) return;
+	public bool ReturnTower() {
+		if (draggedTowerInstance == null) return false;
 		ReturnTower(draggedTowerOwner, draggedTowerInstance);
 		tileset.CancelBuilding();
         previouslyDraggedTile = null;
 		draggedTowerInstance = null;
 		draggedTowerOwner = null;
+		return true;
 	}
 
 	public void ReturnTower(EventTriggerProxy button, GameObject tower) {

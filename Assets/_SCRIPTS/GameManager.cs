@@ -330,6 +330,27 @@ public class GameManager : MonoBehaviour
             towerspawner.tileset.ToggleRocks();
         }
 	}
+
+	public bool RestartAll() 
+	{
+		if (!canDoActions) return false;
+		if (buildTowers.Count == 0) 
+		{
+			return towerspawner.ReturnTower();
+		}
+		towerspawner.ReturnTower();
+		while (buildTowers.Count > 0)
+		{
+			LockCurrentTower();
+			ButtonTowerPair item = buildTowers[buildTowers.Count - 1];
+			buildTowers.Remove(item);
+			towerspawner.ReturnTower(item.button, item.tower);
+			backs++;
+
+            towerspawner.tileset.ToggleRocks();
+        }
+		return true;
+	}
 	void ShakeScreen()
 	{
 		if (shakePower > 0.01f)
