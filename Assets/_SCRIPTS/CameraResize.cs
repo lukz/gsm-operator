@@ -21,6 +21,9 @@ public class CameraResize : MonoBehaviour {
 		if (Screen.width == 0 || Screen.height == 0) {
 			return;
 		}
+		if (guiCanvas == null || leftPanel == null) {
+			return;
+		}
 		float aspect = Screen.width/(float)Screen.height;
 		
 		Camera.main.orthographicSize = Mathf.Max(orthoSize, orthoSize * targetAspect/aspect);
