@@ -14,7 +14,7 @@ public class Tileset : MonoBehaviour {
     private const int MAP_WIDTH = 5;
     // x, y
     private Tile[,] map = new Tile[MAP_WIDTH, MAP_HEIGHT];
-    float tileSize = 1.2f;
+    float tileSize = 1.18f;
     bool initialized = false;
 
     void Start () {
@@ -49,13 +49,13 @@ public class Tileset : MonoBehaviour {
 
     public int GridX (float x) 
     {
-        return Mathf.FloorToInt((3.3f + x)/tileSize);
+        return Mathf.FloorToInt((3.25f + x)/tileSize);
     }
 
     public int GridY (float y) 
     {
         // return MAP_HEIGHT - 1 - Mathf.FloorToInt((2.3f +y)/tileSize);
-        return Mathf.FloorToInt((2.3f + y)/tileSize);
+        return Mathf.FloorToInt((2.5f + y)/tileSize);
     }
 	
     private List<Tile> willPowerTiles = new List<Tile>();

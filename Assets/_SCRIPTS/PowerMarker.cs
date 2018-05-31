@@ -126,7 +126,7 @@ public class PowerMarker : MonoBehaviour
 		SpriteRenderer sr = m.AddComponent<SpriteRenderer>();
 		sr.sprite = powerOff;
 		sr.sortingLayerName = "GUI";
-		sr.sortingOrder = 0;
+		sr.sortingOrder =99;
 
 		markerRenderers.Add(sr);
 	}

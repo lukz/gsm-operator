@@ -25,7 +25,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 	[Range(0f, 1f)]
 	public float minDragTime = .2f;
 
-	public int towerGuiSorting = 51;
+	public int towerGuiSorting = 101;
 	// offset for tile check at the towers base
 	float towerBaseYOffset = 0;//-.4f;
 
@@ -122,10 +122,10 @@ public class TowerSpawnerPro : MonoBehaviour {
 		// TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
 
 		// buttons are at 50 for some reason...
-		ChangeDrawSorting(draggedTowerInstance, "GUI", towerGuiSorting);
+		ChangeDrawSorting(draggedTowerInstance, "GUI", 101);
 		//draggedTowerInstance.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1);
 		SpriteRenderer sprite = draggedTowerInstance.transform.Find("Body").GetComponent<SpriteRenderer>();
-		
+
 		float flashDuration = .2f;
 		int repeats = 1;
 	
@@ -143,7 +143,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		);
 		
 		// this is in game units
-		towerOffset.y = GameManager.IS_MOBILE?0.6f:0.0f;
+		towerOffset.y = GameManager.IS_MOBILE?0.65f:0.0f;
 		powerOffsets = draggedTowerInstance.GetComponent<TowerScript>().powerOffsets;
 
 		tileset.StartBuilding();
