@@ -14,7 +14,7 @@ public class Tileset : MonoBehaviour {
     private const int MAP_WIDTH = 5;
     // x, y
     private Tile[,] map = new Tile[MAP_WIDTH, MAP_HEIGHT];
-    float tileSize = 1.125f;
+    float tileSize = 1.2f;
     bool initialized = false;
 
     void Start () {
