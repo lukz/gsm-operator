@@ -1047,7 +1047,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 1394426410}
   buildMarker: {fileID: 1349112553}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 1077078952}
   buildMarker: {fileID: 1430294378}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -2380,7 +2380,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 1094722749}
   buildMarker: {fileID: 172329059}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -2617,7 +2617,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 291002661}
   buildMarker: {fileID: 694027459}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -3286,7 +3286,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 211548910}
   buildMarker: {fileID: 814154368}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -4032,7 +4032,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 1545288209}
   buildMarker: {fileID: 2108557448}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -4376,7 +4376,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 190314814}
   buildMarker: {fileID: 620019694}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -4547,7 +4547,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 289581575}
   buildMarker: {fileID: 879054234}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -5370,7 +5370,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 1197787388}
   buildMarker: {fileID: 144185377}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -5537,7 +5537,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 599522139}
   buildMarker: {fileID: 1393852778}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -5713,7 +5713,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 332066283}
   buildMarker: {fileID: 1847218529}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -5934,7 +5934,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 1539448259}
   buildMarker: {fileID: 2052739518}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -6714,7 +6714,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 40057496}
   buildMarker: {fileID: 1688011121}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -7243,7 +7243,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 701469803}
   buildMarker: {fileID: 1465961635}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -7297,6 +7297,16 @@ Prefab:
     - target: {fileID: 224153114756289222, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
         type: 2}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224343676791519946, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 163.99998
+      objectReference: {fileID: 0}
+    - target: {fileID: 224343676791519946, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8567,7 +8577,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 129392767}
   buildMarker: {fileID: 1523064002}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -9321,7 +9331,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 1708549888}
   buildMarker: {fileID: 1228946922}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -9621,7 +9631,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 1297837544}
   buildMarker: {fileID: 412605324}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -10385,7 +10395,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 721585037}
   buildMarker: {fileID: 703505729}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -11184,7 +11194,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 1880439647}
   buildMarker: {fileID: 445221909}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -11512,7 +11522,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 1654533465}
   buildMarker: {fileID: 1673928092}
-  powerUpFlashEffect: {fileID: 1915644587776916, guid: e78ba0776b8d3364dad54b7287833523,
+  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
