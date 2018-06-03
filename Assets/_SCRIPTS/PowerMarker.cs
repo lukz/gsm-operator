@@ -88,7 +88,7 @@ public class PowerMarker : MonoBehaviour
 		}
 		markers.Clear();
 		markerRenderers.Clear();
-		float y = .4f;
+		float y = .42f;
 		// added in light up order
 		switch (count)
 		{
@@ -99,15 +99,15 @@ public class PowerMarker : MonoBehaviour
 				break;
 			case 2:
 				{
-					CreateMarker("marker1", .16f, y);
-					CreateMarker("marker2", -.16f, y);
+					CreateMarker("marker1", .14f, y);
+					CreateMarker("marker2", -.14f, y);
 				}
 				break;
 			case 3:
 				{
-					CreateMarker("marker1", .32f, y);
+					CreateMarker("marker1", .28f, y);
 					CreateMarker("marker2", 0f, y);
-					CreateMarker("marker3", -.32f, y);
+					CreateMarker("marker3", -.28f, y);
 				}
 				break;
 		}
