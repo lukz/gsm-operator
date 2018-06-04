@@ -14,7 +14,7 @@ public class Tileset : MonoBehaviour {
     private const int MAP_WIDTH = 5;
     // x, y
     private Tile[,] map = new Tile[MAP_WIDTH, MAP_HEIGHT];
-    float tileSize = 1.18f;
+    float tileSize = 1.2f;
     bool initialized = false;
 
     void Start () {
@@ -34,8 +34,8 @@ public class Tileset : MonoBehaviour {
         {
             for(int y = 0; y < MAP_HEIGHT; y++) 
             {
-                // if there is a tower at the start, its not players
-                Tile tile = GetTileAt(x, y);
+				// if there is a tower at the start, its not players
+				Tile tile = GetTileAt(x, y);
                 GameObject tower = tile.GetTower();
                 if (tower != null)
                 {
@@ -49,7 +49,7 @@ public class Tileset : MonoBehaviour {
 
     public int GridX (float x) 
     {
-        return Mathf.FloorToInt((3.25f + x)/tileSize);
+        return Mathf.FloorToInt((2.9f + x)/tileSize);
     }
 
     public int GridY (float y) 

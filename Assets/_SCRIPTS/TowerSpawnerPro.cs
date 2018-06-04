@@ -309,11 +309,11 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 			GameObject.Instantiate(towerExplosion, tower.transform.position, Quaternion.identity, towerContainer.transform);
 
-            Tweens.Squeeze(tower, 2, 1.5f);
+            Tweens.Squeeze(tower, 2, 0.5f);
 
 			tile.GetComponent<SpriteRenderer>().enabled = true;
 
-            tower.transform.DOMove(button.transform.position, .5f)
+            tower.transform.DOMove(button.transform.position, .15f)
 				.SetEase(Ease.InSine)
 				.OnComplete(()=>{
 					gameManager.ReturnTower();
