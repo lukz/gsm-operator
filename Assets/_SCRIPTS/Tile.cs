@@ -244,7 +244,7 @@ public class Tile : MonoBehaviour {
     public void Build(GameObject tower)
     {
         tower.transform.parent = transform;
-        tower.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        tower.transform.position = new Vector3(transform.position.x, transform.position.y-0.05f, transform.position.z);
 
         tower.GetComponent<TowerScript>().AttachToTile(this);
 		buildMarker.CancelBuild();

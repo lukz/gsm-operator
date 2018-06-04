@@ -231,7 +231,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 				return;
 			}
 			ChangeDrawSorting(draggedTowerInstance, "GUI", 4);
-			Vector3 targetPos = tile.transform.position;
+			Vector3 targetPos = tile.transform.position + new Vector3(0,-0.05f);
 			draggedTowerInstance.transform.DOMove(targetPos, .2f)
 				.SetEase(Ease.InOutFlash)
 				.OnComplete(()=>{
