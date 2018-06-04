@@ -35,6 +35,7 @@ public class CameraResize : MonoBehaviour {
 		guiCanvas.transform.position = newpos;
 
 		newpos.x = leftPanel.transform.position.x - newpos.x;
-		//leftPanel.transform.position = new Vector3(newpos.x, guiCanvas.transform.position.y, guiCanvas.transform.position.z);
+
+		leftPanel.transform.position = new Vector3(-Camera.main.orthographicSize * aspect +0.2f, guiCanvas.transform.position.y+1f, guiCanvas.transform.position.z);
 	}
 }
