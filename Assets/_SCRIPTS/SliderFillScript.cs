@@ -34,7 +34,7 @@ public class SliderFillScript : MonoBehaviour {
                     {
                         imageScript.material.SetFloat(flashMixId, mix = v);
                     },
-                    1,
+                    0.6f,
                     flashDuration * 0.1f
                 ).SetEase(Ease.OutSine)
             )

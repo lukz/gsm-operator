@@ -291,7 +291,7 @@ public class EventTriggerProxy : MonoBehaviour {
 
             .Insert(0, gateSpriteFilled.transform.DORotate(new Vector3(0, 0, -25), 0.5f).SetEase(Ease.InOutSine))
             .Insert(0, gateSpriteFilled.transform.DOMoveX(gateSpritePos.x + 1.5f, 1.5f).SetEase(Ease.OutSine))
-            .Insert(0, gateSpriteFilled.DOFade(0, 0.7f).SetEase(Ease.InSine))
+            .Insert(0, gateSpriteFilled.DOFade(0, 0.6f).SetEase(Ease.InSine))
 
             .PrependInterval(flashDuration);
             ;
