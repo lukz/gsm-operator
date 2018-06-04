@@ -85,6 +85,12 @@ public class GameManager : MonoBehaviour
 
 	public BoxController boxController;
 
+
+	[SerializeField]
+	private GameObject MenuBtnHolder;
+
+
+
 	void Awake()
 	{
 		if (instance == null)
@@ -380,6 +386,7 @@ public class GameManager : MonoBehaviour
 	{
 		timeOnLevel += Time.deltaTime;
 		ShakeScreen();
+		HideMenu();
 
 		if (houses != null)
 		{
@@ -546,6 +553,29 @@ public class GameManager : MonoBehaviour
 			Sounds.VolumeMusic(0);
 			SceneManager.LoadScene("LVL" + nextScene);
 		}
+	}
+
+	public void ShowMenu()
+	{
+		MenuBtnHolder.SetActive(true);
+	}
+
+
+	public void HideMenu()
+	{
+			if (Input.GetMouseButtonDown(0))
+			{
+				// Construct a ray from the current touch coordinates
+				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+	
+				if (!Physics.Raycast(ray, 999, LayerMask.NameToLayer("BtnHolder"))) {
+					
+					MenuBtnHolder.SetActive(false);
+				}
+
+
+			}
+
 	}
 
 	void OnDestroy()

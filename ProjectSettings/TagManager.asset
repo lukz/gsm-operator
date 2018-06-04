@@ -19,6 +19,7 @@ TagManager:
   - Tileset
   - Pump
   - Tile
+  - BtnHolder
   layers:
   - Default
   - TransparentFX
