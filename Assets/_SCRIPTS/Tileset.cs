@@ -14,7 +14,7 @@ public class Tileset : MonoBehaviour {
     private const int MAP_WIDTH = 5;
     // x, y
     private Tile[,] map = new Tile[MAP_WIDTH, MAP_HEIGHT];
-    float tileSize = 1.125f;
+    float tileSize = 1.18f;
     bool initialized = false;
 
     void Start () {
@@ -49,13 +49,13 @@ public class Tileset : MonoBehaviour {
 
     public int GridX (float x) 
     {
-        return Mathf.FloorToInt((3.8f + x)/tileSize);
+        return Mathf.FloorToInt((3.25f + x)/tileSize);
     }
 
     public int GridY (float y) 
     {
         // return MAP_HEIGHT - 1 - Mathf.FloorToInt((2.3f +y)/tileSize);
-        return Mathf.FloorToInt((2.3f + y)/tileSize);
+        return Mathf.FloorToInt((2.5f + y)/tileSize);
     }
 	
     private List<Tile> willPowerTiles = new List<Tile>();
@@ -97,16 +97,29 @@ public class Tileset : MonoBehaviour {
 
     public void ChangeTilesPower(TowerScript tower, Tile startTile, int powerChange, List<TowerScript.PowerOffset> offsets)
     {
+        List<Tile> validTiles = new List<Tile>();
+
         for (int i = 0; i < offsets.Count; i++)
         {
             int xPos = startTile.x + offsets[i].x;
-            // fliped y
-            int yPos = startTile.y - offsets[i].y;
-            
+            int yPos = startTile.y - offsets[i].y; // fliped y
+
             Tile t = GetTileAt(xPos, yPos);
             if (t != null && t.gameObject.activeInHierarchy) {
-                t.PowerChangeDelayed(tower, powerChange, i);
+                validTiles.Add(t);
             }
+        }
+
+        for (int i = 0; i < validTiles.Count; i++)
+        {
+            float delay = 0;
+            float fullTime = validTiles.Count < 5 ? GameManager.instance.delayPowerFx : GameManager.instance.delayPowerLargeFx;
+
+            delay = (fullTime / validTiles.Count) * i;
+
+            if (powerChange <= 0) delay = 0;
+
+            validTiles[i].PowerChangeDelayed(tower, powerChange, delay);
         }
     }
 

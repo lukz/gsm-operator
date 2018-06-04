@@ -16,17 +16,26 @@ public class YearSplashScript : MonoBehaviour {
         init = true;
         SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         SuperTextMesh textMesh = GetComponentInChildren<SuperTextMesh>();
+        // toggling it makes it show up on the first run, for whatever reason
+        textMesh.enabled = false;
         textMesh.Text = "YEAR  " + year;
 
         DOTween.Sequence()
-            .SetDelay(1f)
-            .Append(
-                spriteRenderer.DOFade(0f, 2f)
-            ).OnComplete(() => {
-				//gameObject.SetActive(false);
-					Sounds.PlayMusic();
-				Sounds.RestoreMusic();
-				Destroy(gameObject);
-            }).PrependInterval(1f);
+        .Append(
+            DOTween.Sequence()
+                .AppendInterval(1/30f)
+                .OnComplete(()=>{
+                    textMesh.enabled = true;
+                })
+        )
+        .AppendInterval(1)
+        .Append(
+            spriteRenderer.DOFade(0f, 2f)
+        )
+        .OnComplete(() => {
+            Sounds.PlayMusic();
+            Sounds.RestoreMusic();
+            Destroy(gameObject);
+        });
     }
 }

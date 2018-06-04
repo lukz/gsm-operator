@@ -45,13 +45,13 @@ public class AddToTile : MonoBehaviour {
 
 	void AttachToTileOrDestroy() 
 	{
-		Debug.Log("Attach? " + transform.parent);
+		// Debug.Log("Attach? " + transform.parent);
 		Tileset tileSet = FindObjectOfType<Tileset>();
 		if (tileSet == null) {
 			Debug.LogError("No tileset!");
 			return;
 		}
-		Debug.Log("Got tileset!");
+		// Debug.Log("Got tileset!");
 		Tile at = tileSet.GetTileAt(transform.position);
 		if (at == null) {
 			Debug.LogError("No tile at drop location!");

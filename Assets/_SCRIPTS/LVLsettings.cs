@@ -25,11 +25,11 @@ public class LVLsettings : MonoBehaviour {
 		// Albo wszystko dontDelete albo nic. Jak pomiedzy to trzeba szukac po tagach.
 		EventTriggerProxy[] list = GameObject.FindGameObjectWithTag("MainCamera").GetComponentsInChildren<EventTriggerProxy>();
 
-		list[0].SetTowerPrefab(towerPrefab1);
-		list[1].SetTowerPrefab(towerPrefab2);
-		list[2].SetTowerPrefab(towerPrefab3);
-		list[3].SetTowerPrefab(towerPrefab4);
-		list[4].SetTowerPrefab(towerPrefab5);
+		// list[0].SetTowerPrefab(towerPrefab1);
+		// list[1].SetTowerPrefab(towerPrefab2);
+		// list[2].SetTowerPrefab(towerPrefab3);
+		// list[3].SetTowerPrefab(towerPrefab4);
+		// list[4].SetTowerPrefab(towerPrefab5);
 
         allTowers = 0;
 

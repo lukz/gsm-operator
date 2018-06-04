@@ -70,7 +70,7 @@ public class PowerMarker : MonoBehaviour
 		if (requiredPower > 3) requiredPower = 3;
 
 		this.requiredPower = requiredPower;
-		Debug.Log("req power = " + requiredPower);
+		// Debug.Log("req power = " + requiredPower);
 
 		CreateMarkers(requiredPower);
 
@@ -88,7 +88,7 @@ public class PowerMarker : MonoBehaviour
 		}
 		markers.Clear();
 		markerRenderers.Clear();
-		float y = .4f;
+		float y = .42f;
 		// added in light up order
 		switch (count)
 		{
@@ -99,15 +99,15 @@ public class PowerMarker : MonoBehaviour
 				break;
 			case 2:
 				{
-					CreateMarker("marker1", .1f, y);
-					CreateMarker("marker2", -.1f, y);
+					CreateMarker("marker1", .14f, y);
+					CreateMarker("marker2", -.14f, y);
 				}
 				break;
 			case 3:
 				{
-					CreateMarker("marker1", .2f, y);
+					CreateMarker("marker1", .28f, y);
 					CreateMarker("marker2", 0f, y);
-					CreateMarker("marker3", -.2f, y);
+					CreateMarker("marker3", -.28f, y);
 				}
 				break;
 		}
@@ -119,14 +119,14 @@ public class PowerMarker : MonoBehaviour
 		GameObject m = new GameObject(name);
 		m.transform.parent = transform;
 		m.transform.position = new Vector2(transform.position.x + x, transform.position.y + y);
-		float scale = 2;
+		float scale = 1;
 		m.transform.localScale = new Vector3(scale, scale, scale);
 		markers.Add(m);
 
 		SpriteRenderer sr = m.AddComponent<SpriteRenderer>();
 		sr.sprite = powerOff;
 		sr.sortingLayerName = "GUI";
-		sr.sortingOrder = 0;
+		sr.sortingOrder =99;
 
 		markerRenderers.Add(sr);
 	}

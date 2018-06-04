@@ -274,18 +274,21 @@ public class Tile : MonoBehaviour {
             GameObject powerUpFx = GameObject.Instantiate(powerUpFlashEffect);
             powerUpFx.transform.parent = transform;
             powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
-			Sounds.PlayPowerUp();
+            // dont play sound when we just started and spawning stuff
+            if (GameManager.instance.timeOnLevel >= 0.1f) {
+			    Sounds.PlayPowerUp();
+            }
         }
     }
 
-    public void PowerChangeDelayed(TowerScript source, int powerChange, int delayIndex)
+    public void PowerChangeDelayed(TowerScript source, int powerChange, float delay)
     {
-        StartCoroutine(PowerChangeCorutine(source, powerChange, delayIndex));
+        StartCoroutine(PowerChangeCorutine(source, powerChange, delay));
     }
 
-    IEnumerator PowerChangeCorutine(TowerScript source, int powerChange, int delayIndex)
+    IEnumerator PowerChangeCorutine(TowerScript source, int powerChange, float delay)
     {
-        yield return new WaitForSeconds(delayIndex * GameManager.instance.delayPowerFx);
+        yield return new WaitForSeconds(delay);
         PowerChange(source, powerChange);
     }
 

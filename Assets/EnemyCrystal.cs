@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class EnemyCrystal : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	public GameObject enemyCrystalFX;
 	
-	// Update is called once per frame
-	void Update () {
-		
+	public void SpawnFX() {
+		GameObject.Instantiate(enemyCrystalFX, transform);
 	}
 }

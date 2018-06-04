@@ -25,7 +25,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 	[Range(0f, 1f)]
 	public float minDragTime = .2f;
 
-	public int towerGuiSorting = 51;
+	public int towerGuiSorting = 101;
 	// offset for tile check at the towers base
 	float towerBaseYOffset = 0;//-.4f;
 
@@ -91,7 +91,7 @@ public class TowerSpawnerPro : MonoBehaviour {
         draggedTowerInstance = null;
         draggedTowerOwner = null;
         powerOffsets = null;
-        bool dragging = false;
+        dragging = false;
         previouslyDraggedTile = null;
         dragTime = 0;
         StopAllCoroutines();
@@ -122,10 +122,10 @@ public class TowerSpawnerPro : MonoBehaviour {
 		// TowerScript ts = draggedTowerInstance.GetComponent<TowerScript>();
 
 		// buttons are at 50 for some reason...
-		ChangeDrawSorting(draggedTowerInstance, "GUI", towerGuiSorting);
+		ChangeDrawSorting(draggedTowerInstance, "GUI", 101);
 		//draggedTowerInstance.transform.DOPunchRotation(new Vector3(0, 0, 30), .5f, 10, 1);
 		SpriteRenderer sprite = draggedTowerInstance.transform.Find("Body").GetComponent<SpriteRenderer>();
-		
+
 		float flashDuration = .2f;
 		int repeats = 1;
 	
@@ -143,7 +143,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		);
 		
 		// this is in game units
-		towerOffset.y = GameManager.IS_MOBILE?0.5f:0.0f;
+		towerOffset.y = GameManager.IS_MOBILE?0.65f:0.0f;
 		powerOffsets = draggedTowerInstance.GetComponent<TowerScript>().powerOffsets;
 
 		tileset.StartBuilding();
@@ -219,7 +219,10 @@ public class TowerSpawnerPro : MonoBehaviour {
 			if (rocks.Count > 0) {
 				Debug.Log("Got rocks, cant build! " + rocks.Count);
 				foreach (var rock in rocks) {
-					// TODO animation
+					EnemyCrystal ec = rock.GetComponent<EnemyCrystal>();
+					if (ec != null) {
+						ec.SpawnFX();
+					}
 				}
 				tile.CancelBuildTarget();
 				ReturnTower();
@@ -263,16 +266,17 @@ public class TowerSpawnerPro : MonoBehaviour {
 		// draggedTowerInstance = null;
 	}
 
-	public void ReturnTower() {
-		if (draggedTowerInstance == null) return;
+	public bool ReturnTower() {
+		if (draggedTowerInstance == null) return false;
 		ReturnTower(draggedTowerOwner, draggedTowerInstance);
 		tileset.CancelBuilding();
         previouslyDraggedTile = null;
 		draggedTowerInstance = null;
 		draggedTowerOwner = null;
+		return true;
 	}
 
-	public void ReturnTower(EventTriggerProxy button, GameObject tower, bool lockButton = false) {
+	public void ReturnTower(EventTriggerProxy button, GameObject tower) {
 		ChangeDrawSorting(tower, "GUI", towerGuiSorting);
 		TowerScript ts = tower.GetComponent<TowerScript>();
 		bool wasAttached = ts.DetachFromTile();
@@ -306,10 +310,7 @@ public class TowerSpawnerPro : MonoBehaviour {
             tower.transform.DOMove(button.transform.position, .5f)
 				.SetEase(Ease.InSine)
 				.OnComplete(()=>{
-					button.ReturnTower();
-					if (lockButton) {
-						button.Lock();
-					}
+					gameManager.ReturnTower();
 					GameObject.Destroy(tower);	
 				}
 			);
@@ -329,10 +330,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 				tower.transform.DOMove(newTowerPosOnBtn, .5f)
 					.SetEase(Ease.InOutSine)
 					.OnComplete(()=>{
-						button.ReturnTower();
-						if (lockButton) {
-							button.Lock();
-						}
+						gameManager.ReturnTower();
 						GameObject.Destroy(tower);	
 					}
 				)

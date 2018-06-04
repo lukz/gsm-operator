@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
 	public bool OPENlastLEVEL;
 
 	public float delayPowerFx;
-	private float timeOnLevel = 0;
+    public float delayPowerLargeFx;
+    public float timeOnLevel = 0;
 	private float backs = 0;
 
 	[SerializeField]
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
 
 
 	private int firstLockedButton = 0;
-	public EventTriggerProxy[] towerButtons = new EventTriggerProxy[5];
+	public EventTriggerProxy towerButton;
 	private List<ButtonTowerPair> buildTowers = new List<ButtonTowerPair>();
 
 	public Button nextLevelButton;
@@ -81,6 +82,8 @@ public class GameManager : MonoBehaviour
 	private GameObject winAnimationPowerBar;
 
 	private bool preparedScene = false;
+
+	public BoxController boxController;
 
 	void Awake()
 	{
@@ -141,10 +144,11 @@ public class GameManager : MonoBehaviour
 	void Reset()
 	{
 		towerspawner.Reset();
-		foreach (var tb in towerButtons)
-		{
-			tb.Reset();
-		}
+		towerButton.Reset();
+	}
+
+	public void ReturnTower() {
+		boxController.ReturnTower();
 	}
 
 	public void TowerBuild(EventTriggerProxy button, GameObject tower)
@@ -158,20 +162,21 @@ public class GameManager : MonoBehaviour
 		{
 			restartFlareFx.SetActive(false);
 		}
-
+		boxController.PrevTower();
+		// boxController.ReturnTower();
 		Debug.Log("Lock " + (firstLockedButton - 1));
-		if (firstLockedButton > 0)
-		{
-			--firstLockedButton;
-			if (firstLockedButton <= 4)
-			{
-				towerButtons[firstLockedButton].Lock();
-			}
-			if (firstLockedButton <= 1)
-			{
-				restartButton.interactable = false;
-			}
-		}
+		// if (firstLockedButton > 0)
+		// {
+		// 	--firstLockedButton;
+		// 	if (firstLockedButton <= 4)
+		// 	{
+		// 		towerButtons[firstLockedButton].Lock();
+		// 	}
+		// 	if (firstLockedButton <= 1)
+		// 	{
+		// 		restartButton.interactable = false;
+		// 	}
+		// }
 	}
 	void UnlockNextTower()
 	{
@@ -180,10 +185,11 @@ public class GameManager : MonoBehaviour
 			restartFlareFx.SetActive(true);
 		}
 
-		if (firstLockedButton < 5)
-		{
-			towerButtons[firstLockedButton].Unlock();
-		}
+		// if (firstLockedButton < 5)
+		// {
+		// 	towerButtons[firstLockedButton].Unlock();
+		// }
+		boxController.NextTower();
 		if (firstLockedButton > 0)
 		{
 			restartButton.interactable = true;
@@ -195,7 +201,7 @@ public class GameManager : MonoBehaviour
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
 	{
-
+		
 		buildTowers = new List<ButtonTowerPair>();
 		firstLockedButton = 0;
 		canDoActions = true;
@@ -214,10 +220,11 @@ public class GameManager : MonoBehaviour
 			towerspawner.towerContainer = towersContainer;
 			towerspawner.tileset = GameObject.FindGameObjectWithTag("Tileset").GetComponent<Tileset>();
 
-			for (int i = 0; i < 5; i++)
-			{
-				towerButtons[i].Lock();
-			}
+			boxController.Restart(lvlmanager);
+			// for (int i = 0; i < 5; i++)
+			// {
+			// 	   towerButtons[i].Lock();
+			// }
 			Transform oldSplash = transform.Find("YearSplash");
 			if (oldSplash != null)
 			{
@@ -240,7 +247,7 @@ public class GameManager : MonoBehaviour
 				towerDragTutorialInstance = GameObject.Instantiate(towerDragTutorial);
 
 				// conflicts with Analytics
-				UnityEngine.EventSystems.EventTrigger trigger = towerButtons[0].GetComponent<UnityEngine.EventSystems.EventTrigger>();
+				UnityEngine.EventSystems.EventTrigger trigger = towerButton.GetComponent<UnityEngine.EventSystems.EventTrigger>();
 				UnityEngine.EventSystems.EventTrigger.Entry entry = new UnityEngine.EventSystems.EventTrigger.Entry();
 				entry.eventID = UnityEngine.EventSystems.EventTriggerType.PointerDown;
 				entry.callback.AddListener((data) =>
@@ -282,6 +289,7 @@ public class GameManager : MonoBehaviour
 			{
 				powerStickers.Add(ps);
 				ps.transform.position = topPowerStickerPosition.transform.position;
+				ps.GetComponent<SpriteRenderer>().enabled = false;
 			}
 			else
 			{
@@ -316,11 +324,32 @@ public class GameManager : MonoBehaviour
 			LockCurrentTower();
 			ButtonTowerPair item = buildTowers[buildTowers.Count - 1];
 			buildTowers.Remove(item);
-			towerspawner.ReturnTower(item.button, item.tower, false);
+			towerspawner.ReturnTower(item.button, item.tower);
 			backs++;
 
             towerspawner.tileset.ToggleRocks();
         }
+	}
+
+	public bool RestartAll() 
+	{
+		if (!canDoActions) return false;
+		if (buildTowers.Count == 0) 
+		{
+			return towerspawner.ReturnTower();
+		}
+		towerspawner.ReturnTower();
+		while (buildTowers.Count > 0)
+		{
+			LockCurrentTower();
+			ButtonTowerPair item = buildTowers[buildTowers.Count - 1];
+			buildTowers.Remove(item);
+			towerspawner.ReturnTower(item.button, item.tower);
+			backs++;
+
+            towerspawner.tileset.ToggleRocks();
+        }
+		return true;
 	}
 	void ShakeScreen()
 	{
@@ -380,7 +409,7 @@ public class GameManager : MonoBehaviour
 					}
 				}
 
-				float realProgress = (countPowered / powerNeeded) * 0.85f;
+				float realProgress = (countPowered / powerNeeded) * 1f;
 				float swim = Mathf.Sin(Time.timeSinceLevelLoad * 1f);
 				if (realProgress == 0 || realProgress == 1) swim = 0;
 				float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
