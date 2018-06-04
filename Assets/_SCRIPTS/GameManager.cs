@@ -191,11 +191,11 @@ public class GameManager : MonoBehaviour
 			restartFlareFx.SetActive(true);
 		}
 
-		// if (firstLockedButton < 5)
-		// {
-		// 	towerButtons[firstLockedButton].Unlock();
-		// }
-		boxController.NextTower();
+        // if (firstLockedButton < 5)
+        // {
+        // 	towerButtons[firstLockedButton].Unlock();
+        // }
+        boxController.NextTower();
 		if (firstLockedButton > 0)
 		{
 			restartButton.interactable = true;

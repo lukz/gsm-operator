@@ -100,7 +100,8 @@ public class BoxController : MonoBehaviour {
 			if (box.SlotId - 1 == 0) {
 				box.MoveToSlot(box.SlotId - 1, 0, (tb) => {
 					gameManager.towerButton.SetTowerPrefab(tb.GetPrefab(), true);
-					moving = 0;
+                    gameManager.towerButton.Unlock();
+                    moving = 0;
 				});
 			} else {
 				box.MoveToSlot(box.SlotId - 1, 0, StopMoving);
@@ -130,5 +131,6 @@ public class BoxController : MonoBehaviour {
 				gameManager.towerButton.SetTowerPrefab(box.GetPrefab());
 			}
 		}
+
 	}
 }

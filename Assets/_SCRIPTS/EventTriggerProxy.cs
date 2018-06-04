@@ -9,7 +9,7 @@ public class EventTriggerProxy : MonoBehaviour {
 	private GameObject towerPrefab;
 	private TowerSpawnerPro towerSpawnerPro;
 	public Image towerImage;
-	// bool locked = true;
+	bool locked = true;
 
     public SpriteRenderer gateSpriteFilled;
     public SpriteRenderer gateSpriteEmpty;
@@ -43,9 +43,9 @@ public class EventTriggerProxy : MonoBehaviour {
 			Debug.LogError("Gate filled missing!");
 		}
         gateSpritePos = gateSpriteFilled.transform.position;
-		if (!gateSpriteEmpty) {
-			Debug.LogError("Gate empty missing!");
-		}
+		//if (!gateSpriteEmpty) {
+		//	Debug.LogError("Gate empty missing!");
+		//}
 
         EventTrigger trigger = GetComponent<EventTrigger>();
         {
@@ -93,6 +93,9 @@ public class EventTriggerProxy : MonoBehaviour {
                         towerImage.sprite = spriteRenderer.sprite;
                         towerImage.enabled = true;
                         button.enabled = true;
+
+                        gateSpriteFilled.enabled = true;
+                        //gateSpriteEmpty.enabled = false;
                     })
                 )
                 .Append(
@@ -114,8 +117,8 @@ public class EventTriggerProxy : MonoBehaviour {
 		} else {
 			towerImage.enabled = false;
 			button.enabled = false;
-			// gateSpriteFilled.enabled = false;
-			// gateSpriteEmpty.enabled = true;
+			gateSpriteFilled.enabled = false;
+			//gateSpriteEmpty.enabled = true;
 		}
 	}
 
@@ -125,7 +128,7 @@ public class EventTriggerProxy : MonoBehaviour {
     float dropTime;
     Vector3 dropPos = new Vector3();
 	void Update() {
-        if(towerImage != null && towerImage.enabled)
+        if(!locked && towerImage != null && towerImage.enabled)
         {
             timeToShakeLeft -= Time.deltaTime;
 
@@ -187,7 +190,8 @@ public class EventTriggerProxy : MonoBehaviour {
 
     void PickTower(PointerEventData data)
     {
-		Button button = GetComponent<Button>();
+        if (locked) return;
+        Button button = GetComponent<Button>();
 		if (!button.enabled) return;
         if (drop) {
             float dst = Vector3.Distance(dropPos, InputUtils.WorldMousePosition());
@@ -241,10 +245,12 @@ public class EventTriggerProxy : MonoBehaviour {
     int flashMixId = Shader.PropertyToID("_FlashMix");
     float mix;
 
-    public void Unlock() {
-		if (towerPrefab == null) return;
-
-       
+    public void Unlock()
+    {
+        if (towerPrefab == null) return;
+        if (!locked) return;
+        //  Debug.Log("Unlock");
+        locked = false;
 
         //lockTimer = .5f;
         // TODO hide the graphic
@@ -283,8 +289,8 @@ public class EventTriggerProxy : MonoBehaviour {
             .Append(gateSpriteFilled.transform.DOMoveY(gateSpritePos.y + 0.5f, 0.15f).SetEase(Ease.OutSine))
             .Append(gateSpriteFilled.transform.DOMoveY(gateSpritePos.y + -5, 0.8f).SetEase(Ease.InSine))
 
-            .Insert(0, gateSpriteFilled.transform.DORotate(new Vector3(0, 0, 25), 0.5f).SetEase(Ease.InOutSine))
-            .Insert(0, gateSpriteFilled.transform.DOMoveX(gateSpritePos.x - 1.5f, 1.5f).SetEase(Ease.OutSine))
+            .Insert(0, gateSpriteFilled.transform.DORotate(new Vector3(0, 0, -25), 0.5f).SetEase(Ease.InOutSine))
+            .Insert(0, gateSpriteFilled.transform.DOMoveX(gateSpritePos.x + 1.5f, 1.5f).SetEase(Ease.OutSine))
             .Insert(0, gateSpriteFilled.DOFade(0, 0.7f).SetEase(Ease.InSine))
 
             .PrependInterval(flashDuration);
@@ -295,10 +301,13 @@ public class EventTriggerProxy : MonoBehaviour {
 
 	public void Lock() {
 		if (towerPrefab == null) return;
-        
+        if (locked) return;
+        //Debug.Log("Lock");
+        locked = true;
+
         //lockTimer = .5f;
         // TODO show the graphic
-
+        gateSpriteFilled.enabled = true;
         gateSpriteFilled.transform.DOKill();
         gateSpriteFilled.material.DOKill();
 
@@ -315,7 +324,7 @@ public class EventTriggerProxy : MonoBehaviour {
 
 	public void Reset () {
 		ReturnTower();
-		// Lock();
+		Lock();
 	}
 
     public void ShowFlare(bool show)
