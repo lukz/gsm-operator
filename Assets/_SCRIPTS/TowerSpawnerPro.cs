@@ -147,6 +147,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 		powerOffsets = draggedTowerInstance.GetComponent<TowerScript>().powerOffsets;
 
 		tileset.StartBuilding();
+
+        gameManager.towerButton.Lock();
 	}
 
 	void ChangeDrawSorting(GameObject tower, string layer, int order) {
@@ -273,7 +275,11 @@ public class TowerSpawnerPro : MonoBehaviour {
         previouslyDraggedTile = null;
 		draggedTowerInstance = null;
 		draggedTowerOwner = null;
-		return true;
+
+
+        gameManager.towerButton.Unlock();
+
+        return true;
 	}
 
 	public void ReturnTower(EventTriggerProxy button, GameObject tower) {
