@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private GameObject MenuBtnHolder;
 
-
+    private float restartButtonLockTimer = 0f;
 
 	void Awake()
 	{
@@ -320,7 +320,7 @@ public class GameManager : MonoBehaviour
 	}
 	public void Restart()
 	{
-		if (!canDoActions) return;
+		if (!canDoActions || restartButtonLockTimer > 0) return;
 
 		towerspawner.ReturnTower();
 		Sounds.PlayButtonClick();
@@ -388,7 +388,16 @@ public class GameManager : MonoBehaviour
 		ShakeScreen();
 		HideMenu();
 
-		if (houses != null)
+        if (restartButtonLockTimer > 0)
+        {
+            restartButtonLockTimer -= Time.deltaTime;
+            if(restartButtonLockTimer <= 0)
+            {
+                restartButton.interactable = true;
+            }
+        }
+
+        if (houses != null)
 		{
 			if (houses.Length > 0)
 			{
@@ -599,6 +608,12 @@ public class GameManager : MonoBehaviour
 			this.tower = tower;
 		}
 	}
+
+    public void lockRestartFor(float time)
+    {
+        restartButtonLockTimer = Mathf.Max(restartButtonLockTimer, time);
+        restartButton.interactable = false;
+    }
 
 
 }

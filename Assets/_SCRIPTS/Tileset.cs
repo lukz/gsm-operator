@@ -110,10 +110,13 @@ public class Tileset : MonoBehaviour {
             }
         }
 
+
+        float fullTime = validTiles.Count < 5 ? GameManager.instance.delayPowerFx : GameManager.instance.delayPowerLargeFx;
+        GameManager.instance.lockRestartFor(fullTime);
+
         for (int i = 0; i < validTiles.Count; i++)
         {
             float delay = 0;
-            float fullTime = validTiles.Count < 5 ? GameManager.instance.delayPowerFx : GameManager.instance.delayPowerLargeFx;
 
             delay = (fullTime / validTiles.Count) * i;
 
