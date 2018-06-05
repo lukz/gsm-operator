@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PowerMarker : MonoBehaviour
 {
@@ -130,4 +131,23 @@ public class PowerMarker : MonoBehaviour
 
 		markerRenderers.Add(sr);
 	}
+
+    public void MapFinishedTween()
+    {
+        for (int i = 0; i < markers.Count; i++)
+        {
+            GameObject marker = markers[i];
+            SpriteRenderer mr = marker.GetComponent<SpriteRenderer>();
+
+            DOTween.Sequence()
+            .Append(marker.transform.DOScale(4f, 1f).SetEase(Ease.InSine))
+            .Insert(0, mr.DOFade(0, 1f).SetEase(Ease.InOutSine));
+        }
+
+        SpriteRenderer or = animatorPower.GetComponentInChildren<SpriteRenderer>();
+        if(or != null)
+        {
+            or.DOFade(0, 1f).SetEase(Ease.InSine);
+        }
+    }
 }

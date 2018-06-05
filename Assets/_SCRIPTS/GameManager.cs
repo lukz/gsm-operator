@@ -452,7 +452,9 @@ public class GameManager : MonoBehaviour
 						showWhiteTint(true);
 						restartFlareFx.SetActive(false);
 
-					}
+                        FinishedTweens();
+
+                    }
 
 
 					if (timer == 0)
@@ -486,6 +488,19 @@ public class GameManager : MonoBehaviour
 			}
 		}
 	}
+
+    private void FinishedTweens()
+    {
+        for (int i = 0; i < towerspawner.tileset.tiles.Count; i++)
+        {
+            for (int j = 0; j < towerspawner.tileset.tiles[i].row.Count; j++)
+            {
+                PowerMarker marker = towerspawner.tileset.tiles[i].row[j].GetComponentInChildren<PowerMarker>();
+                if (marker != null) marker.MapFinishedTween();
+            }
+            
+        }
+    }
 
 	private void showWhiteTint(bool fadeIn)
 	{
