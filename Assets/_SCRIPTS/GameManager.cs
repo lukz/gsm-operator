@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
-using UnityEngine.Analytics;
+//using UnityEngine.Analytics;
 
 public class GameManager : MonoBehaviour
 {
@@ -468,11 +468,11 @@ public class GameManager : MonoBehaviour
 						//Debug.Log("Full power");
 						string nameEvent = "levelWin_" + lvlmanager.level.ToString();
 
-						Analytics.CustomEvent(nameEvent, new Dictionary<string, object>
+						/*Analytics.CustomEvent(nameEvent, new Dictionary<string, object>
 		{
 			{ "timeToWin", timeOnLevel },
 			{ "backs", backs }
-		});
+		});*/
 
 						CheckSave();
 						changeTierOrScene();
