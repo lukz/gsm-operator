@@ -143,7 +143,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		);
 		
 		// this is in game units
-		towerOffset.y = GameManager.IS_MOBILE?0.65f:0.0f;
+		towerOffset.y = GameManager.IS_MOBILE?0.7f:0.0f;
 		powerOffsets = draggedTowerInstance.GetComponent<TowerScript>().powerOffsets;
 
 		tileset.StartBuilding();
