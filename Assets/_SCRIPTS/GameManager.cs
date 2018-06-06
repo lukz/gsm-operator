@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
 	LVLsettings lvlmanager;
 	public static GameManager instance = null;
-	public float powerUpTimeForSceneChange;
+	private float powerUpTimeForSceneChange;
 	private bool tintShwon = false;
 
 	// List<GameObject> towersToDestroy = new List<GameObject>();
@@ -270,7 +270,7 @@ public class GameManager : MonoBehaviour
 		Sounds.PlayStartLevel();
 
 
-		showWhiteTint(false);
+		showWhiteTint(false, 0);
 
 		houses = GameObject.FindGameObjectsWithTag("House");
 
@@ -446,13 +446,17 @@ public class GameManager : MonoBehaviour
 						canDoActions = false;
 						tintShwon = true;
 
-						//GameObject newSplash = Instantiate(splash);
+                        //GameObject newSplash = Instantiate(splash);
 
-						//newSplash.GetComponent<SplashScript>().setEndSplash();
-						showWhiteTint(true);
+                        //newSplash.GetComponent<SplashScript>().setEndSplash();
+                        float whiteTintDelay = PowerMarker.currentMarkerDelay + 2.5f;
+                        showWhiteTint(true, whiteTintDelay);
+
 						restartFlareFx.SetActive(false);
 
                         FinishedTweens();
+
+                        powerUpTimeForSceneChange = whiteTintDelay + 2.5f;
 
                     }
 
@@ -502,18 +506,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-	private void showWhiteTint(bool fadeIn)
+	private void showWhiteTint(bool fadeIn, float delay)
 	{
 		GameObject newTint = Instantiate(tint);
 
 		if (fadeIn)
 		{
-			newTint.GetComponent<FullScreenTintScript>().fadeIn(1f);
+			newTint.GetComponent<FullScreenTintScript>().fadeIn(delay);
 		}
 		else
 		{
 
-			newTint.GetComponent<FullScreenTintScript>().fadeOut();
+			newTint.GetComponent<FullScreenTintScript>().fadeOut(delay);
 		}
 
 	}

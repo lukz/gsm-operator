@@ -3245,7 +3245,6 @@ MonoBehaviour:
   tint: {fileID: 1775950363725364, guid: bed1bf69928b03c4086d37309afd5225, type: 2}
   restartFlareFx: {fileID: 1820021342007556}
   powerSlider: {fileID: 114556626220750970}
-  powerUpTimeForSceneChange: 4
   OPENlastLEVEL: 0
   delayPowerFx: 0.3
   delayPowerLargeFx: 0.9

@@ -20,7 +20,15 @@ public class PowerMarker : MonoBehaviour
 	[SerializeField]
 	private Animator animatorPower;
 
-	public void SetPower(int power)
+    public static float currentMarkerDelay = 0;
+    private float perMarkerDelayAdd = 0.1f;
+
+    public void Awake()
+    {
+        currentMarkerDelay = 0;
+    }
+
+    public void SetPower(int power)
 	{
 		if (power < 0) power = 0;
 		this.power = power;
@@ -140,8 +148,15 @@ public class PowerMarker : MonoBehaviour
             SpriteRenderer mr = marker.GetComponent<SpriteRenderer>();
 
             DOTween.Sequence()
-            .Append(marker.transform.DOScale(4f, 1f).SetEase(Ease.InSine))
-            .Insert(0, mr.DOFade(0, 1f).SetEase(Ease.InOutSine));
+            .Append(marker.transform.DOScale(1.3f, 0.2f).SetEase(Ease.OutSine))
+            .Append(marker.transform.DOScale(0f, 0.2f).SetEase(Ease.InSine))
+            .PrependInterval(currentMarkerDelay)
+            .OnComplete(() =>
+            {
+                Destroy(marker.gameObject);
+            });
+
+            currentMarkerDelay += perMarkerDelayAdd;
         }
 
         SpriteRenderer or = animatorPower.GetComponentInChildren<SpriteRenderer>();

@@ -29,7 +29,7 @@ public class FullScreenTintScript : MonoBehaviour {
 
     }
 
-    public void fadeOut()
+    public void fadeOut(float delay)
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.color = new Color(1, 1, 1, 1);
@@ -38,6 +38,7 @@ public class FullScreenTintScript : MonoBehaviour {
 
             //.Append(flashSequence)
             .Append(sr.DOFade(0, 2f).SetEase(Ease.OutSine))
+            .PrependInterval(delay)
             .OnComplete(() => {
                 Destroy(gameObject);
             });
