@@ -16,7 +16,7 @@ public class FullRestart : MonoBehaviour {
 			entry.eventID = EventTriggerType.PointerDown;
 			entry.callback.AddListener((data) => { 
 				PointerEventData ped = (PointerEventData)data; 
-				Debug.Log("Touch down");
+				// Debug.Log("Touch down");
 				// 0 >= on device
 				if (ped.pointerId == 0) {
 					touching = true;
@@ -29,7 +29,7 @@ public class FullRestart : MonoBehaviour {
 			entry.eventID = EventTriggerType.PointerUp;
 			entry.callback.AddListener((data) => { 
 				PointerEventData ped = (PointerEventData)data; 
-				Debug.Log("Touch up");
+				// Debug.Log("Touch up");
 				// 0 >= on device
 				if (ped.pointerId == 0) {
 					touching = true;
@@ -42,7 +42,7 @@ public class FullRestart : MonoBehaviour {
 			entry.eventID = EventTriggerType.PointerExit;
 			entry.callback.AddListener((data) => { 
 				PointerEventData ped = (PointerEventData)data; 
-				Debug.Log("Touch exit");
+				// Debug.Log("Touch exit");
 				// 0 >= on device
 				if (ped.pointerId == 0) {
 					touching = true;

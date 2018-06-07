@@ -155,6 +155,7 @@ public class GameManager : MonoBehaviour
 
 	public void ReturnTower() {
 		boxController.ReturnTower();
+		restartButton.interactable = true;
 	}
 
 	public void TowerBuild(EventTriggerProxy button, GameObject tower)
@@ -336,8 +337,8 @@ public class GameManager : MonoBehaviour
             towerspawner.tileset.ToggleRocks();
         }
 	}
-
-	public bool RestartAll() 
+	
+    public bool RestartAll() 
 	{
 		if (!canDoActions) return false;
 		if (buildTowers.Count == 0) 

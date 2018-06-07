@@ -190,9 +190,15 @@ public class EventTriggerProxy : MonoBehaviour {
 
     void PickTower(PointerEventData data)
     {
-        if (locked) return;
+        if (locked) {
+            Debug.Log("Cant pick tower, locked");
+            return;
+        }
         Button button = GetComponent<Button>();
-		if (!button.enabled) return;
+		if (!button.enabled) {
+            Debug.Log("Cant pick tower, button not enabled");
+            return;
+        }
         if (drop) {
             float dst = Vector3.Distance(dropPos, InputUtils.WorldMousePosition());
             Debug.Log("dst = " + dst);
@@ -208,7 +214,7 @@ public class EventTriggerProxy : MonoBehaviour {
         if (!drag) {
             drag = true;
             
-            // Debug.Log("PickTower called " + towerPrefab);
+            Debug.Log("picked  tower " + towerPrefab);
             if (towerSpawnerPro != null && towerPrefab != null) {
                 towerSpawnerPro.PickTower(this, towerPrefab);
                 button.enabled = false;
@@ -222,6 +228,10 @@ public class EventTriggerProxy : MonoBehaviour {
 
 	void PlaceTower(PointerEventData data)
     {
+        if (!drag) {
+            Debug.Log("No draging but got drop?");
+            return;
+        }
         if (!GameManager.IS_MOBILE) {
             // just drop on desktop
             PlaceTower();

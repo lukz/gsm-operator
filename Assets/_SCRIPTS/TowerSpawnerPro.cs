@@ -288,7 +288,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		ChangeDrawSorting(tower, "GUI", towerGuiSorting);
 		TowerScript ts = tower.GetComponent<TowerScript>();
 		bool wasAttached = ts.DetachFromTile();
-            
+        
 		if (wasAttached) {
 			tower.transform.Find("Shadow").gameObject.SetActive(false);
 			// lol jank
@@ -322,7 +322,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 					GameObject.Destroy(tower);	
 				}
 			);
-
+			gameManager.lockRestartFor(.15f);
 
 		} else {
             ts.FlashRed();
@@ -343,6 +343,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 					}
 				)
 			);
+			gameManager.lockRestartFor(1);
 		}
 	}
 

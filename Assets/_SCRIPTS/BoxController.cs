@@ -129,6 +129,7 @@ public class BoxController : MonoBehaviour {
 		foreach(var box in boxes) {
 			if (box.SlotId == 0) {
 				gameManager.towerButton.SetTowerPrefab(box.GetPrefab());
+				gameManager.towerButton.Unlock();
 			}
 		}
 
