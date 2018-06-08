@@ -325,8 +325,10 @@ public class GameManager : MonoBehaviour
 
 		towerspawner.ReturnTower();
 		Sounds.PlayButtonClick();
-		// timerTowerRestart = delayBetweenTowerRestart;
-		if (buildTowers.Count > 0)
+        //
+
+        // timerTowerRestart = delayBetweenTowerRestart;
+        if (buildTowers.Count > 0)
 		{
 			LockCurrentTower();
 			ButtonTowerPair item = buildTowers[buildTowers.Count - 1];
@@ -335,6 +337,8 @@ public class GameManager : MonoBehaviour
 			backs++;
 
             towerspawner.tileset.ToggleRocks();
+
+            firstLockedButton--;
         }
 	}
 	
