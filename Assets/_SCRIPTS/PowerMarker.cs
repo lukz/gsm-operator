@@ -97,7 +97,7 @@ public class PowerMarker : MonoBehaviour
 		}
 		markers.Clear();
 		markerRenderers.Clear();
-		float y = .45f;
+		float y = .42f;
 		// added in light up order
 		switch (count)
 		{

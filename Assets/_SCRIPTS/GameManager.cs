@@ -302,7 +302,7 @@ public class GameManager : MonoBehaviour
 			{
 				powerStickers.Add(ps);
 				float dist = topPowerStickerPosition.transform.position.y - bottomStickerPosition.transform.position.y;
-				float po = topPowerStickerPosition.transform.position.y - dist / (powerNeeded) * (i);
+				float po = Mathf.Round((topPowerStickerPosition.transform.position.y - dist / (powerNeeded) * (i)) * 100f) / 100;
 				Vector3 pos = new Vector3(topPowerStickerPosition.transform.position.x, po, topPowerStickerPosition.transform.position.z);
 				ps.transform.position = pos;
 			}
@@ -416,7 +416,6 @@ public class GameManager : MonoBehaviour
 				}
 				if (countPowered >= powerNeeded) allPowered = true;
 
-				//TODO czekaj na zmiane i sprawdz ile sie zmienilo
 				for (int i = powerNeeded - 1; i >= 0; i--)
 				{
 
