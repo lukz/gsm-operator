@@ -79,9 +79,9 @@ public class HouseScript : MonoBehaviour {
                 ).SetEase(Ease.InSine)
             );
 
-        DOTween.Sequence()
-            .Append(transform.DOLocalMoveY(0.1f, 0.1f * flashDuration).SetEase(Ease.OutSine))
-            .Append(transform.DOLocalMoveY(0, 0.9f * flashDuration).SetEase(Ease.InSine));
+        //DOTween.Sequence()
+        //    .Append(transform.DOLocalMoveY(0.1f, 0.1f * flashDuration).SetEase(Ease.OutSine))
+        //    .Append(transform.DOLocalMoveY(0, 0.9f * flashDuration).SetEase(Ease.InSine));
     }
 
     public void FlashPowerDown()
@@ -116,9 +116,9 @@ public class HouseScript : MonoBehaviour {
         
         float startY = transform.localPosition.y;
 
-        DOTween.Sequence()
-            .Append(transform.DOLocalMoveY(-0.1f, 0.1f * flashDuration).SetEase(Ease.OutSine))
-            .Append(transform.DOLocalMoveY(0, 0.9f * flashDuration).SetEase(Ease.InSine));
+        //DOTween.Sequence()
+        //    .Append(transform.DOLocalMoveY(-0.1f, 0.1f * flashDuration).SetEase(Ease.OutSine))
+        //    .Append(transform.DOLocalMoveY(0, 0.9f * flashDuration).SetEase(Ease.InSine));
     }
 
 
