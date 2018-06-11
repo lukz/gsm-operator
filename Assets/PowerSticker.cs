@@ -41,7 +41,7 @@ public class PowerSticker : MonoBehaviour {
 
 			DOTween.Sequence()
 				.Append(transform.DOScale(new Vector3(initialScale.x * 1.5f, initialScale.y * 1.5f, 1), 0.02f)).SetEase(Ease.OutSine)
-				.Append(transform.DOScale(new Vector3(initialScale.x, initialScale.y, 1f), 0.6f)).SetEase(Ease.InSine);
+				.Append(transform.DOScale(new Vector3(initialScale.x, initialScale.y, 1f),              0.4f)).SetEase(Ease.InSine);
 		}
     }
 
