@@ -77,14 +77,14 @@ public class PowerMarker : MonoBehaviour
                 {
                     DOTween.Sequence()
                         .Append(markerRenderers[i - 1].transform.DOLocalMoveY(0.1f, 0.1f * 0.4f).SetEase(Ease.OutSine).SetRelative(true))
-                        .Append(markerRenderers[i - 1].transform.DOLocalMoveY(-0.1f, 0.9f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
+                        .Append(markerRenderers[i - 1].transform.DOLocalMoveY(-0.1f, 0.6f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
                 }
             } else {
                 for (int i = power + Mathf.Abs(powerChange); i > power && i <= markerRenderers.Count; i--)
                 {
                     DOTween.Sequence()
                         .Append(markerRenderers[i - 1].transform.DOLocalMoveY(-0.1f, 0.1f * 0.4f).SetEase(Ease.OutSine).SetRelative(true))
-                        .Append(markerRenderers[i - 1].transform.DOLocalMoveY(0.1f, 0.9f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
+                        .Append(markerRenderers[i - 1].transform.DOLocalMoveY(0.1f, 0.6f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
                 }
             }
 
