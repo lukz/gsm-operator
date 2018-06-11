@@ -589,7 +589,9 @@ public class GameManager : MonoBehaviour
 
 	public void ShowMenu()
 	{
-		MenuBtnHolder.SetActive(true);
+		MenuBtnHolder.transform.DOKill();
+		MenuBtnHolder.transform.DOLocalMoveX(900, 0.2f);
+
 	}
 
 
@@ -601,9 +603,10 @@ public class GameManager : MonoBehaviour
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 	
 				if (!Physics.Raycast(ray, 999, LayerMask.NameToLayer("BtnHolder"))) {
-					
-					MenuBtnHolder.SetActive(false);
-				}
+
+				MenuBtnHolder.transform.DOKill();
+				MenuBtnHolder.transform.DOLocalMoveX(550, 0.2f);
+			}
 
 
 			}
