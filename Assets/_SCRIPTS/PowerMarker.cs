@@ -127,26 +127,15 @@ public class PowerMarker : MonoBehaviour
 				break;
 			case 2:
 				{
-<<<<<<< HEAD
-					CreateMarker("marker1", .16f, y);
-					CreateMarker("marker2", -.16f, y);
-=======
 					CreateMarker("marker1", -.15f, y);
 					CreateMarker("marker2", .15f, y);
->>>>>>> 874d05c3b6e0782ce2dad7e968cf23fc6185be51
 				}
 				break;
 			case 3:
 				{
-<<<<<<< HEAD
-					CreateMarker("marker1", .32f, y);
-					CreateMarker("marker2", 0f, y);
-					CreateMarker("marker3", -.32f, y);
-=======
 					CreateMarker("marker1", -.3f, y);
 					CreateMarker("marker2", 0f, y);
 					CreateMarker("marker3", .3f, y);
->>>>>>> 874d05c3b6e0782ce2dad7e968cf23fc6185be51
 				}
 				break;
 		}

@@ -1006,7 +1006,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 1394426410}
   buildMarker: {fileID: 1349112553}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -1703,15 +1703,9 @@ Transform:
   m_Children:
   - {fileID: 1077078951}
   - {fileID: 1430294376}
-  - {fileID: 1688606310}
   m_Father: {fileID: 1190633326}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &382713515 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101,
-    type: 2}
-  m_PrefabInternal: {fileID: 1484710694}
 --- !u!1 &383195664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,7 +1731,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 383195664}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1793,7 +1787,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 1077078952}
   buildMarker: {fileID: 1430294378}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -2438,7 +2432,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 1094722749}
   buildMarker: {fileID: 172329059}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -2671,7 +2665,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 291002661}
   buildMarker: {fileID: 694027459}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -3320,7 +3314,6 @@ Transform:
   m_Children:
   - {fileID: 211548909}
   - {fileID: 814154366}
-  - {fileID: 1633258887}
   m_Father: {fileID: 1190633326}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3331,7 +3324,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 628818980}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -3387,7 +3380,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 211548910}
   buildMarker: {fileID: 814154368}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -4175,7 +4168,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 1545288209}
   buildMarker: {fileID: 2108557448}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -4510,7 +4503,6 @@ Transform:
   m_Children:
   - {fileID: 190314813}
   - {fileID: 620019692}
-  - {fileID: 382713515}
   m_Father: {fileID: 1190633326}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4521,7 +4513,7 @@ SpriteRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 860361086}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4577,7 +4569,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 190314814}
   buildMarker: {fileID: 620019694}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -4800,7 +4792,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 289581575}
   buildMarker: {fileID: 879054234}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -5624,7 +5616,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 1197787388}
   buildMarker: {fileID: 144185377}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -5791,7 +5783,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 599522139}
   buildMarker: {fileID: 1393852778}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -5967,7 +5959,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 332066283}
   buildMarker: {fileID: 1847218529}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -6230,7 +6222,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 1539448259}
   buildMarker: {fileID: 2052739518}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -6926,7 +6918,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 40057496}
   buildMarker: {fileID: 1688011121}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -7455,7 +7447,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 701469803}
   buildMarker: {fileID: 1465961635}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -7622,58 +7614,6 @@ Transform:
   m_Father: {fileID: 1190633326}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1454551470
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 370360617}
-    m_Modifications:
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.000000029802322
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.000000059604645
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212014431751266116, guid: 749accdd70205479f97844e6ca1b45b3,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 212943768632949358, guid: 749accdd70205479f97844e6ca1b45b3,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1465961632
 GameObject:
   m_ObjectHideFlags: 0
@@ -7817,58 +7757,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1001 &1484710694
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 860361087}
-    m_Modifications:
-    - target: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.00000011920929
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4251760815010024, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212059118440238334, guid: 605b4bf4cf548a144bf6113061ab3101,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 212175535216543518, guid: 605b4bf4cf548a144bf6113061ab3101,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1485921311
 GameObject:
   m_ObjectHideFlags: 0
@@ -8398,11 +8286,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!4 &1633258887 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1713816903}
 --- !u!1001 &1639676338
 Prefab:
   m_ObjectHideFlags: 0
@@ -8455,31 +8338,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 605b4bf4cf548a144bf6113061ab3101, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1642247061 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1740342188114168, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1749737032}
---- !u!50 &1642247064
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1642247061}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
 --- !u!1 &1654533463
 GameObject:
   m_ObjectHideFlags: 0
@@ -8788,7 +8646,7 @@ MonoBehaviour:
   y: 0
   powerMarker: {fileID: 129392767}
   buildMarker: {fileID: 1523064002}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -8861,11 +8719,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   willPowerMarker: {fileID: 2077747297}
---- !u!4 &1688606310 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1454551470}
 --- !u!1 &1697298565
 GameObject:
   m_ObjectHideFlags: 0
@@ -9013,58 +8866,6 @@ MonoBehaviour:
   power: 0
   requiredPower: 0
   animatorPower: {fileID: 1897256358}
---- !u!1001 &1713816903
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 628818981}
-    m_Modifications:
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.00000011920929
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4881519025543692, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212943768632949358, guid: 749accdd70205479f97844e6ca1b45b3,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 212014431751266116, guid: 749accdd70205479f97844e6ca1b45b3,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 749accdd70205479f97844e6ca1b45b3, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1717067637
 GameObject:
   m_ObjectHideFlags: 0
@@ -9277,7 +9078,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4989376566203470, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224153114756289222, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
         type: 2}
@@ -9288,11 +9089,6 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224343676791519946, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9, type: 2}
@@ -9703,7 +9499,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 1708549888}
   buildMarker: {fileID: 1228946922}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -10002,7 +9798,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 1297837544}
   buildMarker: {fileID: 412605324}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -10699,7 +10495,7 @@ MonoBehaviour:
   y: 1
   powerMarker: {fileID: 721585037}
   buildMarker: {fileID: 703505729}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -11488,7 +11284,7 @@ MonoBehaviour:
   y: 2
   powerMarker: {fileID: 1880439647}
   buildMarker: {fileID: 445221909}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}
@@ -11675,7 +11471,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2142776194
 GameObject:
@@ -11775,7 +11571,7 @@ MonoBehaviour:
   y: 3
   powerMarker: {fileID: 1654533465}
   buildMarker: {fileID: 1673928092}
-  powerUpFlashEffect: {fileID: 1156438806243018, guid: 6e363fbebe01d6943b178fff1c1551dd,
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
     type: 2}
   hookLvl0: {fileID: 21300000, guid: d9e5b0493b0215e46a3c07730a3ad5f0, type: 3}
   hookLvl1: {fileID: 21300000, guid: ab60926a3fc1b084480a31235e126e6d, type: 3}

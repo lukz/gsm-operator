@@ -271,12 +271,13 @@ public class Tile : MonoBehaviour {
 
         if (powerChange > 0 && Application.isPlaying)
         {
-            GameObject powerUpFx = GameObject.Instantiate(powerUpFlashEffect);
-            powerUpFx.transform.parent = transform;
-            powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
+
             // dont play sound when we just started and spawning stuff
             if (GameManager.instance.timeOnLevel >= 0.1f) {
-			    Sounds.PlayPowerUp();
+				GameObject powerUpFx = GameObject.Instantiate(powerUpFlashEffect);
+				powerUpFx.transform.parent = transform;
+				powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
+				Sounds.PlayPowerUp();
             }
         }
     }
