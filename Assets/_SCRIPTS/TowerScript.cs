@@ -16,9 +16,8 @@ public class TowerScript : MonoBehaviour {
     private Tileset tileset;
     private Tile tile;
     private GameObject pump;
-
-    [SerializeField]
-    private SpriteRenderer sprite;
+    
+    public SpriteRenderer sprite;
 
     private Animator animator;
     void Start() 

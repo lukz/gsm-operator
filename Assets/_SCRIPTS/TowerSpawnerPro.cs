@@ -315,7 +315,11 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 			tile.GetComponent<SpriteRenderer>().enabled = true;
 
-            tower.transform.DOMove(button.transform.position, .3f)
+
+            GameObject towerBody = tower.GetComponent<TowerScript>().sprite.gameObject;
+            Vector3 newTowerPosOnBtn = new Vector3(button.transform.position.x - towerBody.transform.localPosition.x, button.transform.position.y - towerBody.transform.localPosition.y, button.transform.position.z);
+
+            tower.transform.DOMove(newTowerPosOnBtn, .3f)
 				.SetEase(Ease.InSine)
 				.OnComplete(()=>{
 					gameManager.ReturnTower();
@@ -327,7 +331,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 		} else {
             ts.FlashRed();
 
-			Vector3 newTowerPosOnBtn = new Vector3(button.transform.position.x-0f, button.transform.position.y - 0.23f, button.transform.position.z);
+            GameObject towerBody = tower.GetComponent<TowerScript>().sprite.gameObject;
+			Vector3 newTowerPosOnBtn = new Vector3(button.transform.position.x - towerBody.transform.localPosition.x, button.transform.position.y - towerBody.transform.localPosition.y, button.transform.position.z);
 
             // this api...
             DOTween.Sequence()
