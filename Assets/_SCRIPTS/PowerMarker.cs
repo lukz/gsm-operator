@@ -28,7 +28,7 @@ public class PowerMarker : MonoBehaviour
         currentMarkerDelay = 0;
     }
 
-    public void SetPower(int power)
+    public void SetPower(int power, int powerChange)
 	{
 		if (power < 0) power = 0;
 		this.power = power;
@@ -70,6 +70,25 @@ public class PowerMarker : MonoBehaviour
 					}
 					break;
 			}
+
+            if(powerChange > 0)
+            {
+                for (int i = power; i < power + powerChange && i <= markerRenderers.Count; i++)
+                {
+                    DOTween.Sequence()
+                        .Append(markerRenderers[i - 1].transform.DOLocalMoveY(0.1f, 0.1f * 0.4f).SetEase(Ease.OutSine).SetRelative(true))
+                        .Append(markerRenderers[i - 1].transform.DOLocalMoveY(-0.1f, 0.6f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
+                }
+            } else {
+                for (int i = power + Mathf.Abs(powerChange); i > power && i <= markerRenderers.Count; i--)
+                {
+                    DOTween.Sequence()
+                        .Append(markerRenderers[i - 1].transform.DOLocalMoveY(-0.1f, 0.1f * 0.4f).SetEase(Ease.OutSine).SetRelative(true))
+                        .Append(markerRenderers[i - 1].transform.DOLocalMoveY(0.1f, 0.6f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
+                }
+            }
+
+
 		}
 	}
 
@@ -85,7 +104,7 @@ public class PowerMarker : MonoBehaviour
 
 		if (requiredPower > 0)
 		{
-			SetPower(power);
+			SetPower(power, 0);
 		}
 	}
 
@@ -108,15 +127,26 @@ public class PowerMarker : MonoBehaviour
 				break;
 			case 2:
 				{
+<<<<<<< HEAD
 					CreateMarker("marker1", .16f, y);
 					CreateMarker("marker2", -.16f, y);
+=======
+					CreateMarker("marker1", -.15f, y);
+					CreateMarker("marker2", .15f, y);
+>>>>>>> 874d05c3b6e0782ce2dad7e968cf23fc6185be51
 				}
 				break;
 			case 3:
 				{
+<<<<<<< HEAD
 					CreateMarker("marker1", .32f, y);
 					CreateMarker("marker2", 0f, y);
 					CreateMarker("marker3", -.32f, y);
+=======
+					CreateMarker("marker1", -.3f, y);
+					CreateMarker("marker2", 0f, y);
+					CreateMarker("marker3", .3f, y);
+>>>>>>> 874d05c3b6e0782ce2dad7e968cf23fc6185be51
 				}
 				break;
 		}

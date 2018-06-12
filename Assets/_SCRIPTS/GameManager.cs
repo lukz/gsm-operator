@@ -51,8 +51,8 @@ public class GameManager : MonoBehaviour
 	public bool OPENlastLEVEL;
 
 	public float delayPowerFx;
-    public float delayPowerLargeFx;
-    public float timeOnLevel = 0;
+	public float delayPowerLargeFx;
+	public float timeOnLevel = 0;
 	private float backs = 0;
 
 	[SerializeField]
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private GameObject MenuBtnHolder;
 
-    private float restartButtonLockTimer = 0f;
+	private float restartButtonLockTimer = 0f;
 
 	void Awake()
 	{
@@ -153,7 +153,8 @@ public class GameManager : MonoBehaviour
 		towerButton.Reset();
 	}
 
-	public void ReturnTower() {
+	public void ReturnTower()
+	{
 		boxController.ReturnTower();
 		restartButton.interactable = true;
 	}
@@ -192,11 +193,11 @@ public class GameManager : MonoBehaviour
 			restartFlareFx.SetActive(true);
 		}
 
-        // if (firstLockedButton < 5)
-        // {
-        // 	towerButtons[firstLockedButton].Unlock();
-        // }
-        boxController.NextTower();
+		// if (firstLockedButton < 5)
+		// {
+		// 	towerButtons[firstLockedButton].Unlock();
+		// }
+		boxController.NextTower();
 		if (firstLockedButton > 0)
 		{
 			restartButton.interactable = true;
@@ -208,7 +209,7 @@ public class GameManager : MonoBehaviour
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
 	{
-		
+
 		buildTowers = new List<ButtonTowerPair>();
 		firstLockedButton = 0;
 		canDoActions = true;
@@ -287,11 +288,11 @@ public class GameManager : MonoBehaviour
 			GameObject.Destroy(powerStickers[i].gameObject);
 		}
 		powerStickers = new List<PowerSticker>();
-		for (int i = powerNeeded-1; i >=0 ; i--)
+		for (int i = powerNeeded - 1; i >= 0; i--)
 		{
 			PowerSticker ps = GameObject.Instantiate(powerStickerPrefab).GetComponent<PowerSticker>();
 			ps.transform.parent = powerSlider.gameObject.transform;
-			
+
 			if (i == 0)
 			{
 				powerStickers.Add(ps);
@@ -325,10 +326,10 @@ public class GameManager : MonoBehaviour
 
 		towerspawner.ReturnTower();
 		Sounds.PlayButtonClick();
-        //
+		//
 
-        // timerTowerRestart = delayBetweenTowerRestart;
-        if (buildTowers.Count > 0)
+		// timerTowerRestart = delayBetweenTowerRestart;
+		if (buildTowers.Count > 0)
 		{
 			LockCurrentTower();
 			ButtonTowerPair item = buildTowers[buildTowers.Count - 1];
@@ -336,16 +337,16 @@ public class GameManager : MonoBehaviour
 			towerspawner.ReturnTower(item.button, item.tower);
 			backs++;
 
-            towerspawner.tileset.ToggleRocks();
+			towerspawner.tileset.ToggleRocks();
 
-            firstLockedButton--;
-        }
+			firstLockedButton--;
+		}
 	}
-	
-    public bool RestartAll() 
+
+	public bool RestartAll()
 	{
 		if (!canDoActions) return false;
-		if (buildTowers.Count == 0) 
+		if (buildTowers.Count == 0)
 		{
 			return towerspawner.ReturnTower();
 		}
@@ -358,8 +359,8 @@ public class GameManager : MonoBehaviour
 			towerspawner.ReturnTower(item.button, item.tower);
 			backs++;
 
-            towerspawner.tileset.ToggleRocks();
-        }
+			towerspawner.tileset.ToggleRocks();
+		}
 		return true;
 	}
 	void ShakeScreen()
@@ -393,16 +394,16 @@ public class GameManager : MonoBehaviour
 		ShakeScreen();
 		HideMenu();
 
-        if (restartButtonLockTimer > 0)
-        {
-            restartButtonLockTimer -= Time.deltaTime;
-            if(restartButtonLockTimer <= 0)
-            {
-                restartButton.interactable = true;
-            }
-        }
+		if (restartButtonLockTimer > 0)
+		{
+			restartButtonLockTimer -= Time.deltaTime;
+			if (restartButtonLockTimer <= 0)
+			{
+				restartButton.interactable = true;
+			}
+		}
 
-        if (houses != null)
+		if (houses != null)
 		{
 			if (houses.Length > 0)
 			{
@@ -450,19 +451,19 @@ public class GameManager : MonoBehaviour
 						canDoActions = false;
 						tintShwon = true;
 
-                        //GameObject newSplash = Instantiate(splash);
+						//GameObject newSplash = Instantiate(splash);
 
-                        //newSplash.GetComponent<SplashScript>().setEndSplash();
-                        float whiteTintDelay = PowerMarker.currentMarkerDelay + 2.5f;
-                        showWhiteTint(true, whiteTintDelay);
+						//newSplash.GetComponent<SplashScript>().setEndSplash();
+						float whiteTintDelay = PowerMarker.currentMarkerDelay + 2.5f;
+						showWhiteTint(true, whiteTintDelay);
 
 						restartFlareFx.SetActive(false);
 
-                        FinishedTweens();
+						FinishedTweens();
 
-                        powerUpTimeForSceneChange = whiteTintDelay + 2.5f;
+						powerUpTimeForSceneChange = whiteTintDelay + 2.5f;
 
-                    }
+					}
 
 
 					if (timer == 0)
@@ -497,18 +498,18 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-    private void FinishedTweens()
-    {
-        for (int i = 0; i < towerspawner.tileset.tiles.Count; i++)
-        {
-            for (int j = 0; j < towerspawner.tileset.tiles[i].row.Count; j++)
-            {
-                PowerMarker marker = towerspawner.tileset.tiles[i].row[j].GetComponentInChildren<PowerMarker>();
-                if (marker != null) marker.MapFinishedTween();
-            }
-            
-        }
-    }
+	private void FinishedTweens()
+	{
+		for (int i = 0; i < towerspawner.tileset.tiles.Count; i++)
+		{
+			for (int j = 0; j < towerspawner.tileset.tiles[i].row.Count; j++)
+			{
+				PowerMarker marker = towerspawner.tileset.tiles[i].row[j].GetComponentInChildren<PowerMarker>();
+				if (marker != null) marker.MapFinishedTween();
+			}
+
+		}
+	}
 
 	private void showWhiteTint(bool fadeIn, float delay)
 	{
@@ -589,24 +590,40 @@ public class GameManager : MonoBehaviour
 
 	public void ShowMenu()
 	{
-		MenuBtnHolder.SetActive(true);
+		MenuBtnHolder.transform.DOKill();
+		MenuBtnHolder.transform.DOLocalMoveX(900, 0.2f);
+
 	}
 
 
 	public void HideMenu()
 	{
-			if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0))
+		{
+			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+			bool bedzie = false;
+			if (hit.collider != null)
 			{
-				// Construct a ray from the current touch coordinates
-				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-	
-				if (!Physics.Raycast(ray, 999, LayerMask.NameToLayer("BtnHolder"))) {
-					
-					MenuBtnHolder.SetActive(false);
+				if (!hit.collider.tag.Equals("BtnHolder"))
+				{
+					bedzie = true;
 				}
-
-
 			}
+			else
+			{
+				bedzie = true;
+			}
+
+			if (bedzie)
+			{
+				MenuBtnHolder.transform.DOKill();
+				MenuBtnHolder.transform.DOLocalMoveX(550, 0.2f);
+			}
+
+		}
+
+
+
 
 	}
 
@@ -632,11 +649,11 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-    public void lockRestartFor(float time)
-    {
-        restartButtonLockTimer = Mathf.Max(restartButtonLockTimer, time);
-        restartButton.interactable = false;
-    }
+	public void lockRestartFor(float time)
+	{
+		restartButtonLockTimer = Mathf.Max(restartButtonLockTimer, time);
+		restartButton.interactable = false;
+	}
 
 
 }

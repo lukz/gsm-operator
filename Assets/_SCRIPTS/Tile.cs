@@ -264,7 +264,7 @@ public class Tile : MonoBehaviour {
             Debug.Log("This sohuld not happen " + powerLvl + " -> " + source);
             powerLvl = 0;
         }
-        powerMarker.SetPower(powerLvl);
+        powerMarker.SetPower(powerLvl, powerChange);
         OnPowerChange(source, powerChange);
 
 		ChangeHooks();
