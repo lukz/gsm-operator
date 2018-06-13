@@ -35,7 +35,13 @@ public class CameraResize : MonoBehaviour {
 		guiCanvas.transform.position = newpos;
 
 		newpos.x = leftPanel.transform.position.x - newpos.x;
-
-		leftPanel.transform.position = new Vector3(-Camera.main.orthographicSize * aspect +0.2f, guiCanvas.transform.position.y+1f, guiCanvas.transform.position.z);
+		float ox = 0;
+		if (Screen.safeArea.x > 0) {
+			Vector3 offsetStart = Camera.main.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, Camera.main.nearClipPlane));
+			Vector3 offsetEnd = Camera.main.ScreenToWorldPoint(new Vector3(132.0f, 0.0f, Camera.main.nearClipPlane));
+			Vector3 offset = offsetEnd - offsetStart;
+			ox = offset.x;
+		}
+		leftPanel.transform.position = new Vector3(-Camera.main.orthographicSize * aspect +0.2f + ox, guiCanvas.transform.position.y+1f, guiCanvas.transform.position.z);
 	}
 }
