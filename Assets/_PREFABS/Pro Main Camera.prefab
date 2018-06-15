@@ -3392,7 +3392,7 @@ MonoBehaviour:
   restartFlareFx: {fileID: 1820021342007556}
   powerSlider: {fileID: 114556626220750970}
   OPENlastLEVEL: 0
-  delayPowerFx: 0.45
+  delayPowerFx: 0.5
   delayPowerLargeFx: 1.2
   timeOnLevel: 0
   lastLevelId: 0
