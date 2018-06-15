@@ -15,6 +15,7 @@ public class Sounds : MonoBehaviour {
 	public AudioSource takeTower;
 	public AudioSource deny;
 	public AudioSource powerUp;
+	public AudioSource cover;
 	protected static Sounds instance;
 	
 	bool soundOn;
@@ -43,6 +44,7 @@ public class Sounds : MonoBehaviour {
 		finalWin.mute = !enabled;
 		winLvl.mute = !enabled;
 		powerUp.mute = !enabled;
+		cover.mute = !enabled;
 		btnClick.mute = !enabled;
 		destroy.mute = !enabled;
 		towerBuilt.mute = !enabled;
@@ -71,7 +73,7 @@ public class Sounds : MonoBehaviour {
 	{
 		if (instance != null)
 		{
-			if (instance.music.volume < 1)
+			if (instance.music.volume < 0.8f)
 			{
 				instance.timerRestoreMusic = 0f;
 				instance.restoringMusic = true;
@@ -84,8 +86,8 @@ public class Sounds : MonoBehaviour {
 		if (restoringMusic)
 		{
 			timerRestoreMusic += 0.02f;
-			VolumeMusic(timerRestoreMusic / 1f);
-			if (timerRestoreMusic >= 1)
+			VolumeMusic(timerRestoreMusic / 0.8f);
+			if (timerRestoreMusic >= 0.8f)
 			{
 				restoringMusic = false;
 			}
@@ -123,7 +125,10 @@ public class Sounds : MonoBehaviour {
 	public static void PlayTowerTake() {
 		if (instance != null) instance.takeTower.Play();
 	}
-
+	public static void PlayCover()
+	{
+		if (instance != null) instance.cover.Play();
+	}
 	public static void PlayFinal()
 	{
 		if (instance != null) instance.finalWin.Play();

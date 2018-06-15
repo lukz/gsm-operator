@@ -203,7 +203,6 @@ public class TowerSpawnerPro : MonoBehaviour {
 		if (previouslyDraggedTile != null) previouslyDraggedTile.CancelBuildTarget();
 		previouslyDraggedTile = null;
 
-		// TODO return tower
 		if (isOverUI.getOverCount(Input.mousePosition) > 0) {
 			ReturnTower();
 			return;

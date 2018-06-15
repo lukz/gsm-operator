@@ -266,6 +266,10 @@ public class EventTriggerProxy : MonoBehaviour {
         // TODO hide the graphic
 
         float flashDuration = .2f;
+		if (GameManager.instance.timeOnLevel > 0.7f)
+		{
+			Sounds.PlayCover();
+		}
 
         DOTween.Sequence()
             .SetId("PokrywaFlash")
