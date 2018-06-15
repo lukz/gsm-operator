@@ -127,15 +127,15 @@ public class PowerMarker : MonoBehaviour
 				break;
 			case 2:
 				{
-					CreateMarker("marker1", -.15f, y);
-					CreateMarker("marker2", .15f, y);
+					CreateMarker("marker1", -.13f, y);
+					CreateMarker("marker2", .13f, y);
 				}
 				break;
 			case 3:
 				{
-					CreateMarker("marker1", -.3f, y);
+					CreateMarker("marker1", -.26f, y);
 					CreateMarker("marker2", 0f, y);
-					CreateMarker("marker3", .3f, y);
+					CreateMarker("marker3", .26f, y);
 				}
 				break;
 		}
