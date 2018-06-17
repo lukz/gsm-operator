@@ -74,7 +74,7 @@ public class TowerBox : MonoBehaviour {
 		if (slotId < 0) {
 			return;
 		}
-		if (tween != null) {
+		if (tween != null && tween.IsActive()) {
 			tween.Kill();
 		}
 		float duration = .5f * diff;
@@ -84,6 +84,7 @@ public class TowerBox : MonoBehaviour {
 				.SetDelay(delay)
 				.SetEase(Ease.InOutFlash)
 				.OnComplete(()=>{
+					tween = null;
 					// Debug.Log("Moved to slot " + slotId);
 					if (onDone != null) {
 						onDone.Invoke(this);
