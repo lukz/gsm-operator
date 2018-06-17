@@ -180,6 +180,7 @@ public class EventTriggerProxy : MonoBehaviour {
 
     bool IsTouching () {
         if (!GameManager.IS_MOBILE) return false;
+        if (Input.touchCount <= 0) return false;
         // we dont do multi touch
         TouchPhase phase = Input.GetTouch(0).phase;
         if (phase == TouchPhase.Began) return true;
