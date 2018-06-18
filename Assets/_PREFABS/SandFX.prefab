@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4681624511558522}
   - component: {fileID: 212145679546087438}
   - component: {fileID: 95838800691686166}
-  - component: {fileID: 114067124163083206}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -53,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870293835043916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4967563366722380}
@@ -66,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1557700520079940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2621261, y: -1.1428639, z: 0}
+  m_LocalPosition: {x: -8.291189, y: -1.3193984, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4681624511558522}
@@ -90,6 +89,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95838800691686166
 Animator:
   serializedVersion: 3
@@ -107,24 +107,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114067124163083206
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1870293835043916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac7193aaaa71ab488aac5c1dbf583e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _blendModeShader: {fileID: 4800000, guid: d0218ee9552df5f45b6dcfe35dab6c79, type: 3}
-  _blendMode: 8
-  _grabMode: 0
-  _baseLayerColor: {r: 1, g: 1, b: 1, a: 1}
-  _enableGrayBase: 0
-  _extraColor: {r: 0, g: 0, b: 0, a: 0}
-  _pixelSnap: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114918107332878542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,8 +133,9 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

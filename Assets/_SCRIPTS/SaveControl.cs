@@ -61,6 +61,7 @@ public class SaveControl : MonoBehaviour {
 				BinaryFormatter bf = new BinaryFormatter();
 				FileStream file = File.Open(Application.persistentDataPath + "/playerInfo" + saveVersion + ".dat", FileMode.Open);
 				PlayerData data = (PlayerData)bf.Deserialize(file);
+                file.Close();
                 int baseCount = towersUsedToWin.Count;
                 towersUsedToWin = data.towersUsedToWin;
 
