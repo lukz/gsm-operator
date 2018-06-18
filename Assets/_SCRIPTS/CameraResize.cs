@@ -38,7 +38,7 @@ public class CameraResize : MonoBehaviour {
 		float ox = 0;
 		if (Screen.safeArea.x > 0) {
 			Vector3 offsetStart = Camera.main.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, Camera.main.nearClipPlane));
-			Vector3 offsetEnd = Camera.main.ScreenToWorldPoint(new Vector3(132.0f, 0.0f, Camera.main.nearClipPlane));
+			Vector3 offsetEnd = Camera.main.ScreenToWorldPoint(new Vector3(120.0f, 0.0f, Camera.main.nearClipPlane));
 			Vector3 offset = offsetEnd - offsetStart;
 			ox = offset.x;
 		}
