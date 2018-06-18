@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4458104532505280}
   - component: {fileID: 212197732750808734}
   m_Layer: 8
-  m_Name: ENERGYCRYSTAL1_1 (1)
+  m_Name: ENERGYCRYSTAL1_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4046213656548444}
   - component: {fileID: 212392124477820772}
   m_Layer: 8
-  m_Name: ENERGYCRYSTAL1_1 (2)
+  m_Name: ENERGYCRYSTAL1_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1851581235662554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.000000059604645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4504408122882232}
@@ -172,8 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001dcfa848a3bb642a5bc5a756ff1bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCrystalFX: {fileID: 1379632111807988, guid: 65fb91dbc5b4d3f41ad2fd23f1c23676,
-    type: 2}
+  animator: {fileID: 95993409863734930}
 --- !u!212 &212040157121220064
 SpriteRenderer:
   m_ObjectHideFlags: 1

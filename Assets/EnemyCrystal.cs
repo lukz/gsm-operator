@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyCrystal : MonoBehaviour {
 
-	public GameObject enemyCrystalFX;
 	
+	public Animator animator;
 	public void SpawnFX() {
-		GameObject.Instantiate(enemyCrystalFX, transform);
+		animator.SetTrigger("explode");
 	}
 }
