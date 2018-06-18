@@ -2059,7 +2059,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623323434421574}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 2, z: 0}
+  m_LocalPosition: {x: -0.5, y: 2, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 0.9343629}
   m_Children: []
   m_Father: {fileID: 224692603424522624}
@@ -4636,7 +4636,7 @@ MonoBehaviour:
   delayPowerFx: 0.5
   delayPowerLargeFx: 1.2
   timeOnLevel: 0
-  lastLevelId: 0
+  lastLevelId: 1
   towerButton: {fileID: 114031874394970906}
   nextLevelButton: {fileID: 114382458914595064}
   prevLevelButton: {fileID: 114245641905601204}
@@ -5932,7 +5932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edaf4da0df999e499abfdba2f3416aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveVersion: 14
+  saveVersion: 15
 --- !u!114 &114594934741278132
 MonoBehaviour:
   m_ObjectHideFlags: 1

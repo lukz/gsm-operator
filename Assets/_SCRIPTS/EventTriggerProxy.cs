@@ -329,7 +329,7 @@ public class EventTriggerProxy : MonoBehaviour {
         DOTween.Kill("PokrywaFlash");
         DOTween.Kill("PokrywaMove");
 
-        gateSpriteFilled.transform.localPosition = new Vector3(0, 0, 0);
+        gateSpriteFilled.transform.position = gateSpritePos;
         gateSpriteFilled.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
 
         gateSpriteFilled.DOFade(1, 0f).SetEase(Ease.InSine);

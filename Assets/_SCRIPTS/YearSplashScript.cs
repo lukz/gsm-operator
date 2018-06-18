@@ -23,15 +23,16 @@ public class YearSplashScript : MonoBehaviour {
         DOTween.Sequence()
         .Append(
             DOTween.Sequence()
-                .AppendInterval(1/30f)
-                .OnComplete(()=>{
+                .AppendInterval(1 / 30f)
+                .OnComplete(() => {
                     textMesh.enabled = true;
                 })
         )
         .AppendInterval(1)
         .Append(
-            spriteRenderer.DOFade(0f, 2f)
+            spriteRenderer.DOFade(0f, 2.3f).SetEase(Ease.InSine)
         )
+        .AppendInterval(0.1f)
         .OnComplete(() => {
             Sounds.PlayMusic();
             Sounds.RestoreMusic();
