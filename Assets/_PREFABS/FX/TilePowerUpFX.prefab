@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95327523903006186}
   - component: {fileID: 114358489280540516}
   m_Layer: 0
-  m_Name: TilePowerUpFx
+  m_Name: TilePowerUpFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
