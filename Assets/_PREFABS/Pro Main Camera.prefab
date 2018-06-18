@@ -3265,7 +3265,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 6.730932
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4636,7 +4636,7 @@ MonoBehaviour:
   delayPowerFx: 0.5
   delayPowerLargeFx: 1.2
   timeOnLevel: 0
-  lastLevelId: 0
+  lastLevelId: 1
   towerButton: {fileID: 114031874394970906}
   nextLevelButton: {fileID: 114382458914595064}
   prevLevelButton: {fileID: 114245641905601204}
@@ -5932,7 +5932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edaf4da0df999e499abfdba2f3416aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveVersion: 14
+  saveVersion: 15
 --- !u!114 &114594934741278132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -32386,7 +32386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80.99999, y: 1}
+  m_AnchoredPosition: {x: 80.99999, y: 0}
   m_SizeDelta: {x: 900, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224364961305635812
