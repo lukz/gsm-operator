@@ -4643,6 +4643,7 @@ MonoBehaviour:
   restartButton: {fileID: 114989568428091372}
   towerDragTutorial: {fileID: 1892785526111032, guid: c17a897761e828546a9303c51ec4f9fe,
     type: 2}
+  towerDragTutorialContainer: {fileID: 224731627770461214}
   topPowerStickerPosition: {fileID: 1557276186474536}
   bottomStickerPosition: {fileID: 1486667100713166}
   winAnimationPowerBar: {fileID: 1468785132222708}
@@ -32386,7 +32387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80.99999, y: 1}
+  m_AnchoredPosition: {x: 164.99998, y: 0}
   m_SizeDelta: {x: 900, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224364961305635812
@@ -32577,7 +32578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -682, y: 100}
+  m_AnchoredPosition: {x: -849.6842, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224862262555586884

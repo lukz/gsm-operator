@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
 	public Button restartButton;
 
 	public GameObject towerDragTutorial;
+	public Transform towerDragTutorialContainer;
 	private GameObject towerDragTutorialInstance;
 
 	private int powerNeeded = 0;
@@ -252,7 +253,7 @@ public class GameManager : MonoBehaviour
 			// if (currentLvl == 0 && !nextLevelButton.interactable) {
 			if (currentLvl == 0)
 			{
-				towerDragTutorialInstance = GameObject.Instantiate(towerDragTutorial);
+				towerDragTutorialInstance = GameObject.Instantiate(towerDragTutorial, towerDragTutorialContainer);
 
 				// conflicts with Analytics
 				UnityEngine.EventSystems.EventTrigger trigger = towerButton.GetComponent<UnityEngine.EventSystems.EventTrigger>();
