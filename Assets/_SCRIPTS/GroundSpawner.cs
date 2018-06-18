@@ -121,13 +121,13 @@ public class GroundSpawner : MonoBehaviour {
 			Debug.LogError("Ground: Missing particle game object!");
 			return;
 		}
-		float cx = Camera.main.transform.position.x;
+		float cx = Camera.main.transform.position.x-7f;
 		float cy = Camera.main.transform.position.y;
 		// target ortho size
 		float hh = 3; // Camera.main.orthographicSize;
 		float hw = hh * Camera.main.aspect;
 
-		Vector3 pos = new Vector3(cx + Random.Range(-hw, hw), cy + Random.Range(-hh, hh), 0);
+		Vector3 pos = new Vector3(cx + Random.Range(-hw/2f, hw/2f), cy + Random.Range(-hh, hh), 0);
 		GameObject inst = GameObject.Instantiate(particle, pos, Quaternion.identity, gameObject.transform);
 		Animator animator = inst.GetComponent<Animator>();
 		animator.SetInteger("idleid", Random.Range(0, 2));

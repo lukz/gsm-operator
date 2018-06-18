@@ -32,7 +32,7 @@ public class YearSplashScript : MonoBehaviour {
         .Append(
             spriteRenderer.DOFade(0f, 2.3f).SetEase(Ease.InSine)
         )
-        .AppendInterval(0.1f)
+        .AppendInterval(0.5f)
         .OnComplete(() => {
             Sounds.PlayMusic();
             Sounds.RestoreMusic();

@@ -591,9 +591,16 @@ public class GameManager : MonoBehaviour
 
 	public void ShowMenu()
 	{
-		MenuBtnHolder.transform.DOKill();
-		MenuBtnHolder.transform.DOLocalMoveX(900, 0.2f);
-
+		if (MenuBtnHolder.transform.localPosition.x == 82)
+		{
+			MenuBtnHolder.transform.DOKill();
+			MenuBtnHolder.transform.DOLocalMoveX(-136, 0.2f);
+		}
+		else
+		{
+			MenuBtnHolder.transform.DOKill();
+			MenuBtnHolder.transform.DOLocalMoveX(82, 0.2f);
+		}
 	}
 
 
@@ -618,7 +625,7 @@ public class GameManager : MonoBehaviour
 			if (bedzie)
 			{
 				MenuBtnHolder.transform.DOKill();
-				MenuBtnHolder.transform.DOLocalMoveX(550, 0.2f);
+				MenuBtnHolder.transform.DOLocalMoveX(-136, 0.2f);
 			}
 
 		}
