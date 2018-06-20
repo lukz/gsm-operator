@@ -157,7 +157,6 @@ public class GameManager : MonoBehaviour
 	public void ReturnTower()
 	{
 		boxController.ReturnTower();
-		restartButton.interactable = true;
 	}
 
 	public void TowerBuild(EventTriggerProxy button, GameObject tower)
@@ -199,13 +198,8 @@ public class GameManager : MonoBehaviour
 		// 	towerButtons[firstLockedButton].Unlock();
 		// }
 		boxController.NextTower();
-		if (firstLockedButton > 0)
-		{
-			restartButton.interactable = true;
-		}
 		firstLockedButton++;
 		firstLockedButton = Mathf.Min(firstLockedButton, 6);
-		restartButton.interactable = true;
 	}
 
 	void PrepareScene(Scene scene, LoadSceneMode mode)
@@ -398,7 +392,7 @@ public class GameManager : MonoBehaviour
 		if (restartButtonLockTimer > 0)
 		{
 			restartButtonLockTimer -= Time.deltaTime;
-			if (restartButtonLockTimer <= 0)
+			if (restartButtonLockTimer <= 0 && firstLockedButton > 1)
 			{
 				restartButton.interactable = true;
 			}
