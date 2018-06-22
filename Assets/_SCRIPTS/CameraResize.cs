@@ -12,6 +12,9 @@ public class CameraResize : MonoBehaviour {
 	private Canvas guiCanvas;
 
 	[SerializeField]
+	private GameObject notchMask;
+
+	[SerializeField]
 	private GameObject leftPanel;
 
 
@@ -38,9 +41,14 @@ public class CameraResize : MonoBehaviour {
 		float ox = 0;
 		if (Screen.safeArea.x > 0) {
 			Vector3 offsetStart = Camera.main.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, Camera.main.nearClipPlane));
-			Vector3 offsetEnd = Camera.main.ScreenToWorldPoint(new Vector3(120.0f, 0.0f, Camera.main.nearClipPlane));
+			Vector3 offsetEnd = Camera.main.ScreenToWorldPoint(new Vector3(118.0f, 0.0f, Camera.main.nearClipPlane));
 			Vector3 offset = offsetEnd - offsetStart;
 			ox = offset.x;
+
+			Vector3 newPo = notchMask.transform.localPosition;
+			newPo.x += 10f;
+			notchMask.transform.localPosition = newPo;
+
 		}
 		leftPanel.transform.position = new Vector3(-Camera.main.orthographicSize * aspect +0.2f + ox, guiCanvas.transform.position.y+1f, guiCanvas.transform.position.z);
 	}
