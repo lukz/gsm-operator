@@ -28,6 +28,15 @@ public class GameManager : MonoBehaviour
 	public GameObject tint;
 
 	[SerializeField]
+	private GameObject leftPanel;
+
+
+	[SerializeField]
+	private GameObject[] blooms;
+	[SerializeField]
+	private GameObject[] vignettes;
+
+	[SerializeField]
 	public static float shakePower = 0;
 
 	[SerializeField]
@@ -86,6 +95,9 @@ public class GameManager : MonoBehaviour
 
 	public BoxController boxController;
 
+	private GameObject lBloom;
+	private GameObject rBloom;
+	private GameObject cloudsVignette;
 
 	[SerializeField]
 	private GameObject MenuBtnHolder;
@@ -308,6 +320,46 @@ public class GameManager : MonoBehaviour
 		}
 		preparedScene = true;
 		winAnimationPowerBar.SetActive(false);
+
+			 GameObject tempL;
+	 GameObject tempR;
+	 GameObject vig;
+
+		if (lBloom)
+		{
+			GameObject.Destroy(lBloom);
+			GameObject.Destroy(rBloom);
+			GameObject.Destroy(cloudsVignette);
+		}
+
+		if (currentLvl == 0)
+		{
+			tempL = blooms[0];
+			tempR = blooms[1];
+			vig = vignettes[0];
+		}
+		else
+		{
+			if (currentLvl == 1)
+			{
+				vig = vignettes[1];
+				tempL = blooms[2];
+				tempR = blooms[3];
+			}
+			else
+			{
+				vig = vignettes[2];
+				tempL = blooms[4];
+				tempR = blooms[5];
+			}
+		}
+		lBloom = GameObject.Instantiate(tempL, leftPanel.transform);
+		rBloom = GameObject.Instantiate(tempR, powerSlider.transform);
+		cloudsVignette = GameObject.Instantiate(vig, transform);
+		cloudsVignette.transform.localPosition = new Vector3(-0.1778861f, -1.045137f, 10f);
+		lBloom.transform.localPosition = new Vector3(88, -141, 0);
+		rBloom.transform.localPosition = new Vector3(8, 11, 0);
+
 	}
 
 	void ChangeLvlTo1()
