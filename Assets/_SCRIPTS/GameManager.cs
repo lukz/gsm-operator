@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
 	private GameObject[] blooms;
 	[SerializeField]
 	private GameObject[] vignettes;
+	[SerializeField]
+	GameObject ground;
+	[SerializeField]
+	Sprite[] grounds;
 
 	[SerializeField]
 	public static float shakePower = 0;
@@ -321,9 +325,9 @@ public class GameManager : MonoBehaviour
 		preparedScene = true;
 		winAnimationPowerBar.SetActive(false);
 
-			 GameObject tempL;
-	 GameObject tempR;
-	 GameObject vig;
+		GameObject tempL;
+		GameObject tempR;
+		GameObject vig;
 
 		if (lBloom)
 		{
@@ -332,22 +336,29 @@ public class GameManager : MonoBehaviour
 			GameObject.Destroy(cloudsVignette);
 		}
 
-		if (currentLvl == 0)
+		if (currentLvl <= 14 || currentLvl > 44)
 		{
+			ground.GetComponent<SpriteRenderer>().sprite = grounds[0];
+
+			if (currentLvl > 44)
+				ground.GetComponent<SpriteRenderer>().sprite = grounds[3];
+
 			tempL = blooms[0];
 			tempR = blooms[1];
 			vig = vignettes[0];
 		}
 		else
 		{
-			if (currentLvl == 1)
+			if (currentLvl < 30)
 			{
+				ground.GetComponent<SpriteRenderer>().sprite = grounds[1];
 				vig = vignettes[1];
 				tempL = blooms[2];
 				tempR = blooms[3];
 			}
 			else
 			{
+				ground.GetComponent<SpriteRenderer>().sprite = grounds[2];
 				vig = vignettes[2];
 				tempL = blooms[4];
 				tempR = blooms[5];
@@ -654,18 +665,17 @@ public class GameManager : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-			bool bedzie = false;
-			if (hit.collider != null)
+			RaycastHit2D[] hit = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+			bool bedzie = true;
+			for (int i = 0; i < hit.Length; i++)
 			{
-				if (!hit.collider.tag.Equals("BtnHolder"))
+				if (hit[i].collider != null)
 				{
-					bedzie = true;
+					if (hit[i].collider.tag.Equals("BtnHolder"))
+					{
+						bedzie = false;
+					}
 				}
-			}
-			else
-			{
-				bedzie = true;
 			}
 
 			if (bedzie)
