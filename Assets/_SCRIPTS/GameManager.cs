@@ -661,29 +661,17 @@ public class GameManager : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit2D[] hit = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-			bool bedzie = true;
 			for (int i = 0; i < hit.Length; i++)
 			{
-				if (hit[i].collider != null)
+				if (hit[i].collider != null && hit[i].collider.tag.Equals("BtnHolder"))
 				{
-					if (hit[i].collider.tag.Equals("BtnHolder"))
-					{
-						bedzie = false;
-					}
+					// hit bmenu, dont hide it
+					return;
 				}
 			}
-
-			if (bedzie)
-			{
-				MenuBtnHolder.transform.DOKill();
-				MenuBtnHolder.transform.DOLocalMoveX(-136, 0.2f);
-			}
-
+			MenuBtnHolder.transform.DOKill();
+			MenuBtnHolder.transform.DOLocalMoveX(-136, 0.2f);
 		}
-
-
-
-
 	}
 
 	void OnDestroy()
