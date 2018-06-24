@@ -381,6 +381,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1194703901038552, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9, type: 2}
+      propertyPath: m_Name
+      value: _Pro Main Camera
+      objectReference: {fileID: 0}
     - target: {fileID: 224153114756289222, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
         type: 2}
       propertyPath: m_AnchorMax.x
@@ -394,21 +398,17 @@ Prefab:
     - target: {fileID: 224731627770461214, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -3398.3044
+      value: -682
       objectReference: {fileID: 0}
     - target: {fileID: 224343676791519946, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1439
+      value: 80.99999
       objectReference: {fileID: 0}
     - target: {fileID: 224343676791519946, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1194703901038552, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9, type: 2}
-      propertyPath: m_Name
-      value: _Pro Main Camera
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d6b7ccdd317bf34fb1016ca0ab448b9, type: 2}
