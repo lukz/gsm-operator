@@ -648,7 +648,7 @@ public class GameManager : MonoBehaviour
 
 	public void ShowMenu()
 	{
-		if (MenuBtnHolder.transform.localPosition.x == 82)
+		if (MenuBtnHolder.transform.localPosition.x >= 0)
 		{
 			MenuBtnHolder.transform.DOKill();
 			MenuBtnHolder.transform.DOLocalMoveX(-136, 0.2f);
