@@ -8,6 +8,8 @@ public class CameraResize : MonoBehaviour {
 	float width = 9;
 	float height = 6;
 
+	public float widX;
+
 	[SerializeField]
 	private Canvas guiCanvas;
 
@@ -46,10 +48,11 @@ public class CameraResize : MonoBehaviour {
 			ox = offset.x;
 
 			Vector3 newPo = notchMask.transform.localPosition;
-			newPo.x += 10f;
+			newPo.x += 12f;
 			notchMask.transform.localPosition = newPo;
 
 		}
 		leftPanel.transform.position = new Vector3(-Camera.main.orthographicSize * aspect +0.2f + ox, guiCanvas.transform.position.y+1f, guiCanvas.transform.position.z);
+		widX = Camera.main.orthographicSize * aspect*2f;
 	}
 }

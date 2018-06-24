@@ -251,6 +251,7 @@ public class GameManager : MonoBehaviour
 			}
 			GameObject newSplash = Instantiate(splash);
 			newSplash.GetComponent<YearSplashScript>().ShowSplash(lvlmanager.levelName);
+			newSplash.GetComponent<YearSplashScript>().bg.transform.localScale = new Vector3(GetComponent<CameraResize>().widX, 7);
 
 			UnlockNextTower();
 			prevLevelButton.interactable = currentLvl > 0;
@@ -325,14 +326,12 @@ public class GameManager : MonoBehaviour
 		preparedScene = true;
 		winAnimationPowerBar.SetActive(false);
 
-		GameObject tempL;
-		GameObject tempR;
+		GameObject tempS;
 		GameObject vig;
 
 		if (lBloom)
 		{
 			GameObject.Destroy(lBloom);
-			GameObject.Destroy(rBloom);
 			GameObject.Destroy(cloudsVignette);
 		}
 
@@ -343,8 +342,7 @@ public class GameManager : MonoBehaviour
 			if (currentLvl > 44)
 				ground.GetComponent<SpriteRenderer>().sprite = grounds[3];
 
-			tempL = blooms[0];
-			tempR = blooms[1];
+			tempS = blooms[0];
 			vig = vignettes[0];
 		}
 		else
@@ -353,23 +351,20 @@ public class GameManager : MonoBehaviour
 			{
 				ground.GetComponent<SpriteRenderer>().sprite = grounds[1];
 				vig = vignettes[1];
-				tempL = blooms[2];
-				tempR = blooms[3];
+				tempS = blooms[1];
 			}
 			else
 			{
 				ground.GetComponent<SpriteRenderer>().sprite = grounds[2];
 				vig = vignettes[2];
-				tempL = blooms[4];
-				tempR = blooms[5];
+				tempS = blooms[2];
 			}
 		}
-		lBloom = GameObject.Instantiate(tempL, leftPanel.transform);
-		rBloom = GameObject.Instantiate(tempR, powerSlider.transform);
+		lBloom = GameObject.Instantiate(tempS, transform);
 		cloudsVignette = GameObject.Instantiate(vig, transform);
-		cloudsVignette.transform.localPosition = new Vector3(-0.1778861f, -1.045137f, 10f);
-		lBloom.transform.localPosition = new Vector3(88, -141, 0);
-		rBloom.transform.localPosition = new Vector3(8, 11, 0);
+		cloudsVignette.transform.localPosition = new Vector3(-0.2f, -1f, 10f);
+		lBloom.transform.position = new Vector3(0, 0, 0);
+		lBloom.transform.localScale = new Vector3(GetComponent<CameraResize>().widX, 8,1);
 
 	}
 

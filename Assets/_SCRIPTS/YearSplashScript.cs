@@ -5,6 +5,10 @@ using DG.Tweening;
 
 public class YearSplashScript : MonoBehaviour {
     bool init;
+
+	[SerializeField]
+	public GameObject bg;
+
 	void Start () {
         if (init) return;
 		SuperTextMesh textMesh = GetComponentInChildren<SuperTextMesh>();
