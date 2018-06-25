@@ -1434,7 +1434,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 15.865385
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2660,7 +2660,7 @@ MonoBehaviour:
   delayPowerFx: 0.5
   delayPowerLargeFx: 1.2
   timeOnLevel: 0
-  lastLevelId: 0
+  lastLevelId: 20
   towerButton: {fileID: 114031874394970906}
   nextLevelButton: {fileID: 114382458914595064}
   prevLevelButton: {fileID: 114245641905601204}
