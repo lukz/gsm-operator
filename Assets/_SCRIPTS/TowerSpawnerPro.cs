@@ -149,6 +149,8 @@ public class TowerSpawnerPro : MonoBehaviour {
 		tileset.StartBuilding();
 
         gameManager.towerButton.Lock();
+
+		TriggerFeedbackLight();
 	}
 
 	void ChangeDrawSorting(GameObject tower, string layer, int order) {
@@ -256,6 +258,7 @@ public class TowerSpawnerPro : MonoBehaviour {
                     gameObject.transform.DOShakePosition(cameraShakeTimeStrength.x, cameraShakeTimeStrength.y);
 
                     tileset.ToggleRocks();
+					TriggerFeedbackLight();
                 }
 			);
 
@@ -279,7 +282,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 
         gameManager.towerButton.Unlock();
-
+		TriggerFeedbackHeavy();
         return true;
 	}
 
@@ -359,6 +362,20 @@ public class TowerSpawnerPro : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	void TriggerFeedbackLight() {
+		if (GameManager.IS_IOS) {
+			// ImpactLight, ImpactMedium, ImpactHeavy
+			iOSHapticFeedback.Instance.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactLight);
+		}
+	}
+
+	void TriggerFeedbackHeavy() {
+		if (GameManager.IS_IOS) {
+			// ImpactLight, ImpactMedium, ImpactHeavy
+			iOSHapticFeedback.Instance.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactHeavy);
+		}
 	}
 
 	public GameObject GetPumpPrefab() {
