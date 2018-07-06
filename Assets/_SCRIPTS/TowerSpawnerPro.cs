@@ -143,7 +143,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 		);
 		
 		// this is in game units
-		towerOffset.y = GameManager.IS_MOBILE?0.75f:0.0f;
+		towerOffset.y = GameManager.IS_MOBILE?0.25f:0.0f;
 		powerOffsets = draggedTowerInstance.GetComponent<TowerScript>().powerOffsets;
 
 		tileset.StartBuilding();
@@ -258,7 +258,7 @@ public class TowerSpawnerPro : MonoBehaviour {
                     gameObject.transform.DOShakePosition(cameraShakeTimeStrength.x, cameraShakeTimeStrength.y);
 
                     tileset.ToggleRocks();
-					TriggerFeedbackLight();
+					TriggerFeedbackHeavy();
                 }
 			);
 
@@ -282,7 +282,6 @@ public class TowerSpawnerPro : MonoBehaviour {
 
 
         gameManager.towerButton.Unlock();
-		TriggerFeedbackHeavy();
         return true;
 	}
 
@@ -329,7 +328,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 				}
 			);
 			gameManager.lockRestartFor(.15f);
-
+			TriggerFeedbackLight();
 		} else {
             ts.FlashRed();
 
@@ -351,6 +350,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 				)
 			);
 			gameManager.lockRestartFor(1);
+			TriggerFeedbackFailure();
 		}
 	}
 
@@ -375,6 +375,13 @@ public class TowerSpawnerPro : MonoBehaviour {
 		if (GameManager.IS_IOS) {
 			// ImpactLight, ImpactMedium, ImpactHeavy
 			iOSHapticFeedback.Instance.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactHeavy);
+		}
+	}
+
+	void TriggerFeedbackFailure() {
+		if (GameManager.IS_IOS) {
+			// ImpactLight, ImpactMedium, ImpactHeavy
+			iOSHapticFeedback.Instance.Trigger(iOSHapticFeedback.iOSFeedbackType.Failure);
 		}
 	}
 
