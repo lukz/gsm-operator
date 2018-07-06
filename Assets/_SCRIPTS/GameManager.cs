@@ -335,7 +335,7 @@ public class GameManager : MonoBehaviour
 			GameObject.Destroy(cloudsVignette);
 		}
 
-		if (currentLvl <= 14 || currentLvl > 44)
+		if (currentLvl <= 7 || currentLvl > 44)
 		{
 			ground.GetComponent<SpriteRenderer>().sprite = grounds[0];
 
@@ -347,7 +347,7 @@ public class GameManager : MonoBehaviour
 		}
 		else
 		{
-			if (currentLvl < 30)
+			if (currentLvl < 12)
 			{
 				ground.GetComponent<SpriteRenderer>().sprite = grounds[1];
 				vig = vignettes[1];
