@@ -19,10 +19,6 @@ public class LVLsettings : MonoBehaviour {
 
 	void Awake () {
 
-
-		// trzeba patrzec co ginie na zmiane sceny, nigdy nie robi sie referencji do stalego elementu, 
-		// od elementow ktore dostajesz od nowej sceny, bo referencje ZAWSZE sa nullami wtedy.
-		// Albo wszystko dontDelete albo nic. Jak pomiedzy to trzeba szukac po tagach.
 		EventTriggerProxy[] list = GameObject.FindGameObjectWithTag("MainCamera").GetComponentsInChildren<EventTriggerProxy>();
 
 		// list[0].SetTowerPrefab(towerPrefab1);
@@ -38,7 +34,7 @@ public class LVLsettings : MonoBehaviour {
         if (towerPrefab3 != null) allTowers++;
         if (towerPrefab4 != null) allTowers++;
         if (towerPrefab5 != null) allTowers++;
-    }
+	}
 
 	
 }

@@ -46,8 +46,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private GameObject restartFlareFx;
 
-	[SerializeField]
-	private Slider powerSlider;
+
 	private int currentLvl;
 
 	LVLsettings lvlmanager;
@@ -86,14 +85,7 @@ public class GameManager : MonoBehaviour
 
 	private int powerNeeded = 0;
 	private GameObject[] houses;
-	private List<PowerSticker> powerStickers = new List<PowerSticker>();
 
-	[SerializeField]
-	private GameObject topPowerStickerPosition;
-	[SerializeField]
-	private GameObject bottomStickerPosition;
-	[SerializeField]
-	private GameObject winAnimationPowerBar;
 
 	private bool preparedScene = false;
 
@@ -295,36 +287,7 @@ public class GameManager : MonoBehaviour
 			powerNeeded += hs.requiredPower;
 		}
 
-		for (int i = 0; i < powerStickers.Count; i++)
-		{
-			GameObject.Destroy(powerStickers[i].gameObject);
-		}
-		powerStickers = new List<PowerSticker>();
-		for (int i = powerNeeded - 1; i >= 0; i--)
-		{
-			PowerSticker ps = GameObject.Instantiate(powerStickerPrefab).GetComponent<PowerSticker>();
-			ps.transform.parent = powerSlider.gameObject.transform;
-
-			if (i == 0)
-			{
-				powerStickers.Add(ps);
-				ps.transform.position = topPowerStickerPosition.transform.position;
-				ps.GetComponent<SpriteRenderer>().enabled = false;
-			}
-			else
-			{
-				powerStickers.Add(ps);
-				float dist = topPowerStickerPosition.transform.position.y - bottomStickerPosition.transform.position.y;
-				float po = Mathf.Round((topPowerStickerPosition.transform.position.y - dist / (powerNeeded) * (i)) * 100f) / 100;
-				Vector3 pos = new Vector3(topPowerStickerPosition.transform.position.x, po, topPowerStickerPosition.transform.position.z);
-				ps.transform.position = pos;
-			}
-
-
-
-		}
 		preparedScene = true;
-		winAnimationPowerBar.SetActive(false);
 
 		GameObject tempS;
 		GameObject vig;
@@ -470,36 +433,10 @@ public class GameManager : MonoBehaviour
 				}
 				if (countPowered >= powerNeeded) allPowered = true;
 
-				for (int i = powerNeeded - 1; i >= 0; i--)
-				{
-
-					if (i < countPowered && !powerStickers[i].isPowered)
-					{
-						powerStickers[i].PowerUp();
-					}
-					else if (i >= countPowered && powerStickers[i].isPowered)
-					{
-						powerStickers[i].PowerDown();
-					}
-				}
-
-				float realProgress = (countPowered / powerNeeded) * 1f;
-				float swim = Mathf.Sin(Time.timeSinceLevelLoad * 1f);
-				if (realProgress == 0 || realProgress == 1) swim = 0;
-				float currentPercent = Mathf.Clamp(realProgress + swim / 100f * 1.5f, 0, 1);
-				powerSlider.value = Mathf.Lerp(powerSlider.value, currentPercent, Time.deltaTime * 5);
-
-				if (realProgress > cachedProgress)
-				{
-					powerSlider.gameObject.GetComponentInChildren<SliderFillScript>().FlashSlider();
-				}
-				cachedProgress = realProgress;
-
 				if (allPowered)
 				{
 					if (!tintShwon)
 					{
-						winAnimationPowerBar.SetActive(true);
 						//splashShown = true;
 						canDoActions = false;
 						tintShwon = true;
