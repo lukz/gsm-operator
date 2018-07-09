@@ -65,11 +65,13 @@ public class BoxController : MonoBehaviour {
 
 		List<GameObject> prefabs = new List<GameObject>();
 
-		if (settings.towerPrefab1 != null) prefabs.Add(settings.towerPrefab1);
-        if (settings.towerPrefab2 != null) prefabs.Add(settings.towerPrefab2);
-        if (settings.towerPrefab3 != null) prefabs.Add(settings.towerPrefab3);
-        if (settings.towerPrefab4 != null) prefabs.Add(settings.towerPrefab4);
-        if (settings.towerPrefab5 != null) prefabs.Add(settings.towerPrefab5);
+		for (int i = 0; i < 5; i++)
+		{
+			GameObject tp = settings.TowerPrefab(i);
+			if (tp != null) {
+				prefabs.Add(tp);
+			}
+		}
 
 
 		for (int i = 0; i < prefabs.Count; i++)

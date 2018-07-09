@@ -6,11 +6,23 @@ public class LVLsettings : MonoBehaviour {
 	public int level;
 	public string levelName;
 
-	public GameObject towerPrefab1;
-	public GameObject towerPrefab2;
-	public GameObject towerPrefab3;
-	public GameObject towerPrefab4;
-	public GameObject towerPrefab5;
+	[Range(-1, 2)]
+	public int towerPrefab1 = -1;
+
+	[Range(-1, 2)]
+	public int towerPrefab2 = -1;
+
+	[Range(-1, 2)]
+	public int towerPrefab3 = -1;
+
+	[Range(-1, 2)]
+	public int towerPrefab4 = -1;
+
+	[Range(-1, 2)]
+	public int towerPrefab5 = -1;
+
+	
+	public GameObject[] towerPrefabs;
 
 	public List<Tile> tiles;
 
@@ -29,11 +41,24 @@ public class LVLsettings : MonoBehaviour {
 
         allTowers = 0;
 
-        if (towerPrefab1 != null) allTowers++;
-        if (towerPrefab2 != null) allTowers++;
-        if (towerPrefab3 != null) allTowers++;
-        if (towerPrefab4 != null) allTowers++;
-        if (towerPrefab5 != null) allTowers++;
+        if (towerPrefab1 != -1) allTowers++;
+        if (towerPrefab2 != -1) allTowers++;
+        if (towerPrefab3 != -1) allTowers++;
+        if (towerPrefab4 != -1) allTowers++;
+        if (towerPrefab5 != -1) allTowers++;
+	}
+
+	public GameObject TowerPrefab(int id) {
+		switch (id)
+		{
+			case 0: return towerPrefab1 != -1? towerPrefabs[towerPrefab1]:null;
+			case 1: return towerPrefab2 != -1? towerPrefabs[towerPrefab2]:null;
+			case 2: return towerPrefab3 != -1? towerPrefabs[towerPrefab3]:null;
+			case 3: return towerPrefab4 != -1? towerPrefabs[towerPrefab4]:null;
+			case 4: return towerPrefab5 != -1? towerPrefabs[towerPrefab5]:null;
+			default:
+			return null;
+		}
 	}
 
 	
