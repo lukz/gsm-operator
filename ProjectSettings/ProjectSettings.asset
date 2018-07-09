@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: 85dfbf78c4135a048b40be0e0379055c, type: 3}
+  - logo: {fileID: 21300000, guid: fd9ff29572ef51445ae4e5d719c0ce11, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -119,7 +119,7 @@ PlayerSettings:
     16:10: 0
     16:9: 0
     Others: 1
-  bundleVersion: 1.1
+  bundleVersion: 1.11
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -156,7 +156,7 @@ PlayerSettings:
     Standalone: com.rarykos.mars
     iOS: com.7agames.marspuzzle
   buildNumber:
-    iOS: 1
+    iOS: 2
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
@@ -205,22 +205,25 @@ PlayerSettings:
   tvOSTopShelfImageLayers2x: []
   tvOSTopShelfImageWideLayers: []
   tvOSTopShelfImageWideLayers2x: []
-  iOSLaunchScreenType: 0
-  iOSLaunchScreenPortrait: {fileID: 0}
-  iOSLaunchScreenLandscape: {fileID: 0}
+  iOSLaunchScreenType: 1
+  iOSLaunchScreenPortrait: {fileID: 2800000, guid: 85dfbf78c4135a048b40be0e0379055c,
+    type: 3}
+  iOSLaunchScreenLandscape: {fileID: 2800000, guid: 85dfbf78c4135a048b40be0e0379055c,
+    type: 3}
   iOSLaunchScreenBackgroundColor:
     serializedVersion: 2
-    rgba: 0
+    rgba: 4294967295
   iOSLaunchScreenFillPct: 100
-  iOSLaunchScreenSize: 100
+  iOSLaunchScreenSize: 70
   iOSLaunchScreenCustomXibPath: 
-  iOSLaunchScreeniPadType: 0
-  iOSLaunchScreeniPadImage: {fileID: 0}
+  iOSLaunchScreeniPadType: 1
+  iOSLaunchScreeniPadImage: {fileID: 2800000, guid: 85dfbf78c4135a048b40be0e0379055c,
+    type: 3}
   iOSLaunchScreeniPadBackgroundColor:
     serializedVersion: 2
-    rgba: 0
+    rgba: 4294967295
   iOSLaunchScreeniPadFillPct: 100
-  iOSLaunchScreeniPadSize: 100
+  iOSLaunchScreeniPadSize: 70
   iOSLaunchScreeniPadCustomXibPath: 
   iOSUseLaunchScreenStoryboard: 0
   iOSLaunchScreenCustomStoryboardPath: 
@@ -640,6 +643,7 @@ PlayerSettings:
   switchAllowsRuntimeAddOnContentInstall: 0
   switchDataLossConfirmation: 0
   switchSupportedNpadStyles: 3
+  switchNativeFsCacheSize: 32
   switchSocketConfigEnabled: 0
   switchTcpInitialSendBufferSize: 32
   switchTcpInitialReceiveBufferSize: 64
