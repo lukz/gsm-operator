@@ -111,7 +111,8 @@ public class Tileset : MonoBehaviour {
         }
         // can be null when adding stuff in editor
         GameManager gm = GameManager.instance;
-        if (gm == null) {
+        // if its not spawned by player, we want the change to be isntant
+        if (gm == null || !tower.playerTower) {
             for (int i = 0; i < validTiles.Count; i++)
             {
                 validTiles[i].PowerChange(tower, powerChange);
