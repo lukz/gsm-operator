@@ -11,7 +11,6 @@ public class Tile : MonoBehaviour
 	public int x;
 	public int y;
 
-	public PowerMarker powerMarker;
 	public BuildMarker buildMarker;
 
 
@@ -67,7 +66,6 @@ public class Tile : MonoBehaviour
 		if (house != null)
 		{
 			HouseScript hs = house.GetComponent<HouseScript>();
-			powerMarker.SetRequiredPower(hs.requiredResources);
 			_spriterenderer.enabled = false;
 
 		}
@@ -277,8 +275,6 @@ public class Tile : MonoBehaviour
 		{
 			powerLvl = powerChange;
 
-			powerMarker.SetPower(powerLvl, powerChange);
-
 
 			if (resource)
 			{
@@ -349,6 +345,18 @@ public class Tile : MonoBehaviour
 				resourceFlash.GetComponent<Animator>().Play("PowerUpTile", 0, 0f);
 			}
 		}
+		else
+		{
+			HouseScript[] hss = GetComponentsInChildren<HouseScript>();
+			foreach (var hs in hss)
+			{
+				MineScript ts = hs.gameObject.GetComponent<MineScript>();
+				if (ts != null)
+				{
+					ts.PowerChange(null, 0, powerLvl);
+				}
+			}
+		}
 	}
 
 	public void PowerChangeDelayed(TowerScript source, int powerChange, float delay)
@@ -368,12 +376,16 @@ public class Tile : MonoBehaviour
 		HouseScript[] hss = GetComponentsInChildren<HouseScript>();
 		foreach (var hs in hss)
 		{
-			hs.PowerChanged();
 			MineScript ts = hs.gameObject.GetComponent<MineScript>();
 			if (ts != null)
 			{
-				ts.PowerChange(source, powerChange);
+				ts.PowerChange(source, powerChange,powerLvl);
 			}
+			else
+			{
+				hs.PowerChanged();
+			}
+
 		}
 	}
 

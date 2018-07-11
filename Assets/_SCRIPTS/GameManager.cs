@@ -104,6 +104,12 @@ public class GameManager : MonoBehaviour
 	private bool savedOriginal;
 	public float timeToSave = 0;
 
+	public Sprite powerOn;
+	public Sprite powerOff;
+	public Sprite waterOff;
+	public Sprite waterOn;
+
+
 	void Awake()
 	{
 		if (instance == null)
@@ -523,7 +529,7 @@ public class GameManager : MonoBehaviour
 						//GameObject newSplash = Instantiate(splash);
 
 						//newSplash.GetComponent<SplashScript>().setEndSplash();
-						float whiteTintDelay = PowerMarker.currentMarkerDelay + 2.5f;
+						float whiteTintDelay = HouseScript.currentMarkerDelay + 2.5f;
 						showWhiteTint(true, whiteTintDelay);
 
 						restartFlareFx.SetActive(false);
@@ -573,7 +579,7 @@ public class GameManager : MonoBehaviour
 		{
 			for (int j = 0; j < towerspawner.tileset.tiles[i].row.Count; j++)
 			{
-				PowerMarker marker = towerspawner.tileset.tiles[i].row[j].GetComponentInChildren<PowerMarker>();
+				HouseScript marker = towerspawner.tileset.tiles[i].row[j].GetComponentInChildren<HouseScript>();
 				if (marker != null) marker.MapFinishedTween();
 			}
 

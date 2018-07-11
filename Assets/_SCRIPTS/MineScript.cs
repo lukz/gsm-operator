@@ -10,44 +10,51 @@ public class MineScript : MonoBehaviour
 	private List<MineScript> poweredBy = new List<MineScript>();
 	private List<MineScript> powers = new List<MineScript>();
 
-	bool powered;
-
 	void Start()
 	{
 		houseScript = GetComponent<HouseScript>();
 		towerScript = GetComponent<TowerScript>();
 	}
-	public void PowerChange(TowerScript source, int powerChange)
+	public void PowerChange(TowerScript source, int power, int tilePower)
 	{
 		// Debug.Log("Mine(" + GetInstanceID() + ") Power change " + this.powerLvl + " + " + powerChange);
 		// the general idea is to disallow power up loops
 		// if we power up a mine, we dont want to be power back by it		
-		if (!source) return;
-		MineScript other = source.gameObject.GetComponent<MineScript>();
-		if (other != null)
+	houseScript.powered = false;
+		if (!source)
 		{
-			// other mine wants to power us, check if we power it first
-			if (powerChange < 0)
-			{
-				// Debug.Log("(" + GetInstanceID() + " Power removed " 
-				// + this.powerLvl + " -> " + powerChange + " from " + other + "("+other.GetInstanceID()+")");
-				poweredBy.Remove(other);
-				other.powers.Remove(this);
-			}
-			else if (powerChange > 0)
-			{
-				// make sure we dont make a chain
-				if (Chained(other))
-				{
-					return;
-				}
-				// Debug.Log("(" + GetInstanceID() + " Power added " 
-				// + this.powerLvl + " -> " + powerChange + " from " + other + "("+other.GetInstanceID()+")");
-				poweredBy.Add(other);
-				other.powers.Add(this);
-			}
+			if (tilePower != 0)
+				houseScript.powered = true;
 		}
-		towerScript.PowerUp();
+		else
+		{
+			MineScript other = source.gameObject.GetComponent<MineScript>();
+			if (other != null)
+			{
+				// other mine wants to power us, check if we power it first
+				if (power < 0)
+				{
+					// Debug.Log("(" + GetInstanceID() + " Power removed " 
+					// + this.powerLvl + " -> " + powerChange + " from " + other + "("+other.GetInstanceID()+")");
+					poweredBy.Remove(other);
+					other.powers.Remove(this);
+				}
+				else if (power > 0)
+				{
+					// make sure we dont make a chain
+					if (Chained(other))
+					{
+						return;
+					}
+					// Debug.Log("(" + GetInstanceID() + " Power added " 
+					// + this.powerLvl + " -> " + powerChange + " from " + other + "("+other.GetInstanceID()+")");
+					poweredBy.Add(other);
+					other.powers.Add(this);
+				}
+			}
+			houseScript.powered = true;
+			towerScript.PowerUp();
+		}
 	}
 
 	private bool Chained(MineScript other)

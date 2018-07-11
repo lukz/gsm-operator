@@ -2614,6 +2614,11 @@ MonoBehaviour:
     type: 2}
   waterUpFlashEffect: {fileID: 1135731328327704, guid: 28148ed51c5457c468fc0ae0b4f5de03,
     type: 2}
+  timeToSave: 0
+  powerOn: {fileID: 21300000, guid: 76f92f12fcddb3d48affeac05ce9bf7d, type: 3}
+  powerOff: {fileID: 21300000, guid: b53680daa71359743bc7b75d41846d5c, type: 3}
+  waterOff: {fileID: 21300000, guid: e64a6c16c6800ee4faa3d885352ec03c, type: 3}
+  waterOn: {fileID: 21300000, guid: 4f2412951228c384e98c807074bfb3d2, type: 3}
 --- !u!114 &114063541039714290
 MonoBehaviour:
   m_ObjectHideFlags: 1

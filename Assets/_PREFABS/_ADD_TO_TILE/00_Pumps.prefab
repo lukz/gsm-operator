@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 95255759745309086}
   - component: {fileID: 114184393004725718}
   m_Layer: 0
-  m_Name: 00_House
+  m_Name: 00_Pumps
   m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,8 +302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d0c953c426c624881a17dc4f48b767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredResources: 
+  currentResources: 
   powered: 0
-  requiredPower: 1
   sprite: {fileID: 212635388757059030}
 --- !u!212 &212059118440238334
 SpriteRenderer:
