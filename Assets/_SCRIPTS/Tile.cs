@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
 
-	public int powerLvl = 0;
+	public int powerLvl =0;
 
 
 	public int x;
@@ -266,7 +266,7 @@ public class Tile : MonoBehaviour
 
 	public bool CanBuild()
 	{
-		return !IsBlocked() && (HasEnergyField() || powerLvl > 0);
+		return !IsBlocked() && (HasEnergyField() || powerLvl != 0);
 	}
 
 	public void PowerChange(TowerScript source, int powerChange)
@@ -285,16 +285,15 @@ public class Tile : MonoBehaviour
 			WillAddResource = false;
 		}
 
-	
 
 		powerLvl += powerChange;
 
 		powerMarker.SetPower(powerLvl, powerChange);
 
-
 		if (resource)
 		{
 			//TODO fade, efekt na usuniecie zasobu na RESET
+			//TODO pamietaj ze overwrite jest sprawdzany...
 			Destroy(resource);
 		}
 		GameObject temp;

@@ -264,7 +264,6 @@ public class EventTriggerProxy : MonoBehaviour {
         locked = false;
 
         //lockTimer = .5f;
-        // TODO hide the graphic
 
         float flashDuration = .2f;
 		if (GameManager.instance.timeOnLevel > 0.7f)
@@ -321,7 +320,6 @@ public class EventTriggerProxy : MonoBehaviour {
         locked = true;
 
         //lockTimer = .5f;
-        // TODO show the graphic
         gateSpriteFilled.enabled = true;
         gateSpriteFilled.transform.DOKill();
         gateSpriteFilled.material.DOKill();

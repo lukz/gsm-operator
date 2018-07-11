@@ -9,9 +9,6 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
 
-	public static bool SOFTLAUNCH = false; //TODO REMEMBER MAKE THIS FALSE before official final release
-
-
 
 	[SerializeField]
 	private GameObject powerStickerPrefab;
@@ -225,8 +222,7 @@ public class GameManager : MonoBehaviour
 
 		if (currentLvl == lastLevelId + 1)
 		{
-			if (!SOFTLAUNCH)
-				Invoke("ChangeLvlTo1", 15f);
+			//	Invoke("ChangeLvlTo1", 15f);
 		}
 		else
 		{

@@ -18,7 +18,6 @@ public class QuitOnDoubleEscape : MonoBehaviour {
 				} else {
 					Debug.Log("Starting countdown");
 					backCount += 1;
-					// TODO toast of some sort?
 					StopAllCoroutines();
 					StartCoroutine("CancelExit");
 				}

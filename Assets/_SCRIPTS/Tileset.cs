@@ -126,11 +126,12 @@ public class Tileset : MonoBehaviour {
 
                 delay = (fullTime / validTiles.Count) * i;
 
+				//TODO AHA tutaj sie dzieje, co jest reset itp 
                 if (powerChange <= 0) delay = 0;
 
                 validTiles[i].PowerChangeDelayed(tower, powerChange, delay);
             }
-
+			//todo tutaj tez
             if(powerChange > 0)
             {
                 gm.lockRestartFor(fullTime);

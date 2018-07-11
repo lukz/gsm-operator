@@ -9,6 +9,7 @@ public class BuildMarker : MonoBehaviour {
 	const int CAN_BUILD_PLACE = 3;
 
 	public GameObject willPowerMarker;
+	public GameObject willWaterMarker;
 	private Animator canBuildAnimator;
 	void Init () {
 		if (canBuildAnimator == null) {

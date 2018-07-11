@@ -127,6 +127,7 @@ public class TowerScript : MonoBehaviour {
             tile = transform.GetComponentInParent<Tile>();
             tileset = tile.Tileset;
         }
+		//TODO rozpoznaj czy to reset czy overwrite, bo teraz jest ...
         tileset.ChangeTilesPower(this, tile, -1, powerOffsets);
     }
 
