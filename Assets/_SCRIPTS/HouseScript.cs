@@ -6,13 +6,13 @@ using DG.Tweening;
 
 public class HouseScript : MonoBehaviour {
 
- 	
-	public int powered = 0;
 
-    public int requiredPower = 1;
-	
+	public int[] requiredResources;
+	public int[] currentResources;
+
+	public bool powered = false;
+
 	Animator animator;
-    // Use this for initialization
 
     [SerializeField]
     private SpriteRenderer sprite;
@@ -21,19 +21,26 @@ public class HouseScript : MonoBehaviour {
 		animator = GetComponent<Animator>();
 	}
 
+	public void UpdateResources()
+	{
+		//todo check ile jest dobrych elementow w current resources z required resources. porownaj array. jezeli dobrze to powered = true;
+	}
+
+
 	public void PowerChanged() {
         int newPower = transform.GetComponentInParent<Tile>().powerLvl;
 
 		FlashPowered();
-
-        powered = newPower;
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		animator.SetInteger("power", Mathf.Abs(powered));
-       
+		int powerTemp = 0;
+		if (powered) powerTemp = 1;
+		animator.SetInteger("power", powerTemp);
 	}
+
+
+
 
     private float mix;
     private int flashColorId = Shader.PropertyToID("_FlashColor");
@@ -119,6 +126,6 @@ public class HouseScript : MonoBehaviour {
 
     public bool IsPowered()
     {
-        return powered >= requiredPower;
+        return powered;
     }
 }

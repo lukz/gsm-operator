@@ -13,7 +13,6 @@ public class PowerMarker : MonoBehaviour
 	public bool showIfNoPower = false;
 
 	public int power = 0;
-
 	public int requiredPower = 0;
 
 	private List<GameObject> markers = new List<GameObject>();
@@ -90,13 +89,10 @@ public class PowerMarker : MonoBehaviour
 		}
 	}
 
-	public void SetRequiredPower(int requiredPower)
+	public void SetRequiredPower(int[] requiredResources)
 	{
-		if (requiredPower < 0) requiredPower = 0;
-		if (requiredPower > 3) requiredPower = 3;
 
 		this.requiredPower = requiredPower;
-		// Debug.Log("req power = " + requiredPower);
 
 		CreateMarkers(requiredPower);
 

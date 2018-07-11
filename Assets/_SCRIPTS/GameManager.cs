@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
 	public Transform towerDragTutorialContainer;
 	private GameObject towerDragTutorialInstance;
 
-	private int powerNeeded = 0;
+
 	private GameObject[] houses;
 
 
@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
 	public GameObject waterUpFlashEffect;
 
 	private List<int[][]> backHistory = new List<int[][]>();
+	private List<List<int[]>> houseHistory = new List<List<int[]>>();
 	private bool savedOriginal;
 	public float timeToSave = 0;
 
@@ -243,6 +244,7 @@ public class GameManager : MonoBehaviour
 				}
 				
 			}
+			houseHistory.Clear();
 			backHistory.Clear();
 
 			boxController.Restart(lvlmanager);
@@ -294,12 +296,6 @@ public class GameManager : MonoBehaviour
 
 		houses = GameObject.FindGameObjectsWithTag("House");
 
-		powerNeeded = 0;
-		foreach (GameObject house in houses)
-		{
-			HouseScript hs = house.GetComponent<HouseScript>();
-			powerNeeded += hs.requiredPower;
-		}
 
 		preparedScene = true;
 
@@ -365,6 +361,13 @@ public class GameManager : MonoBehaviour
 		}
 		backHistory.Add(state);
 
+		List<int[]> housesStates = new List<int[]>();
+		for (int i = 0; i < houses.Length; i++)
+		{
+			housesStates.Add(houses[i].GetComponent<HouseScript>().currentResources);
+		}
+		houseHistory.Add(housesStates);
+
 	}
 
 	public void Restart()
@@ -395,6 +398,13 @@ public class GameManager : MonoBehaviour
 				}
 			}
 			backHistory.RemoveAt(backHistory.Count - 1);
+
+			for (int i = 0; i < houses.Length; i++)
+			{
+				houses[i].GetComponent<HouseScript>().currentResources = houseHistory[houseHistory.Count - 2][i];
+				houses[i].GetComponent<HouseScript>().UpdateResources();
+			}
+			houseHistory.RemoveAt(houseHistory.Count-1);
 		}
 	}
 
@@ -424,6 +434,13 @@ public class GameManager : MonoBehaviour
 			}
 		}
 		backHistory.Clear();
+
+		for (int i = 0; i < houses.Length; i++)
+		{
+			houses[i].GetComponent<HouseScript>().currentResources = houseHistory[0][i];
+			houses[i].GetComponent<HouseScript>().UpdateResources();
+		}
+		houseHistory.Clear() ;
 		return true;
 
 	}
@@ -487,15 +504,13 @@ public class GameManager : MonoBehaviour
 		{
 			if (houses.Length > 0)
 			{
-				allPowered = false;
-				float countPowered = 0;
+				allPowered = true;
 				if (!preparedScene) return;
 				foreach (GameObject house in houses)
 				{
 					HouseScript hs = house.GetComponent<HouseScript>();
-					countPowered += Mathf.Min(hs.powered, hs.requiredPower);
+					if (!hs.IsPowered()) allPowered = false;
 				}
-				if (countPowered >= powerNeeded) allPowered = true;
 
 				if (allPowered)
 				{

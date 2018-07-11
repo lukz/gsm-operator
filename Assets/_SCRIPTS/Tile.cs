@@ -67,7 +67,7 @@ public class Tile : MonoBehaviour
 		if (house != null)
 		{
 			HouseScript hs = house.GetComponent<HouseScript>();
-			powerMarker.SetRequiredPower(hs.requiredPower);
+			powerMarker.SetRequiredPower(hs.requiredResources);
 			_spriterenderer.enabled = false;
 
 		}
@@ -75,8 +75,6 @@ public class Tile : MonoBehaviour
 		{
 			if (HasRocks()) _spriterenderer.enabled = false;
 			if (HasTower()) _spriterenderer.enabled = false;
-
-			powerMarker.SetRequiredPower(0);
 		}
 	}
 
