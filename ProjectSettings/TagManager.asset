@@ -20,6 +20,7 @@ TagManager:
   - Pump
   - Tile
   - BtnHolder
+  - WaterField
   layers:
   - Default
   - TransparentFX

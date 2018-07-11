@@ -2608,6 +2608,10 @@ MonoBehaviour:
   towerDragTutorialContainer: {fileID: 224731627770461214}
   boxController: {fileID: 114474225801546920}
   MenuBtnHolder: {fileID: 1740342188114168}
+  CrystalPrefab: {fileID: 1399098518138118, guid: 1ce924002c66d434e8cdc31a8facf40d,
+    type: 2}
+  WaterPrefab: {fileID: 1399098518138118, guid: 6af07205c07ca544a8eb0105167972ac,
+    type: 2}
 --- !u!114 &114063541039714290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9159,7 +9163,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 110.99999, y: 0}
+  m_AnchoredPosition: {x: 80.99999, y: 1}
   m_SizeDelta: {x: 900, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224468271263680548
@@ -9336,7 +9340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -742.2048, y: 100}
+  m_AnchoredPosition: {x: -682, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224862262555586884

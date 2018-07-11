@@ -100,6 +100,10 @@ public class GameManager : MonoBehaviour
 
 	private float restartButtonLockTimer = 0f;
 
+	public  GameObject CrystalPrefab;
+
+	public  GameObject WaterPrefab;
+
 	void Awake()
 	{
 		if (instance == null)

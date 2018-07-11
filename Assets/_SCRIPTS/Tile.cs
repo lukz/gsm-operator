@@ -2,65 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour {
+public class Tile : MonoBehaviour
+{
 
 	public int powerLvl = 0;
 
-    //public GameObject[] objectsHere;
 
-    // private Color normalColor = new Color(0xFF, 0xFF, 0xFF, 0f);
-    // private Color blockedColor = new Color(0xFF, 0x00, 0x00, 0xD0);
-    // private Color poweredColor = new Color(0x00, 0xB5, 0xFF, 0xC0);
-    // private Color powered2Color = new Color(0x60, 0x90, 0xFF, 0xC0);
-    // private Color powered3Color = new Color(0x00, 0x00, 0x0, 0xC0);
-	// private Color targetColor = new Color(0x0, 0xFF, 0x00, 0xFD);
+	public int x;
+	public int y;
 
-    public int x;
-    public int y;
+	public PowerMarker powerMarker;
+	public BuildMarker buildMarker;
 
-    public PowerMarker powerMarker;
-    public BuildMarker buildMarker;
+	public GameObject powerUpFlashEffect;
 
-    public GameObject powerUpFlashEffect;
-
-	[SerializeField]
-	private Sprite hookLvl0;
-
-	[SerializeField]
-	private Sprite hookLvl1;
-
-	[SerializeField]
-	private Sprite hookLvl2;
-
-	[SerializeField]
-	private Sprite hookLvl3;
-
-	[SerializeField]
-	private Sprite hookBad;
+	private GameObject resource;
 
 	private List<TowerScript.PowerOffset> towerPowerOffsets;
 
-    private Tileset tileset;
+	private Tileset tileset;
 
-    public Tileset Tileset {
-        get { return tileset; } 
-        set { tileset = value; }
-    }
+	public Tileset Tileset
+	{
+		get { return tileset; }
+		set { tileset = value; }
+	}
 
 	private SpriteRenderer _spriterenderer;
 
 	// Use this for initialization
 
-    public void Init(Tileset tileset, int x, int y) 
-    {
-        Tileset = tileset;
-        this.x = x;
-        this.y = y;
-        powerLvl = 0;
-        _spriterenderer = GetComponent<SpriteRenderer>();
+	public void Init(Tileset tileset, int x, int y)
+	{
+		Tileset = tileset;
+		this.x = x;
+		this.y = y;
+		powerLvl = 0;
+		_spriterenderer = GetComponent<SpriteRenderer>();
 		_spriterenderer.enabled = true;
 
-        if (HasEnergyField()) PowerChange(null, 1);
+		if (HasEnergyField()) PowerChange(null, 1);
+		if (HasWaterField()) PowerChange(null, -1);
 		if (HasHouse()) _spriterenderer.enabled = false;
 		if (HasRocks()) _spriterenderer.enabled = false;
 		if (HasTower()) _spriterenderer.enabled = false;
@@ -77,264 +59,294 @@ public class Tile : MonoBehaviour {
 
 	}
 
-	void Start () {
-		ChangeHooks();
+	void Start()
+	{
 
-		// GetComponent<SpriteRenderer>().enabled = false;
 		GameObject house = GetHouse();
-        if (house != null) {
-            HouseScript hs = house.GetComponent<HouseScript>();
-            powerMarker.SetRequiredPower(hs.requiredPower);
+		if (house != null)
+		{
+			HouseScript hs = house.GetComponent<HouseScript>();
+			powerMarker.SetRequiredPower(hs.requiredPower);
 			_spriterenderer.enabled = false;
 
-		} else {
+		}
+		else
+		{
 			if (HasRocks()) _spriterenderer.enabled = false;
-			if(HasTower()) _spriterenderer.enabled = false;
-			
+			if (HasTower()) _spriterenderer.enabled = false;
+
 			powerMarker.SetRequiredPower(0);
-           // powerMarker.SetPower(powerLvl);
-        }
+		}
 	}
 
-    public bool HasEnergyField()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if (transform.GetChild(i).transform.tag == "EnergyField") return true;
-        }
-
-        return false;
-    }
-
-    bool HasTower()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if (transform.GetChild(i).transform.tag == "Tower") return true;
-        }
-
-        return false;
-    }
-
-    public GameObject GetTower()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if (transform.GetChild(i).transform.tag == "Tower") return transform.GetChild(i).gameObject;
-        }
-
-        return null;
-    }
-
-    public MineScript GetMine()
-    {
-        GameObject mine = GetTower();
-        if (mine != null) {
-            return mine.GetComponent<MineScript>();
-        }
-        return null;
-    }
-
-    bool HasHouse()
-    {
-        if (GetHouse() != null) return true;
-        return false;
-    }
-
-    public GameObject GetHouse()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if (transform.GetChild(i).transform.tag == "House") return transform.GetChild(i).gameObject;
-        }
-
-        return null;
-    }
-
-    bool HasRocks()
-    {
+	public bool HasEnergyField()
+	{
 		for (int i = 0; i < transform.childCount; i++)
 		{
-		if (transform.GetChild(i).transform.tag == "Blocker")
+			GameObject temp = transform.GetChild(i).gameObject;
+			if (temp.transform.tag == "EnergyField")
+			{
+				resource = temp;
+				return true;
+			}
+		}
+
+		return false;
+	}
+	public bool HasWaterField()
+	{
+		for (int i = 0; i < transform.childCount; i++)
+		{
+			GameObject temp = transform.GetChild(i).gameObject;
+			if (temp.transform.tag == "WaterField")
+			{
+				resource = temp;
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	bool HasTower()
+	{
+		for (int i = 0; i < transform.childCount; i++)
+		{
+			if (transform.GetChild(i).transform.tag == "Tower") return true;
+		}
+
+		return false;
+	}
+
+	public GameObject GetTower()
+	{
+		for (int i = 0; i < transform.childCount; i++)
+		{
+			if (transform.GetChild(i).transform.tag == "Tower") return transform.GetChild(i).gameObject;
+		}
+
+		return null;
+	}
+
+	public MineScript GetMine()
+	{
+		GameObject mine = GetTower();
+		if (mine != null)
+		{
+			return mine.GetComponent<MineScript>();
+		}
+		return null;
+	}
+
+	bool HasHouse()
+	{
+		if (GetHouse() != null) return true;
+		return false;
+	}
+
+	public GameObject GetHouse()
+	{
+		for (int i = 0; i < transform.childCount; i++)
+		{
+			if (transform.GetChild(i).transform.tag == "House") return transform.GetChild(i).gameObject;
+		}
+
+		return null;
+	}
+
+	bool HasRocks()
+	{
+		for (int i = 0; i < transform.childCount; i++)
+		{
+			if (transform.GetChild(i).transform.tag == "Blocker")
 			{
 				return true;
 			}
 		}
 
 		return false;
-    }
-    public GameObject GetEnemy()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            Transform t = transform.GetChild(i);
-            if (t.transform.tag == "Blocker") {
-                // check if they are on or something?
-                EnemyCrystal rocks = t.gameObject.GetComponent<EnemyCrystal>();
-                if (rocks != null) {
-                    return t.gameObject;
-                }
-            }
-        }
-        return null;
-    }
+	}
+	public GameObject GetEnemy()
+	{
+		for (int i = 0; i < transform.childCount; i++)
+		{
+			Transform t = transform.GetChild(i);
+			if (t.transform.tag == "Blocker")
+			{
+				// check if they are on or something?
+				EnemyCrystal rocks = t.gameObject.GetComponent<EnemyCrystal>();
+				if (rocks != null)
+				{
+					return t.gameObject;
+				}
+			}
+		}
+		return null;
+	}
 
-    bool IsBlocked()
-    {
-        return HasRocks() || HasHouse() || HasTower();
-    }
+	bool IsBlocked()
+	{
+		return HasRocks() || HasHouse() || HasTower();
+	}
 
-    public void StartBuilding() 
-    {   
-        if (gameObject.activeInHierarchy) 
-        {
-            buildMarker.StartBuild(CanBuild());
-        }
-    }
+	public void StartBuilding()
+	{
+		if (gameObject.activeInHierarchy)
+		{
+			buildMarker.StartBuild(CanBuild());
+		}
+	}
 
-    public void CancelBuilding() 
-    {
-        if (gameObject.activeInHierarchy) 
-        {
-            buildMarker.CancelBuild();
-        }
-    }
+	public void CancelBuilding()
+	{
+		if (gameObject.activeInHierarchy)
+		{
+			buildMarker.CancelBuild();
+		}
+	}
 
-    private delegate void DoTile (Tile parameter);
-    public void SetAsBuildTarget(List<TowerScript.PowerOffset> powerOffsets)
-    {
-        buildMarker.OverBuild(CanBuild());
-        if (towerPowerOffsets != null) {
-            CancelBuildTarget();
-        }
-        towerPowerOffsets = powerOffsets;
-        if (towerPowerOffsets != null) {
-            DoOverOffsetTiles(t => {
-                t.buildMarker.StartWillPowerUp(!CanBuild());
-            });
-        }
-    }
-    public void CancelBuildTarget()
-    {
-        buildMarker.CancelOverBuild(CanBuild());
-    
-        if (towerPowerOffsets != null) {
-            DoOverOffsetTiles(t => {
-                t.buildMarker.CancelWillPowerUp();
-            });
-            towerPowerOffsets = null;
-        }
-    }
+	private delegate void DoTile(Tile parameter);
+	public void SetAsBuildTarget(List<TowerScript.PowerOffset> powerOffsets)
+	{
+		buildMarker.OverBuild(CanBuild());
+		if (towerPowerOffsets != null)
+		{
+			CancelBuildTarget();
+		}
+		towerPowerOffsets = powerOffsets;
+		if (towerPowerOffsets != null)
+		{
+			DoOverOffsetTiles(t =>
+			{
+				t.buildMarker.StartWillPowerUp(!CanBuild());
+			});
+		}
+	}
+	public void CancelBuildTarget()
+	{
+		buildMarker.CancelOverBuild(CanBuild());
 
-    private void DoOverOffsetTiles (DoTile doTile) 
-    {
-        if (towerPowerOffsets != null) {
-            int bx = tileset.GridX(transform.position.x);
-            int by = tileset.GridY(transform.position.y);
-            foreach (var offset in towerPowerOffsets) {
-                int tx = bx + offset.x;
-                int ty = by - offset.y;
-                Tile at = tileset.GetTileAt(tx, ty);
-                if (at != null && at.gameObject.activeInHierarchy) {
-                    doTile(at);
-                }
-            }
-        }
-    }
-    public void Build(GameObject tower)
-    {
-        tower.transform.parent = transform;
-        tower.transform.position = new Vector3(transform.position.x, transform.position.y-0.05f, transform.position.z);
+		if (towerPowerOffsets != null)
+		{
+			DoOverOffsetTiles(t =>
+			{
+				t.buildMarker.CancelWillPowerUp();
+			});
+			towerPowerOffsets = null;
+		}
+	}
 
-        tower.GetComponent<TowerScript>().AttachToTile(this);
+	private void DoOverOffsetTiles(DoTile doTile)
+	{
+		if (towerPowerOffsets != null)
+		{
+			int bx = tileset.GridX(transform.position.x);
+			int by = tileset.GridY(transform.position.y);
+			foreach (var offset in towerPowerOffsets)
+			{
+				int tx = bx + offset.x;
+				int ty = by - offset.y;
+				Tile at = tileset.GetTileAt(tx, ty);
+				if (at != null && at.gameObject.activeInHierarchy)
+				{
+					doTile(at);
+				}
+			}
+		}
+	}
+	public void Build(GameObject tower)
+	{
+		tower.transform.parent = transform;
+		tower.transform.position = new Vector3(transform.position.x, transform.position.y - 0.05f, transform.position.z);
+
+		tower.GetComponent<TowerScript>().AttachToTile(this);
 		buildMarker.CancelBuild();
 		_spriterenderer.enabled = false;
 	}
 
-    public bool CanBuild()
-    {
-        return !IsBlocked() && (HasEnergyField() || powerLvl > 0);
-    }
+	public bool CanBuild()
+	{
+		return !IsBlocked() && (HasEnergyField() || powerLvl > 0);
+	}
 
-    public void PowerChange(TowerScript source, int powerChange)
-    {
+	public void PowerChange(TowerScript source, int powerChange)
+	{
 		// Debug.Log("Tile#[" + x + ", " + y + "] power change " + source.GetInstanceID());
-        powerLvl += powerChange;
-        if (powerLvl < 0) {
-            Debug.Log("This sohuld not happen " + powerLvl + " -> " + source);
-            powerLvl = 0;
-        }
-        powerMarker.SetPower(powerLvl, powerChange);
-        OnPowerChange(source, powerChange);
+		powerLvl += powerChange;
+		if (powerLvl < 0)
+		{
+			Debug.Log("This sohuld not happen " + powerLvl + " -> " + source);
+			powerLvl = 0;
+		}
+		powerMarker.SetPower(powerLvl, powerChange);
 
-		ChangeHooks();
 
-        if (powerChange > 0 && Application.isPlaying)
-        {
+		if (resource)
+		{
+			Destroy(resource);
+		}
+		GameObject temp;
+		if (powerLvl > 0)
+		{
+			temp = GameObject.Instantiate(GameManager.instance.CrystalPrefab,transform);
+			resource = temp;
+		}
+		else
+		{
+			if (powerLvl < 0)
+			{
+				temp = GameObject.Instantiate(GameManager.instance.WaterPrefab,transform);
+				resource = temp;
+			}
+		}
 
-            // dont play sound when we just started and spawning stuff
-            if (GameManager.instance.timeOnLevel >= 0.1f) {
+
+
+
+		OnPowerChange(source, powerChange);
+
+		if (powerChange > 0 && Application.isPlaying)
+		{
+
+			// dont play sound when we just started and spawning stuff
+			if (GameManager.instance.timeOnLevel >= 0.1f)
+			{
 				GameObject powerUpFx = GameObject.Instantiate(powerUpFlashEffect);
 				powerUpFx.transform.parent = transform;
 				powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
 				Sounds.PlayPowerUp();
-            }
-        }
-    }
-
-    public void PowerChangeDelayed(TowerScript source, int powerChange, float delay)
-    {
-        StartCoroutine(PowerChangeCorutine(source, powerChange, delay));
-    }
-
-    IEnumerator PowerChangeCorutine(TowerScript source, int powerChange, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        PowerChange(source, powerChange);
-    }
-
-    public void ChangeHooks()
-	{
-		/*if (HasRocks() || HasTower() || HasHouse())
-		{
-			_spriterenderer.enabled = false;
+			}
 		}
-		else
-		{
-			_spriterenderer.enabled = true;
-		}
-		switch (powerLvl)
-		{
-			case 0:
-				_spriterenderer.sprite = hookBad;
-				if (HasEnergyField()) _spriterenderer.sprite = hookLvl0;
-				break;
-			case 1:
-				_spriterenderer.sprite = hookLvl1;
-				break;
-			case 2:
-				_spriterenderer.sprite = hookLvl2;
-				break;
-			case 3:
-				_spriterenderer.sprite = hookLvl3;
-				break;
-		}*/
 	}
 
-    private void OnPowerChange(TowerScript source, int powerChange)
-    {
-        HouseScript[] hss = GetComponentsInChildren<HouseScript>();
-        foreach (var hs in hss) 
-        {
-            hs.PowerChanged();
-            MineScript ts = hs.gameObject.GetComponent<MineScript>();
-            if (ts != null) {
-                ts.PowerChange(source, powerChange);
-            }
-        }
-    }
+	public void PowerChangeDelayed(TowerScript source, int powerChange, float delay)
+	{
+		StartCoroutine(PowerChangeCorutine(source, powerChange, delay));
+	}
 
-    public override string ToString() {
-        return "Tile{["+x + "," + y+"], active="+gameObject.activeInHierarchy+"}";
-    }
+	IEnumerator PowerChangeCorutine(TowerScript source, int powerChange, float delay)
+	{
+		yield return new WaitForSeconds(delay);
+		PowerChange(source, powerChange);
+	}
+
+
+	private void OnPowerChange(TowerScript source, int powerChange)
+	{
+		HouseScript[] hss = GetComponentsInChildren<HouseScript>();
+		foreach (var hs in hss)
+		{
+			hs.PowerChanged();
+			MineScript ts = hs.gameObject.GetComponent<MineScript>();
+			if (ts != null)
+			{
+				ts.PowerChange(source, powerChange);
+			}
+		}
+	}
+
+	public override string ToString()
+	{
+		return "Tile{[" + x + "," + y + "], active=" + gameObject.activeInHierarchy + "}";
+	}
 }
