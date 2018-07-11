@@ -918,7 +918,7 @@ MonoBehaviour:
   waterOff: {fileID: 21300000, guid: e64a6c16c6800ee4faa3d885352ec03c, type: 3}
   waterOn: {fileID: 21300000, guid: 4f2412951228c384e98c807074bfb3d2, type: 3}
   showIfNoPower: 0
-  power: 1
+  power: 0
   requiredPower: 0
 --- !u!1 &241535168
 GameObject:
@@ -1194,53 +1194,6 @@ MonoBehaviour:
   showIfNoPower: 0
   power: 0
   requiredPower: 0
---- !u!1001 &318582636
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2117507155}
-    m_Modifications:
-    - target: {fileID: 4862082104123746, guid: 0ca68b69f249a45b1a249afa24e0ede0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862082104123746, guid: 0ca68b69f249a45b1a249afa24e0ede0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.000000029802322
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862082104123746, guid: 0ca68b69f249a45b1a249afa24e0ede0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862082104123746, guid: 0ca68b69f249a45b1a249afa24e0ede0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862082104123746, guid: 0ca68b69f249a45b1a249afa24e0ede0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862082104123746, guid: 0ca68b69f249a45b1a249afa24e0ede0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862082104123746, guid: 0ca68b69f249a45b1a249afa24e0ede0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862082104123746, guid: 0ca68b69f249a45b1a249afa24e0ede0, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114781926435298400, guid: 0ca68b69f249a45b1a249afa24e0ede0,
-        type: 2}
-      propertyPath: playerTower
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 0ca68b69f249a45b1a249afa24e0ede0, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &332066281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,7 +2561,7 @@ MonoBehaviour:
   waterOff: {fileID: 21300000, guid: e64a6c16c6800ee4faa3d885352ec03c, type: 3}
   waterOn: {fileID: 21300000, guid: 4f2412951228c384e98c807074bfb3d2, type: 3}
   showIfNoPower: 0
-  power: 1
+  power: 0
   requiredPower: 0
 --- !u!1 &733253675
 GameObject:
@@ -3922,7 +3875,7 @@ MonoBehaviour:
   waterOff: {fileID: 21300000, guid: e64a6c16c6800ee4faa3d885352ec03c, type: 3}
   waterOn: {fileID: 21300000, guid: 4f2412951228c384e98c807074bfb3d2, type: 3}
   showIfNoPower: 0
-  power: 1
+  power: 0
   requiredPower: 0
 --- !u!1 &1101202405
 GameObject:
@@ -6326,11 +6279,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4486295438428008, guid: 1ae98f12dad680748b911e12f81bbc8f,
     type: 2}
   m_PrefabInternal: {fileID: 801945095}
---- !u!4 &1599736334 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4862082104123746, guid: 0ca68b69f249a45b1a249afa24e0ede0,
-    type: 2}
-  m_PrefabInternal: {fileID: 318582636}
 --- !u!1 &1654533463
 GameObject:
   m_ObjectHideFlags: 0
@@ -8519,7 +8467,6 @@ Transform:
   m_Children:
   - {fileID: 1880439646}
   - {fileID: 445221907}
-  - {fileID: 1599736334}
   m_Father: {fileID: 1190633326}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

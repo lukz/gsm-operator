@@ -99,6 +99,10 @@ public class GameManager : MonoBehaviour
 	public  GameObject WaterPrefab;
 	public GameObject waterUpFlashEffect;
 
+	private List<int[][]> backHistory = new List<int[][]>();
+	private bool savedOriginal;
+	public float timeToSave = 0;
+
 	void Awake()
 	{
 		if (instance == null)
@@ -228,6 +232,18 @@ public class GameManager : MonoBehaviour
 			towersContainer = GameObject.FindGameObjectWithTag("TowersContainer");
 			towerspawner.towerContainer = towersContainer;
 			towerspawner.tileset = GameObject.FindGameObjectWithTag("Tileset").GetComponent<Tileset>();
+			savedOriginal = false;
+			for (int h = 0; h < backHistory.Count; h++)
+			{
+				for (int i = 0; i < backHistory[h].Length; i++)
+				{
+					
+						backHistory[h][i] = null;
+					
+				}
+				
+			}
+			backHistory.Clear();
 
 			boxController.Restart(lvlmanager);
 			// for (int i = 0; i < 5; i++)
@@ -334,15 +350,30 @@ public class GameManager : MonoBehaviour
 		currentLvl = 1;
 		SceneManager.LoadScene("LVL1");
 	}
+
+	private void SaveHistory()
+	{
+
+		int[][] state = new int[4][];
+		for (int i = 0; i < 4; i++)
+		{
+			state[i] = new int[5];
+			for (int j = 0; j < 5; j++)
+			{
+				state[i][j] = towerspawner.tileset.tiles[i].row[j].GetComponent<Tile>().powerLvl;
+			}
+		}
+		backHistory.Add(state);
+
+	}
+
 	public void Restart()
 	{
 		if (!canDoActions || restartButtonLockTimer > 0) return;
 
 		towerspawner.ReturnTower();
 		Sounds.PlayButtonClick();
-		//
 
-		// timerTowerRestart = delayBetweenTowerRestart;
 		if (buildTowers.Count > 0)
 		{
 			LockCurrentTower();
@@ -354,6 +385,16 @@ public class GameManager : MonoBehaviour
 			towerspawner.tileset.ToggleRocks();
 
 			firstLockedButton--;
+
+
+			for (int i = 0; i < 4; i++)
+			{
+				for (int j = 0; j < 5; j++)
+				{
+					towerspawner.tileset.tiles[i].row[j].GetComponent<Tile>().PowerChange(null,backHistory[(backHistory.Count - 2)][i][j],true);
+				}
+			}
+			backHistory.RemoveAt(backHistory.Count - 1);
 		}
 	}
 
@@ -375,7 +416,16 @@ public class GameManager : MonoBehaviour
 
 			towerspawner.tileset.ToggleRocks();
 		}
+		for (int i = 0; i < 4; i++)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				towerspawner.tileset.tiles[i].row[j].GetComponent<Tile>().PowerChange(null, backHistory[0][i][j], true);
+			}
+		}
+		backHistory.Clear();
 		return true;
+
 	}
 	void ShakeScreen()
 	{
@@ -407,6 +457,14 @@ public class GameManager : MonoBehaviour
 		timeOnLevel += Time.deltaTime;
 		ShakeScreen();
 		HideMenu();
+		if (timeOnLevel > 0.2f)
+		{
+			if (!savedOriginal)
+			{
+				SaveHistory();
+				savedOriginal = true;
+			}
+		}
 
 		if (restartButtonLockTimer > 0)
 		{
@@ -414,6 +472,14 @@ public class GameManager : MonoBehaviour
 			if (restartButtonLockTimer <= 0 && firstLockedButton > 1)
 			{
 				restartButton.interactable = true;
+			}
+		}
+		if(timeToSave > 0)
+		{
+			timeToSave -= Time.deltaTime; ;
+			if (timeToSave <= 0)
+			{
+				SaveHistory();
 			}
 		}
 

@@ -22,6 +22,7 @@ public class MineScript : MonoBehaviour
 		// Debug.Log("Mine(" + GetInstanceID() + ") Power change " + this.powerLvl + " + " + powerChange);
 		// the general idea is to disallow power up loops
 		// if we power up a mine, we dont want to be power back by it		
+		if (!source) return;
 		MineScript other = source.gameObject.GetComponent<MineScript>();
 		if (other != null)
 		{

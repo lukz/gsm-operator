@@ -270,82 +270,86 @@ public class Tile : MonoBehaviour
 		return (!IsBlocked() && powerLvl != 0);
 	}
 
-	public void PowerChange(TowerScript source, int powerChange)
+	public void PowerChange(TowerScript source, int powerChange, bool fromHistoryNoFX = false)
 	{
 		if (!Application.isPlaying) return;
 		// Debug.Log("Tile#[" + x + ", " + y + "] power change " + source.GetInstanceID());
 
-
-		powerLvl = powerChange;
-
-		powerMarker.SetPower(powerLvl, powerChange);
-
-		if (resource)
+		if (!HasRocks())
 		{
-			//TODO flash white
-			Destroy(resource);
-		}
-		GameObject temp;
-		if (!HasHouse())
-		{
-			if (powerLvl > 0)
+			powerLvl = powerChange;
+
+			powerMarker.SetPower(powerLvl, powerChange);
+
+
+			if (resource)
 			{
-				temp = GameObject.Instantiate(GameManager.instance.CrystalPrefab, transform);
-				resource = temp;
+				//TODO flash white
+				Destroy(resource);
 			}
-			else
+			GameObject temp;
+			if (!HasHouse())
 			{
-				if (powerLvl < 0)
+				if (powerLvl > 0)
 				{
-					temp = GameObject.Instantiate(GameManager.instance.WaterPrefab, transform);
+					temp = GameObject.Instantiate(GameManager.instance.CrystalPrefab, transform);
 					resource = temp;
+				}
+				else
+				{
+					if (powerLvl < 0)
+					{
+						temp = GameObject.Instantiate(GameManager.instance.WaterPrefab, transform);
+						resource = temp;
+					}
 				}
 			}
 		}
-
 
 
 
 		OnPowerChange(source, powerChange);
-
-		if (resourceFlash == null)
+		if (!fromHistoryNoFX)
 		{
-			if (powerChange > 0)
+			if (resourceFlash == null)
 			{
-
-				// dont play sound when we just started and spawning stuff
-				if (GameManager.instance.timeOnLevel >= 0.1f)
-				{
-					GameObject powerUpFx = GameObject.Instantiate(GameManager.instance.powerUpFlashEffect);
-					powerUpFx.transform.parent = transform;
-					powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
-					Sounds.PlayPowerUp();
-					resourceFlash = powerUpFx;
-				}
-			}
-			else
-			{
-				if (powerChange < 0)
+				if (powerChange > 0)
 				{
 
 					// dont play sound when we just started and spawning stuff
-
-					//TODO drugi zasob ikonka animacji FLASH, inny dzwiek?
 					if (GameManager.instance.timeOnLevel >= 0.1f)
 					{
-						GameObject powerUpFx = GameObject.Instantiate(GameManager.instance.waterUpFlashEffect);
+						GameObject powerUpFx = GameObject.Instantiate(GameManager.instance.powerUpFlashEffect);
 						powerUpFx.transform.parent = transform;
 						powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
 						Sounds.PlayPowerUp();
 						resourceFlash = powerUpFx;
 					}
 				}
+				else
+				{
+					if (powerChange < 0)
+					{
+
+						// dont play sound when we just started and spawning stuff
+
+						//TODO drugi zasob ikonka animacji FLASH, inny dzwiek?
+						if (GameManager.instance.timeOnLevel >= 0.1f)
+						{
+							GameObject powerUpFx = GameObject.Instantiate(GameManager.instance.waterUpFlashEffect);
+							powerUpFx.transform.parent = transform;
+							powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
+							Sounds.PlayPowerUp();
+							resourceFlash = powerUpFx;
+						}
+					}
+				}
 			}
-		}
-		else
-		{
-			resourceFlash.GetComponent<DestroyOnDone>().time = 1;
-			resourceFlash.GetComponent<Animator>().Play("PowerUpTile",0,0f);
+			else
+			{
+				resourceFlash.GetComponent<DestroyOnDone>().time = 1;
+				resourceFlash.GetComponent<Animator>().Play("PowerUpTile", 0, 0f);
+			}
 		}
 	}
 

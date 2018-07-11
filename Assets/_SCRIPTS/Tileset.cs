@@ -141,7 +141,7 @@ public class Tileset : MonoBehaviour {
 					}
 				}
 			}
-			 
+			gm.timeToSave = fullTime;
                 gm.lockRestartFor(fullTime);
       
         }

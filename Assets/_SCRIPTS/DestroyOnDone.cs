@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyOnDone : MonoBehaviour {
 
-	public float time = 2;
+	public float time = 1;
 	float timer = 0;
 
 	private void Update()
@@ -17,9 +17,10 @@ public class DestroyOnDone : MonoBehaviour {
 			PoweredFlashEffectScript p = GetComponent<PoweredFlashEffectScript>();
 			if (p)
 			{
+				if(p.tileParent)
 				p.tileParent.resourceFlash = null;
 			}
-			GameObject.Destroy(gameObject, 0.2f);
+			GameObject.Destroy(gameObject);
 		}
 	}
 
