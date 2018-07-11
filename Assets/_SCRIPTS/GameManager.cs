@@ -101,8 +101,9 @@ public class GameManager : MonoBehaviour
 	private float restartButtonLockTimer = 0f;
 
 	public  GameObject CrystalPrefab;
-
+	public GameObject powerUpFlashEffect;
 	public  GameObject WaterPrefab;
+	public GameObject waterUpFlashEffect;
 
 	void Awake()
 	{

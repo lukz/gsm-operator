@@ -136,7 +136,12 @@ public class TowerScript : MonoBehaviour {
             tile = transform.GetComponentInParent<Tile>();
             tileset = tile.Tileset;
         }
-        tileset.ChangeTilesPower(this, tile, 1, powerOffsets);
+		int powerChange = 1;
+		if (tile.powerLvl < 0)
+		{
+			powerChange = -1;
+		}
+        tileset.ChangeTilesPower(this, tile, powerChange, powerOffsets);
     }
 
     private float mix;

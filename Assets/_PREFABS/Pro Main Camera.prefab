@@ -2610,7 +2610,11 @@ MonoBehaviour:
   MenuBtnHolder: {fileID: 1740342188114168}
   CrystalPrefab: {fileID: 1399098518138118, guid: 1ce924002c66d434e8cdc31a8facf40d,
     type: 2}
+  powerUpFlashEffect: {fileID: 1135731328327704, guid: 6e363fbebe01d6943b178fff1c1551dd,
+    type: 2}
   WaterPrefab: {fileID: 1399098518138118, guid: 6af07205c07ca544a8eb0105167972ac,
+    type: 2}
+  waterUpFlashEffect: {fileID: 1135731328327704, guid: 28148ed51c5457c468fc0ae0b4f5de03,
     type: 2}
 --- !u!114 &114063541039714290
 MonoBehaviour:

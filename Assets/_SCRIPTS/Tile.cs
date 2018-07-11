@@ -14,7 +14,7 @@ public class Tile : MonoBehaviour
 	public PowerMarker powerMarker;
 	public BuildMarker buildMarker;
 
-	public GameObject powerUpFlashEffect;
+
 
 	private GameObject resource;
 
@@ -271,32 +271,47 @@ public class Tile : MonoBehaviour
 
 	public void PowerChange(TowerScript source, int powerChange)
 	{
+		if (!Application.isPlaying) return;
 		// Debug.Log("Tile#[" + x + ", " + y + "] power change " + source.GetInstanceID());
-		powerLvl += powerChange;
-		if (powerLvl < 0)
+
+		//TODO ale zeby na overwrite tez dawal ten swoj flash........ ... .. .. 
+		bool WillAddResource = true;
+		if (powerLvl > 0 && powerChange < 0)
 		{
-			Debug.Log("This sohuld not happen " + powerLvl + " -> " + source);
-			powerLvl = 0;
+			WillAddResource = false;
 		}
+		if (powerLvl < 0 && powerChange > 0)
+		{
+			WillAddResource = false;
+		}
+
+	
+
+		powerLvl += powerChange;
+
 		powerMarker.SetPower(powerLvl, powerChange);
 
 
 		if (resource)
 		{
+			//TODO fade, efekt na usuniecie zasobu na RESET
 			Destroy(resource);
 		}
 		GameObject temp;
-		if (powerLvl > 0)
+		if (!HasHouse())
 		{
-			temp = GameObject.Instantiate(GameManager.instance.CrystalPrefab,transform);
-			resource = temp;
-		}
-		else
-		{
-			if (powerLvl < 0)
+			if (powerLvl > 0)
 			{
-				temp = GameObject.Instantiate(GameManager.instance.WaterPrefab,transform);
+				temp = GameObject.Instantiate(GameManager.instance.CrystalPrefab, transform);
 				resource = temp;
+			}
+			else
+			{
+				if (powerLvl < 0)
+				{
+					temp = GameObject.Instantiate(GameManager.instance.WaterPrefab, transform);
+					resource = temp;
+				}
 			}
 		}
 
@@ -305,16 +320,36 @@ public class Tile : MonoBehaviour
 
 		OnPowerChange(source, powerChange);
 
-		if (powerChange > 0 && Application.isPlaying)
+		if (WillAddResource)
 		{
-
-			// dont play sound when we just started and spawning stuff
-			if (GameManager.instance.timeOnLevel >= 0.1f)
+			if (powerChange > 0)
 			{
-				GameObject powerUpFx = GameObject.Instantiate(powerUpFlashEffect);
-				powerUpFx.transform.parent = transform;
-				powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
-				Sounds.PlayPowerUp();
+
+				// dont play sound when we just started and spawning stuff
+				if (GameManager.instance.timeOnLevel >= 0.1f)
+				{
+					GameObject powerUpFx = GameObject.Instantiate(GameManager.instance.powerUpFlashEffect);
+					powerUpFx.transform.parent = transform;
+					powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
+					Sounds.PlayPowerUp();
+				}
+			}
+			else
+			{
+				if (powerChange < 0)
+				{
+
+					// dont play sound when we just started and spawning stuff
+
+					//TODO drugi zasob ikonka animacji FLASH, inny dzwiek?
+					if (GameManager.instance.timeOnLevel >= 0.1f)
+					{
+						GameObject powerUpFx = GameObject.Instantiate(GameManager.instance.waterUpFlashEffect);
+						powerUpFx.transform.parent = transform;
+						powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
+						Sounds.PlayPowerUp();
+					}
+				}
 			}
 		}
 	}

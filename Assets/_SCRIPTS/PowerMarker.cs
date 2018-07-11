@@ -17,8 +17,6 @@ public class PowerMarker : MonoBehaviour
 	private List<GameObject> markers = new List<GameObject>();
 	private List<SpriteRenderer> markerRenderers = new List<SpriteRenderer>();
 
-	[SerializeField]
-	private Animator animatorPower;
 
     public static float currentMarkerDelay = 0;
     private float perMarkerDelayAdd = 0.1f;
@@ -30,11 +28,9 @@ public class PowerMarker : MonoBehaviour
 
     public void SetPower(int power, int powerChange)
 	{
-		if (power < 0) power = 0;
 		this.power = power;
 		// Debug.Log("power = " + power);
 		// if we dont need power, create them dynamically
-		if (animatorPower) animatorPower.SetInteger("power", power);
 		if (requiredPower > 0)
 		{
 			CreateMarkers(requiredPower);
@@ -178,10 +174,5 @@ public class PowerMarker : MonoBehaviour
             currentMarkerDelay += perMarkerDelayAdd;
         }
 
-        SpriteRenderer or = animatorPower.GetComponentInChildren<SpriteRenderer>();
-        if(or != null)
-        {
-            or.DOFade(0, 1f).SetEase(Ease.InSine);
-        }
     }
 }
