@@ -24,20 +24,14 @@ public class HouseScript : MonoBehaviour {
 	public void PowerChanged() {
         int newPower = transform.GetComponentInParent<Tile>().powerLvl;
 
-        if(newPower > powered)
-        {
-            FlashPowered();
-        } else if(newPower < powered)
-        {
-            FlashPowerDown();
-        }
+		FlashPowered();
 
         powered = newPower;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		animator.SetInteger("power", powered);
+		animator.SetInteger("power", Mathf.Abs(powered));
        
 	}
 

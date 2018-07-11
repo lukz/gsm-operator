@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
 
-	public int powerLvl =0;
+	public int powerLvl = 0;
 
 
 	public int x;
@@ -17,6 +17,7 @@ public class Tile : MonoBehaviour
 
 
 	private GameObject resource;
+	public GameObject resourceFlash;
 
 	private List<TowerScript.PowerOffset> towerPowerOffsets;
 
@@ -266,7 +267,7 @@ public class Tile : MonoBehaviour
 
 	public bool CanBuild()
 	{
-		return !IsBlocked() && (HasEnergyField() || powerLvl != 0);
+		return (!IsBlocked() && powerLvl != 0);
 	}
 
 	public void PowerChange(TowerScript source, int powerChange)
@@ -274,26 +275,14 @@ public class Tile : MonoBehaviour
 		if (!Application.isPlaying) return;
 		// Debug.Log("Tile#[" + x + ", " + y + "] power change " + source.GetInstanceID());
 
-		//TODO ale zeby na overwrite tez dawal ten swoj flash........ ... .. .. 
-		bool WillAddResource = true;
-		if (powerLvl > 0 && powerChange < 0)
-		{
-			WillAddResource = false;
-		}
-		if (powerLvl < 0 && powerChange > 0)
-		{
-			WillAddResource = false;
-		}
 
-
-		powerLvl += powerChange;
+		powerLvl = powerChange;
 
 		powerMarker.SetPower(powerLvl, powerChange);
 
 		if (resource)
 		{
-			//TODO fade, efekt na usuniecie zasobu na RESET
-			//TODO pamietaj ze overwrite jest sprawdzany...
+			//TODO flash white
 			Destroy(resource);
 		}
 		GameObject temp;
@@ -319,7 +308,7 @@ public class Tile : MonoBehaviour
 
 		OnPowerChange(source, powerChange);
 
-		if (WillAddResource)
+		if (resourceFlash == null)
 		{
 			if (powerChange > 0)
 			{
@@ -331,6 +320,7 @@ public class Tile : MonoBehaviour
 					powerUpFx.transform.parent = transform;
 					powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
 					Sounds.PlayPowerUp();
+					resourceFlash = powerUpFx;
 				}
 			}
 			else
@@ -347,9 +337,15 @@ public class Tile : MonoBehaviour
 						powerUpFx.transform.parent = transform;
 						powerUpFx.transform.localPosition = new Vector3(0, 0, 0);
 						Sounds.PlayPowerUp();
+						resourceFlash = powerUpFx;
 					}
 				}
 			}
+		}
+		else
+		{
+			resourceFlash.GetComponent<DestroyOnDone>().time = 1;
+			resourceFlash.GetComponent<Animator>().Play("PowerUpTile",0,0f);
 		}
 	}
 

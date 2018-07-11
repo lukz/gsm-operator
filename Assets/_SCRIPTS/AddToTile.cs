@@ -13,7 +13,7 @@ public class AddToTile : MonoBehaviour {
 	bool justAdded = true;
 	void Start () {
 		// we want to know when hierarchy changes, ie when prefab is dropped in the scene
-		EditorApplication.hierarchyChanged += HierarchyChanged;
+		EditorApplication.hierarchyWindowChanged += HierarchyChanged;
 	}
 	
     void HierarchyChanged()
@@ -22,7 +22,7 @@ public class AddToTile : MonoBehaviour {
 		// called when we are destroyed as well
 		// unity...
 		if (this == null) {
-			EditorApplication.hierarchyChanged -= HierarchyChanged;
+			EditorApplication.hierarchyWindowChanged -= HierarchyChanged;
 			return;
 		}
 		if (transform.parent == null) {

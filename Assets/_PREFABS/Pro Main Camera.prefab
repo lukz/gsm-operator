@@ -2574,8 +2574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b387d8de14d31ca4abae1313973b9ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerStickerPrefab: {fileID: 1716165006060740, guid: 5981027bab327df4e9d42c1048ebc5b8,
-    type: 2}
   splash: {fileID: 1389999361447452, guid: e31fdbfdc0fc3cf4394eb77b11724818, type: 2}
   tint: {fileID: 1775950363725364, guid: bed1bf69928b03c4086d37309afd5225, type: 2}
   leftPanel: {fileID: 1448688086607600}

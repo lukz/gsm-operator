@@ -61,7 +61,6 @@ public class TowerScript : MonoBehaviour {
         ///{
         //    powered[i].GetComponent<HouseScript>().powerDown();
         //}
-        PowerDown();
         Tile t = tile;
         tile = null;
         if (pump != null) {
@@ -121,15 +120,6 @@ public class TowerScript : MonoBehaviour {
         return true;
     }
 
-    public void PowerDown() 
-    {
-        if (tile == null || tileset == null) {
-            tile = transform.GetComponentInParent<Tile>();
-            tileset = tile.Tileset;
-        }
-		//TODO rozpoznaj czy to reset czy overwrite, bo teraz jest ...
-        tileset.ChangeTilesPower(this, tile, -1, powerOffsets);
-    }
 
     public void PowerUp() 
     {

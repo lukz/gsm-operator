@@ -10,9 +10,6 @@ public class GameManager : MonoBehaviour
 {
 
 
-	[SerializeField]
-	private GameObject powerStickerPrefab;
-
 	public static bool IS_ANDROID = Application.platform == RuntimePlatform.Android;
 	public static bool IS_IOS = Application.platform == RuntimePlatform.IPhonePlayer;
 	public static bool IS_MOBILE = IS_ANDROID || IS_IOS;
@@ -182,7 +179,7 @@ public class GameManager : MonoBehaviour
 		}
 		boxController.PrevTower();
 		// boxController.ReturnTower();
-		Debug.Log("Lock " + (firstLockedButton - 1));
+		//Debug.Log("Lock " + (firstLockedButton - 1));
 		// if (firstLockedButton > 0)
 		// {
 		// 	--firstLockedButton;

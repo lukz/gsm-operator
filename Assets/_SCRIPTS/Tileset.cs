@@ -119,23 +119,31 @@ public class Tileset : MonoBehaviour {
             }
         } else {
             float fullTime = validTiles.Count < 5 ? gm.delayPowerFx : gm.delayPowerLargeFx;
+			bool mineFound = false;
+			for (int i = 0; i < validTiles.Count; i++)
+			{
+				float delay = 0;
 
-            for (int i = 0; i < validTiles.Count; i++)
-            {
-                float delay = 0;
+				delay = (fullTime / validTiles.Count) * i;
+				if (!mineFound)
+				{
+					validTiles[i].PowerChangeDelayed(tower, powerChange, delay);
 
-                delay = (fullTime / validTiles.Count) * i;
+					HouseScript[] hss = validTiles[i].GetComponentsInChildren<HouseScript>();
+					foreach (var hs in hss)
+					{
+						MineScript ts = hs.gameObject.GetComponent<MineScript>();
+						if (ts != null)
+						{
+							mineFound = true;
 
-				//TODO AHA tutaj sie dzieje, co jest reset itp 
-                if (powerChange <= 0) delay = 0;
-
-                validTiles[i].PowerChangeDelayed(tower, powerChange, delay);
-            }
-			//todo tutaj tez
-            if(powerChange > 0)
-            {
+						}
+					}
+				}
+			}
+			 
                 gm.lockRestartFor(fullTime);
-            }
+      
         }
     }
 

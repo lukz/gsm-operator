@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212017771703524142}
   - component: {fileID: 95327523903006186}
   - component: {fileID: 114358489280540516}
+  - component: {fileID: 114811477836123426}
   m_Layer: 0
   m_Name: TileWaterUpFX
   m_TagString: Untagged
@@ -71,7 +72,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2adea34dfb94844fabcfa098907ce018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 2
+  time: 1
+--- !u!114 &114811477836123426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135731328327704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa82f529aa16d04eafa98316ded2b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileParent: {fileID: 0}
 --- !u!212 &212017771703524142
 SpriteRenderer:
   m_ObjectHideFlags: 1

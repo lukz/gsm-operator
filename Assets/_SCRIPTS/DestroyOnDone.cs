@@ -13,6 +13,12 @@ public class DestroyOnDone : MonoBehaviour {
 		if (timer > time)
 		{
 			GetComponent<Animator>().enabled = false;
+
+			PoweredFlashEffectScript p = GetComponent<PoweredFlashEffectScript>();
+			if (p)
+			{
+				p.tileParent.resourceFlash = null;
+			}
 			GameObject.Destroy(gameObject, 0.2f);
 		}
 	}
