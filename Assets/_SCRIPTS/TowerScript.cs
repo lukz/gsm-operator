@@ -95,7 +95,9 @@ public class TowerScript : MonoBehaviour {
         tileset = tile.Tileset;
         PowerUp();
 
-		if(playerTower) Sounds.PlayTowerBuild();
+		if(playerTower) {
+            Sounds.PlayTowerBuild();
+        }
         //for (var i = 0; i < powered.Count; i++)
         //{
         //    powered[i].GetComponent<HouseScript>().powerUp();

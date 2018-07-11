@@ -109,24 +109,32 @@ public class Tileset : MonoBehaviour {
                 validTiles.Add(t);
             }
         }
+        // can be null when adding stuff in editor
+        GameManager gm = GameManager.instance;
+        // if its not spawned by player, we want the change to be isntant
+        if (gm == null || !tower.playerTower) {
+            for (int i = 0; i < validTiles.Count; i++)
+            {
+                validTiles[i].PowerChange(tower, powerChange);
+            }
+        } else {
+            float fullTime = validTiles.Count < 5 ? gm.delayPowerFx : gm.delayPowerLargeFx;
 
+            for (int i = 0; i < validTiles.Count; i++)
+            {
+                float delay = 0;
 
-        float fullTime = validTiles.Count < 5 ? GameManager.instance.delayPowerFx : GameManager.instance.delayPowerLargeFx;
+                delay = (fullTime / validTiles.Count) * i;
 
-        for (int i = 0; i < validTiles.Count; i++)
-        {
-            float delay = 0;
+                if (powerChange <= 0) delay = 0;
 
-            delay = (fullTime / validTiles.Count) * i;
+                validTiles[i].PowerChangeDelayed(tower, powerChange, delay);
+            }
 
-            if (powerChange <= 0) delay = 0;
-
-            validTiles[i].PowerChangeDelayed(tower, powerChange, delay);
-        }
-
-        if(powerChange > 0)
-        {
-            GameManager.instance.lockRestartFor(fullTime);
+            if(powerChange > 0)
+            {
+                gm.lockRestartFor(fullTime);
+            }
         }
     }
 
