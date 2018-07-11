@@ -73,7 +73,7 @@ Material:
     - _OutlineWidth: 2
     - _Parallax: 0.02
     - _ShadowAngle: 135
-    - _ShadowDistance: 6
+    - _ShadowDistance: 7
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
