@@ -7,6 +7,8 @@ public class PowerMarker : MonoBehaviour
 {
 	public Sprite powerOn;
 	public Sprite powerOff;
+	public Sprite waterOff;
+	public Sprite waterOn;
 
 	public bool showIfNoPower = false;
 
