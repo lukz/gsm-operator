@@ -255,7 +255,9 @@ public class TowerSpawnerPro : MonoBehaviour {
 					draggedTowerOwner = null;
 
 
-                    gameObject.transform.DOShakePosition(cameraShakeTimeStrength.x, cameraShakeTimeStrength.y);
+					// gameObject.transform.DOShakePosition(cameraShakeTimeStrength.x, cameraShakeTimeStrength.y);
+
+					GameManager.shakePower = 0.08f;
 
                     tileset.ToggleRocks(delay + 0.7f);
 					TriggerFeedbackHeavy();

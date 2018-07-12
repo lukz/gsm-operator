@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
 			Screen.SetResolution(Mathf.FloorToInt(600 * aspect), 600, true);
 		}
 
-		Application.targetFrameRate = 30;
+		Application.targetFrameRate = 60;
 		DOTween.Init(true, true, LogBehaviour.Verbose);
 
 		SceneManager.sceneLoaded += PrepareScene;
@@ -379,7 +379,6 @@ public class GameManager : MonoBehaviour
 			housesStates.Add(tempA);
 		}
 		houseHistory.Add(housesStates);
-		Debug.Log(houseHistory.Count);
 
 	}
 
@@ -473,15 +472,15 @@ public class GameManager : MonoBehaviour
 	{
 		if (shakePower > 0.01f)
 		{
-			shakePower *= 0.6f;
+			shakePower *= 0.65f;
 
 			if (Random.Range(0, 1) > 0.5f)
 			{
-				Camera.main.transform.position = new Vector3(Random.Range(shakePower / 2, shakePower), Random.Range(shakePower / 2, shakePower), Camera.main.transform.position.z);
+				Camera.main.transform.position = new Vector3(shakePower, shakePower, Camera.main.transform.position.z);
 			}
 			else
 			{
-				Camera.main.transform.position = new Vector3(Random.Range(-shakePower / 2, -shakePower), Random.Range(-shakePower / 2, -shakePower), Camera.main.transform.position.z);
+				Camera.main.transform.position = new Vector3( -shakePower,  -shakePower, Camera.main.transform.position.z);
 			}
 		}
 		else
