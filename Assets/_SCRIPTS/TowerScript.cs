@@ -81,18 +81,18 @@ public class TowerScript : MonoBehaviour {
         return t;
     }
 
-    public bool AttachToTile(Tile tile)
+    public float AttachToTile(Tile tile)
     {
 
         if (isAttachedToTile) {
             Debug.Log("Already attached to tile");
-            return false;
+            return 0;
         }
         isAttachedToTile = true;
 
         this.tile = tile;
         tileset = tile.Tileset;
-        PowerUp();
+        float delay = PowerUp();
 
 		if(playerTower) {
             Sounds.PlayTowerBuild();
@@ -117,11 +117,11 @@ public class TowerScript : MonoBehaviour {
         ToggleRocks toggleRocks = tile.GetComponentInChildren<ToggleRocks>();
         if (toggleRocks != null) toggleRocks.Hide();
 
-        return true;
+        return delay;
     }
 
 
-    public void PowerUp() 
+    public float PowerUp() 
     {
         if (tile == null || tileset == null) {
             tile = transform.GetComponentInParent<Tile>();
@@ -132,7 +132,9 @@ public class TowerScript : MonoBehaviour {
 		{
 			powerChange = -1;
 		}
-        tileset.ChangeTilesPower(this, tile, powerChange, powerOffsets);
+        float delay = tileset.ChangeTilesPower(this, tile, powerChange, powerOffsets);
+
+        return delay;
     }
 
     private float mix;

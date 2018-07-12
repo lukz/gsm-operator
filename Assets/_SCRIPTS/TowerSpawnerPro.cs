@@ -240,7 +240,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 				.OnComplete(()=>{
 					Sounds.PlayTowerBuild();
 					tile.CancelBuildTarget();
-					tile.Build(draggedTowerInstance);
+					float delay = tile.Build(draggedTowerInstance);
 					gameManager.TowerBuild(draggedTowerOwner, draggedTowerInstance);
 					draggedTowerInstance.transform.Find("Shadow").gameObject.SetActive(true);
 
@@ -257,8 +257,13 @@ public class TowerSpawnerPro : MonoBehaviour {
 
                     gameObject.transform.DOShakePosition(cameraShakeTimeStrength.x, cameraShakeTimeStrength.y);
 
-                    tileset.ToggleRocks();
+                    tileset.ToggleRocks(delay + 0.7f);
 					TriggerFeedbackHeavy();
+
+                    if(tileset.hasRocks())
+                    {
+                        gameManager.addLockRestartTime(0.7f);
+                    }
                 }
 			);
 
@@ -327,7 +332,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 					GameObject.Destroy(tower);	
 				}
 			);
-			gameManager.lockRestartFor(.15f);
+			gameManager.setLockRestartFor(.15f);
 			TriggerFeedbackLight();
 		} else {
             ts.FlashRed();
@@ -349,7 +354,7 @@ public class TowerSpawnerPro : MonoBehaviour {
 					}
 				)
 			);
-			gameManager.lockRestartFor(1);
+			gameManager.setLockRestartFor(1);
 			TriggerFeedbackFailure();
 		}
 	}

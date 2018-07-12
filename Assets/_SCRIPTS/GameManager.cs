@@ -398,7 +398,7 @@ public class GameManager : MonoBehaviour
 			towerspawner.ReturnTower(item.button, item.tower);
 			backs++;
 
-			towerspawner.tileset.ToggleRocks();
+			towerspawner.tileset.ToggleRocks(0);
 
 			firstLockedButton--;
 
@@ -443,7 +443,7 @@ public class GameManager : MonoBehaviour
 			towerspawner.ReturnTower(item.button, item.tower);
 			backs++;
 
-			towerspawner.tileset.ToggleRocks();
+			towerspawner.tileset.ToggleRocks(0);
 		}
 		for (int i = 0; i < 4; i++)
 		{
@@ -737,11 +737,17 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public void lockRestartFor(float time)
+	public void setLockRestartFor(float time)
 	{
 		restartButtonLockTimer = Mathf.Max(restartButtonLockTimer, time);
 		restartButton.interactable = false;
 	}
+
+    public void addLockRestartTime(float time)
+    {
+        restartButtonLockTimer = restartButtonLockTimer + time;
+        restartButton.interactable = false;
+    }
 
 
 }

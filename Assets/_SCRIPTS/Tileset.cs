@@ -95,8 +95,10 @@ public class Tileset : MonoBehaviour {
         return rocks;
     }
 
-    public void ChangeTilesPower(TowerScript tower, Tile startTile, int powerChange, List<TowerScript.PowerOffset> offsets)
+    public float ChangeTilesPower(TowerScript tower, Tile startTile, int powerChange, List<TowerScript.PowerOffset> offsets)
     {
+        float fullChangeDelay = 0;
+
         List<Tile> validTiles = new List<Tile>();
 
         for (int i = 0; i < offsets.Count; i++)
@@ -142,9 +144,13 @@ public class Tileset : MonoBehaviour {
 				}
 			}
 			gm.timeToSave = fullTime+0.05f;
-                gm.lockRestartFor(fullTime);
-      
+                gm.setLockRestartFor(fullTime);
+            fullChangeDelay = fullTime;
+
+
         }
+
+        return fullChangeDelay;
     }
 
 
@@ -206,11 +212,36 @@ public class Tileset : MonoBehaviour {
     // 	}
     // }
 
-    public void ToggleRocks()
+    IEnumerator ToggleRocksDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        ToggleRocksInternal();
+    }
+
+    private void ToggleRocksInternal()
     {
         for (int i = 0; i < allRocks.Length; i++)
         {
             allRocks[i].ToggleState();
         }
+    }
+
+
+    public void ToggleRocks(float delay)
+    {
+        if(delay > 0)
+        {
+            StartCoroutine(ToggleRocksDelayed(delay));
+        }
+        else
+        {
+            ToggleRocksInternal();
+        }
+
+    }
+
+    public bool hasRocks()
+    {
+        return allRocks.Length > 0;
     }
 }
