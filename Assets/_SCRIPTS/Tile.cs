@@ -383,7 +383,7 @@ public class Tile : MonoBehaviour
 			}
 			else
 			{
-				hs.PowerChanged();
+				hs.UpdateResources(powerChange);
 			}
 
 		}

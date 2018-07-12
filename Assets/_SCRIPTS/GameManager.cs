@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 	public GameObject waterUpFlashEffect;
 
 	private List<int[][]> backHistory = new List<int[][]>();
-	private List<List<int[]>> houseHistory = new List<List<int[]>>();
+	private List<List<List<int>>> houseHistory = new List<List<List<int>>>();
 	private bool savedOriginal;
 	public float timeToSave = 0;
 
@@ -367,12 +367,19 @@ public class GameManager : MonoBehaviour
 		}
 		backHistory.Add(state);
 
-		List<int[]> housesStates = new List<int[]>();
+		List<List<int>> housesStates = new List<List<int>>();
 		for (int i = 0; i < houses.Length; i++)
 		{
-			housesStates.Add(houses[i].GetComponent<HouseScript>().currentResources);
+			List<int> tempA = new List<int>();
+			List<int> tempB = houses[i].GetComponent<HouseScript>().currentResources;
+			for (int n = 0; n < tempB.Count; n++)
+			{
+				tempA.Add(tempB[n]);
+			}
+			housesStates.Add(tempA);
 		}
 		houseHistory.Add(housesStates);
+		Debug.Log(houseHistory.Count);
 
 	}
 
@@ -407,8 +414,14 @@ public class GameManager : MonoBehaviour
 
 			for (int i = 0; i < houses.Length; i++)
 			{
-				houses[i].GetComponent<HouseScript>().currentResources = houseHistory[houseHistory.Count - 2][i];
-				houses[i].GetComponent<HouseScript>().UpdateResources();
+				List<int> tempA = houseHistory[houseHistory.Count - 2][i];
+				List<int> tempB = new List<int>();
+				for (int n = 0; n < tempA.Count; n++)
+				{
+					tempB.Add(tempA[n]);
+				}
+				houses[i].GetComponent<HouseScript>().currentResources = tempB;
+				houses[i].GetComponent<HouseScript>().UpdateResources(0);
 			}
 			houseHistory.RemoveAt(houseHistory.Count-1);
 		}
@@ -443,8 +456,14 @@ public class GameManager : MonoBehaviour
 
 		for (int i = 0; i < houses.Length; i++)
 		{
-			houses[i].GetComponent<HouseScript>().currentResources = houseHistory[0][i];
-			houses[i].GetComponent<HouseScript>().UpdateResources();
+			List<int> tempA = houseHistory[0][i];
+			List<int> tempB = new List<int>();
+			for (int n = 0; n < tempA.Count; n++)
+			{
+				tempB.Add(tempA[n]);
+			}
+			houses[i].GetComponent<HouseScript>().currentResources = tempB;
+			houses[i].GetComponent<HouseScript>().UpdateResources(0);
 		}
 		houseHistory.Clear() ;
 		return true;

@@ -302,8 +302,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d0c953c426c624881a17dc4f48b767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredResources: 0100000001000000
+  currentResources: 
   powered: 0
-  requiredPower: 2
   sprite: {fileID: 212213926953913808}
 --- !u!212 &212014431751266116
 SpriteRenderer:

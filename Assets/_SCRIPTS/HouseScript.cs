@@ -7,8 +7,8 @@ using DG.Tweening;
 public class HouseScript : MonoBehaviour {
 
 
-	public int[] requiredResources;
-	public int[] currentResources;
+	public List<int> requiredResources;
+	public List<int> currentResources=new List<int>();
 
 
 	private List<GameObject> markers = new List<GameObject>();
@@ -20,6 +20,8 @@ public class HouseScript : MonoBehaviour {
 
 	public bool powered = false;
 
+	private List<int> lastResources = new List<int>();
+
 	Animator animator;
 
     [SerializeField]
@@ -28,23 +30,69 @@ public class HouseScript : MonoBehaviour {
 	void Start () {
 		currentMarkerDelay = 0;
 		animator = GetComponent<Animator>();
+		CreateMarkers(requiredResources.Count);
+		UpdateResources(0);
 	}
 
-	public void UpdateResources()
+	public void UpdateResources(int powerChange)
 	{
-		//todo jak pokazac co jest zapalone a co zgaszone...
+
+		if (GetComponent<MineScript>()) return;
+
+		if (powerChange != 0)
+		{
+			currentResources.Add(powerChange);
+			FlashPowered();
+			/*for (int i = power; i < power + powerChange && i <= markerRenderers.Count; i++)
+			{
+				DOTween.Sequence()
+					.Append(markerRenderers[i - 1].transform.DOLocalMoveY(0.1f, 0.1f * 0.4f).SetEase(Ease.OutSine).SetRelative(true))
+					.Append(markerRenderers[i - 1].transform.DOLocalMoveY(-0.1f, 0.6f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
+			}*/
+		}
+		else
+		{
+			if (lastResources.Count > currentResources.Count)
+			{
+				FlashPowerDown();
+				/*for (int i = power + Mathf.Abs(powerChange); i > power && i <= markerRenderers.Count; i--)
+				{
+					DOTween.Sequence()
+						.Append(markerRenderers[i - 1].transform.DOLocalMoveY(-0.1f, 0.1f * 0.4f).SetEase(Ease.OutSine).SetRelative(true))
+						.Append(markerRenderers[i - 1].transform.DOLocalMoveY(0.1f, 0.6f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
+				}*/
+			}
+
+		}
 		powered = false;
 		List<int> tempArray = new List<int>();
-		for (int i = 0; i < requiredResources.Length; i++)
+		for (int i = 0; i < requiredResources.Count; i++)
 		{
 			tempArray.Add(requiredResources[i]);
+
+			markerRenderers[i].sprite = GameManager.instance.powerOff;
+			if (requiredResources[i] < 0)
+				markerRenderers[i].sprite = GameManager.instance.waterOff;
 		}
-		for (int i = 0; i < currentResources.Length; i++)
+		for (int i = 0; i < currentResources.Count; i++)
 		{
 			for (int j = 0; j < tempArray.Count; j++)
 			{
 				if(currentResources[i] == tempArray[j])
 				{
+					if(tempArray[j] == 1)
+					{
+						for (int h = 0; h < markerRenderers.Count; h++)
+						{
+							if (markerRenderers[h].sprite == GameManager.instance.powerOff) markerRenderers[h].sprite = GameManager.instance.powerOn;
+						}
+					}else
+					{
+						for (int h = 0; h < markerRenderers.Count; h++)
+						{
+							if (markerRenderers[h].sprite == GameManager.instance.waterOff) markerRenderers[h].sprite = GameManager.instance.waterOn;
+						}
+					}
 					tempArray.RemoveAt(j);
 				}
 			}
@@ -53,14 +101,9 @@ public class HouseScript : MonoBehaviour {
 		{
 			powered = true;
 		}
+		lastResources = currentResources;
 	}
 
-
-	public void PowerChanged() {
-        int newPower = transform.GetComponentInParent<Tile>().powerLvl;
-
-		FlashPowered();
-	}
 	
 	void Update () {
 		int powerTemp = 0;
@@ -68,69 +111,7 @@ public class HouseScript : MonoBehaviour {
 		animator.SetInteger("power", powerTemp);
 	}
 
-	/*
-	public void SetPower(int powerChange)
-	{
-		// Debug.Log("power = " + power);
-		// if we dont need power, create them dynamically
-		if (requiredPower > 0)
-		{
-			CreateMarkers(requiredPower);
 
-			foreach (var sr in markerRenderers)
-			{
-				sr.sprite = powerOff;
-			}
-
-			switch (power)
-			{
-				case 0:
-					{
-						// do nothing
-					}
-					break;
-				case 1:
-					{
-						markerRenderers[0].sprite = powerOn;
-					}
-					break;
-				case 2:
-					{
-						markerRenderers[0].sprite = powerOn;
-						if (markerRenderers.Count > 1) markerRenderers[1].sprite = powerOn;
-					}
-					break;
-				default:
-					{ // 3+
-						markerRenderers[0].sprite = powerOn;
-						if (markerRenderers.Count > 1) markerRenderers[1].sprite = powerOn;
-						if (markerRenderers.Count > 2) markerRenderers[2].sprite = powerOn;
-					}
-					break;
-			}
-
-			if (powerChange > 0)
-			{
-				for (int i = power; i < power + powerChange && i <= markerRenderers.Count; i++)
-				{
-					DOTween.Sequence()
-						.Append(markerRenderers[i - 1].transform.DOLocalMoveY(0.1f, 0.1f * 0.4f).SetEase(Ease.OutSine).SetRelative(true))
-						.Append(markerRenderers[i - 1].transform.DOLocalMoveY(-0.1f, 0.6f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
-				}
-			}
-			else
-			{
-				for (int i = power + Mathf.Abs(powerChange); i > power && i <= markerRenderers.Count; i--)
-				{
-					DOTween.Sequence()
-						.Append(markerRenderers[i - 1].transform.DOLocalMoveY(-0.1f, 0.1f * 0.4f).SetEase(Ease.OutSine).SetRelative(true))
-						.Append(markerRenderers[i - 1].transform.DOLocalMoveY(0.1f, 0.6f * 0.4f).SetEase(Ease.InSine).SetRelative(true));
-				}
-			}
-
-
-		}
-	}*/
 
 	private void CreateMarkers(int count)
 	{
